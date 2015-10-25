@@ -1,6 +1,0 @@
-framework module Pods_RIGiphyLib_Tests {
-  umbrella header "Pods-RIGiphyLib_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}

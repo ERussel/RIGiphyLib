@@ -1,6 +1,0 @@
-framework module RIGiphyLib {
-  umbrella header "RIGiphyLib-umbrella.h"
-
-  export *
-  module * { export * }
-}

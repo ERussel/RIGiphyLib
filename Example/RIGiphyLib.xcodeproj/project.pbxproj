@@ -20,9 +20,10 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		84BE19471BDD575000E28C82 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BE19461BDD575000E28C82 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		DE88D6F28C483BECE6C12551 /* Pods_RIGiphyLib_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C0BD704965A41214E8D6DE /* Pods_RIGiphyLib_Example.framework */; };
-		E4ABCC0430B69D42C3E590B7 /* Pods_RIGiphyLib_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C097B5A7D9A8196ED3816D /* Pods_RIGiphyLib_Tests.framework */; };
+		BBFE7B083E80804C1EAD528B /* libPods-RIGiphyLib_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AE04AF9E80AA7CB5C78BB7 /* libPods-RIGiphyLib_Tests.a */; };
+		FBDC4AB0AC9DE797C1C8C4E5 /* libPods-RIGiphyLib_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 426AFFD8BE48DF9302E87AB7 /* libPods-RIGiphyLib_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03C097B5A7D9A8196ED3816D /* Pods_RIGiphyLib_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RIGiphyLib_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF4EB540444D46BABB4E146 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		140D3CC07941F0D26BA0D899 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		14AE04AF9E80AA7CB5C78BB7 /* libPods-RIGiphyLib_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RIGiphyLib_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		426AFFD8BE48DF9302E87AB7 /* libPods-RIGiphyLib_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RIGiphyLib_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C57F712A6A2B91F846D157E /* Pods-RIGiphyLib_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* RIGiphyLib_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RIGiphyLib_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,12 +61,12 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		84BE19461BDD575000E28C82 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		84FEC6071BDD3C270007FEB1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84FEC6081BDD3C280007FEB1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A9E09E24EF7037D915CBE717 /* Pods-RIGiphyLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AB1D0B105CE9F3B1D6672F79 /* Pods-RIGiphyLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C6C0BD704965A41214E8D6DE /* Pods_RIGiphyLib_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RIGiphyLib_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5727CDF215694282C2D8FBF /* RIGiphyLib.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RIGiphyLib.podspec; path = ../RIGiphyLib.podspec; sourceTree = "<group>"; };
 		D8ACA665941212B9E6E65308 /* Pods-RIGiphyLib_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,7 +79,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				DE88D6F28C483BECE6C12551 /* Pods_RIGiphyLib_Example.framework in Frameworks */,
+				FBDC4AB0AC9DE797C1C8C4E5 /* libPods-RIGiphyLib_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +90,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				E4ABCC0430B69D42C3E590B7 /* Pods_RIGiphyLib_Tests.framework in Frameworks */,
+				BBFE7B083E80804C1EAD528B /* libPods-RIGiphyLib_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,8 +125,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				C6C0BD704965A41214E8D6DE /* Pods_RIGiphyLib_Example.framework */,
-				03C097B5A7D9A8196ED3816D /* Pods_RIGiphyLib_Tests.framework */,
+				426AFFD8BE48DF9302E87AB7 /* libPods-RIGiphyLib_Example.a */,
+				14AE04AF9E80AA7CB5C78BB7 /* libPods-RIGiphyLib_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -137,6 +139,7 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* GiphyViewController.h */,
 				6003F5A6195388D20070C39A /* GiphyViewController.m */,
+				84BE19461BDD575000E28C82 /* Launch Screen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -281,6 +284,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				84BE19471BDD575000E28C82 /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  GiphyTest
+
+  Created by Russel on 25.10.15.
+  Copyright © 2015 Aft3rmath. All rights reserved.
+*/
+
+"LGiphyPreviewSendTitle" = "Send";
+
+"LGiphySearchNotFoundTitle" = "GIFs not found";
+"LGiphyCategoriesNotFoundTitle" = "Categories not found";
+"LGiphyConnectionError" = "Service unavailable. Please, check internet connection.";

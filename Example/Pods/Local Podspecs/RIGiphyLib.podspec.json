@@ -17,11 +17,7 @@
   },
   "requires_arc": true,
   "source_files": "Pod/Classes/**/*",
-  "resource_bundles": {
-    "RIGiphyLib": [
-      "Pod/Assets/*.png"
-    ]
-  },
+  "resources": "GiphyResources.bundle",
   "dependencies": {
     "AFNetworking": [
       "~> 2.3"

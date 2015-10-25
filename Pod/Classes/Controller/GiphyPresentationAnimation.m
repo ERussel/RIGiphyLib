@@ -45,9 +45,6 @@
         }];
         
     }else if (_animationType == GiphyPresentationAnimationTypeDismiss){
-        
-        [containerView insertSubview:toViewController.view belowSubview:fromViewController.view];
-        
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             fromViewController.view.alpha = 0.0f;
             _animationBackgroundView.alpha = 0.0f;
