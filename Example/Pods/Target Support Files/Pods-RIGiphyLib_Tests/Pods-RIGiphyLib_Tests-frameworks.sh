@@ -84,8 +84,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-RIGiphyLib_Tests/AFNetworking.framework"
+  install_framework "Pods-RIGiphyLib_Tests/AsyncDisplayKit.framework"
+  install_framework "Pods-RIGiphyLib_Tests/Bolts.framework"
+  install_framework "Pods-RIGiphyLib_Tests/FLAnimatedImage.framework"
+  install_framework "Pods-RIGiphyLib_Tests/MBProgressHUD.framework"
+  install_framework "Pods-RIGiphyLib_Tests/Parse.framework"
   install_framework "Pods-RIGiphyLib_Tests/RIGiphyLib.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-RIGiphyLib_Tests/AFNetworking.framework"
+  install_framework "Pods-RIGiphyLib_Tests/AsyncDisplayKit.framework"
+  install_framework "Pods-RIGiphyLib_Tests/Bolts.framework"
+  install_framework "Pods-RIGiphyLib_Tests/FLAnimatedImage.framework"
+  install_framework "Pods-RIGiphyLib_Tests/MBProgressHUD.framework"
+  install_framework "Pods-RIGiphyLib_Tests/Parse.framework"
   install_framework "Pods-RIGiphyLib_Tests/RIGiphyLib.framework"
 fi

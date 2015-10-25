@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/Helper/Categories/UIView/UIView+Giphy.h

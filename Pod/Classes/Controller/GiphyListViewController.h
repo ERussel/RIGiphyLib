@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GiphyDataStoreProtocol.h"
+#import "GiphyImageCacheProtocol.h"
 
 @interface GiphyListViewController : UIViewController
+
+- (instancetype)initWithDataManager:(id<GiphyDataStoreProtocol>)dataManager imageCache:(id<GiphyImageCacheProtocol>)imageCache;
 
 @end

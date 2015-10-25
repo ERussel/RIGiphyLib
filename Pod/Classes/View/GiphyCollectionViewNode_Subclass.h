@@ -9,7 +9,6 @@
 #import "GiphyCollectionViewNode.h"
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <FLAnimatedImage/FLAnimatedImage.h>
-#import "GiphyEngine.h"
 #import "GiphyNetworkManager.h"
 
 @interface GiphyCollectionViewNode ()

@@ -23,10 +23,12 @@
 #pragma mark - Initialize
 
 - (instancetype)initWithStillURL:(NSURL *)stillURL
+                      imageCache:(id<ASImageCacheProtocol>)imageCache
                           gifURL:(NSURL *)gifURL
                    preferredSize:(CGSize)preferredSize
                            title:(NSAttributedString*)titleAttributedString{
     self = [super initWithStillURL:stillURL
+                        imageCache:imageCache
                             gifURL:gifURL
                      preferredSize:preferredSize];
     if (self) {

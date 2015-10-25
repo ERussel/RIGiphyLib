@@ -1,15 +1,15 @@
 {
   "name": "RIGiphyLib",
   "version": "0.1.0",
-  "summary": "A short description of RIGiphyLib.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/RIGiphyLib",
+  "summary": "Wrapper around Giphy service with included UI.",
+  "description": "This CocoaPod provides UI and API wrapper to view and pick GIFs from Giphy service.",
+  "homepage": "https://github.com/ERussel/RIGiphyLib",
   "license": "MIT",
   "authors": {
     "Russel": "emkil.russel@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/RIGiphyLib.git",
+    "git": "https://github.com/ERussel/RIGiphyLib.git",
     "tag": "0.1.0"
   },
   "platforms": {
@@ -20,6 +20,23 @@
   "resource_bundles": {
     "RIGiphyLib": [
       "Pod/Assets/*.png"
+    ]
+  },
+  "dependencies": {
+    "AFNetworking": [
+      "~> 2.3"
+    ],
+    "FLAnimatedImage": [
+      "~> 1.0"
+    ],
+    "MBProgressHUD": [
+      "~> 0.9.1"
+    ],
+    "Parse": [
+
+    ],
+    "AsyncDisplayKit": [
+
     ]
   }
 }

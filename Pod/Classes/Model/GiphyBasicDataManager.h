@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "GiphyDataStoreProtocol.h"
 
-extern NSString * const kGiphyDataManagerSearchRequestCollectionName;
-
 @interface GiphyBasicDataManager : NSObject<GiphyDataStoreProtocol>
 
 #pragma mark - Initialize

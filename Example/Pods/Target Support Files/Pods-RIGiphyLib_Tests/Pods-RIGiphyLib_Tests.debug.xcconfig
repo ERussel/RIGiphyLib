@@ -1,6 +1,8 @@
+CLANG_CXX_LANGUAGE_STANDARD = c++11
+CLANG_CXX_LIBRARY = libc++
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/RIGiphyLib.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "RIGiphyLib"
+OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/AFNetworking.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/AsyncDisplayKit.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Bolts.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/FLAnimatedImage.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/MBProgressHUD.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Parse.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/RIGiphyLib.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "AFNetworking" -framework "AsyncDisplayKit" -framework "Bolts" -framework "FLAnimatedImage" -framework "MBProgressHUD" -framework "Parse" -framework "RIGiphyLib"
 PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-RIGiphyLib_Tests
 PODS_ROOT = ${SRCROOT}/Pods

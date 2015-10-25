@@ -38,5 +38,6 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'FLAnimatedImage', '~> 1.0'
   s.dependency 'MBProgressHUD', '~> 0.9.1'
-  s.dependency 'AsyncDisplayKit', :git => 'https://github.com/ERussel/AsyncDisplayKit.git', :branch => 'feed_implementation', :commit => 'd8d26b48c1693afd4caaca5e20274c4d6a1ba632'
+  s.dependency 'Parse'
+  s.dependency 'AsyncDisplayKit'
 end

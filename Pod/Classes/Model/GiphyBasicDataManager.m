@@ -8,7 +8,6 @@
 
 #import "GiphyBasicDataManager.h"
 
-NSString * const kGiphyDataManagerSearchRequestCollectionName = @"SearchRequestCollection";
 NSString * const kGiphyDataManagerBasicCollectionName = @"_GiphyCollection";
 
 /**

@@ -7,12 +7,18 @@
 //
 
 #import "GiphyAppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation GiphyAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"aTxS0APLlsPL63vsrB5OEJjKq1snWqmJ4MWaUGeG"
+                  clientKey:@"P0I2gAGf1U5SDrJfkGp8K3xfIrrqfMgyEOCX5qCQ"];
     return YES;
 }
 

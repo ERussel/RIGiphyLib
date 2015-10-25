@@ -11,6 +11,7 @@
 @interface GiphyCategoryCollectionViewNode : GiphyCollectionViewNode
 
 - (instancetype)initWithStillURL:(NSURL *)stillURL
+                      imageCache:(id<ASImageCacheProtocol>)imageCache
                           gifURL:(NSURL *)gifURL
                    preferredSize:(CGSize)preferredSize
                            title:(NSAttributedString*)titleAttributedString;

@@ -10,6 +10,7 @@
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "GiphyNetworkManager.h"
+#import "GiphyBundle.h"
 
 @interface GiphyPreviewViewController ()
 
@@ -44,7 +45,7 @@
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [closeButton setFrame:CGRectMake(self.view.frame.size.width - 50.0f, 20.0f, 50.0f, 50.0f)];
     [closeButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin];
-    [closeButton setImage:[UIImage imageNamed:@"close_icon.png"] forState:UIControlStateNormal];
+    [closeButton setImage:[GiphyBundle imageNamed:@"close_preview_icon.png"] forState:UIControlStateNormal];
     [closeButton addTarget:self
                     action:@selector(actionCancel)
           forControlEvents:UIControlEventTouchUpInside];
@@ -56,7 +57,7 @@
     [doneButton addTarget:self
                    action:@selector(actionDone)
          forControlEvents:UIControlEventTouchUpInside];
-    [doneButton setTitle:@"ОТПРАВИТЬ" forState:UIControlStateNormal];
+    [doneButton setTitle:[[GiphyBundle localizedString:@"LGiphyPreviewSendTitle"] uppercaseString] forState:UIControlStateNormal];
     [doneButton setBackgroundColor:[UIColor colorWithRed:54.0f/255.0f
                                                    green:98.0f/255.0f
                                                     blue:160.0f/255.0f

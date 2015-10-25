@@ -8,6 +8,7 @@
 
 #import "GiphyCollectionViewNode.h"
 #import "GiphyCollectionViewNode_Subclass.h"
+#import "GiphyNetworkManager+ASImageNode.h"
 
 @interface GiphyCollectionViewNode ()<ASNetworkImageNodeDelegate>
 
@@ -18,6 +19,7 @@
 #pragma mark - Initialize
 
 - (instancetype)initWithStillURL:(NSURL*)stillURL
+                      imageCache:(id<ASImageCacheProtocol>)imageCache
                           gifURL:(NSURL*)gifURL
                    preferredSize:(CGSize)preferredSize{
     self = [super init];
@@ -27,7 +29,7 @@
         _preferredSize = preferredSize;
         
         [self configure];
-        [self configurePlaceholderImageNode];
+        [self configurePlaceholderImageNodeWithImageCache:imageCache];
         [self configureGifNode];
     }
     return self;
@@ -37,7 +39,7 @@
     self = [super init];
     if (self) {
         [self configure];
-        [self configurePlaceholderImageNode];
+        [self configurePlaceholderImageNodeWithImageCache:nil];
         [self configureGifNode];
     }
     return self;
@@ -51,9 +53,9 @@
     _contentEmpty = YES;
 }
 
-- (void)configurePlaceholderImageNode{
-    ASNetworkImageNode *placeholderImageNode = [[ASNetworkImageNode alloc] initWithCache:[[GiphyEngine sharedEngine] cacheManager]
-                                                                              downloader:[[GiphyEngine sharedEngine] downloadManager]];
+- (void)configurePlaceholderImageNodeWithImageCache:(id<ASImageCacheProtocol>)imageCache{
+    ASNetworkImageNode *placeholderImageNode = [[ASNetworkImageNode alloc] initWithCache:imageCache
+                                                                              downloader:[GiphyNetworkManager sharedManager]];
     placeholderImageNode.delegate = self;
     [placeholderImageNode setURL:_stillURL resetToDefault:YES];
     [self addSubnode:placeholderImageNode];

@@ -1,14 +1,66 @@
 PODS:
-  - RIGiphyLib (0.1.0)
+  - AFNetworking (2.6.1):
+    - AFNetworking/NSURLConnection (= 2.6.1)
+    - AFNetworking/NSURLSession (= 2.6.1)
+    - AFNetworking/Reachability (= 2.6.1)
+    - AFNetworking/Security (= 2.6.1)
+    - AFNetworking/Serialization (= 2.6.1)
+    - AFNetworking/UIKit (= 2.6.1)
+  - AFNetworking/NSURLConnection (2.6.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.1)
+  - AFNetworking/Security (2.6.1)
+  - AFNetworking/Serialization (2.6.1)
+  - AFNetworking/UIKit (2.6.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - AsyncDisplayKit (1.1.1):
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.1.1)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
+  - Bolts/Tasks (1.4.0)
+  - FLAnimatedImage (1.0.8)
+  - MBProgressHUD (0.9.1)
+  - Parse (1.9.1):
+    - Bolts/Tasks (>= 1.4.0)
+  - RIGiphyLib (0.1.0):
+    - AFNetworking (~> 2.3)
+    - AsyncDisplayKit
+    - FLAnimatedImage (~> 1.0)
+    - MBProgressHUD (~> 0.9.1)
+    - Parse
 
 DEPENDENCIES:
+  - AsyncDisplayKit (from `https://github.com/ERussel/AsyncDisplayKit.git`, commit
+    `d8d26b48c1693afd4caaca5e20274c4d6a1ba632`, branch `feed_implementation`)
   - RIGiphyLib (from `../`)
 
 EXTERNAL SOURCES:
+  AsyncDisplayKit:
+    :branch: feed_implementation
+    :commit: d8d26b48c1693afd4caaca5e20274c4d6a1ba632
+    :git: https://github.com/ERussel/AsyncDisplayKit.git
   RIGiphyLib:
     :path: ../
 
+CHECKOUT OPTIONS:
+  AsyncDisplayKit:
+    :branch: feed_implementation
+    :commit: d8d26b48c1693afd4caaca5e20274c4d6a1ba632
+    :git: https://github.com/ERussel/AsyncDisplayKit.git
+
 SPEC CHECKSUMS:
-  RIGiphyLib: 67c6c593b320dd9044c5d9621845b18cd47f43c9
+  AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  AsyncDisplayKit: de270404aae9f070e1450e38840003691f9b5259
+  Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
+  FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
+  RIGiphyLib: 7d08e51999c744cc31d6d3da9384d03c20935680
 
 COCOAPODS: 0.39.0

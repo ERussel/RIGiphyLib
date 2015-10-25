@@ -12,9 +12,8 @@
 #import "GiphySearchTableViewCell.h"
 #import "GiphyCollectionViewNode.h"
 #import "GiphyCategoryCollectionViewNode.h"
-#import "TUOptionsView.h"
-#import "GiphyEngine.h"
-#import "GiphyBasicDataManager.h"
+#import "GiphyOptionsView.h"
+#import "GiphyBundle.h"
 #import "GiphyNetworkManager.h"
 #import "GiphyGIFObject.h"
 #import "GiphyCategoryObject.h"
@@ -33,7 +32,7 @@ typedef enum {
     kGiphyListTypeSearchResults
 }GiphyListType;
 
-@interface GiphyListViewController ()<ASCollectionViewDataSource, ASCollectionViewDelegate, UISearchBarDelegate, TUOptionsViewDelegate, UIViewControllerTransitioningDelegate>
+@interface GiphyListViewController ()<ASCollectionViewDataSource, ASCollectionViewDelegate, GiphyOptionsViewDelegate, UISearchBarDelegate, UIViewControllerTransitioningDelegate>
 
 #pragma mark - Initialize
 
@@ -65,7 +64,7 @@ typedef enum {
 
 @property(nonatomic, weak)UIRefreshControl *searchRefreshControl;
 
-@property(nonatomic)TUOptionsView *searchHistoryView;
+@property(nonatomic)GiphyOptionsView *searchHistoryView;
 
 @property(nonatomic)GiphyPresentationAnimation *previewAnimation;
 
@@ -91,7 +90,11 @@ typedef enum {
 
 @property(nonatomic)id translationCancellationToken;
 
-@property(nonatomic, strong)ASBatchContext *searchBatchContext;
+@property(nonatomic)ASBatchContext *searchBatchContext;
+
+@property(nonatomic)id<GiphyDataStoreProtocol> dataManager;
+
+@property(nonatomic)id<GiphyImageCacheProtocol> imageCache;
 
 @property(nonatomic, readwrite)CGFloat currentKeyboardY;
 
@@ -100,6 +103,8 @@ typedef enum {
 @implementation GiphyListViewController
 
 NSString* const kGiphySearchCellIdentifier = @"GiphySearchCellIdentifier";
+
+NSString * const kGiphyDataManagerSearchRequestCollectionName = @"SearchRequestCollection";
 
 NSString* const kGiphyDestinationLanguageCode = @"en";
 
@@ -122,6 +127,16 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 }
 
 #pragma mark - Initialize
+
+- (instancetype)initWithDataManager:(id<GiphyDataStoreProtocol>)dataManager
+                         imageCache:(id<GiphyImageCacheProtocol>)imageCache{
+    self = [super init];
+    if (self) {
+        _dataManager = dataManager;
+        _imageCache = imageCache;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -183,7 +198,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 - (void)configureToolbar{
     [self.navigationController setToolbarHidden:NO];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"giphy_logo.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[[GiphyBundle imageNamed:@"giphy_logo.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     UIBarButtonItem *logoBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:imageView];
     
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -329,11 +344,13 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         GiphyCategoryObject *categoryObject = [_categories objectAtIndex:indexPath.row];
         NSString *categoryName = [categoryObject localizedTitle];
         cellNode = [[GiphyCategoryCollectionViewNode alloc] initWithStillURL:categoryObject.stillURL
+                                                                  imageCache:_imageCache
                                                                       gifURL:categoryObject.gifURL
                                                                preferredSize:CGSizeMake(_itemSize, _itemSize) title:[[NSAttributedString alloc] initWithString:[(categoryName ? categoryName : @"") uppercaseString] attributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:14.0f*_itemSize/kGiphyListItemSize], NSForegroundColorAttributeName : [UIColor whiteColor]}]];
     }else if([collectionView isEqual:_searchCollectionView]){
         GiphyGIFObject *gifObject = [_searchResults objectAtIndex:indexPath.row];
         cellNode = [[GiphyCollectionViewNode alloc] initWithStillURL:gifObject.thumbnailStillURL
+                                                          imageCache:_imageCache
                                                               gifURL:gifObject.thumbnailGifURL
                                                        preferredSize:CGSizeMake(_itemSize, _itemSize)];
     }
@@ -461,7 +478,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 #pragma mark - Options View Delegate
 
-- (void)optionsView:(TUOptionsView *)optionsView didSelectOptionAtIndex:(NSInteger)selectedIndex{
+- (void)optionsView:(GiphyOptionsView *)optionsView didSelectOptionAtIndex:(NSInteger)selectedIndex{
     // extract selected search request
     GiphySearchRequestObject *searchRequestObject = [_searchRequests objectAtIndex:selectedIndex];
     
@@ -472,7 +489,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     [self startSearchingWithRequest:searchRequestObject animated:YES];
 }
 
-- (void)optionsWillHideView:(TUOptionsView *)optionsView{
+- (void)optionsWillHideView:(GiphyOptionsView *)optionsView{
     [_searchBar resignFirstResponder];
 }
 
@@ -523,7 +540,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                     if ([gifCategories count] > 0) {
                         [weakSelf setContentState:kGiphyContentStateFound];
                     }else if(![weakSelf.categories count]){
-                        [weakSelf setContentState:kGiphyContentStateError withErrorTitle:nil];
+                        [weakSelf setContentState:kGiphyContentStateError withErrorTitle:[GiphyBundle localizedString:@"LGiphyCategoriesNotFoundTitle"]];
                     }
                 }
                 
@@ -533,7 +550,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
             weakSelf.categoriesCancellationToken = nil;
             
             if (weakSelf.listType == kGiphyListTypeCategories && ![weakSelf.categories count]) {
-                [weakSelf setContentState:kGiphyContentStateError withErrorTitle:nil];
+                [weakSelf setContentState:kGiphyContentStateError withErrorTitle:[GiphyBundle localizedString:@"LGiphyConnectionError"]];
             }
             
             [weakSelf.categoryRefreshControl endRefreshing];
@@ -576,7 +593,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                                                                                              if ([gifObjects count] > 0) {
                                                                                                  [weakSelf setContentState:kGiphyContentStateFound];
                                                                                              }else if(![weakSelf.searchResults count]){
-                                                                                                 [weakSelf setContentState:kGiphyContentStateError withErrorTitle:@"Гиф изображения не найдены"];
+                                                                                                 [weakSelf setContentState:kGiphyContentStateError withErrorTitle:[GiphyBundle localizedString:@"LGiphySearchNotFoundTitle"]];
                                                                                              }
                                                                                          }
                                                                                          
@@ -586,7 +603,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                                                                                      weakSelf.searchCancellationToken = nil;
                                                                                      
                                                                                      if (weakSelf.listType == kGiphyListTypeSearchResults && ![weakSelf.searchResults count]) {
-                                                                                         [weakSelf setContentState:kGiphyContentStateError withErrorTitle:@"Гиф изображения не найдены"];
+                                                                                         [weakSelf setContentState:kGiphyContentStateError withErrorTitle:[GiphyBundle localizedString:@"LGiphyConnectionError"]];
                                                                                      }
                                                                                      
                                                                                      [weakSelf.searchRefreshControl endRefreshing];
@@ -642,7 +659,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 - (void)showsCancelButton:(BOOL)showsCancelButton animated:(BOOL)animated{
     if (showsCancelButton && !self.navigationItem.rightBarButtonItem) {
-        UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"cancel_search_icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+        UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[GiphyBundle imageNamed:@"cancel_search_icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                                                                                 style:UIBarButtonItemStylePlain
                                                                                target:self
                                                                                action:@selector(actionSearchCancel:)];
@@ -654,7 +671,8 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 - (void)showsSearchHistory:(BOOL)showsSearchHistory animated:(BOOL)animated{
     if (showsSearchHistory) {
-        _searchRequests = [[[GiphyEngine sharedEngine] dataManager] fetchObjectsFromCollection:kGiphyDataManagerSearchRequestCollectionName];
+        
+        _searchRequests = [_dataManager fetchObjectsFromCollection:kGiphyDataManagerSearchRequestCollectionName];
         NSMutableArray *options = [NSMutableArray array];
         
         for (GiphySearchRequestObject *searchRequest in _searchRequests) {
@@ -664,14 +682,14 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         }
         
         if (!_searchHistoryView) {
-            _searchHistoryView = [[TUOptionsView alloc] initWithFrame:self.view.bounds options:options];
+            _searchHistoryView = [[GiphyOptionsView alloc] initWithFrame:self.view.bounds options:options];
             _searchHistoryView.delegate = self;
             _searchHistoryView.anchorPoint = CGPointMake(0.0f, 0.0f);
             _searchHistoryView.rowBackgroundColor = [UIColor whiteColor];
             _searchHistoryView.tableView.backgroundColor = [UIColor whiteColor];
             _searchHistoryView.tableView.scrollEnabled = YES;
             _searchHistoryView.dimmedColor = [UIColor colorWithWhite:0.0f alpha:0.3f];
-            _searchHistoryView.rowIcon = [[UIImage imageNamed:@"search_icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            _searchHistoryView.rowIcon = [[GiphyBundle imageNamed:@"search_icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         }else{
             _searchHistoryView.frame = self.view.bounds;
             _searchHistoryView.options = options;
@@ -799,8 +817,8 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 - (void)updateDatastoreWithSearchRequestObject:(GiphySearchRequestObject*)searchRequestObject{
     if (searchRequestObject) {
-        [[[GiphyEngine sharedEngine] dataManager] removeObject:searchRequestObject forCollection:kGiphyDataManagerSearchRequestCollectionName];
-        [[[GiphyEngine sharedEngine] dataManager] addObject:searchRequestObject forCollection:kGiphyDataManagerSearchRequestCollectionName];
+        [_dataManager removeObject:searchRequestObject forCollection:kGiphyDataManagerSearchRequestCollectionName];
+        [_dataManager addObject:searchRequestObject forCollection:kGiphyDataManagerSearchRequestCollectionName];
     }
 }
 
