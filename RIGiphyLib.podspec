@@ -9,21 +9,20 @@
 Pod::Spec.new do |s|
   s.name             = "RIGiphyLib"
   s.version          = "0.1.0"
-  s.summary          = "A short description of RIGiphyLib."
+  s.summary          = "Wrapper around Giphy service with included UI."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
-  s.description      = <<-DESC
-                       DESC
+  s.description      = "This CocoaPod provides UI and API wrapper to view and pick GIFs from Giphy service."
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/RIGiphyLib"
+  s.homepage         = "https://github.com/ERussel/RIGiphyLib"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Russel" => "emkil.russel@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/RIGiphyLib.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/ERussel/RIGiphyLib.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
@@ -36,5 +35,8 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'FLAnimatedImage', '~> 1.0'
+  s.dependency 'MBProgressHUD', '~> 0.9.1'
+  s.dependency 'AsyncDisplayKit', :git => 'https://github.com/ERussel/AsyncDisplayKit.git', :branch => 'feed_implementation', :commit => 'd8d26b48c1693afd4caaca5e20274c4d6a1ba632'
 end

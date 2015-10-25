@@ -1,0 +1,1045 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F621AF0D309A865A46C92C6A7AC6A92 /* Pods-RIGiphyLib_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8987945025C8C04913A41F993C80BC6 /* Pods-RIGiphyLib_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B524C840526D1FF6C92866E7AFF312F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		44E4350F22539EC97CDF82EE1B0BAC11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		84E927D41BDCCEB90084550C /* GiphyListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E9279D1BDCCEB90084550C /* GiphyListViewController.h */; settings = {ASSET_TAGS = (); }; };
+		84E927D51BDCCEB90084550C /* GiphyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9279E1BDCCEB90084550C /* GiphyListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		84E927D61BDCCEB90084550C /* GiphyPresentationAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E9279F1BDCCEB90084550C /* GiphyPresentationAnimation.h */; settings = {ASSET_TAGS = (); }; };
+		84E927D71BDCCEB90084550C /* GiphyPresentationAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927A01BDCCEB90084550C /* GiphyPresentationAnimation.m */; settings = {ASSET_TAGS = (); }; };
+		84E927D81BDCCEB90084550C /* GiphyPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927A11BDCCEB90084550C /* GiphyPreviewViewController.h */; settings = {ASSET_TAGS = (); }; };
+		84E927D91BDCCEB90084550C /* GiphyPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927A21BDCCEB90084550C /* GiphyPreviewViewController.m */; settings = {ASSET_TAGS = (); }; };
+		84E927DA1BDCCEB90084550C /* UIImage+GiphyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927A61BDCCEB90084550C /* UIImage+GiphyFilter.h */; settings = {ASSET_TAGS = (); }; };
+		84E927DB1BDCCEB90084550C /* UIImage+GiphyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927A71BDCCEB90084550C /* UIImage+GiphyFilter.m */; settings = {ASSET_TAGS = (); }; };
+		84E927DC1BDCCEB90084550C /* UISearchBar+Language.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927A91BDCCEB90084550C /* UISearchBar+Language.h */; settings = {ASSET_TAGS = (); }; };
+		84E927DD1BDCCEB90084550C /* UISearchBar+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927AA1BDCCEB90084550C /* UISearchBar+Language.m */; settings = {ASSET_TAGS = (); }; };
+		84E927DE1BDCCEB90084550C /* UIView+Giphy.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927AC1BDCCEB90084550C /* UIView+Giphy.h */; settings = {ASSET_TAGS = (); }; };
+		84E927DF1BDCCEB90084550C /* UIView+Giphy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927AD1BDCCEB90084550C /* UIView+Giphy.m */; settings = {ASSET_TAGS = (); }; };
+		84E927E01BDCCEB90084550C /* FLAnimatedImageSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927AF1BDCCEB90084550C /* FLAnimatedImageSerializer.h */; settings = {ASSET_TAGS = (); }; };
+		84E927E11BDCCEB90084550C /* FLAnimatedImageSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927B01BDCCEB90084550C /* FLAnimatedImageSerializer.m */; settings = {ASSET_TAGS = (); }; };
+		84E927E21BDCCEB90084550C /* GiphyBasicDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927B11BDCCEB90084550C /* GiphyBasicDataManager.h */; settings = {ASSET_TAGS = (); }; };
+		84E927E31BDCCEB90084550C /* GiphyBasicDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927B21BDCCEB90084550C /* GiphyBasicDataManager.m */; settings = {ASSET_TAGS = (); }; };
+		84E927E41BDCCEB90084550C /* GiphyCategoryObject+Parse.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927B31BDCCEB90084550C /* GiphyCategoryObject+Parse.h */; settings = {ASSET_TAGS = (); }; };
+		84E927E51BDCCEB90084550C /* GiphyCategoryObject+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927B41BDCCEB90084550C /* GiphyCategoryObject+Parse.m */; settings = {ASSET_TAGS = (); }; };
+		84E927E61BDCCEB90084550C /* GiphyCategoryObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927B51BDCCEB90084550C /* GiphyCategoryObject.h */; settings = {ASSET_TAGS = (); }; };
+		84E927E71BDCCEB90084550C /* GiphyCategoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927B61BDCCEB90084550C /* GiphyCategoryObject.m */; settings = {ASSET_TAGS = (); }; };
+		84E927E81BDCCEB90084550C /* GiphyDataStoreProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927B71BDCCEB90084550C /* GiphyDataStoreProtocol.h */; settings = {ASSET_TAGS = (); }; };
+		84E927E91BDCCEB90084550C /* GiphyEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927B81BDCCEB90084550C /* GiphyEngine.h */; settings = {ASSET_TAGS = (); }; };
+		84E927EA1BDCCEB90084550C /* GiphyEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927B91BDCCEB90084550C /* GiphyEngine.m */; settings = {ASSET_TAGS = (); }; };
+		84E927EB1BDCCEB90084550C /* GiphyGIFObject+Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927BA1BDCCEB90084550C /* GiphyGIFObject+Parser.h */; settings = {ASSET_TAGS = (); }; };
+		84E927EC1BDCCEB90084550C /* GiphyGIFObject+Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927BB1BDCCEB90084550C /* GiphyGIFObject+Parser.m */; settings = {ASSET_TAGS = (); }; };
+		84E927ED1BDCCEB90084550C /* GiphyGIFObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927BC1BDCCEB90084550C /* GiphyGIFObject.h */; settings = {ASSET_TAGS = (); }; };
+		84E927EE1BDCCEB90084550C /* GiphyGIFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927BD1BDCCEB90084550C /* GiphyGIFObject.m */; settings = {ASSET_TAGS = (); }; };
+		84E927EF1BDCCEB90084550C /* GiphyImageCacheProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927BE1BDCCEB90084550C /* GiphyImageCacheProtocol.h */; settings = {ASSET_TAGS = (); }; };
+		84E927F01BDCCEB90084550C /* GiphyNetworkActivityProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927BF1BDCCEB90084550C /* GiphyNetworkActivityProtocol.h */; settings = {ASSET_TAGS = (); }; };
+		84E927F11BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927C01BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.h */; settings = {ASSET_TAGS = (); }; };
+		84E927F21BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927C11BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.m */; settings = {ASSET_TAGS = (); }; };
+		84E927F31BDCCEB90084550C /* GiphyNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927C21BDCCEB90084550C /* GiphyNetworkManager.h */; settings = {ASSET_TAGS = (); }; };
+		84E927F41BDCCEB90084550C /* GiphyNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927C31BDCCEB90084550C /* GiphyNetworkManager.m */; settings = {ASSET_TAGS = (); }; };
+		84E927F51BDCCEB90084550C /* GiphyRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927C41BDCCEB90084550C /* GiphyRequest.h */; settings = {ASSET_TAGS = (); }; };
+		84E927F61BDCCEB90084550C /* GiphyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927C51BDCCEB90084550C /* GiphyRequest.m */; settings = {ASSET_TAGS = (); }; };
+		84E927F71BDCCEB90084550C /* GiphySearchRequestObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927C61BDCCEB90084550C /* GiphySearchRequestObject.h */; settings = {ASSET_TAGS = (); }; };
+		84E927F81BDCCEB90084550C /* GiphySearchRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927C71BDCCEB90084550C /* GiphySearchRequestObject.m */; settings = {ASSET_TAGS = (); }; };
+		84E927F91BDCCEB90084550C /* GiphyTranslationResult+Yandex.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927C81BDCCEB90084550C /* GiphyTranslationResult+Yandex.h */; settings = {ASSET_TAGS = (); }; };
+		84E927FA1BDCCEB90084550C /* GiphyTranslationResult+Yandex.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927C91BDCCEB90084550C /* GiphyTranslationResult+Yandex.m */; settings = {ASSET_TAGS = (); }; };
+		84E927FB1BDCCEB90084550C /* GiphyTranslationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927CA1BDCCEB90084550C /* GiphyTranslationResult.h */; settings = {ASSET_TAGS = (); }; };
+		84E927FC1BDCCEB90084550C /* GiphyTranslationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927CB1BDCCEB90084550C /* GiphyTranslationResult.m */; settings = {ASSET_TAGS = (); }; };
+		84E927FD1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927CD1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.h */; settings = {ASSET_TAGS = (); }; };
+		84E927FE1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927CE1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.m */; settings = {ASSET_TAGS = (); }; };
+		84E927FF1BDCCEB90084550C /* GiphyCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927CF1BDCCEB90084550C /* GiphyCollectionViewNode.h */; settings = {ASSET_TAGS = (); }; };
+		84E928001BDCCEB90084550C /* GiphyCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927D01BDCCEB90084550C /* GiphyCollectionViewNode.m */; settings = {ASSET_TAGS = (); }; };
+		84E928011BDCCEB90084550C /* GiphyCollectionViewNode_Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927D11BDCCEB90084550C /* GiphyCollectionViewNode_Subclass.h */; settings = {ASSET_TAGS = (); }; };
+		84E928021BDCCEB90084550C /* GiphyLabelNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 84E927D21BDCCEB90084550C /* GiphyLabelNode.h */; settings = {ASSET_TAGS = (); }; };
+		84E928031BDCCEB90084550C /* GiphyLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E927D31BDCCEB90084550C /* GiphyLabelNode.m */; settings = {ASSET_TAGS = (); }; };
+		8B5CA139DBC5B8AFC129162DBB326F47 /* RIGiphyLib-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD50A95E19B96F6CFA5D15969265D7 /* RIGiphyLib-dummy.m */; };
+		8EA84645369966A4773D99938D11DC95 /* RIGiphyLib.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B87DBD6A4DE04BEB4591E9D43828EB3 /* RIGiphyLib.bundle */; };
+		9E27B1408A3A528E08F8CBAE2E63910C /* RIGiphyLib-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C02F810527698F64303429F746BDABF /* RIGiphyLib-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA43F57C9801F258361CFEA3C77758B6 /* Pods-RIGiphyLib_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DE9E8EA9F587A4846FC50D302D202B88 /* Pods-RIGiphyLib_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD5237BA4C2D681EF26D4329201FDB96 /* Pods-RIGiphyLib_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4C697F006D7AEB0FE0AF058DFD1F62 /* Pods-RIGiphyLib_Tests-dummy.m */; };
+		C4888AA0CB527A4F04E18B83A4E795C1 /* Pods-RIGiphyLib_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 690925E2025CD20F940118A8626D1F0E /* Pods-RIGiphyLib_Example-dummy.m */; };
+		E79D99A581483F3825B479335797D6D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		591D73BEF68C792C6158DB91F4EC90A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F4CCB469579B11A722026337C9460A5;
+			remoteInfo = RIGiphyLib;
+		};
+		6F35BD384F512B2A2F9BCEC81004998E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F5B740EA867B956FA0B51B6005294F7;
+			remoteInfo = "RIGiphyLib-RIGiphyLib";
+		};
+		EAC345389531E2BD9A7A459F2EAD3BF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F4CCB469579B11A722026337C9460A5;
+			remoteInfo = RIGiphyLib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C02F810527698F64303429F746BDABF /* RIGiphyLib-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RIGiphyLib-umbrella.h"; sourceTree = "<group>"; };
+		0D4C697F006D7AEB0FE0AF058DFD1F62 /* Pods-RIGiphyLib_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RIGiphyLib_Tests-dummy.m"; sourceTree = "<group>"; };
+		0EAC98DD3E3AC797703642E3BF2317E1 /* Pods-RIGiphyLib_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RIGiphyLib_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		12C89C0C22F350EDB875201A7147DEFD /* Pods-RIGiphyLib_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RIGiphyLib_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		212012B47BD1A95BEAEE1CA8AF0F2F2A /* Pods-RIGiphyLib_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RIGiphyLib_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		26053E76E3A64E3A6A7CE4716D72832C /* Pods-RIGiphyLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RIGiphyLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		29AEF7DA59ECE612A660555BF4614D1B /* Pods-RIGiphyLib_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RIGiphyLib_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2A34141DABAEBC6B9C1414B5F476202D /* Pods_RIGiphyLib_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RIGiphyLib_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3559C6C591B192A0F7E7CE1AFB255C69 /* Pods-RIGiphyLib_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RIGiphyLib_Example-frameworks.sh"; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4409E4F8F83A10653EFF00883B74F5A0 /* RIGiphyLib-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RIGiphyLib-prefix.pch"; sourceTree = "<group>"; };
+		4C1BD8D34706F62E0A813C138A7C7358 /* Pods-RIGiphyLib_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RIGiphyLib_Example-resources.sh"; sourceTree = "<group>"; };
+		690925E2025CD20F940118A8626D1F0E /* Pods-RIGiphyLib_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RIGiphyLib_Example-dummy.m"; sourceTree = "<group>"; };
+		6D821BBC13B35C669EA09A59FA3BC68F /* Pods-RIGiphyLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RIGiphyLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		6F1D9213A9C72FDEAE33B8517CECE633 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FCD50A95E19B96F6CFA5D15969265D7 /* RIGiphyLib-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RIGiphyLib-dummy.m"; sourceTree = "<group>"; };
+		78D3E6361DFF23A77BC5787DC1B5C6D8 /* RIGiphyLib.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RIGiphyLib.xcconfig; sourceTree = "<group>"; };
+		79241F64484D11963D8F22F4062144B8 /* Pods-RIGiphyLib_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RIGiphyLib_Tests-resources.sh"; sourceTree = "<group>"; };
+		84E9279D1BDCCEB90084550C /* GiphyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyListViewController.h; sourceTree = "<group>"; };
+		84E9279E1BDCCEB90084550C /* GiphyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyListViewController.m; sourceTree = "<group>"; };
+		84E9279F1BDCCEB90084550C /* GiphyPresentationAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyPresentationAnimation.h; sourceTree = "<group>"; };
+		84E927A01BDCCEB90084550C /* GiphyPresentationAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyPresentationAnimation.m; sourceTree = "<group>"; };
+		84E927A11BDCCEB90084550C /* GiphyPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyPreviewViewController.h; sourceTree = "<group>"; };
+		84E927A21BDCCEB90084550C /* GiphyPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyPreviewViewController.m; sourceTree = "<group>"; };
+		84E927A61BDCCEB90084550C /* UIImage+GiphyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GiphyFilter.h"; sourceTree = "<group>"; };
+		84E927A71BDCCEB90084550C /* UIImage+GiphyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GiphyFilter.m"; sourceTree = "<group>"; };
+		84E927A91BDCCEB90084550C /* UISearchBar+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+Language.h"; sourceTree = "<group>"; };
+		84E927AA1BDCCEB90084550C /* UISearchBar+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+Language.m"; sourceTree = "<group>"; };
+		84E927AC1BDCCEB90084550C /* UIView+Giphy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Giphy.h"; sourceTree = "<group>"; };
+		84E927AD1BDCCEB90084550C /* UIView+Giphy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Giphy.m"; sourceTree = "<group>"; };
+		84E927AF1BDCCEB90084550C /* FLAnimatedImageSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageSerializer.h; sourceTree = "<group>"; };
+		84E927B01BDCCEB90084550C /* FLAnimatedImageSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageSerializer.m; sourceTree = "<group>"; };
+		84E927B11BDCCEB90084550C /* GiphyBasicDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyBasicDataManager.h; sourceTree = "<group>"; };
+		84E927B21BDCCEB90084550C /* GiphyBasicDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyBasicDataManager.m; sourceTree = "<group>"; };
+		84E927B31BDCCEB90084550C /* GiphyCategoryObject+Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GiphyCategoryObject+Parse.h"; sourceTree = "<group>"; };
+		84E927B41BDCCEB90084550C /* GiphyCategoryObject+Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GiphyCategoryObject+Parse.m"; sourceTree = "<group>"; };
+		84E927B51BDCCEB90084550C /* GiphyCategoryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyCategoryObject.h; sourceTree = "<group>"; };
+		84E927B61BDCCEB90084550C /* GiphyCategoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyCategoryObject.m; sourceTree = "<group>"; };
+		84E927B71BDCCEB90084550C /* GiphyDataStoreProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyDataStoreProtocol.h; sourceTree = "<group>"; };
+		84E927B81BDCCEB90084550C /* GiphyEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyEngine.h; sourceTree = "<group>"; };
+		84E927B91BDCCEB90084550C /* GiphyEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyEngine.m; sourceTree = "<group>"; };
+		84E927BA1BDCCEB90084550C /* GiphyGIFObject+Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GiphyGIFObject+Parser.h"; sourceTree = "<group>"; };
+		84E927BB1BDCCEB90084550C /* GiphyGIFObject+Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GiphyGIFObject+Parser.m"; sourceTree = "<group>"; };
+		84E927BC1BDCCEB90084550C /* GiphyGIFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyGIFObject.h; sourceTree = "<group>"; };
+		84E927BD1BDCCEB90084550C /* GiphyGIFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyGIFObject.m; sourceTree = "<group>"; };
+		84E927BE1BDCCEB90084550C /* GiphyImageCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyImageCacheProtocol.h; sourceTree = "<group>"; };
+		84E927BF1BDCCEB90084550C /* GiphyNetworkActivityProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyNetworkActivityProtocol.h; sourceTree = "<group>"; };
+		84E927C01BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GiphyNetworkManager+ASImageNode.h"; sourceTree = "<group>"; };
+		84E927C11BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GiphyNetworkManager+ASImageNode.m"; sourceTree = "<group>"; };
+		84E927C21BDCCEB90084550C /* GiphyNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyNetworkManager.h; sourceTree = "<group>"; };
+		84E927C31BDCCEB90084550C /* GiphyNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyNetworkManager.m; sourceTree = "<group>"; };
+		84E927C41BDCCEB90084550C /* GiphyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyRequest.h; sourceTree = "<group>"; };
+		84E927C51BDCCEB90084550C /* GiphyRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyRequest.m; sourceTree = "<group>"; };
+		84E927C61BDCCEB90084550C /* GiphySearchRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphySearchRequestObject.h; sourceTree = "<group>"; };
+		84E927C71BDCCEB90084550C /* GiphySearchRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphySearchRequestObject.m; sourceTree = "<group>"; };
+		84E927C81BDCCEB90084550C /* GiphyTranslationResult+Yandex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GiphyTranslationResult+Yandex.h"; sourceTree = "<group>"; };
+		84E927C91BDCCEB90084550C /* GiphyTranslationResult+Yandex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GiphyTranslationResult+Yandex.m"; sourceTree = "<group>"; };
+		84E927CA1BDCCEB90084550C /* GiphyTranslationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyTranslationResult.h; sourceTree = "<group>"; };
+		84E927CB1BDCCEB90084550C /* GiphyTranslationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyTranslationResult.m; sourceTree = "<group>"; };
+		84E927CD1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyCategoryCollectionViewNode.h; sourceTree = "<group>"; };
+		84E927CE1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyCategoryCollectionViewNode.m; sourceTree = "<group>"; };
+		84E927CF1BDCCEB90084550C /* GiphyCollectionViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyCollectionViewNode.h; sourceTree = "<group>"; };
+		84E927D01BDCCEB90084550C /* GiphyCollectionViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyCollectionViewNode.m; sourceTree = "<group>"; };
+		84E927D11BDCCEB90084550C /* GiphyCollectionViewNode_Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyCollectionViewNode_Subclass.h; sourceTree = "<group>"; };
+		84E927D21BDCCEB90084550C /* GiphyLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphyLabelNode.h; sourceTree = "<group>"; };
+		84E927D31BDCCEB90084550C /* GiphyLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphyLabelNode.m; sourceTree = "<group>"; };
+		869E49741E6A06D18D6E3650CAF4E844 /* Pods_RIGiphyLib_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RIGiphyLib_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5E0C6BE687F49F1B5955159CDB4104 /* Pods-RIGiphyLib_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RIGiphyLib_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		8B87DBD6A4DE04BEB4591E9D43828EB3 /* RIGiphyLib.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RIGiphyLib.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		93FDEA9033B5144E3B1A818744C7A7CF /* Pods-RIGiphyLib_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RIGiphyLib_Example.modulemap"; sourceTree = "<group>"; };
+		A99C990930DDC4D9E0B50A2E91CBC870 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C08FD0186DF268576C10BF7FB2318AF8 /* Pods-RIGiphyLib_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RIGiphyLib_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C2CC72D217BA747BB1C9B53CD88A88FD /* Pods-RIGiphyLib_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RIGiphyLib_Tests.modulemap"; sourceTree = "<group>"; };
+		C2ECCBC8DE8B96C32BCB6F3226D472F1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8E6C46F0F2C64EA4C71F00DA0B21257 /* RIGiphyLib.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RIGiphyLib.modulemap; sourceTree = "<group>"; };
+		DACFF7010883824638240F15DE802A11 /* RIGiphyLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RIGiphyLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE9E8EA9F587A4846FC50D302D202B88 /* Pods-RIGiphyLib_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RIGiphyLib_Example-umbrella.h"; sourceTree = "<group>"; };
+		E271D96DC0CB4554998A0DDE64D43814 /* Pods-RIGiphyLib_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RIGiphyLib_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F8987945025C8C04913A41F993C80BC6 /* Pods-RIGiphyLib_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RIGiphyLib_Tests-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		698363A2EB6EAC9A38DCDAF12FE848D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E79D99A581483F3825B479335797D6D5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2858900F9E5946DBC40BDD97B6054B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44E4350F22539EC97CDF82EE1B0BAC11 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB2A2F53ACC65B61B68C7E133978D146 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B524C840526D1FF6C92866E7AFF312F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F03D2B5253B82787C9AE4E033F93DD5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		058AF467024B640FA10BB90B87992D20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				869E49741E6A06D18D6E3650CAF4E844 /* Pods_RIGiphyLib_Example.framework */,
+				2A34141DABAEBC6B9C1414B5F476202D /* Pods_RIGiphyLib_Tests.framework */,
+				8B87DBD6A4DE04BEB4591E9D43828EB3 /* RIGiphyLib.bundle */,
+				DACFF7010883824638240F15DE802A11 /* RIGiphyLib.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BA90629B296040D866BFDB7FBE60A55 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A8D9DE60D903E7F7290E21ECB4419AF /* Pods-RIGiphyLib_Example */,
+				3AEC34CDF753933C16C24C6006CD846A /* Pods-RIGiphyLib_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		3AEC34CDF753933C16C24C6006CD846A /* Pods-RIGiphyLib_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A99C990930DDC4D9E0B50A2E91CBC870 /* Info.plist */,
+				C2CC72D217BA747BB1C9B53CD88A88FD /* Pods-RIGiphyLib_Tests.modulemap */,
+				E271D96DC0CB4554998A0DDE64D43814 /* Pods-RIGiphyLib_Tests-acknowledgements.markdown */,
+				29AEF7DA59ECE612A660555BF4614D1B /* Pods-RIGiphyLib_Tests-acknowledgements.plist */,
+				0D4C697F006D7AEB0FE0AF058DFD1F62 /* Pods-RIGiphyLib_Tests-dummy.m */,
+				212012B47BD1A95BEAEE1CA8AF0F2F2A /* Pods-RIGiphyLib_Tests-frameworks.sh */,
+				79241F64484D11963D8F22F4062144B8 /* Pods-RIGiphyLib_Tests-resources.sh */,
+				F8987945025C8C04913A41F993C80BC6 /* Pods-RIGiphyLib_Tests-umbrella.h */,
+				6D821BBC13B35C669EA09A59FA3BC68F /* Pods-RIGiphyLib_Tests.debug.xcconfig */,
+				26053E76E3A64E3A6A7CE4716D72832C /* Pods-RIGiphyLib_Tests.release.xcconfig */,
+			);
+			name = "Pods-RIGiphyLib_Tests";
+			path = "Target Support Files/Pods-RIGiphyLib_Tests";
+			sourceTree = "<group>";
+		};
+		4CD50C48EB498476AE507D69D540ABFD /* RIGiphyLib */ = {
+			isa = PBXGroup;
+			children = (
+				D784B36AC5CEB6EFAA40B6E3133995D3 /* Pod */,
+				54827575926D9E032DCDDB26FFC1B0CF /* Support Files */,
+			);
+			name = RIGiphyLib;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		54827575926D9E032DCDDB26FFC1B0CF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F1D9213A9C72FDEAE33B8517CECE633 /* Info.plist */,
+				C8E6C46F0F2C64EA4C71F00DA0B21257 /* RIGiphyLib.modulemap */,
+				78D3E6361DFF23A77BC5787DC1B5C6D8 /* RIGiphyLib.xcconfig */,
+				6FCD50A95E19B96F6CFA5D15969265D7 /* RIGiphyLib-dummy.m */,
+				4409E4F8F83A10653EFF00883B74F5A0 /* RIGiphyLib-prefix.pch */,
+				0C02F810527698F64303429F746BDABF /* RIGiphyLib-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/RIGiphyLib";
+			sourceTree = "<group>";
+		};
+		5A8D9DE60D903E7F7290E21ECB4419AF /* Pods-RIGiphyLib_Example */ = {
+			isa = PBXGroup;
+			children = (
+				C2ECCBC8DE8B96C32BCB6F3226D472F1 /* Info.plist */,
+				93FDEA9033B5144E3B1A818744C7A7CF /* Pods-RIGiphyLib_Example.modulemap */,
+				0EAC98DD3E3AC797703642E3BF2317E1 /* Pods-RIGiphyLib_Example-acknowledgements.markdown */,
+				12C89C0C22F350EDB875201A7147DEFD /* Pods-RIGiphyLib_Example-acknowledgements.plist */,
+				690925E2025CD20F940118A8626D1F0E /* Pods-RIGiphyLib_Example-dummy.m */,
+				3559C6C591B192A0F7E7CE1AFB255C69 /* Pods-RIGiphyLib_Example-frameworks.sh */,
+				4C1BD8D34706F62E0A813C138A7C7358 /* Pods-RIGiphyLib_Example-resources.sh */,
+				DE9E8EA9F587A4846FC50D302D202B88 /* Pods-RIGiphyLib_Example-umbrella.h */,
+				8A5E0C6BE687F49F1B5955159CDB4104 /* Pods-RIGiphyLib_Example.debug.xcconfig */,
+				C08FD0186DF268576C10BF7FB2318AF8 /* Pods-RIGiphyLib_Example.release.xcconfig */,
+			);
+			name = "Pods-RIGiphyLib_Example";
+			path = "Target Support Files/Pods-RIGiphyLib_Example";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				FBBA10B8529211DB99B8B3C52DC6AA6F /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				058AF467024B640FA10BB90B87992D20 /* Products */,
+				2BA90629B296040D866BFDB7FBE60A55 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		84E9279A1BDCCEB90084550C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				84E9279C1BDCCEB90084550C /* Controller */,
+				84E927A31BDCCEB90084550C /* Helper */,
+				84E927AE1BDCCEB90084550C /* Model */,
+				84E927CC1BDCCEB90084550C /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		84E9279C1BDCCEB90084550C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84E9279D1BDCCEB90084550C /* GiphyListViewController.h */,
+				84E9279E1BDCCEB90084550C /* GiphyListViewController.m */,
+				84E9279F1BDCCEB90084550C /* GiphyPresentationAnimation.h */,
+				84E927A01BDCCEB90084550C /* GiphyPresentationAnimation.m */,
+				84E927A11BDCCEB90084550C /* GiphyPreviewViewController.h */,
+				84E927A21BDCCEB90084550C /* GiphyPreviewViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		84E927A31BDCCEB90084550C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				84E927A41BDCCEB90084550C /* Categories */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		84E927A41BDCCEB90084550C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				84E927A51BDCCEB90084550C /* UIImage */,
+				84E927A81BDCCEB90084550C /* UISearchBar */,
+				84E927AB1BDCCEB90084550C /* UIView */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		84E927A51BDCCEB90084550C /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				84E927A61BDCCEB90084550C /* UIImage+GiphyFilter.h */,
+				84E927A71BDCCEB90084550C /* UIImage+GiphyFilter.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		84E927A81BDCCEB90084550C /* UISearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				84E927A91BDCCEB90084550C /* UISearchBar+Language.h */,
+				84E927AA1BDCCEB90084550C /* UISearchBar+Language.m */,
+			);
+			path = UISearchBar;
+			sourceTree = "<group>";
+		};
+		84E927AB1BDCCEB90084550C /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				84E927AC1BDCCEB90084550C /* UIView+Giphy.h */,
+				84E927AD1BDCCEB90084550C /* UIView+Giphy.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		84E927AE1BDCCEB90084550C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84E928051BDCCF510084550C /* Objects */,
+				84E928041BDCCF2E0084550C /* Managers */,
+				84E927B71BDCCEB90084550C /* GiphyDataStoreProtocol.h */,
+				84E927BE1BDCCEB90084550C /* GiphyImageCacheProtocol.h */,
+				84E927BF1BDCCEB90084550C /* GiphyNetworkActivityProtocol.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84E927CC1BDCCEB90084550C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84E927CD1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.h */,
+				84E927CE1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.m */,
+				84E927CF1BDCCEB90084550C /* GiphyCollectionViewNode.h */,
+				84E927D01BDCCEB90084550C /* GiphyCollectionViewNode.m */,
+				84E927D11BDCCEB90084550C /* GiphyCollectionViewNode_Subclass.h */,
+				84E927D21BDCCEB90084550C /* GiphyLabelNode.h */,
+				84E927D31BDCCEB90084550C /* GiphyLabelNode.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84E928041BDCCF2E0084550C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				84E927B11BDCCEB90084550C /* GiphyBasicDataManager.h */,
+				84E927B21BDCCEB90084550C /* GiphyBasicDataManager.m */,
+				84E927B81BDCCEB90084550C /* GiphyEngine.h */,
+				84E927B91BDCCEB90084550C /* GiphyEngine.m */,
+				84E927C01BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.h */,
+				84E927C11BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.m */,
+				84E927C21BDCCEB90084550C /* GiphyNetworkManager.h */,
+				84E927C31BDCCEB90084550C /* GiphyNetworkManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		84E928051BDCCF510084550C /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				84E927AF1BDCCEB90084550C /* FLAnimatedImageSerializer.h */,
+				84E927B01BDCCEB90084550C /* FLAnimatedImageSerializer.m */,
+				84E927B31BDCCEB90084550C /* GiphyCategoryObject+Parse.h */,
+				84E927B41BDCCEB90084550C /* GiphyCategoryObject+Parse.m */,
+				84E927B51BDCCEB90084550C /* GiphyCategoryObject.h */,
+				84E927B61BDCCEB90084550C /* GiphyCategoryObject.m */,
+				84E927BA1BDCCEB90084550C /* GiphyGIFObject+Parser.h */,
+				84E927BB1BDCCEB90084550C /* GiphyGIFObject+Parser.m */,
+				84E927BC1BDCCEB90084550C /* GiphyGIFObject.h */,
+				84E927BD1BDCCEB90084550C /* GiphyGIFObject.m */,
+				84E927C41BDCCEB90084550C /* GiphyRequest.h */,
+				84E927C51BDCCEB90084550C /* GiphyRequest.m */,
+				84E927C61BDCCEB90084550C /* GiphySearchRequestObject.h */,
+				84E927C71BDCCEB90084550C /* GiphySearchRequestObject.m */,
+				84E927C81BDCCEB90084550C /* GiphyTranslationResult+Yandex.h */,
+				84E927C91BDCCEB90084550C /* GiphyTranslationResult+Yandex.m */,
+				84E927CA1BDCCEB90084550C /* GiphyTranslationResult.h */,
+				84E927CB1BDCCEB90084550C /* GiphyTranslationResult.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D784B36AC5CEB6EFAA40B6E3133995D3 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				84E9279A1BDCCEB90084550C /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		FBBA10B8529211DB99B8B3C52DC6AA6F /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4CD50C48EB498476AE507D69D540ABFD /* RIGiphyLib */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9091B964B9E4B1ABBD389C144CD5DF3D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F621AF0D309A865A46C92C6A7AC6A92 /* Pods-RIGiphyLib_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80E05E2C6DD411B6BA6DA072AA67ADC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E27B1408A3A528E08F8CBAE2E63910C /* RIGiphyLib-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD910C05F05EED15F794F5240E7258F5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84E927E61BDCCEB90084550C /* GiphyCategoryObject.h in Headers */,
+				84E927DE1BDCCEB90084550C /* UIView+Giphy.h in Headers */,
+				84E928021BDCCEB90084550C /* GiphyLabelNode.h in Headers */,
+				84E927D81BDCCEB90084550C /* GiphyPreviewViewController.h in Headers */,
+				84E927ED1BDCCEB90084550C /* GiphyGIFObject.h in Headers */,
+				AA43F57C9801F258361CFEA3C77758B6 /* Pods-RIGiphyLib_Example-umbrella.h in Headers */,
+				84E927E81BDCCEB90084550C /* GiphyDataStoreProtocol.h in Headers */,
+				84E927F51BDCCEB90084550C /* GiphyRequest.h in Headers */,
+				84E927E21BDCCEB90084550C /* GiphyBasicDataManager.h in Headers */,
+				84E927FF1BDCCEB90084550C /* GiphyCollectionViewNode.h in Headers */,
+				84E927F91BDCCEB90084550C /* GiphyTranslationResult+Yandex.h in Headers */,
+				84E927F01BDCCEB90084550C /* GiphyNetworkActivityProtocol.h in Headers */,
+				84E927E01BDCCEB90084550C /* FLAnimatedImageSerializer.h in Headers */,
+				84E927EB1BDCCEB90084550C /* GiphyGIFObject+Parser.h in Headers */,
+				84E927EF1BDCCEB90084550C /* GiphyImageCacheProtocol.h in Headers */,
+				84E927F11BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.h in Headers */,
+				84E928011BDCCEB90084550C /* GiphyCollectionViewNode_Subclass.h in Headers */,
+				84E927FB1BDCCEB90084550C /* GiphyTranslationResult.h in Headers */,
+				84E927F31BDCCEB90084550C /* GiphyNetworkManager.h in Headers */,
+				84E927E91BDCCEB90084550C /* GiphyEngine.h in Headers */,
+				84E927FD1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.h in Headers */,
+				84E927E41BDCCEB90084550C /* GiphyCategoryObject+Parse.h in Headers */,
+				84E927DC1BDCCEB90084550C /* UISearchBar+Language.h in Headers */,
+				84E927D41BDCCEB90084550C /* GiphyListViewController.h in Headers */,
+				84E927F71BDCCEB90084550C /* GiphySearchRequestObject.h in Headers */,
+				84E927D61BDCCEB90084550C /* GiphyPresentationAnimation.h in Headers */,
+				84E927DA1BDCCEB90084550C /* UIImage+GiphyFilter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		28D22B8892894CB03AA99D4115BBCEB1 /* Pods-RIGiphyLib_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C31F6DB9C8C21D0289B645991CBB4B1 /* Build configuration list for PBXNativeTarget "Pods-RIGiphyLib_Example" */;
+			buildPhases = (
+				BF863B78FE3BC0811C7833AF485933AC /* Sources */,
+				B2858900F9E5946DBC40BDD97B6054B2 /* Frameworks */,
+				CD910C05F05EED15F794F5240E7258F5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				083DA8E7D7584E169E5A39CBA1449853 /* PBXTargetDependency */,
+			);
+			name = "Pods-RIGiphyLib_Example";
+			productName = "Pods-RIGiphyLib_Example";
+			productReference = 869E49741E6A06D18D6E3650CAF4E844 /* Pods_RIGiphyLib_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5F4CCB469579B11A722026337C9460A5 /* RIGiphyLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AA60AEEC97720C089AD7C81636C0BAC /* Build configuration list for PBXNativeTarget "RIGiphyLib" */;
+			buildPhases = (
+				5436AF8A4BC2BB4B2E3F5C3B86FF2000 /* Sources */,
+				DB2A2F53ACC65B61B68C7E133978D146 /* Frameworks */,
+				663E798C9D0D6E74F941F33996B81975 /* Resources */,
+				B80E05E2C6DD411B6BA6DA072AA67ADC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8692CFA31A4F295170152535012B9CA8 /* PBXTargetDependency */,
+			);
+			name = RIGiphyLib;
+			productName = RIGiphyLib;
+			productReference = DACFF7010883824638240F15DE802A11 /* RIGiphyLib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8F5B740EA867B956FA0B51B6005294F7 /* RIGiphyLib-RIGiphyLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FC213E0AC84D6A763D6D608DA8DCA6F /* Build configuration list for PBXNativeTarget "RIGiphyLib-RIGiphyLib" */;
+			buildPhases = (
+				68C2860066445D83C4A1F7F500B6830C /* Sources */,
+				F03D2B5253B82787C9AE4E033F93DD5E /* Frameworks */,
+				091B61F1148C01035FD01D84411AD9B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RIGiphyLib-RIGiphyLib";
+			productName = "RIGiphyLib-RIGiphyLib";
+			productReference = 8B87DBD6A4DE04BEB4591E9D43828EB3 /* RIGiphyLib.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		AD3E8C79B50A3E25CD5BAE1590B15D60 /* Pods-RIGiphyLib_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F42AD005D94C3AFDE6B00F58CD71394 /* Build configuration list for PBXNativeTarget "Pods-RIGiphyLib_Tests" */;
+			buildPhases = (
+				2CA00A3FEC1B8A75C7473DD67DA8E27D /* Sources */,
+				698363A2EB6EAC9A38DCDAF12FE848D0 /* Frameworks */,
+				9091B964B9E4B1ABBD389C144CD5DF3D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D36B9F3F346BA321DB055193E1615FC /* PBXTargetDependency */,
+			);
+			name = "Pods-RIGiphyLib_Tests";
+			productName = "Pods-RIGiphyLib_Tests";
+			productReference = 2A34141DABAEBC6B9C1414B5F476202D /* Pods_RIGiphyLib_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 058AF467024B640FA10BB90B87992D20 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28D22B8892894CB03AA99D4115BBCEB1 /* Pods-RIGiphyLib_Example */,
+				AD3E8C79B50A3E25CD5BAE1590B15D60 /* Pods-RIGiphyLib_Tests */,
+				5F4CCB469579B11A722026337C9460A5 /* RIGiphyLib */,
+				8F5B740EA867B956FA0B51B6005294F7 /* RIGiphyLib-RIGiphyLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		091B61F1148C01035FD01D84411AD9B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		663E798C9D0D6E74F941F33996B81975 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EA84645369966A4773D99938D11DC95 /* RIGiphyLib.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2CA00A3FEC1B8A75C7473DD67DA8E27D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD5237BA4C2D681EF26D4329201FDB96 /* Pods-RIGiphyLib_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5436AF8A4BC2BB4B2E3F5C3B86FF2000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B5CA139DBC5B8AFC129162DBB326F47 /* RIGiphyLib-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68C2860066445D83C4A1F7F500B6830C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF863B78FE3BC0811C7833AF485933AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84E927EC1BDCCEB90084550C /* GiphyGIFObject+Parser.m in Sources */,
+				84E927E51BDCCEB90084550C /* GiphyCategoryObject+Parse.m in Sources */,
+				84E927FC1BDCCEB90084550C /* GiphyTranslationResult.m in Sources */,
+				84E927E11BDCCEB90084550C /* FLAnimatedImageSerializer.m in Sources */,
+				84E927D71BDCCEB90084550C /* GiphyPresentationAnimation.m in Sources */,
+				84E927D91BDCCEB90084550C /* GiphyPreviewViewController.m in Sources */,
+				84E927E71BDCCEB90084550C /* GiphyCategoryObject.m in Sources */,
+				84E927F41BDCCEB90084550C /* GiphyNetworkManager.m in Sources */,
+				84E927D51BDCCEB90084550C /* GiphyListViewController.m in Sources */,
+				84E927DD1BDCCEB90084550C /* UISearchBar+Language.m in Sources */,
+				84E927DF1BDCCEB90084550C /* UIView+Giphy.m in Sources */,
+				84E927F81BDCCEB90084550C /* GiphySearchRequestObject.m in Sources */,
+				84E928001BDCCEB90084550C /* GiphyCollectionViewNode.m in Sources */,
+				84E927FA1BDCCEB90084550C /* GiphyTranslationResult+Yandex.m in Sources */,
+				84E927EE1BDCCEB90084550C /* GiphyGIFObject.m in Sources */,
+				84E927F61BDCCEB90084550C /* GiphyRequest.m in Sources */,
+				84E927E31BDCCEB90084550C /* GiphyBasicDataManager.m in Sources */,
+				C4888AA0CB527A4F04E18B83A4E795C1 /* Pods-RIGiphyLib_Example-dummy.m in Sources */,
+				84E927FE1BDCCEB90084550C /* GiphyCategoryCollectionViewNode.m in Sources */,
+				84E927DB1BDCCEB90084550C /* UIImage+GiphyFilter.m in Sources */,
+				84E928031BDCCEB90084550C /* GiphyLabelNode.m in Sources */,
+				84E927EA1BDCCEB90084550C /* GiphyEngine.m in Sources */,
+				84E927F21BDCCEB90084550C /* GiphyNetworkManager+ASImageNode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		083DA8E7D7584E169E5A39CBA1449853 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RIGiphyLib;
+			target = 5F4CCB469579B11A722026337C9460A5 /* RIGiphyLib */;
+			targetProxy = 591D73BEF68C792C6158DB91F4EC90A8 /* PBXContainerItemProxy */;
+		};
+		6D36B9F3F346BA321DB055193E1615FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RIGiphyLib;
+			target = 5F4CCB469579B11A722026337C9460A5 /* RIGiphyLib */;
+			targetProxy = EAC345389531E2BD9A7A459F2EAD3BF3 /* PBXContainerItemProxy */;
+		};
+		8692CFA31A4F295170152535012B9CA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "RIGiphyLib-RIGiphyLib";
+			target = 8F5B740EA867B956FA0B51B6005294F7 /* RIGiphyLib-RIGiphyLib */;
+			targetProxy = 6F35BD384F512B2A2F9BCEC81004998E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03CA91998D6773EC5D02B3DB87B8353E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B57334D6C23DADAA4F7D802A5760EB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		443C9F38AFAA0F197D789B6265137B34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78D3E6361DFF23A77BC5787DC1B5C6D8 /* RIGiphyLib.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = RIGiphyLib;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		492A9894520B998A275F4A3A70931FB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78D3E6361DFF23A77BC5787DC1B5C6D8 /* RIGiphyLib.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RIGiphyLib/RIGiphyLib-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RIGiphyLib/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RIGiphyLib/RIGiphyLib.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RIGiphyLib;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4EEA4A50AC0B71A629772FF8188E06FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A5E0C6BE687F49F1B5955159CDB4104 /* Pods-RIGiphyLib_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RIGiphyLib_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_RIGiphyLib_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		89595EFCFA0B3ABCAA234D3F57C97E8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78D3E6361DFF23A77BC5787DC1B5C6D8 /* RIGiphyLib.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RIGiphyLib/RIGiphyLib-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RIGiphyLib/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RIGiphyLib/RIGiphyLib.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = RIGiphyLib;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		999B38DCFEDE11BE10F058421505230F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D821BBC13B35C669EA09A59FA3BC68F /* Pods-RIGiphyLib_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RIGiphyLib_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_RIGiphyLib_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9F00DDAE066F81E8ACD8F8EB12EA677E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C08FD0186DF268576C10BF7FB2318AF8 /* Pods-RIGiphyLib_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RIGiphyLib_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_RIGiphyLib_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B0EF84127542A571964B0FE9CAD5D51F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78D3E6361DFF23A77BC5787DC1B5C6D8 /* RIGiphyLib.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = RIGiphyLib;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		E3797BFCE89A25EB18B77E5397E6B3BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26053E76E3A64E3A6A7CE4716D72832C /* Pods-RIGiphyLib_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RIGiphyLib_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_RIGiphyLib_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FC213E0AC84D6A763D6D608DA8DCA6F /* Build configuration list for PBXNativeTarget "RIGiphyLib-RIGiphyLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0EF84127542A571964B0FE9CAD5D51F /* Debug */,
+				443C9F38AFAA0F197D789B6265137B34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F42AD005D94C3AFDE6B00F58CD71394 /* Build configuration list for PBXNativeTarget "Pods-RIGiphyLib_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				999B38DCFEDE11BE10F058421505230F /* Debug */,
+				E3797BFCE89A25EB18B77E5397E6B3BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B57334D6C23DADAA4F7D802A5760EB2 /* Debug */,
+				03CA91998D6773EC5D02B3DB87B8353E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AA60AEEC97720C089AD7C81636C0BAC /* Build configuration list for PBXNativeTarget "RIGiphyLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				492A9894520B998A275F4A3A70931FB7 /* Debug */,
+				89595EFCFA0B3ABCAA234D3F57C97E8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C31F6DB9C8C21D0289B645991CBB4B1 /* Build configuration list for PBXNativeTarget "Pods-RIGiphyLib_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EEA4A50AC0B71A629772FF8188E06FE /* Debug */,
+				9F00DDAE066F81E8ACD8F8EB12EA677E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

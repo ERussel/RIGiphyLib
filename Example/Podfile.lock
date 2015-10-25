@@ -1,0 +1,14 @@
+PODS:
+  - RIGiphyLib (0.1.0)
+
+DEPENDENCIES:
+  - RIGiphyLib (from `../`)
+
+EXTERNAL SOURCES:
+  RIGiphyLib:
+    :path: ../
+
+SPEC CHECKSUMS:
+  RIGiphyLib: 67c6c593b320dd9044c5d9621845b18cd47f43c9
+
+COCOAPODS: 0.39.0
