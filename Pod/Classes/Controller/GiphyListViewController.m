@@ -843,7 +843,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     
     CGFloat aspectRatio = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? viewWidth/320.0f : viewWidth/768.0f;
     
-    CGFloat newItemSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? aspectRatio*kGiphyListItemSizeDefault : aspectRatio*kGiphyListItemHorizontalCountIPad;
+    CGFloat newItemSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? aspectRatio*kGiphyListItemSizeDefault : aspectRatio*kGiphyListItemSizeIPad;
     CGFloat verticalItemSpace = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? (viewWidth - kGiphyListItemVerticalCountDefault*newItemSize)/(kGiphyListItemVerticalCountDefault + 1) : (viewWidth - kGiphyListItemVerticalCountIPad*newItemSize)/(kGiphyListItemVerticalCountIPad + 1);
     CGFloat horizontalItemSpace = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? (viewHeight - kGiphyListItemHorizontalCountDefault*newItemSize)/(kGiphyListItemHorizontalCountDefault + 1) : (viewHeight - kGiphyListItemHorizontalCountIPad*newItemSize)/(kGiphyListItemHorizontalCountIPad + 1);
     

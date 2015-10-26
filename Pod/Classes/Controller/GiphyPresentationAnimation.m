@@ -36,9 +36,27 @@
         toViewController.view.alpha = 0.0f;
         _animationBackgroundView.alpha = 0.0f;
         
+        // iOS 7 bug fix
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f) {
-            toViewController.view.frame = [self rectForPresentedStateEnd:transitionContext];
-            _animationBackgroundView.frame = toViewController.view.frame;
+            // setup final frame for modal view controller
+            CGRect finalFrame = [self rectForPresentedStateEnd:transitionContext];
+            toViewController.view.frame = finalFrame;
+            
+            // setup background position and rotation based on interface orientation
+            _animationBackgroundView.center = CGPointMake(CGRectGetMidX(finalFrame), CGRectGetMidY(finalFrame));
+            switch (fromViewController.interfaceOrientation) {
+                case UIInterfaceOrientationLandscapeLeft:
+                    _animationBackgroundView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+                    break;
+                case UIInterfaceOrientationLandscapeRight:
+                    _animationBackgroundView.transform = CGAffineTransformMakeRotation(M_PI_2);
+                    break;
+                case UIInterfaceOrientationPortraitUpsideDown:
+                    _animationBackgroundView.transform = CGAffineTransformMakeRotation(M_PI);
+                    break;
+                default:
+                    break;
+            }
         }
         
         [containerView addSubview:toViewController.view];

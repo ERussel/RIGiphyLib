@@ -42,9 +42,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor clearColor];
-
+    
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeButton setFrame:CGRectMake(self.view.frame.size.width - 50.0f, 20.0f, 50.0f, 50.0f)];
+    
+    if (![[UIApplication sharedApplication] isStatusBarHidden]) {
+        [closeButton setFrame:CGRectMake(self.view.frame.size.width - 50.0f, 20.0f, 50.0f, 50.0f)];
+    }else{
+        [closeButton setFrame:CGRectMake(self.view.frame.size.width - 50.0f, 0.0f, 50.0f, 50.0f)];
+    }
+    
     [closeButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin];
     [closeButton setImage:[GiphyBundle imageNamed:@"close_preview_icon.png"] forState:UIControlStateNormal];
     [closeButton addTarget:self
