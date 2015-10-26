@@ -16,6 +16,19 @@
 
 @implementation GiphyCollectionViewNode
 
+#pragma mark - Memory
+
+- (void)dealloc{
+    // cancel placeholder image downloading
+    [_placeholderImageNode setURL:nil];
+    
+    // cancel GIF download
+    if (_gifCancellationToken) {
+        [[GiphyNetworkManager sharedManager] cancelRequestForCancellationIdentifier:_gifCancellationToken];
+        _gifCancellationToken = nil;
+    }
+}
+
 #pragma mark - Initialize
 
 - (instancetype)initWithStillURL:(NSURL*)stillURL

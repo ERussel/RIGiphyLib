@@ -9,7 +9,7 @@
 #import "GiphyViewController.h"
 #import <RIGiphyLib/GiphyNavigationController.h>
 
-@interface GiphyViewController ()
+@interface GiphyViewController ()<GiphyNavigationControllerDelegate>
 
 @end
 
@@ -27,12 +27,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Giphy Navigation Controller Delegate
+
+- (void)giphyNavigationController:(GiphyNavigationController *)giphyNavigationController didSelectGIFObject:(GiphyGIFObject *)gifObject{
+    NSLog(@"Did select GIF %@",gifObject.originalGifURL);
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)giphyNavigationControllerDidCancel:(GiphyNavigationController *)giphyNavigationController{
+    NSLog(@"Did cancel GIF picking");
+}
+
 #pragma mark - Action
 
 - (IBAction)actionOpenGIF:(id)sender{
     GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithImageCache:nil
                                                                                            dataManager:nil
                                                                                 networkActivityManager:nil];
+    giphyController.delegate = self;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [giphyController setModalPresentationStyle:UIModalPresentationFormSheet];
+    }
+    
     [self presentViewController:giphyController
                        animated:YES
                      completion:nil];

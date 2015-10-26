@@ -14,4 +14,6 @@
 
 - (instancetype)initWithDataManager:(id<GiphyDataStoreProtocol>)dataManager imageCache:(id<GiphyImageCacheProtocol>)imageCache;
 
+@property(nonatomic, readwrite)BOOL hidesCancelButton;
+
 @end

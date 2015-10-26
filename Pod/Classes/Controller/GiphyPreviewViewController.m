@@ -7,6 +7,7 @@
 //
 
 #import "GiphyPreviewViewController.h"
+#import "GiphyNavigationController.h"
 #import <FLAnimatedImage/FLAnimatedImage.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "GiphyNetworkManager.h"
@@ -99,7 +100,12 @@
 }
 
 - (void)actionDone{
-    
+    NSDictionary *userInfo = _gifObject ? @{kGiphyNotificationGIFObjectKey : _gifObject} : nil;
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNavigationControllerDidSelectGIFNotification
+                                                            object:self
+                                                          userInfo:userInfo];
+    }];
 }
 
 #pragma mark - Data

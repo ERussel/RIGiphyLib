@@ -29,8 +29,6 @@
 
 @property(nonatomic)NSURL *stillURL;
 
-@property(nonatomic)id stillCancellationToken;
-
 @property(nonatomic)id gifCancellationToken;
 
 @end

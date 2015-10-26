@@ -8,6 +8,7 @@
 
 #import "GiphyListViewController.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
+#import "GiphyNavigationController.h"
 #import "GiphyPreviewViewController.h"
 #import "GiphySearchTableViewCell.h"
 #import "GiphyCollectionViewNode.h"
@@ -197,19 +198,26 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 - (void)configureToolbar{
     [self.navigationController setToolbarHidden:NO];
-    
+    [self resetToolbarItems];
+}
+
+- (void)resetToolbarItems{
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[[GiphyBundle imageNamed:@"giphy_logo.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     UIBarButtonItem *logoBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:imageView];
     
-    UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+    UIBarButtonItem *cancelBarButtonItem = !_hidesCancelButton ? [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                          target:self
-                                                                                         action:@selector(actionCancelGifPicking:)];
+                                                                                         action:@selector(actionCancelGifPicking:)] : nil;
     
     UIBarButtonItem *spacingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                           target:nil
                                                                                           action:nil];
     
-    [self setToolbarItems:@[cancelBarButtonItem, spacingBarButtonItem, logoBarButtonItem, spacingBarButtonItem]];
+    if (cancelBarButtonItem) {
+        [self setToolbarItems:@[cancelBarButtonItem, spacingBarButtonItem, logoBarButtonItem, spacingBarButtonItem]];
+    }else{
+        [self setToolbarItems:@[spacingBarButtonItem, logoBarButtonItem, spacingBarButtonItem]];
+    }
 }
 
 - (void)configureSearchBar{
@@ -316,6 +324,13 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         [_activityIndicatorView startAnimating];
     }else{
         [_activityIndicatorView stopAnimating];
+    }
+}
+
+- (void)setHidesCancelButton:(BOOL)hidesCancelButton{
+    if (_hidesCancelButton != hidesCancelButton) {
+        _hidesCancelButton = hidesCancelButton;
+        [self resetToolbarItems];
     }
 }
 
@@ -514,7 +529,8 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 }
 
 - (void)actionCancelGifPicking:(UIBarButtonItem*)cancelBarButton{
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNavigationControllerDidCancelNotification
+                                                        object:nil];
 }
 
 #pragma mark - Data
