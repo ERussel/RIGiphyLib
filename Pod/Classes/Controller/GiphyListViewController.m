@@ -75,7 +75,9 @@ typedef enum {
 
 @property(nonatomic, readwrite)NSInteger itemSize;
 
-@property(nonatomic, readwrite)NSInteger itemsSpace;
+@property(nonatomic, readwrite)NSInteger horizontalItemsSpace;
+
+@property(nonatomic, readwrite)NSInteger verticalItemsSpace;
 
 @property(nonatomic)NSArray *searchRequests;
 
@@ -109,9 +111,13 @@ NSString * const kGiphyDataManagerSearchRequestCollectionName = @"SearchRequestC
 
 NSString* const kGiphyDestinationLanguageCode = @"en";
 
-const CGFloat kGiphyListItemSize = 151.0f;
+const CGFloat kGiphyListItemSizeDefault = 135.0f;
+const CGFloat kGiphyListItemSizeIPad = 250.0f;
 
-const CGFloat kGiphyListItemSpace = 6.0f;
+const CGFloat kGiphyListItemHorizontalCountDefault = 3;
+const CGFloat kGiphyListItemVerticalCountDefault = 2;
+const CGFloat kGiphyListItemHorizontalCountIPad = 4;
+const CGFloat kGiphyListItemVerticalCountIPad = 3;
 
 const NSInteger kGiphySearchPageSize = 60;
 
@@ -237,6 +243,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     
     UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityIndicatorView.center = CGPointMake(CGRectGetMidX(contentView.frame), CGRectGetMidY(contentView.frame));
+    activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     activityIndicatorView.hidesWhenStopped = YES;
     [contentView addSubview:activityIndicatorView];
     _activityIndicatorView = activityIndicatorView;
@@ -249,10 +256,12 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 }
 
 - (void)configureCategoryCollectionView{
+    CGFloat itemSpace = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? _verticalItemsSpace : _horizontalItemsSpace;
+    
     UICollectionViewFlowLayout *collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
-    [collectionViewLayout setMinimumInteritemSpacing:_itemsSpace];
-    [collectionViewLayout setMinimumLineSpacing:_itemsSpace];
-    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(_itemsSpace, _itemsSpace, _itemsSpace, _itemsSpace)];
+    [collectionViewLayout setMinimumInteritemSpacing:itemSpace];
+    [collectionViewLayout setMinimumLineSpacing:itemSpace];
+    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(itemSpace, itemSpace, itemSpace, itemSpace)];
     ASCollectionView *collectionView = [[ASCollectionView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)
                                                           collectionViewLayout:collectionViewLayout
                                                              asyncDataFetching:NO];
@@ -273,10 +282,12 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 }
 
 - (void)configureSearchCollectionView{
+    CGFloat itemSpace = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? _verticalItemsSpace : _horizontalItemsSpace;
+    
     UICollectionViewFlowLayout *collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
-    [collectionViewLayout setMinimumInteritemSpacing:_itemsSpace];
-    [collectionViewLayout setMinimumLineSpacing:_itemsSpace];
-    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(_itemsSpace, _itemsSpace, _itemsSpace, _itemsSpace)];
+    [collectionViewLayout setMinimumInteritemSpacing:itemSpace];
+    [collectionViewLayout setMinimumLineSpacing:itemSpace];
+    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(itemSpace, itemSpace, itemSpace, itemSpace)];
     ASCollectionView *collectionView = [[ASCollectionView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)
                                                           collectionViewLayout:collectionViewLayout
                                                              asyncDataFetching:NO];
@@ -314,6 +325,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                                        roundf(_contentView.frame.size.height/2.0f - titleSize.height/2.0f),
                                        titleSize.width,
                                        titleSize.height);
+        _errorLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     }else{
         _errorLabel.hidden = YES;
     }
@@ -321,6 +333,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     
     if (contentState == kGiphyContentStateLoading) {
         _activityIndicatorView.center = CGPointMake(CGRectGetMidX(_contentView.frame), CGRectGetMidY(_contentView.frame));
+        _activityIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin |   UIViewAutoresizingFlexibleBottomMargin;
         [_activityIndicatorView startAnimating];
     }else{
         [_activityIndicatorView stopAnimating];
@@ -336,8 +349,20 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 #pragma mark - Subclass
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskPortrait;
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    CGFloat itemSpace = UIInterfaceOrientationIsPortrait(toInterfaceOrientation) ? _verticalItemsSpace : _horizontalItemsSpace;
+    
+    [(UICollectionViewFlowLayout*)_categoryCollectionView.collectionViewLayout setMinimumInteritemSpacing:itemSpace];
+    [(UICollectionViewFlowLayout*)_categoryCollectionView.collectionViewLayout setMinimumLineSpacing:itemSpace];
+    [(UICollectionViewFlowLayout*)_categoryCollectionView.collectionViewLayout setSectionInset:UIEdgeInsetsMake(itemSpace, itemSpace, itemSpace, itemSpace)];
+    
+    [_categoryCollectionView.collectionViewLayout invalidateLayout];
+    
+    [(UICollectionViewFlowLayout*)_searchCollectionView.collectionViewLayout setMinimumInteritemSpacing:itemSpace];
+    [(UICollectionViewFlowLayout*)_searchCollectionView.collectionViewLayout setMinimumLineSpacing:itemSpace];
+    [(UICollectionViewFlowLayout*)_searchCollectionView.collectionViewLayout setSectionInset:UIEdgeInsetsMake(itemSpace, itemSpace, itemSpace, itemSpace)];
+    
+    [_searchCollectionView.collectionViewLayout invalidateLayout];
 }
 
 #pragma mark - Collection View Data Source
@@ -358,10 +383,12 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     if([collectionView isEqual:_categoryCollectionView]){
         GiphyCategoryObject *categoryObject = [_categories objectAtIndex:indexPath.row];
         NSString *categoryName = [categoryObject localizedTitle];
+        
+        CGFloat defaultItemSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? kGiphyListItemSizeDefault : kGiphyListItemSizeIPad;
         cellNode = [[GiphyCategoryCollectionViewNode alloc] initWithStillURL:categoryObject.stillURL
                                                                   imageCache:_imageCache
                                                                       gifURL:categoryObject.gifURL
-                                                               preferredSize:CGSizeMake(_itemSize, _itemSize) title:[[NSAttributedString alloc] initWithString:[(categoryName ? categoryName : @"") uppercaseString] attributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:14.0f*_itemSize/kGiphyListItemSize], NSForegroundColorAttributeName : [UIColor whiteColor]}]];
+                                                               preferredSize:CGSizeMake(_itemSize, _itemSize) title:[[NSAttributedString alloc] initWithString:[(categoryName ? categoryName : @"") uppercaseString] attributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:14.0f*_itemSize/defaultItemSize], NSForegroundColorAttributeName : [UIColor whiteColor]}]];
     }else if([collectionView isEqual:_searchCollectionView]){
         GiphyGIFObject *gifObject = [_searchResults objectAtIndex:indexPath.row];
         cellNode = [[GiphyCollectionViewNode alloc] initWithStillURL:gifObject.thumbnailStillURL
@@ -811,10 +838,14 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 }
 
 - (BOOL)updateMeasurementInformation{
-    CGFloat aspectRatio = self.view.frame.size.width/320.0f;
+    CGFloat viewWidth = MIN(self.view.frame.size.width, self.view.frame.size.height);
+    CGFloat viewHeight = MAX(self.view.frame.size.width, self.view.frame.size.height);
     
-    CGFloat newItemSize = aspectRatio*kGiphyListItemSize;
-    CGFloat newItemsSpace = aspectRatio*kGiphyListItemSpace;
+    CGFloat aspectRatio = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? viewWidth/320.0f : viewWidth/768.0f;
+    
+    CGFloat newItemSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? aspectRatio*kGiphyListItemSizeDefault : aspectRatio*kGiphyListItemHorizontalCountIPad;
+    CGFloat verticalItemSpace = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? (viewWidth - kGiphyListItemVerticalCountDefault*newItemSize)/(kGiphyListItemVerticalCountDefault + 1) : (viewWidth - kGiphyListItemVerticalCountIPad*newItemSize)/(kGiphyListItemVerticalCountIPad + 1);
+    CGFloat horizontalItemSpace = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? (viewHeight - kGiphyListItemHorizontalCountDefault*newItemSize)/(kGiphyListItemHorizontalCountDefault + 1) : (viewHeight - kGiphyListItemHorizontalCountIPad*newItemSize)/(kGiphyListItemHorizontalCountIPad + 1);
     
     BOOL didMeasurementChange = NO;
     
@@ -823,8 +854,13 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         didMeasurementChange = YES;
     }
     
-    if (fabs(newItemsSpace - _itemsSpace) > FLT_EPSILON) {
-        _itemsSpace = newItemsSpace;
+    if (fabs(verticalItemSpace - _verticalItemsSpace) > FLT_EPSILON) {
+        _verticalItemsSpace = verticalItemSpace;
+        didMeasurementChange = YES;
+    }
+    
+    if (fabs(horizontalItemSpace - _horizontalItemsSpace) > FLT_EPSILON) {
+        _horizontalItemsSpace = horizontalItemSpace;
         didMeasurementChange = YES;
     }
     

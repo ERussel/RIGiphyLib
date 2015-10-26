@@ -46,10 +46,6 @@
                                                                                 networkActivityManager:nil];
     giphyController.delegate = self;
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [giphyController setModalPresentationStyle:UIModalPresentationFormSheet];
-    }
-    
     [self presentViewController:giphyController
                        animated:YES
                      completion:nil];

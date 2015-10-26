@@ -57,6 +57,14 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
 
 #pragma mark - Giphy Navigation Controller
 
+- (BOOL)shouldAutorotate{
+    if (self.presentedViewController) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
 - (void)setHidesCancelButton:(BOOL)hidesCancelButton{
     GiphyListViewController *listViewController = [self.viewControllers firstObject];
     [listViewController setHidesCancelButton:hidesCancelButton];
