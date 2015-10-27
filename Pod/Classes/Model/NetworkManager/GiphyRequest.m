@@ -144,10 +144,40 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
 
 #pragma mark - Giphy Request
 
+- (void)setPaused:(BOOL)paused{
+    if (_paused != paused) {
+        _paused = paused;
+        
+        // ignore flag if request completed or cancelled
+        if (!_completed && !_cancelled) {
+            if(!_paused){
+                [self start];
+            }else{
+                _executing = NO;
+                
+                if (_activeOperation) {
+                    [_activeOperation cancel];
+                    _activeOperation = nil;
+                }
+            }
+        }
+    }
+}
+
 - (void)executeRequestWithSuccessBlock:(GiphyRequestSuccessBlock)successBlock
                              failBlock:(GiphyRequestFailBlock)failBlock
                               userInfo:(NSDictionary*)userInfo{
     NSAssert(_requestObject, @"Request object is not set");
+    
+    if (_completed) {
+        NSLog(@"Can't execute completed request");
+        return;
+    }
+    
+    if (_cancelled) {
+        NSLog(@"Can't execute cancelled request");
+        return;
+    }
     
     // do nothing if is request already executing
     if (_executing) {
@@ -170,6 +200,7 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
     if (_executing) {
         // cancel request if executing
         _executing = NO;
+        _cancelled = YES;
         
         // cancel operation if there is active one
         if (_activeOperation && [_activeOperation respondsToSelector:@selector(cancel)]) {
@@ -217,17 +248,15 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
     // set completion block
     __weak __typeof(self) weakSelf = self;
     [_activeOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id resposeObject){
-        if ([weakSelf.activeOperation isEqual:operation]) {
-            // complete operation if not cancelled
-            [weakSelf completeExecution];
-            
-            // return result via success block
-            if (successBlock) {
-                successBlock(weakSelf, resposeObject);
-            }
+        // complete operation if not cancelled
+        [weakSelf completeExecution];
+        
+        // return result via success block
+        if (successBlock) {
+            successBlock(weakSelf, resposeObject);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
-        if ([weakSelf.activeOperation isEqual:operation]) {
+        if ([error code] != NSURLErrorCancelled) {
             if (weakSelf.madeAttempts < weakSelf.maxAttempts) {
                 // notify about attempt completion
                 GiphyRequestAttemptCompletionBlock attemptCompletionBlock = [weakSelf.userInfo objectForKey:kGiphyRequestUserInfoAttemptCompletionBlockKey];
@@ -245,6 +274,11 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
                 if (failBlock) {
                     failBlock(weakSelf, error);
                 }
+            }
+        }else{
+            if(weakSelf.executing){
+                // complete request if was cancelled by the system
+                [weakSelf cancel];
             }
         }
     }];
@@ -275,7 +309,7 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
     __weak __typeof(self) weakSelf = self;
 
     [parseQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if ([weakSelf.activeOperation isEqual:weakSelf.requestObject]) {
+        if (!error || [error code] != NSURLErrorCancelled) {
             if (!error) {
                 // complete operation
                 [weakSelf completeExecution];
@@ -304,12 +338,19 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
                     }
                 }
             }
+        }else {
+            if(weakSelf.executing){
+                // complete request if was cancelled by the system
+                [weakSelf cancel];
+            }
         }
     }];
 }
 
 - (void)completeExecution{
     _executing = NO;
+    _completed = YES;
+    
     [self clearRequesData];
 }
 

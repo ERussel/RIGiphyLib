@@ -11,6 +11,10 @@
 
 @interface GiphyViewController ()<GiphyNavigationControllerDelegate>
 
+@property(nonatomic, weak)IBOutlet UISwitch *gifPreloadSwitch;
+
+@property(nonatomic, weak)IBOutlet UISwitch *placeholderSwitch;
+
 @end
 
 @implementation GiphyViewController
@@ -45,6 +49,10 @@
                                                                                            dataManager:nil
                                                                                 networkActivityManager:nil];
     giphyController.delegate = self;
+    giphyController.ignoresGIFPreloadForCell = [_gifPreloadSwitch isOn];
+    giphyController.usesOriginalStillAsPlaceholder = [_placeholderSwitch isOn];
+    giphyController.previewBlurColor = [UIColor colorWithRed:130.0f/255.0f green:130.0f/255.0f blue:130.0f/255.0f alpha:1.0f];
+    giphyController.cellPlaceholderColor = [UIColor colorWithRed:229.0f/255.0f green:229.0f/255.0f blue:229.0f/255.0f alpha:1.0f];
     
     [self presentViewController:giphyController
                        animated:YES

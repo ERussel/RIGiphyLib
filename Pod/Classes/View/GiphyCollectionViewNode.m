@@ -27,6 +27,8 @@
         [[GiphyNetworkManager sharedManager] cancelRequestForCancellationIdentifier:_gifCancellationToken];
         _gifCancellationToken = nil;
     }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Initialize
@@ -64,6 +66,12 @@
     self.backgroundColor = _placeholderColor;
     
     _contentEmpty = YES;
+    
+    // listen image downloading notification to fade on completion
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationStillDidDownload:)
+                                                 name:GiphyNetworkManagerDidRecieveStillNotification
+                                               object:nil];
 }
 
 - (void)configurePlaceholderImageNodeWithImageCache:(id<ASImageCacheProtocol>)imageCache{
@@ -89,7 +97,7 @@
 #pragma mark - Collection View Node
 
 - (void)setPlaceholderColor:(UIColor *)placeholderColor{
-    if ([_placeholderColor isEqual:placeholderColor]) {
+    if (![_placeholderColor isEqual:placeholderColor]) {
         _placeholderColor = placeholderColor;
         [self updateLoadingState];
     }
@@ -136,6 +144,7 @@
     [(FLAnimatedImageView*)[self.gifDisplayNode view] setAnimatedImage:nil];
     
     _contentEmpty = YES;
+    _animateStillOnLoading = NO;
     [self updateLoadingState];
 }
 
@@ -153,8 +162,33 @@
 #pragma mark - Network Image Node Delegate
 
 - (void)imageNode:(ASNetworkImageNode *)imageNode didLoadImage:(UIImage *)image{
-    self.contentEmpty = NO;
-    [self updateLoadingState];
+    if (_animateStillOnLoading) {
+        _animateStillOnLoading = NO;
+        
+        // fade downloaded image
+        _placeholderImageNode.alpha = 0.0f;
+        [UIView animateWithDuration:0.35f
+                              delay:0.0f
+                            options:0 animations:^{
+                                _placeholderImageNode.alpha = 1.0f;
+                                
+                                self.contentEmpty = NO;
+                                [self updateLoadingState];
+                            } completion:nil];
+    }else{
+        self.contentEmpty = NO;
+        [self updateLoadingState];
+    }
+}
+
+#pragma mark - Notification
+
+- (void)notificationStillDidDownload:(NSNotification*)notification{
+    NSURL *stillURL = [notification.userInfo objectForKey:kGiphyNetworkManagerRecievedObjectURLKey];
+    
+    if ([_stillURL isEqual:stillURL]) {
+        _animateStillOnLoading = YES;
+    }
 }
 
 #pragma mark - Private

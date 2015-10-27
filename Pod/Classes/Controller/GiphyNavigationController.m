@@ -75,6 +75,46 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
     return listViewController.hidesCancelButton;
 }
 
+- (void)setIgnoresGIFPreloadForCell:(BOOL)ignoresGIFPreloadForCell{
+    GiphyListViewController *listViewController = [self.viewControllers firstObject];
+    [listViewController setIgnoresGIFPreloadForCell:ignoresGIFPreloadForCell];
+}
+
+- (BOOL)ignoresGIFPreloadForCell{
+    GiphyListViewController *listViewController = [self.viewControllers firstObject];
+    return listViewController.ignoresGIFPreloadForCell;
+}
+
+- (void)setUsesOriginalStillAsPlaceholder:(BOOL)usesOriginalStillAsPlaceholder{
+    GiphyListViewController *listViewController = [self.viewControllers firstObject];
+    [listViewController setUsesOriginalStillAsPlaceholder:usesOriginalStillAsPlaceholder];
+}
+
+- (BOOL)usesOriginalStillAsPlaceholder{
+    GiphyListViewController *listViewController = [self.viewControllers firstObject];
+    return listViewController.usesOriginalStillAsPlaceholder;
+}
+
+- (void)setPreviewBlurColor:(UIColor *)previewBlurColor{
+    GiphyListViewController *listViewController = [self.viewControllers firstObject];
+    [listViewController setPreviewBlurColor:previewBlurColor];
+}
+
+- (UIColor*)previewBlurColor{
+    GiphyListViewController *listViewController = [self.viewControllers firstObject];
+    return listViewController.previewBlurColor;
+}
+
+- (void)setCellPlaceholderColor:(UIColor *)cellPlaceholderColor{
+    GiphyListViewController *listViewController = [self.viewControllers firstObject];
+    [listViewController setCellPlaceholderColor:cellPlaceholderColor];
+}
+
+- (UIColor*)cellPlaceholderColor{
+    GiphyListViewController *listViewController = [self.viewControllers firstObject];
+    return listViewController.cellPlaceholderColor;
+}
+
 #pragma mark - Notification
 
 - (void)notificationDidCancel:(NSNotification*)notification{

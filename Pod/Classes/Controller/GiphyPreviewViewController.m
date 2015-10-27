@@ -102,10 +102,18 @@
 #pragma mark - Action
 
 - (void)actionCancel{
+    if ([self.delegate respondsToSelector:@selector(giphyPreviewControllerDidCancel:)]) {
+        [self.delegate giphyPreviewControllerDidCancel:self];
+    }
+    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)actionDone{
+    if ([self.delegate respondsToSelector:@selector(giphyPreviewController:didSelectGIFObject:)]) {
+        [self.delegate giphyPreviewController:self didSelectGIFObject:_gifObject];
+    }
+    
     NSDictionary *userInfo = _gifObject ? @{kGiphyNotificationGIFObjectKey : _gifObject} : nil;
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNavigationControllerDidSelectGIFNotification

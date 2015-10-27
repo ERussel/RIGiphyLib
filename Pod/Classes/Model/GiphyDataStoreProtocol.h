@@ -52,4 +52,10 @@
  */
 - (void)removeAllObjectsFromCollection:(NSString*)collectionName;
 
+/**
+ *  Destroys any memory stored data.
+ *  @discussion Call this method to force memory freeing.
+ */
+- (void)clearCachedMemoryData;
+
 @end

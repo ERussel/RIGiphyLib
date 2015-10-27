@@ -16,4 +16,12 @@
 
 @property(nonatomic, readwrite)BOOL hidesCancelButton;
 
+@property(nonatomic, readwrite)BOOL ignoresGIFPreloadForCell;
+
+@property(nonatomic, readwrite)BOOL usesOriginalStillAsPlaceholder;
+
+@property(nonatomic)UIColor *cellPlaceholderColor;
+
+@property(nonatomic)UIColor *previewBlurColor;
+
 @end

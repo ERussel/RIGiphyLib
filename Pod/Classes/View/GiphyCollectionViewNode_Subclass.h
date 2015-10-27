@@ -21,6 +21,8 @@
 
 @property(nonatomic, readwrite)BOOL contentEmpty;
 
+@property(nonatomic, readwrite)BOOL animateStillOnLoading;
+
 @property(nonatomic, weak)ASNetworkImageNode *placeholderImageNode;
 
 @property(nonatomic, weak)ASDisplayNode *gifDisplayNode;

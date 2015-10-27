@@ -33,7 +33,8 @@ typedef enum {
     kGiphyListTypeSearchResults
 }GiphyListType;
 
-@interface GiphyListViewController ()<ASCollectionViewDataSource, ASCollectionViewDelegate, GiphyOptionsViewDelegate, UISearchBarDelegate, UIViewControllerTransitioningDelegate>
+@interface GiphyListViewController ()<ASCollectionViewDataSource, ASCollectionViewDelegate, GiphyOptionsViewDelegate, GiphyPreviewViewControllerDelegate,
+UISearchBarDelegate, UIViewControllerTransitioningDelegate>
 
 #pragma mark - Initialize
 
@@ -130,6 +131,8 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     [self cancelGifSearchRequest];
     [self cancelTranslationRequest];
     
+    [_dataManager clearCachedMemoryData];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -141,6 +144,10 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     if (self) {
         _dataManager = dataManager;
         _imageCache = imageCache;
+        
+        // default initialize
+        _previewBlurColor = [UIColor colorWithRed:120.0f/255.0f green:120.0f/255.0f blue:120.0f/255.0f alpha:1.0f];
+        _cellPlaceholderColor = [UIColor colorWithWhite:229.0f/255.0f alpha:1.0f];
     }
     return self;
 }
@@ -150,10 +157,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     // Do any additional setup after loading the view.
     
     _previewAnimation = [[GiphyPresentationAnimation alloc] init];
-    _previewAnimation.backgroundTintColor = [UIColor colorWithRed:135.0f/255.0f
-                                                            green:206.0f/255.0f
-                                                             blue:250.0f/255.0f
-                                                            alpha:1.0f];
+    _previewAnimation.backgroundTintColor = _previewBlurColor;
     
     _searchResults = [[NSMutableArray alloc] init];
     _categories = [[NSMutableArray alloc] init];
@@ -347,6 +351,16 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     }
 }
 
+- (void)setPreviewBlurColor:(UIColor *)previewBlurColor{
+    if (![_previewBlurColor isEqual:previewBlurColor]) {
+        _previewBlurColor = previewBlurColor;
+        
+        if (_previewAnimation) {
+            _previewAnimation.backgroundTintColor = previewBlurColor;
+        }
+    }
+}
+
 #pragma mark - Subclass
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
@@ -387,14 +401,16 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         CGFloat defaultItemSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? kGiphyListItemSizeDefault : kGiphyListItemSizeIPad;
         cellNode = [[GiphyCategoryCollectionViewNode alloc] initWithStillURL:categoryObject.stillURL
                                                                   imageCache:_imageCache
-                                                                      gifURL:categoryObject.gifURL
+                                                                      gifURL:!_ignoresGIFPreloadForCell ? categoryObject.gifURL : nil
                                                                preferredSize:CGSizeMake(_itemSize, _itemSize) title:[[NSAttributedString alloc] initWithString:[(categoryName ? categoryName : @"") uppercaseString] attributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:14.0f*_itemSize/defaultItemSize], NSForegroundColorAttributeName : [UIColor whiteColor]}]];
+        [(GiphyCategoryCollectionViewNode*)cellNode setPlaceholderColor:_cellPlaceholderColor];
     }else if([collectionView isEqual:_searchCollectionView]){
         GiphyGIFObject *gifObject = [_searchResults objectAtIndex:indexPath.row];
-        cellNode = [[GiphyCollectionViewNode alloc] initWithStillURL:gifObject.thumbnailStillURL
+        cellNode = [[GiphyCollectionViewNode alloc] initWithStillURL:_usesOriginalStillAsPlaceholder ? gifObject.originalStillURL : gifObject.thumbnailStillURL
                                                           imageCache:_imageCache
-                                                              gifURL:gifObject.thumbnailGifURL
+                                                              gifURL:!_ignoresGIFPreloadForCell ? gifObject.thumbnailGifURL : nil
                                                        preferredSize:CGSizeMake(_itemSize, _itemSize)];
+        [(GiphyCollectionViewNode*)cellNode setPlaceholderColor:_cellPlaceholderColor];
     }
     
     return cellNode;
@@ -462,8 +478,13 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         }
         
     }else if ([collectionView isEqual:_searchCollectionView]){
+        // pause downloading to optimize preview GIF downloading
+        [[GiphyNetworkManager sharedManager] pauseRequestsForType:kGiphyRequestTypeStill];
+        [[GiphyNetworkManager sharedManager] pauseRequestsForType:kGiphyRequestTypeGIF];
+        
         GiphyGIFObject *gifObject = [_searchResults objectAtIndex:indexPath.row];
         GiphyPreviewViewController *giphyPreviewController = [[GiphyPreviewViewController alloc] initWithGifObject:gifObject];
+        giphyPreviewController.delegate = self;
         [giphyPreviewController setModalPresentationStyle:UIModalPresentationCustom];
         [giphyPreviewController setTransitioningDelegate:self];
         [self.navigationController presentViewController:giphyPreviewController animated:YES completion:nil];
@@ -533,6 +554,20 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 - (void)optionsWillHideView:(GiphyOptionsView *)optionsView{
     [_searchBar resignFirstResponder];
+}
+
+#pragma mark - Preview Controller Delegate
+
+- (void)giphyPreviewControllerDidCancel:(GiphyPreviewViewController *)giphyPreviewController{
+    // resume paused downloading while preview presented
+    [[GiphyNetworkManager sharedManager] resumeRequestsForType:kGiphyRequestTypeStill];
+    [[GiphyNetworkManager sharedManager] resumeRequestsForType:kGiphyRequestTypeGIF];
+}
+
+- (void)giphyPreviewController:(GiphyPreviewViewController *)giphyPreviewController didSelectGIFObject:(GiphyGIFObject *)gifObject{
+    // resume paused downloading while preview presented
+    [[GiphyNetworkManager sharedManager] resumeRequestsForType:kGiphyRequestTypeStill];
+    [[GiphyNetworkManager sharedManager] resumeRequestsForType:kGiphyRequestTypeGIF];
 }
 
 #pragma mark - Action

@@ -13,6 +13,26 @@
 #import "GiphyTranslationResult+Yandex.h"
 
 /**
+ *  Notification name to post when manager completes still loading.
+ */
+NSString * const GiphyNetworkManagerDidRecieveStillNotification = @"GiphyNetworkManagerDidRecieveStillNotification";
+
+/**
+ *  Notification name to post when manager completes GIF loading.
+ */
+NSString * const GiphyNetworkManagerDidRecieveGIFNotification = @"GiphyNetworkManagerDidRecieveGIFNotification";
+
+/**
+ *  Key corresponding to loaded object (GIF or still) to extract from notification's user info.
+ */
+NSString * const kGiphyNetworkManagerRecievedObjectKey = @"GiphyNetworkManagerRecievedObjectKey";
+
+/**
+ *  Key corresponding to loaded object's url (GIF or still) to extract from notification's user info.
+ */
+NSString * const kGiphyNetworkManagerRecievedObjectURLKey = @"GiphyNetworkManagerRecievedObjectURLKey";
+
+/**
  *  Yandex Translate API base url string.
  */
 NSString * const kYandexAPIURL = @"https://translate.yandex.net/api/v1.5/tr.json/translate";
@@ -155,6 +175,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     
     // wrap repeatable request for translation and execute
     GiphyRequest *giphyRequest = [GiphyRequest requestWithRequest:request];
+    giphyRequest.operationType = kGiphyRequestTypeDefault;
     
     // save to local store to proccess result only for active requests
     [self addRequest:giphyRequest];
@@ -210,6 +231,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     
     // wrap repeatable request to load categories and execute
     GiphyRequest *giphyRequest = [GiphyRequest requestWithParseQuery:categoryQuery];
+    giphyRequest.operationType = kGiphyRequestTypeDefault;
     
     // save to local store to proccess result only for active requests
     [self addRequest:giphyRequest];
@@ -303,6 +325,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     
     // wrap repeatable gif search request and execute
     GiphyRequest *giphyRequest = [GiphyRequest requestWithRequest:request];
+    giphyRequest.operationType = kGiphyRequestTypeDefault;
     
     // save to proccess response only for active request
     [self addRequest:giphyRequest];
@@ -331,6 +354,13 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, id result){
         if ([self hasRequest:giphyRequest]) {
             [self completeRequest:giphyRequest];
+            
+            if (result) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNetworkManagerDidRecieveStillNotification
+                                                                    object:self
+                                                                  userInfo:@{kGiphyNetworkManagerRecievedObjectKey : result,
+                                                                                           kGiphyNetworkManagerRecievedObjectURLKey : url}];
+            }
             
             if(successBlock) {
                 successBlock(result);
@@ -363,6 +393,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     
     // wrap repeatable request to load image and execute
     GiphyRequest *giphyRequest = [GiphyRequest requestWithRequest:request];
+    giphyRequest.operationType = kGiphyRequestTypeStill;
     
     // save to proccess response only for active request
     [self addRequest:giphyRequest];
@@ -392,6 +423,13 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, id result){
         if ([self hasRequest:giphyRequest]) {
             [self completeRequest:giphyRequest];
+            
+            if (result) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNetworkManagerDidRecieveGIFNotification
+                                                                    object:self
+                                                                  userInfo:@{kGiphyNetworkManagerRecievedObjectKey : result,
+                                                                                           kGiphyNetworkManagerRecievedObjectURLKey : url}];
+            }
             
             if(successBlock) {
                 successBlock(result);
@@ -424,6 +462,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     
     // create repeatable gif fetch request and execute
     GiphyRequest *giphyRequest = [GiphyRequest requestWithRequest:request];
+    giphyRequest.operationType = kGiphyRequestTypeGIF;
     
     // wrap repeatable request to load image and execute
     [self addRequest:giphyRequest];
@@ -458,6 +497,24 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
             [request cancel];
             
             [_networkActivityManager decrementActivityCount];
+        }
+    }
+}
+
+#pragma mark - Pause/Resume
+
+- (void)pauseRequestsForType:(GiphyRequestType)requestType{
+    for (GiphyRequest *request in _requests) {
+        if (request.operationType == requestType) {
+            [request setPaused:YES];
+        }
+    }
+}
+
+- (void)resumeRequestsForType:(GiphyRequestType)requestType{
+    for (GiphyRequest *request in _requests) {
+        if (request.operationType == requestType) {
+            [request setPaused:NO];
         }
     }
 }

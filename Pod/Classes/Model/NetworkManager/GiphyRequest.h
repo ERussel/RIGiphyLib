@@ -87,6 +87,27 @@ typedef void (^GiphyRequestAttemptCompletionBlock)(GiphyRequest *request, NSInte
 @property(nonatomic, readonly)BOOL executing;
 
 /**
+ *  Flag states whether request completed (successfully finished, failed).
+ */
+@property(nonatomic, readonly)BOOL completed;
+
+/**
+ *  Flag states whether request cancelled.
+ */
+@property(nonatomic, readonly)BOOL cancelled;
+
+/**
+ *  Request related integer value.
+ *  By default 0.
+ */
+@property(nonatomic, readwrite)NSInteger operationType;
+
+/**
+ *  Pauses/resumes current request. Do nothing if request already completed or cancelled.
+ */
+@property(nonatomic, readwrite)BOOL paused;
+
+/**
  *  Starts operation corresponding to the request.
  *  @param successBlock Block to call when operation corresponding to the request would complete successfully.
  *  @param failBlock    Block to call when request performed asked number of attempts to run operation but all of them failed with

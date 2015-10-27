@@ -180,4 +180,8 @@ const NSInteger kGiphyDataManagerMaxObjectsInCollection = 20;
     }
 }
 
+- (void)clearCachedMemoryData{
+    [_collectionsCache removeAllObjects];
+}
+
 @end

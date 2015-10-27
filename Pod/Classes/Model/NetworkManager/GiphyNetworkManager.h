@@ -19,6 +19,26 @@
 #import "GiphyTranslationResult.h"
 
 /**
+ *  Notification name to post when manager completes still loading.
+ */
+extern NSString * const GiphyNetworkManagerDidRecieveStillNotification;
+
+/**
+ *  Notification name to post when manager completes GIF loading.
+ */
+extern NSString * const GiphyNetworkManagerDidRecieveGIFNotification;
+
+/**
+ *  Key corresponding to loaded object (GIF or still) to extract from notification's user info.
+ */
+extern NSString * const kGiphyNetworkManagerRecievedObjectKey;
+
+/**
+ *  Key corresponding to loaded object's url (GIF or still) to extract from notification's user info.
+ */
+extern NSString * const kGiphyNetworkManagerRecievedObjectURLKey;
+
+/**
  *  Type describes how gifs search should work.
  */
 
@@ -33,6 +53,26 @@ typedef enum {
      */
     kGiphySearchTypeContent
 }GiphySearchType;
+
+/**
+ *  Request type to group by.
+ */
+typedef enum{
+    /**
+     *  All request except provided below.
+     */
+    kGiphyRequestTypeDefault,
+    
+    /**
+     *  Still downloading requests
+     */
+    kGiphyRequestTypeStill,
+    
+    /**
+     *  GIF downloading requests
+     */
+    kGiphyRequestTypeGIF
+}GiphyRequestType;
 
 /**
  *  Subclass of NSObject designed to provide servers interaction logic.
@@ -132,5 +172,17 @@ typedef enum {
  *  Cancels all active requests.
  */
 - (void)cancelAllRequests;
+
+/**
+ *  Pauses requests for given type.
+ *  @param requestType Type to pause requests.
+ */
+- (void)pauseRequestsForType:(GiphyRequestType)requestType;
+
+/**
+ * Resumes requests for given type.
+ *  @param requestType Type to resume requests.
+ */
+- (void)resumeRequestsForType:(GiphyRequestType)requestType;
 
 @end

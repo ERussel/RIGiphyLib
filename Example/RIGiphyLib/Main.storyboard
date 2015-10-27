@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Giphy View Controller-->
@@ -25,14 +26,48 @@
                                     <action selector="actionOpenGIF:" destination="whP-gf-Uak" eventType="touchUpInside" id="djO-RY-J3R"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6hC-xK-bgg">
+                                <rect key="frame" x="531" y="40" width="51" height="31"/>
+                                <animations/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ignore GIF preload for cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdM-Qd-Mo5">
+                                <rect key="frame" x="326" y="45" width="197" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JR6-hT-iMc">
+                                <rect key="frame" x="531" y="90" width="51" height="31"/>
+                                <animations/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use original still as placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-cP-xXr">
+                                <rect key="frame" x="286" y="95" width="237" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Cg-bL-x6t" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="3BV-d5-YGU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JR6-hT-iMc" secondAttribute="trailing" id="9v3-9d-PRL"/>
+                            <constraint firstAttribute="trailing" secondItem="6hC-xK-bgg" secondAttribute="trailing" constant="20" id="Bcc-D3-0gm"/>
+                            <constraint firstItem="hBF-cP-xXr" firstAttribute="centerY" secondItem="JR6-hT-iMc" secondAttribute="centerY" id="HJs-RK-X1D"/>
+                            <constraint firstItem="JR6-hT-iMc" firstAttribute="top" secondItem="6hC-xK-bgg" secondAttribute="bottom" constant="19" id="P8r-dU-VW4"/>
+                            <constraint firstItem="6hC-xK-bgg" firstAttribute="top" secondItem="TpU-gO-2f1" secondAttribute="topMargin" constant="40" id="PJS-s7-3eF"/>
+                            <constraint firstItem="AdM-Qd-Mo5" firstAttribute="centerY" secondItem="6hC-xK-bgg" secondAttribute="centerY" id="T4A-BE-c3E"/>
+                            <constraint firstItem="6hC-xK-bgg" firstAttribute="leading" secondItem="AdM-Qd-Mo5" secondAttribute="trailing" constant="8" id="bQt-A0-tbb"/>
                             <constraint firstItem="8Cg-bL-x6t" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="lSk-ky-gKW"/>
+                            <constraint firstItem="JR6-hT-iMc" firstAttribute="leading" secondItem="hBF-cP-xXr" secondAttribute="trailing" constant="8" id="piZ-0f-LG5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gifPreloadSwitch" destination="6hC-xK-bgg" id="Rh1-Sz-ffI"/>
+                        <outlet property="placeholderSwitch" destination="JR6-hT-iMc" id="sdF-Rx-Wss"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
