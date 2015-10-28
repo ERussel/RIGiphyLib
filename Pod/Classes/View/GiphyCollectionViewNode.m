@@ -126,8 +126,7 @@
                 weakSelf.contentEmpty = NO;
                 [weakSelf updateLoadingState];
             }
-        } progressBlock:^(CGFloat gifProgress){
-        } failureBlock:^(NSError *error){
+        } progressBlock:nil failureBlock:^(NSError *error){
             weakSelf.gifCancellationToken = nil;
         }];
     }

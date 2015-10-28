@@ -15,6 +15,33 @@ NSString * const GiphyNavigationControllerDidCancelNotification = @"GiphyNavigat
 NSString * const GiphyNavigationControllerDidSelectGIFNotification = @"GiphyNavigationControllerDidSelectGIFNotification";
 NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKey";
 
+@interface GiphyNavigationController ()
+
+#pragma mark - Initialize
+
+/**
+ *  Provides initial setup.
+ */
+- (void)defaultInit;
+
+#pragma mark - Notification
+
+/**
+ *  Invoked when user wants to close controller without picking GIF.
+ *  By default notifies delegate and dismiss controller.
+ *  @param notification Notification object posted to close controller.
+ */
+- (void)notificationDidCancel:(NSNotification*)notification;
+
+/**
+ *  Invoked when user selects GIF.
+ *  By default notifies delegate, but controlled would not be closed.
+ *  @param notification Notification object posted when GIF selected. User info will contain GIF object.
+ */
+- (void)notificationDidSelectGIF:(NSNotification*)notification;
+
+@end
+
 @implementation GiphyNavigationController
 @synthesize delegate;
 
@@ -42,22 +69,47 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
                                                                                                  imageCache:imageCache];
     self = [super initWithRootViewController:giphyListViewController];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(notificationDidCancel:)
-                                                     name:GiphyNavigationControllerDidCancelNotification
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(notificationDidSelectGIF:)
-                                                     name:GiphyNavigationControllerDidSelectGIFNotification
-                                                   object:nil];
+        [self defaultInit];
     }
     return self;
+}
+
+- (instancetype)initWithNavigationBarClass:(Class)navigationBarClass toolbarClass:(Class)toolbarClass{
+    self = [super initWithNavigationBarClass:navigationBarClass toolbarClass:toolbarClass];
+    if (self) {
+        GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:[GiphyBasicDataManager sharedManager]
+                                                                                                     imageCache:nil];
+        [self setViewControllers:@[giphyListViewController]];
+        
+        [self defaultInit];
+    }
+    return self;
+}
+
+- (void)awakeFromNib{
+    GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:[GiphyBasicDataManager sharedManager]
+                                                                                                 imageCache:nil];
+    [self setViewControllers:@[giphyListViewController]];
+    
+    [self defaultInit];
+}
+
+- (void)defaultInit{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationDidCancel:)
+                                                 name:GiphyNavigationControllerDidCancelNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationDidSelectGIF:)
+                                                 name:GiphyNavigationControllerDidSelectGIFNotification
+                                               object:nil];
 }
 
 #pragma mark - Giphy Navigation Controller
 
 - (BOOL)shouldAutorotate{
+    // block autorotation only when preview controller presented
     if (self.presentedViewController) {
         return NO;
     }else{
