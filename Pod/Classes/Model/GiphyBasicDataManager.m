@@ -181,6 +181,7 @@ const NSInteger kGiphyDataManagerMaxObjectsInCollection = 20;
 }
 
 - (void)clearCachedMemoryData{
+    // remove all data from the local cache
     [_collectionsCache removeAllObjects];
 }
 
