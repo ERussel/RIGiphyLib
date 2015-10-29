@@ -14,32 +14,58 @@
 
 @interface GiphyPresentationAnimation ()
 
+#pragma mark - Giphy Presentation Animation
+
+/**
+ *  Image view to display blur background image.
+ */
 @property(nonatomic, weak)UIImageView *animationBackgroundView;
+
+#pragma mark - Private
+
+/**
+ *  Calculates modal controller's view rect to fix orientation issue on iOS 7.
+ *  @param transitionContext Context to extract transition parameters from.
+ *  @return Final CGRect to apply to modal controller.
+ */
+- (CGRect)rectForPresentedState:(id<UIViewControllerContextTransitioning>)transitionContext;
 
 @end
 
 @implementation GiphyPresentationAnimation
 
+#pragma mark - UIViewControllerAnimatedTransitioning
+
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
-    //The view controller's view that is presenting the modal view
+    // The view controller's view that is presenting the modal view
     UIView *containerView = [transitionContext containerView];
+    
+    // extract controller animation starts from
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    
+    // extract controller animation completes in
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
+    // clear controller's background to make blur background visible
+    toViewController.view.backgroundColor = [UIColor clearColor];
+    
     if (_animationType == GiphyPresentationAnimationTypeAppearance) {
+        // generate blur background image
         UIImage *backgroundImage = [[fromViewController.view giphy_screenshotWithQuality:0.2f] giphy_blurImageWithRadius:0.3f tintColor:_backgroundTintColor];
         
+        // create image view to display background image
         UIImageView *animationBackgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
         [containerView addSubview:animationBackgroundView];
         _animationBackgroundView = animationBackgroundView;
         
+        // prepare for fade animation
         toViewController.view.alpha = 0.0f;
         _animationBackgroundView.alpha = 0.0f;
         
         // iOS 7 bug fix
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f) {
             // setup final frame for modal view controller
-            CGRect finalFrame = [self rectForPresentedStateEnd:transitionContext];
+            CGRect finalFrame = [self rectForPresentedState:transitionContext];
             toViewController.view.frame = finalFrame;
             
             // setup background position and rotation based on interface orientation
@@ -61,6 +87,7 @@
         
         [containerView addSubview:toViewController.view];
         
+        // start fade appearance transition animation
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             toViewController.view.alpha = 1.0f;
             _animationBackgroundView.alpha = 1.0f;
@@ -69,6 +96,7 @@
         }];
         
     }else if (_animationType == GiphyPresentationAnimationTypeDismiss){
+        // start fade dismiss animation
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             fromViewController.view.alpha = 0.0f;
             _animationBackgroundView.alpha = 0.0f;
@@ -85,50 +113,10 @@
 
 #pragma mark - Private
 
-- (CGRect)rectForPresentedStateStart:(id<UIViewControllerContextTransitioning>)transitionContext
-{
-    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+- (CGRect)rectForPresentedState:(id<UIViewControllerContextTransitioning>)transitionContext{
+    // return container's view bounds as display rect
     UIView *containerView = [transitionContext containerView];
-    
-    switch (fromViewController.interfaceOrientation)
-    {
-        case UIInterfaceOrientationLandscapeRight:
-            return CGRectMake(0, containerView.bounds.size.height,
-                              containerView.bounds.size.width, containerView.bounds.size.height);
-        case UIInterfaceOrientationLandscapeLeft:
-            return CGRectMake(0, - containerView.bounds.size.height,
-                              containerView.bounds.size.width, containerView.bounds.size.height);
-        case UIInterfaceOrientationPortraitUpsideDown:
-            return CGRectMake(- containerView.bounds.size.width, 0,
-                              containerView.bounds.size.width, containerView.bounds.size.height);
-        case UIInterfaceOrientationPortrait:
-            return CGRectMake(containerView.bounds.size.width, 0,
-                              containerView.bounds.size.width, containerView.bounds.size.height);
-        default:
-            return CGRectZero;
-    }
-    
-}
-
-- (CGRect)rectForPresentedStateEnd:(id<UIViewControllerContextTransitioning>)transitionContext
-{
-    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    UIView *containerView = [transitionContext containerView];
-    
-    
-    switch (toViewController.interfaceOrientation)
-    {
-        case UIInterfaceOrientationLandscapeRight:
-            return CGRectOffset([self rectForPresentedStateStart:transitionContext], 0, - containerView.bounds.size.height);
-        case UIInterfaceOrientationLandscapeLeft:
-            return CGRectOffset([self rectForPresentedStateStart:transitionContext], 0, containerView.bounds.size.height);
-        case UIInterfaceOrientationPortraitUpsideDown:
-            return CGRectOffset([self rectForPresentedStateStart:transitionContext], containerView.bounds.size.width, 0);
-        case UIInterfaceOrientationPortrait:
-            return CGRectOffset([self rectForPresentedStateStart:transitionContext], - containerView.bounds.size.width, 0);
-        default:
-            return CGRectZero;
-    }
+    return CGRectMake(0, 0, containerView.bounds.size.width, containerView.bounds.size.height);
 }
 
 @end

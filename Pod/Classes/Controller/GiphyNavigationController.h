@@ -69,7 +69,7 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
  * <b>Cache</b>
  *
  *  GIFs caching implemented using default NSURLCache. You can control it by creating shared cache object.
- *  For more information see https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURLCache_Class
+ *  For more information see <a>https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURLCache_Class</a>
  *
  *  By default images are caching using NSURLCache. You should setup cache object in initialization method to provide custom image cache.
  *  \sa GiphyImageCacheProtocol
