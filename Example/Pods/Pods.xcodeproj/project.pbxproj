@@ -294,6 +294,8 @@
 		82E46B2E4429E0690A4182BA907B20BB /* ASCellNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D76F267B89DD4B7EFE611BCEA2D61B2 /* ASCellNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82FC12F67E83874B93592218E9FB4CA0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B120FBA6AD604CAD0B4932010C15C0B2 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		847C86711AC58480F93EE157EC762827 /* PFRelationState.h in Headers */ = {isa = PBXBuildFile; fileRef = 424A36203BFABE9BC7E2897E59BB0C95 /* PFRelationState.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		84A24A411BE341320044A44D /* GiphySearchCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 84A24A3F1BE341320044A44D /* GiphySearchCollectionViewNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84A24A421BE341320044A44D /* GiphySearchCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A24A401BE341320044A44D /* GiphySearchCollectionViewNode.m */; };
 		854828D77E6CD3D9B82D9498EF24E92E /* PFObjectFilePersistenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02958A9EC4B18977DC9DD3EA4E3818 /* PFObjectFilePersistenceController.m */; };
 		854BC4449D8CAD0F2799B021D1914C3B /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 24321274FAC7781175570C17AFE19CC6 /* UIRefreshControl+AFNetworking.m */; };
 		85738B1734F9BE17BEE9520D89D2D133 /* PFAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = D46AAD242E3BB7800EE4D071E0230A56 /* PFAlertView.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1054,6 +1056,8 @@
 		83BDA26EA203259A4CAC8A2561A85F8E /* PFInstallationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFInstallationController.h; path = Parse/Internal/Installation/Controller/PFInstallationController.h; sourceTree = "<group>"; };
 		83E1C6ACB9898B5FFF044C90B80EFD6C /* ASDisplayNode+DebugTiming.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = "ASDisplayNode+DebugTiming.mm"; path = "AsyncDisplayKit/Private/ASDisplayNode+DebugTiming.mm"; sourceTree = "<group>"; };
 		83EBF5E5B4A5A94B8D03F9B02B690F14 /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+AFNetworking.h"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
+		84A24A3F1BE341320044A44D /* GiphySearchCollectionViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiphySearchCollectionViewNode.h; sourceTree = "<group>"; };
+		84A24A401BE341320044A44D /* GiphySearchCollectionViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiphySearchCollectionViewNode.m; sourceTree = "<group>"; };
 		84F3FEFD084763FF83A43AE0B0A53398 /* ASFlowLayoutController.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASFlowLayoutController.mm; path = AsyncDisplayKit/Details/ASFlowLayoutController.mm; sourceTree = "<group>"; };
 		857CD218F044AA93FF1BFB7B4239BB2C /* PFRESTAnalyticsCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PFRESTAnalyticsCommand.m; path = Parse/Internal/Commands/PFRESTAnalyticsCommand.m; sourceTree = "<group>"; };
 		85DEAB0643255A06736FAF0116EA77CE /* PFMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFMacros.h; path = Parse/Internal/PFMacros.h; sourceTree = "<group>"; };
@@ -2200,6 +2204,8 @@
 				563EB6A50A5197DAFEE236587BDB300D /* GiphyOptionsView.m */,
 				7C9EA273DDDBFB0DF3D1ECE29D0700FF /* GiphySearchTableViewCell.h */,
 				E317FE7A2A2B270CFCA1BD87195BB9F2 /* GiphySearchTableViewCell.m */,
+				84A24A3F1BE341320044A44D /* GiphySearchCollectionViewNode.h */,
+				84A24A401BE341320044A44D /* GiphySearchCollectionViewNode.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2473,6 +2479,7 @@
 				968FDE601C248E9BF9E0182E010E7431 /* FLAnimatedImageSerializer.h in Headers */,
 				A79A5A0B6DFC65FAC147BBEA7A5E3FCF /* GiphyBasicDataManager.h in Headers */,
 				6F74DA0D4CC7E4DD6D36962397A05872 /* GiphyBundle.h in Headers */,
+				84A24A411BE341320044A44D /* GiphySearchCollectionViewNode.h in Headers */,
 				C213681A9A616137BCB5606323B1F0B9 /* GiphyCategoryCollectionViewNode.h in Headers */,
 				9FA6E21FF9656E2FBAAE773F08570D72 /* GiphyCategoryObject+Parse.h in Headers */,
 				D640E62BC4AF0F6E120883DB23F8C92A /* GiphyCategoryObject.h in Headers */,
@@ -3127,6 +3134,7 @@
 				9234ED8963EE25749F22412B210C2FB2 /* GiphyPresentationAnimation.m in Sources */,
 				3049A2215BF46C119932A482F763D3EB /* GiphyPreviewViewController.m in Sources */,
 				76AD8424AF680BB45EBFDA79E334B85A /* GiphyRequest.m in Sources */,
+				84A24A421BE341320044A44D /* GiphySearchCollectionViewNode.m in Sources */,
 				E77AA1D454CB5981CB0335C1AB67ECC4 /* GiphySearchRequestObject.m in Sources */,
 				7AAF5CEA795CBF232B79A275E886A310 /* GiphySearchTableViewCell.m in Sources */,
 				7B08393B7BEFBB1C9FE317485A221D97 /* GiphyTranslationResult+Yandex.m in Sources */,
