@@ -3,8 +3,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'RIGiphyLib_Example', :exclusive => true do
   pod "RIGiphyLib", :path => "../"
+  pod 'AsyncDisplayKit', :git => 'https://github.com/ERussel/AsyncDisplayKit.git', :branch => 'feed_implementation', :commit => 'd8d26b48c1693afd4caaca5e20274c4d6a1ba632'
+  
 end
 
 target 'RIGiphyLib_Tests', :exclusive => true do
   pod "RIGiphyLib", :path => "../"
+  pod 'AsyncDisplayKit', :git => 'https://github.com/ERussel/AsyncDisplayKit.git', :branch => 'feed_implementation', :commit => 'd8d26b48c1693afd4caaca5e20274c4d6a1ba632'
+  
 end

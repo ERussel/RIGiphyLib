@@ -61,8 +61,6 @@
 /**
  * Download and display a new image.
  *
- * @param URL The URL of a new image to download and display.
- *
  * @param reset Whether to display a placeholder (<defaultImage>) while loading the new image.
  */
 - (void)setURL:(NSURL *)URL resetToDefault:(BOOL)reset;
@@ -76,10 +74,6 @@
 
 
 #pragma mark -
-/**
- * The methods declared by the ASNetworkImageNodeDelegate protocol allow the adopting delegate to respond to
- * notifications such as fininished decoding and downloading an image.
- */
 @protocol ASNetworkImageNodeDelegate <NSObject>
 
 /**

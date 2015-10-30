@@ -25,7 +25,6 @@
 
   // use UITableViewCell defaults
   _selectionStyle = UITableViewCellSelectionStyleDefault;
-  self.clipsToBounds = YES;
 
   return self;
 }
@@ -111,8 +110,6 @@ static const CGFloat kFontSize = 18.0f;
 {
   CGSize availableSize = CGSizeMake(constrainedSize.width - 2 * kHorizontalPadding,
                                     constrainedSize.height - 2 * kVerticalPadding);
-  availableSize.width = MAX(0, availableSize.width);
-  availableSize.height = MAX(0, availableSize.height);
   CGSize textNodeSize = [_textNode measure:availableSize];
 
   return CGSizeMake(ceilf(2 * kHorizontalPadding + textNodeSize.width),

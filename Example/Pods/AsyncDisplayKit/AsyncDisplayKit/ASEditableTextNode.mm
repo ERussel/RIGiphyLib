@@ -352,26 +352,16 @@
   return [_textKitComponents.textView isFirstResponder];
 }
 
-- (BOOL)canBecomeFirstResponder {
-    ASDN::MutexLocker l(_textKitLock);
-    return [_textKitComponents.textView canBecomeFirstResponder];
-}
-
-- (BOOL)becomeFirstResponder
+- (void)becomeFirstResponder
 {
   ASDN::MutexLocker l(_textKitLock);
-  return [_textKitComponents.textView becomeFirstResponder];
+  [_textKitComponents.textView becomeFirstResponder];
 }
 
-- (BOOL)canResignFirstResponder {
-    ASDN::MutexLocker l(_textKitLock);
-    return [_textKitComponents.textView canResignFirstResponder];
-}
-
-- (BOOL)resignFirstResponder
+- (void)resignFirstResponder
 {
   ASDN::MutexLocker l(_textKitLock);
-  return [_textKitComponents.textView resignFirstResponder];
+  [_textKitComponents.textView resignFirstResponder];
 }
 
 #pragma mark - UITextView Delegate

@@ -20,21 +20,15 @@
 /**
  * Collection of properties associated with a download request.
  */
-
-typedef void (^ASBasicImageDownloaderContextProgressBlock)(CGFloat);
-typedef void (^ASBasicImageDownloaderContextCompletionBlock)(CGImageRef, NSError *);
-
-NSString * const kASBasicImageDownloaderContextCallbackQueue = @"kASBasicImageDownloaderContextCallbackQueue";
-NSString * const kASBasicImageDownloaderContextProgressBlock = @"kASBasicImageDownloaderContextProgressBlock";
-NSString * const kASBasicImageDownloaderContextCompletionBlock = @"kASBasicImageDownloaderContextCompletionBlock";
-
 @interface ASBasicImageDownloaderContext ()
 {
   BOOL _invalid;
   ASDN::RecursiveMutex _propertyLock;
 }
 
-@property (nonatomic, strong) NSMutableArray *callbackDatas;
+@property (nonatomic, strong) dispatch_queue_t callbackQueue;
+@property (nonatomic, copy) void (^downloadProgressBlock)(CGFloat);
+@property (nonatomic, copy) void (^completionBlock)(CGImageRef, NSError *);
 
 @end
 
@@ -69,7 +63,6 @@ static ASDN::RecursiveMutex currentRequestsLock;
 {
   if (self = [super init]) {
     _URL = URL;
-    _callbackDatas = [NSMutableArray array];
   }
   return self;
 }
@@ -92,77 +85,6 @@ static ASDN::RecursiveMutex currentRequestsLock;
 {
   ASDN::MutexLocker l(_propertyLock);
   return _invalid;
-}
-
-- (void)addCallbackData:(NSDictionary *)callbackData
-{
-  ASDN::MutexLocker l(_propertyLock);
-  [self.callbackDatas addObject:callbackData];
-}
-
-- (void)performProgressBlocks:(CGFloat)progress
-{
-  ASDN::MutexLocker l(_propertyLock);
-  for (NSDictionary *callbackData in self.callbackDatas) {
-    ASBasicImageDownloaderContextProgressBlock progressBlock = callbackData[kASBasicImageDownloaderContextProgressBlock];
-    dispatch_queue_t callbackQueue = callbackData[kASBasicImageDownloaderContextCallbackQueue];
-
-    if (progressBlock) {
-      dispatch_async(callbackQueue, ^{
-        progressBlock(progress);
-      });
-    }
-  }
-}
-
-- (void)completeWithImage:(UIImage *)image error:(NSError *)error
-{
-  ASDN::MutexLocker l(_propertyLock);
-  for (NSDictionary *callbackData in self.callbackDatas) {
-    ASBasicImageDownloaderContextCompletionBlock completionBlock = callbackData[kASBasicImageDownloaderContextCompletionBlock];
-    dispatch_queue_t callbackQueue = callbackData[kASBasicImageDownloaderContextCallbackQueue];
-
-    if (completionBlock) {
-      dispatch_async(callbackQueue, ^{
-        completionBlock(image.CGImage, error);
-      });
-    }
-  }
-
-  self.sessionTask = nil;
-  [self.callbackDatas removeAllObjects];
-}
-
-- (NSURLSessionTask *)createSessionTaskIfNecessaryWithBlock:(NSURLSessionTask *(^)())creationBlock {
-  {
-    ASDN::MutexLocker l(_propertyLock);
-
-    if (self.isCancelled) {
-      return nil;
-    }
-
-    if (self.sessionTask && (self.sessionTask.state == NSURLSessionTaskStateRunning)) {
-      return nil;
-    }
-  }
-
-  NSURLSessionTask *newTask = creationBlock();
-
-  {
-    ASDN::MutexLocker l(_propertyLock);
-
-    if (self.isCancelled) {
-      return nil;
-    }
-
-    if (self.sessionTask && (self.sessionTask.state == NSURLSessionTaskStateRunning)) {
-      return nil;
-    }
-
-    self.sessionTask = newTask;
-    
-    return self.sessionTask;
-  }
 }
 
 @end
@@ -228,29 +150,30 @@ static const char *kContextKey = NSStringFromClass(ASBasicImageDownloaderContext
   // NSURLSessionDownloadTask will do file I/O to create a temp directory. If called on the main thread this will
   // cause significant performance issues.
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    // the downloader may have been invalidated in the time it takes to async dispatch this block
+    if ([context isCancelled]) {
+      return;
+    }
+    
+    // create download task
+    NSURLSessionDownloadTask *task = [_session downloadTaskWithURL:URL];
+
+    // since creating the task does disk I/O, we should check if it has been invalidated
+    if ([context isCancelled]) {
+      return;
+    }
+
     // associate metadata with it
-    NSMutableDictionary *callbackData = [NSMutableDictionary dictionary];
-    callbackData[kASBasicImageDownloaderContextCallbackQueue] = callbackQueue ?: dispatch_get_main_queue();
+    context.callbackQueue = callbackQueue ?: dispatch_get_main_queue();
+    context.downloadProgressBlock = downloadProgressBlock;
+    context.completionBlock = completion;
+    context.sessionTask = task;
+    task.originalRequest.asyncdisplaykit_context = context;
 
-    if (downloadProgressBlock) {
-      callbackData[kASBasicImageDownloaderContextProgressBlock] = [downloadProgressBlock copy];
-    }
+    // start downloading
+    [task resume];
 
-    if (completion) {
-      callbackData[kASBasicImageDownloaderContextCompletionBlock] = [completion copy];
-    }
-
-    [context addCallbackData:[NSDictionary dictionaryWithDictionary:callbackData]];
-
-    // Create new task if necessary
-    NSURLSessionDownloadTask *task = (NSURLSessionDownloadTask *)[context createSessionTaskIfNecessaryWithBlock:^(){return [_session downloadTaskWithURL:URL];}];
-
-    if (task) {
-      task.originalRequest.asyncdisplaykit_context = context;
-
-      // start downloading
-      [task resume];
-    }
+    context.sessionTask = task;
   });
 
   return context;
@@ -277,7 +200,9 @@ static const char *kContextKey = NSStringFromClass(ASBasicImageDownloaderContext
                               totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
   ASBasicImageDownloaderContext *context = downloadTask.originalRequest.asyncdisplaykit_context;
-  [context performProgressBlocks:(CGFloat)totalBytesWritten / (CGFloat)totalBytesExpectedToWrite];
+  if (context.downloadProgressBlock) {
+    context.downloadProgressBlock((CGFloat)totalBytesWritten / (CGFloat)totalBytesExpectedToWrite);
+  }
 }
 
 // invoked if the download succeeded with no error
@@ -289,9 +214,12 @@ static const char *kContextKey = NSStringFromClass(ASBasicImageDownloaderContext
     return;
   }
 
-  if (context) {
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-    [context completeWithImage:image error:nil];
+  UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+
+  if (context.completionBlock) {
+    dispatch_async(context.callbackQueue, ^{
+      context.completionBlock(image.CGImage, nil);
+    });
   }
 }
 
@@ -301,7 +229,9 @@ static const char *kContextKey = NSStringFromClass(ASBasicImageDownloaderContext
 {
   ASBasicImageDownloaderContext *context = task.originalRequest.asyncdisplaykit_context;
   if (context && error) {
-    [context completeWithImage:nil error:error];
+    dispatch_async(context.callbackQueue, ^{
+      context.completionBlock(NULL, error);
+    });
   }
 }
 

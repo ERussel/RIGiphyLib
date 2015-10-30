@@ -37,5 +37,5 @@ Pod::Spec.new do |s|
   s.dependency 'FLAnimatedImage', '~> 1.0'
   s.dependency 'MBProgressHUD', '~> 0.9.1'
   s.dependency 'Parse'
-  s.dependency 'AsyncDisplayKit', '~> 1.2'
+  s.dependency 'AsyncDisplayKit'
 end

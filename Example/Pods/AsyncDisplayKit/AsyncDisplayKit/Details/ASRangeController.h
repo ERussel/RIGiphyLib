@@ -19,22 +19,18 @@
 /**
  * Working range controller.
  *
- * Used internally by ASTableView and ASCollectionView.  It is paired with ASDataController.
- * It is designed to support custom scrolling containers as well.  Observes the visible range, maintains
- * "working ranges" to trigger network calls and rendering, and is responsible for driving asynchronous layout of cells.
- * This includes cancelling those asynchronous operations as cells fall outside of the working ranges.
+ * Used internally by ASTableView and potentially by a future ASCollectionView.  Observes the visible range, maintains
+ * a working range, and is responsible for handling AsyncDisplayKit machinery (sizing cell nodes, enqueueing and
+ * cancelling their asynchronous layout and display, and so on).
  */
 @interface ASRangeController : ASDealloc2MainObject <ASDataControllerDelegate>
 
 /**
- * Notify the range controller that the visible range has been updated.
- * This is the primary input call that drives updating the working ranges, and triggering their actions.
- *
- * @param scrollDirection The current scroll direction of the scroll view.
+ * Notify the receiver that the visible range has been updated.
  *
  * @see [ASRangeControllerDelegate rangeControllerVisibleNodeIndexPaths:]
  */
-- (void)visibleNodeIndexPathsDidChangeWithScrollDirection:(ASScrollDirection)scrollDirection;
+- (void)visibleNodeIndexPathsDidChangeWithScrollDirection:(enum ASScrollDirection)scrollDirection;
 
 /**
  * Add the sized node for `indexPath` as a subview of `contentView`.
@@ -76,71 +72,59 @@
 
 /**
  * Begin updates.
- *
- * @param rangeController Sender.
  */
 - (void)rangeControllerBeginUpdates:(ASRangeController *)rangeController;
 
 /**
  * End updates.
- *
- * @param rangeController Sender.
- *
- * @param completion Completion block.
  */
-- (void)rangeController:(ASRangeController * )rangeController endUpdatesAnimated:(BOOL)animated completion:(void (^)(BOOL))completion;
+- (void)rangeControllerEndUpdates:(ASRangeController * )rangeController completion:(void (^)(BOOL))completion ;
 
 /**
  * Fetch nodes at specific index paths.
- *
- * @param rangeController Sender.
- *
- * @param indexPaths Index paths.
  */
 - (NSArray *)rangeController:(ASRangeController *)rangeController nodesAtIndexPaths:(NSArray *)indexPaths;
 
 /**
  * Called for nodes insertion.
- *
- * @param rangeController Sender.
- *
- * @param indexPaths Index path of inserted nodes.
- *
- * @param animationOptions Animation options. See ASDataControllerAnimationOptions.
  */
-- (void)rangeController:(ASRangeController *)rangeController didInsertNodes:(NSArray *)nodes atIndexPaths:(NSArray *)indexPaths withAnimationOptions:(ASDataControllerAnimationOptions)animationOptions;
+- (void)rangeController:(ASRangeController *)rangeController didInsertNodesAtIndexPaths:(NSArray *)indexPaths withAnimationOption:(ASDataControllerAnimationOptions)animationOption;
 
 /**
  * Called for nodes deletion.
- *
- * @param rangeController Sender.
- *
- * @param indexPaths Index path of deleted nodes.
- *
- * @param animationOptions Animation options. See ASDataControllerAnimationOptions.
  */
-- (void)rangeController:(ASRangeController *)rangeController didDeleteNodes:(NSArray *)nodes atIndexPaths:(NSArray *)indexPaths withAnimationOptions:(ASDataControllerAnimationOptions)animationOptions;
+- (void)rangeController:(ASRangeController *)rangeController didDeleteNodesAtIndexPaths:(NSArray *)indexPaths withAnimationOption:(ASDataControllerAnimationOptions)animationOption;
 
 /**
  * Called for section insertion.
- *
- * @param rangeController Sender.
- *
- * @param indexSet Index set of inserted sections.
- *
- * @param animationOptions Animation options. See ASDataControllerAnimationOptions.
  */
-- (void)rangeController:(ASRangeController *)rangeController didInsertSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOptions:(ASDataControllerAnimationOptions)animationOptions;
+- (void)rangeController:(ASRangeController *)rangeController didInsertSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOption:(ASDataControllerAnimationOptions)animationOption;
 
 /**
  * Called for section deletion.
- *
- * @param rangeController Sender.
- *
- * @param indexSet Index set of deleted sections.
- *
- * @param animationOptions Animation options. See ASDataControllerAnimationOptions.
  */
-- (void)rangeController:(ASRangeController *)rangeController didDeleteSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOptions:(ASDataControllerAnimationOptions)animationOptions;
+- (void)rangeController:(ASRangeController *)rangeController didDeleteSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOption:(ASDataControllerAnimationOptions)animationOption;
+
+@optional
+
+/**
+ * Called before nodes insertion.
+ */
+- (void)rangeController:(ASRangeController *)rangeController willInsertNodesAtIndexPaths:(NSArray *)indexPaths withAnimationOption:(ASDataControllerAnimationOptions)animationOption;
+
+/**
+ * Called before nodes deletion.
+ */
+- (void)rangeController:(ASRangeController *)rangeController willDeleteNodesAtIndexPaths:(NSArray *)indexPaths withAnimationOption:(ASDataControllerAnimationOptions)animationOption;
+
+/**
+ * Called before section insertion.
+ */
+- (void)rangeController:(ASRangeController *)rangeController willInsertSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOption:(ASDataControllerAnimationOptions)animationOption;
+
+/**
+ * Called before section deletion.
+ */
+- (void)rangeController:(ASRangeController *)rangeController willDeleteSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOption:(ASDataControllerAnimationOptions)animationOption;
 
 @end

@@ -116,6 +116,8 @@ void ASDisplayNodePerformBlockOnMainThread(void (^block)())
   _contentsScaleForDisplay = ASDisplayNodeScreenScale();
   
   _displaySentinel = [[ASSentinel alloc] init];
+  
+  _pendingDisplayNodes = [[NSMutableSet alloc] init];
 
   _flags.isInHierarchy = NO;
   _flags.displaysAsynchronously = YES;
@@ -1216,10 +1218,6 @@ static NSInteger incrementIfFound(NSInteger i) {
 {
   ASDN::MutexLocker l(_propertyLock);
 
-  if (!_pendingDisplayNodes) {
-    _pendingDisplayNodes = [[NSMutableSet alloc] init];
-  }
-
   [_pendingDisplayNodes addObject:node];
 }
 
@@ -1646,7 +1644,7 @@ static void _recursivelySetDisplaySuspended(ASDisplayNode *node, CALayer *layer,
   static dispatch_queue_t asyncSizingQueue = NULL;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    asyncSizingQueue = dispatch_queue_create("org.AsyncDisplayKit.ASDisplayNode.asyncSizingQueue", DISPATCH_QUEUE_CONCURRENT);
+    asyncSizingQueue = dispatch_queue_create("com.facebook.AsyncDisplayKit.ASDisplayNode.asyncSizingQueue", DISPATCH_QUEUE_CONCURRENT);
     // we use the highpri queue to prioritize UI rendering over other async operations
     dispatch_set_target_queue(asyncSizingQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0));
   });
@@ -1696,35 +1694,6 @@ static void _recursivelySetDisplaySuspended(ASDisplayNode *node, CALayer *layer,
     });
   });
 
-}
-
-- (BOOL)canBecomeFirstResponder {
-    return NO;
-}
-
-- (BOOL)canResignFirstResponder {
-    return YES;
-}
-
-- (BOOL)isFirstResponder {
-    ASDisplayNodeAssertMainThread();
-    return _view != nil && [_view isFirstResponder];
-}
-
-// Note: this implicitly loads the view if it hasn't been loaded yet.
-- (BOOL)becomeFirstResponder {
-    ASDisplayNodeAssertMainThread();
-    return !self.layerBacked && [self canBecomeFirstResponder] && [self.view becomeFirstResponder];
-}
-
-- (BOOL)resignFirstResponder {
-    ASDisplayNodeAssertMainThread();
-    return !self.layerBacked && [self canResignFirstResponder] && [_view resignFirstResponder];
-}
-
-- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-    ASDisplayNodeAssertMainThread();
-    return !self.layerBacked && [self.view canPerformAction:action withSender:sender];
 }
 
 @end

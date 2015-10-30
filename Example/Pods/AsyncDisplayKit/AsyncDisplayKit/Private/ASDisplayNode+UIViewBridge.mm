@@ -143,21 +143,16 @@
   ASDisplayNodeAssert(CATransform3DIsIdentity(self.transform), @"Must be an identity transform");
 #endif
 
-  BOOL useLayer = (_layer && ASDisplayNodeThreadIsMain());
-  
-  CGPoint origin      = (useLayer ? _layer.bounds.origin : self.bounds.origin);
-  CGPoint anchorPoint = (useLayer ? _layer.anchorPoint   : self.anchorPoint);
-  
-  CGRect bounds       = (CGRect){ origin, rect.size };
-  CGPoint position    = CGPointMake(rect.origin.x + rect.size.width * anchorPoint.x,
-                                    rect.origin.y + rect.size.height * anchorPoint.y);
-  
-  if (useLayer) {
-    _layer.bounds = bounds;
-    _layer.position = position;
+  if (_layer && ASDisplayNodeThreadIsMain()) {
+    CGPoint anchorPoint = _layer.anchorPoint;
+    _layer.bounds = CGRectMake(0, 0, rect.size.width, rect.size.height);
+    _layer.position = CGPointMake(rect.origin.x + rect.size.width * anchorPoint.x,
+                                 rect.origin.y + rect.size.height * anchorPoint.y);
   } else {
-    self.bounds = bounds;
-    self.position = position;
+    CGPoint anchorPoint = self.anchorPoint;
+    self.bounds = CGRectMake(0, 0, rect.size.width, rect.size.height);
+    self.position = CGPointMake(rect.origin.x + rect.size.width * anchorPoint.x,
+                                rect.origin.y + rect.size.height * anchorPoint.y);
   }
 }
 
@@ -640,18 +635,6 @@
 {
   _bridge_prologue;
   _setToViewOnly(shouldGroupAccessibilityChildren, shouldGroupAccessibilityChildren);
-}
-
-- (NSString *)accessibilityIdentifier
-{
-  _bridge_prologue;
-  return _getFromViewOnly(accessibilityIdentifier);
-}
-
-- (void)setAccessibilityIdentifier:(NSString *)accessibilityIdentifier
-{
-  _bridge_prologue;
-  _setToViewOnly(accessibilityIdentifier, accessibilityIdentifier);
 }
 
 @end

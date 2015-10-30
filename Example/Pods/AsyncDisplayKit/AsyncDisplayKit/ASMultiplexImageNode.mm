@@ -139,13 +139,6 @@ typedef void(^ASMultiplexImageLoadCompletionBlock)(UIImage *image, id imageIdent
  */
 - (void)_downloadImageWithIdentifier:(id)imageIdentifier URL:(NSURL *)imageURL completion:(void (^)(UIImage *image, NSError *error))completionBlock;
 
-/**
- @abstract Returns a Boolean value indicating whether the downloaded image should be removed when clearing fetched data
- @discussion Downloaded image data should only be cleared out if a cache is present
- @return YES if an image cache is available; otherwise, NO.
- */
-- (BOOL)_shouldClearFetchedImageData;
-
 @end
 
 @implementation ASMultiplexImageNode
@@ -180,15 +173,11 @@ typedef void(^ASMultiplexImageLoadCompletionBlock)(UIImage *image, id imageIdent
   }
 }
 
-- (void)clearFetchedData
+- (void)displayWillStart
 {
-  [super clearFetchedData];
-    
-  if ([self _shouldClearFetchedImageData]) {
-    // setting this to nil makes the node fetch images the next time its display starts
-    _loadedImageIdentifier = nil;
-    self.image = nil;
-  }
+  [super displayWillStart];
+
+  [self fetchData];
 }
 
 - (void)fetchData
@@ -635,10 +624,6 @@ typedef void(^ASMultiplexImageLoadCompletionBlock)(UIImage *image, id imageIdent
   // Load our next image, if we have one to load.
   if ([self _nextImageIdentifierToDownload])
     [self _loadNextImage];
-}
-
-- (BOOL)_shouldClearFetchedImageData {
-  return _cache != nil;
 }
 
 @end

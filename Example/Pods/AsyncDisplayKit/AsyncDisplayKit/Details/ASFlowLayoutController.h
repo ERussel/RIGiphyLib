@@ -6,7 +6,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import <AsyncDisplayKit/ASAbstractLayoutController.h>
+#import <AsyncDisplayKit/ASLayoutController.h>
 #import <AsyncDisplayKit/ASBaseDefines.h>
 
 
@@ -15,21 +15,19 @@ typedef NS_ENUM(NSUInteger, ASFlowLayoutDirection) {
   ASFlowLayoutDirectionHorizontal,
 };
 
-@protocol ASFlowLayoutControllerDataSource
-
-- (NSArray *)completedNodes;  // This provides access to ASDataController's _completedNodes multidimensional array.
-
-@end
-
 /**
- *  An optimized flow layout controller that supports only vertical or horizontal scrolling, not simultaneously two-dimensional scrolling.
- *  It is used for all ASTableViews, and may be used with ASCollectionView.
+ * The controller for flow layout.
  */
-@interface ASFlowLayoutController : ASAbstractLayoutController
+@interface ASFlowLayoutController : NSObject <ASLayoutController>
+
+- (void)setTuningParameters:(ASRangeTuningParameters)tuningParameters forRangeType:(ASLayoutRangeType)rangeType;
+
+- (ASRangeTuningParameters)tuningParametersForRangeType:(ASLayoutRangeType)rangeType;
 
 @property (nonatomic, readonly, assign) ASFlowLayoutDirection layoutDirection;
-@property (nonatomic, readwrite, weak) id <ASFlowLayoutControllerDataSource> dataSource;
 
 - (instancetype)initWithScrollOption:(ASFlowLayoutDirection)layoutDirection;
+
+@property (nonatomic, assign) ASRangeTuningParameters tuningParameters ASDISPLAYNODE_DEPRECATED;
 
 @end
