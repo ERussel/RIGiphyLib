@@ -30,7 +30,7 @@ PODS:
     - Bolts/Tasks (>= 1.4.0)
   - RIGiphyLib (0.1.0):
     - AFNetworking (~> 2.3)
-    - AsyncDisplayKit
+    - AsyncDisplayKit (~> 1.1.1)
     - FLAnimatedImage (~> 1.0)
     - MBProgressHUD (~> 0.9.1)
     - Parse
@@ -61,6 +61,6 @@ SPEC CHECKSUMS:
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
-  RIGiphyLib: 35ed79607952353cbc06e57740472ed1b8e0b0dd
+  RIGiphyLib: a813d9529d2b4ad43dacc7e49510ab5b870fe3ca
 
 COCOAPODS: 0.39.0

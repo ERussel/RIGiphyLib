@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RIGiphyLib"
-  s.version          = "0.1.0"
+  s.version          = "1.0"
   s.summary          = "Wrapper around Giphy service with included UI."
 
 # This description is used to generate tags and improve search results.
@@ -37,5 +37,5 @@ Pod::Spec.new do |s|
   s.dependency 'FLAnimatedImage', '~> 1.0'
   s.dependency 'MBProgressHUD', '~> 0.9.1'
   s.dependency 'Parse'
-  s.dependency 'AsyncDisplayKit'
+  s.dependency 'AsyncDisplayKit', '~> 1.1.1'
 end
