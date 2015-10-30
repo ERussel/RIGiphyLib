@@ -9,11 +9,12 @@
 #import "ASCollectionView.h"
 
 #import "ASAssert.h"
-#import "ASFlowLayoutController.h"
+#import "ASCollectionViewLayoutController.h"
 #import "ASRangeController.h"
 #import "ASDataController.h"
 #import "ASDisplayNodeInternal.h"
 #import "ASBatchFetching.h"
+#import "UICollectionViewLayout+ASConvenience.h"
 
 const static NSUInteger kASCollectionViewAnimationNone = UITableViewRowAnimationNone;
 
@@ -32,6 +33,9 @@ static BOOL _isInterceptedSelector(SEL sel)
           // handled by ASCollectionView node<->cell machinery
           sel == @selector(collectionView:cellForItemAtIndexPath:) ||
           sel == @selector(collectionView:layout:sizeForItemAtIndexPath:) ||
+
+          // TODO: Supplementary views are currently not supported.  An assertion is triggered if the _asyncDataSource implements this method.
+          // sel == @selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:) ||
           
           // handled by ASRangeController
           sel == @selector(numberOfSectionsInCollectionView:) ||
@@ -108,7 +112,7 @@ static BOOL _isInterceptedSelector(SEL sel)
 
   ASDataController *_dataController;
   ASRangeController *_rangeController;
-  ASFlowLayoutController *_layoutController;
+  ASCollectionViewLayoutController *_layoutController;
 
   BOOL _performingBatchUpdates;
   NSMutableArray *_batchUpdateBlocks;
@@ -136,11 +140,12 @@ static BOOL _isInterceptedSelector(SEL sel)
 {
   if (!(self = [super initWithFrame:frame collectionViewLayout:layout]))
     return nil;
+  
+  // FIXME: asyncDataFetching is currently unreliable for some use cases.
+  // https://github.com/facebook/AsyncDisplayKit/issues/385
+  asyncDataFetchingEnabled = NO;
 
-  ASDisplayNodeAssert([layout isKindOfClass:UICollectionViewFlowLayout.class], @"only flow layouts are currently supported");
-
-  ASFlowLayoutDirection direction = (((UICollectionViewFlowLayout *)layout).scrollDirection == UICollectionViewScrollDirectionHorizontal) ? ASFlowLayoutDirectionHorizontal : ASFlowLayoutDirectionVertical;
-  _layoutController = [[ASFlowLayoutController alloc] initWithScrollOption:direction];
+  _layoutController = [[ASCollectionViewLayoutController alloc] initWithCollectionView:self];
 
   _rangeController = [[ASRangeController alloc] init];
   _rangeController.delegate = self;
@@ -165,8 +170,10 @@ static BOOL _isInterceptedSelector(SEL sel)
   return self;
 }
 
--(void)dealloc {
-  // a little defense move here.
+- (void)dealloc
+{
+  // Sometimes the UIKit classes can call back to their delegate even during deallocation.
+  // This bug might be iOS 7-specific.
   super.delegate  = nil;
   super.dataSource = nil;
 }
@@ -180,7 +187,7 @@ static BOOL _isInterceptedSelector(SEL sel)
   ASDisplayNodePerformBlockOnMainThread(^{
     [super reloadData];
   });
-  [_dataController reloadDataWithAnimationOption:kASCollectionViewAnimationNone completion:completion];
+  [_dataController reloadDataWithAnimationOptions:kASCollectionViewAnimationNone completion:completion];
 }
 
 - (void)reloadData
@@ -212,6 +219,10 @@ static BOOL _isInterceptedSelector(SEL sel)
     _proxyDataSource = nil;
   } else {
     _asyncDataSource = asyncDataSource;
+    // TODO: Support supplementary views with ASCollectionView.
+    if ([_asyncDataSource respondsToSelector:@selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:)]) {
+      ASDisplayNodeAssert(NO, @"ASCollectionView is planned to support supplementary views by September 2015.  You can work around this issue by using standard items.");
+    }
     _proxyDataSource = [[_ASCollectionViewProxy alloc] initWithTarget:_asyncDataSource interceptor:self];
     super.dataSource = (id<UICollectionViewDataSource>)_proxyDataSource;
   }
@@ -277,65 +288,66 @@ static BOOL _isInterceptedSelector(SEL sel)
 
 #pragma mark Assertions.
 
-- (void)performBatchUpdates:(void (^)())updates completion:(void (^)(BOOL))completion
+- (void)performBatchAnimated:(BOOL)animated updates:(void (^)())updates completion:(void (^)(BOOL))completion
 {
+  ASDisplayNodeAssertMainThread();
+
   [_dataController beginUpdates];
   updates();
-  [_dataController endUpdatesWithCompletion:completion];
+  [_dataController endUpdatesAnimated:animated completion:completion];
+}
+
+- (void)performBatchUpdates:(void (^)())updates completion:(void (^)(BOOL))completion
+{
+  [self performBatchAnimated:YES updates:updates completion:completion];
 }
 
 - (void)insertSections:(NSIndexSet *)sections
 {
-  [_dataController insertSections:sections withAnimationOption:kASCollectionViewAnimationNone];
+  ASDisplayNodeAssertMainThread();
+  [_dataController insertSections:sections withAnimationOptions:kASCollectionViewAnimationNone];
 }
 
 - (void)deleteSections:(NSIndexSet *)sections
 {
-  [_dataController deleteSections:sections withAnimationOption:kASCollectionViewAnimationNone];
+  ASDisplayNodeAssertMainThread();
+  [_dataController deleteSections:sections withAnimationOptions:kASCollectionViewAnimationNone];
 }
 
 - (void)reloadSections:(NSIndexSet *)sections
 {
-    [self reloadSections:sections completion:nil];
-}
-
-- (void)reloadSections:(NSIndexSet *)sections completion:(void (^)())completion{
-    [_dataController reloadSections:sections withAnimationOption:kASCollectionViewAnimationNone completion:completion];
+  ASDisplayNodeAssertMainThread();
+  [_dataController reloadSections:sections withAnimationOptions:kASCollectionViewAnimationNone];
 }
 
 - (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection
 {
-  [_dataController moveSection:section toSection:newSection withAnimationOption:kASCollectionViewAnimationNone];
+  ASDisplayNodeAssertMainThread();
+  [_dataController moveSection:section toSection:newSection withAnimationOptions:kASCollectionViewAnimationNone];
 }
 
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths
 {
-    [self insertItemsAtIndexPaths:indexPaths completion:nil];
-}
-
-- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths completion:(void (^)())completion
-{
-    [_dataController insertRowsAtIndexPaths:indexPaths withAnimationOption:kASCollectionViewAnimationNone completion:completion];
+  ASDisplayNodeAssertMainThread();
+  [_dataController insertRowsAtIndexPaths:indexPaths withAnimationOptions:kASCollectionViewAnimationNone];
 }
 
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths
 {
-    [self deleteItemsAtIndexPaths:indexPaths completion:nil];
-}
-
-- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths completion:(void (^)())completion
-{
-    [_dataController deleteRowsAtIndexPaths:indexPaths withAnimationOption:kASCollectionViewAnimationNone completion:completion];
+  ASDisplayNodeAssertMainThread();
+  [_dataController deleteRowsAtIndexPaths:indexPaths withAnimationOptions:kASCollectionViewAnimationNone];
 }
 
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
 {
-  [_dataController reloadRowsAtIndexPaths:indexPaths withAnimationOption:kASCollectionViewAnimationNone];
+  ASDisplayNodeAssertMainThread();
+  [_dataController reloadRowsAtIndexPaths:indexPaths withAnimationOptions:kASCollectionViewAnimationNone];
 }
 
 - (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath
 {
-  [_dataController moveRowAtIndexPath:indexPath toIndexPath:newIndexPath withAnimationOption:kASCollectionViewAnimationNone];
+  ASDisplayNodeAssertMainThread();
+  [_dataController moveRowAtIndexPath:indexPath toIndexPath:newIndexPath withAnimationOptions:kASCollectionViewAnimationNone];
 }
 
 - (ASCellNode *)nodeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -377,22 +389,55 @@ static BOOL _isInterceptedSelector(SEL sel)
 - (ASScrollDirection)scrollDirection
 {
   CGPoint scrollVelocity = [self.panGestureRecognizer velocityInView:self.superview];
+  return [self scrollDirectionForVelocity:scrollVelocity];
+}
+  
+- (ASScrollDirection)scrollDirectionForVelocity:(CGPoint)scrollVelocity
+{
   ASScrollDirection direction = ASScrollDirectionNone;
-  if (_layoutController.layoutDirection == ASFlowLayoutDirectionHorizontal) {
-    if (scrollVelocity.x > 0) {
-      direction = ASScrollDirectionRight;
-    } else if (scrollVelocity.x < 0) {
-      direction = ASScrollDirectionLeft;
-    }
-  } else {
-    if (scrollVelocity.y > 0) {
-      direction = ASScrollDirectionDown;
+  ASScrollDirection scrollableDirections = [self scrollableDirections];
+  
+  if (ASScrollDirectionContainsHorizontalDirection(scrollableDirections)) { // Can scroll horizontally.
+    if (scrollVelocity.x >= 0) {
+      direction |= ASScrollDirectionRight;
     } else {
-      direction = ASScrollDirectionUp;
+      direction |= ASScrollDirectionLeft;
+    }
+  }
+  if (ASScrollDirectionContainsVerticalDirection(scrollableDirections)) { // Can scroll vertically.
+    if (scrollVelocity.y >= 0) {
+      direction |= ASScrollDirectionDown;
+    } else {
+      direction |= ASScrollDirectionUp;
     }
   }
 
   return direction;
+}
+
+- (ASScrollDirection)scrollableDirections
+{
+  if ([self.collectionViewLayout asdk_isFlowLayout]) {
+    return [self flowLayoutScrollableDirections:(UICollectionViewFlowLayout *)self.collectionViewLayout];
+  } else {
+    return [self nonFlowLayoutScrollableDirections];
+  }
+}
+
+- (ASScrollDirection)flowLayoutScrollableDirections:(UICollectionViewFlowLayout *)flowLayout {
+  return (flowLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) ? ASScrollDirectionHorizontalDirections : ASScrollDirectionVerticalDirections;
+}
+
+- (ASScrollDirection)nonFlowLayoutScrollableDirections
+{
+  ASScrollDirection scrollableDirection = ASScrollDirectionNone;
+  if (self.contentSize.width > self.bounds.size.width) { // Can scroll horizontally.
+    scrollableDirection |= ASScrollDirectionHorizontalDirections;
+  }
+  if (self.contentSize.height > self.bounds.size.height) { // Can scroll vertically.
+    scrollableDirection |= ASScrollDirectionVerticalDirections;
+  }
+  return scrollableDirection;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
@@ -467,7 +512,7 @@ static BOOL _isInterceptedSelector(SEL sel)
 {
   CGSize restrainedSize = self.bounds.size;
 
-  if (_layoutController.layoutDirection == ASFlowLayoutDirectionHorizontal) {
+  if (ASScrollDirectionContainsHorizontalDirection([self scrollableDirections])) {
     restrainedSize.width = FLT_MAX;
   } else {
     restrainedSize.height = FLT_MAX;
@@ -517,14 +562,31 @@ static BOOL _isInterceptedSelector(SEL sel)
   _performingBatchUpdates = YES;
 }
 
-- (void)rangeControllerEndUpdates:(ASRangeController *)rangeController completion:(void (^)(BOOL))completion {
+- (void)rangeController:(ASRangeController *)rangeController endUpdatesAnimated:(BOOL)animated completion:(void (^)(BOOL))completion {
   ASDisplayNodeAssertMainThread();
+
+  if (!self.asyncDataSource) {
+    if (completion) {
+      completion(NO);
+    }
+    return; // if the asyncDataSource has become invalid while we are processing, ignore this request to avoid crashes
+  }
+
+  BOOL animationsEnabled = NO;
+
+  if (!animated) {
+    animationsEnabled = [UIView areAnimationsEnabled];
+    [UIView setAnimationsEnabled:NO];
+  }
 
   [super performBatchUpdates:^{
     [_batchUpdateBlocks enumerateObjectsUsingBlock:^(dispatch_block_t block, NSUInteger idx, BOOL *stop) {
       block();
     }];
   } completion:^(BOOL finished) {
+    if (!animated) {
+      [UIView setAnimationsEnabled:animationsEnabled];
+    }
     if (completion) {
       completion(finished);
     }
@@ -551,9 +613,14 @@ static BOOL _isInterceptedSelector(SEL sel)
   return [_dataController nodesAtIndexPaths:indexPaths];
 }
 
-- (void)rangeController:(ASRangeController *)rangeController didInsertNodesAtIndexPaths:(NSArray *)indexPaths withAnimationOption:(ASDataControllerAnimationOptions)animationOption
+- (void)rangeController:(ASRangeController *)rangeController didInsertNodes:(NSArray *)nodes atIndexPaths:(NSArray *)indexPaths withAnimationOptions:(ASDataControllerAnimationOptions)animationOptions
 {
   ASDisplayNodeAssertMainThread();
+
+  if (!self.asyncDataSource) {
+    return; // if the asyncDataSource has become invalid while we are processing, ignore this request to avoid crashes
+  }
+
   if (_performingBatchUpdates) {
     [_batchUpdateBlocks addObject:^{
       [super insertItemsAtIndexPaths:indexPaths];
@@ -565,9 +632,13 @@ static BOOL _isInterceptedSelector(SEL sel)
   }
 }
 
-- (void)rangeController:(ASRangeController *)rangeController didDeleteNodesAtIndexPaths:(NSArray *)indexPaths withAnimationOption:(ASDataControllerAnimationOptions)animationOption
+- (void)rangeController:(ASRangeController *)rangeController didDeleteNodes:(NSArray *)nodes atIndexPaths:(NSArray *)indexPaths withAnimationOptions:(ASDataControllerAnimationOptions)animationOptions
 {
   ASDisplayNodeAssertMainThread();
+
+  if (!self.asyncDataSource) {
+    return; // if the asyncDataSource has become invalid while we are processing, ignore this request to avoid crashes
+  }
 
   if (_performingBatchUpdates) {
     [_batchUpdateBlocks addObject:^{
@@ -580,9 +651,13 @@ static BOOL _isInterceptedSelector(SEL sel)
   }
 }
 
-- (void)rangeController:(ASRangeController *)rangeController didInsertSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOption:(ASDataControllerAnimationOptions)animationOption
+- (void)rangeController:(ASRangeController *)rangeController didInsertSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOptions:(ASDataControllerAnimationOptions)animationOptions
 {
   ASDisplayNodeAssertMainThread();
+
+  if (!self.asyncDataSource) {
+    return; // if the asyncDataSource has become invalid while we are processing, ignore this request to avoid crashes
+  }
 
   if (_performingBatchUpdates) {
     [_batchUpdateBlocks addObject:^{
@@ -595,9 +670,13 @@ static BOOL _isInterceptedSelector(SEL sel)
   }
 }
 
-- (void)rangeController:(ASRangeController *)rangeController didDeleteSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOption:(ASDataControllerAnimationOptions)animationOption
+- (void)rangeController:(ASRangeController *)rangeController didDeleteSectionsAtIndexSet:(NSIndexSet *)indexSet withAnimationOptions:(ASDataControllerAnimationOptions)animationOptions
 {
   ASDisplayNodeAssertMainThread();
+
+  if (!self.asyncDataSource) {
+    return; // if the asyncDataSource has become invalid while we are processing, ignore this request to avoid crashes
+  }
 
   if (_performingBatchUpdates) {
     [_batchUpdateBlocks addObject:^{

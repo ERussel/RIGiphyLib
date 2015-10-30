@@ -13,7 +13,13 @@
 #import <AsyncDisplayKit/ASDealloc2MainObject.h>
 
 
+/**
+ * UIView creation block. Used to create the backing view of a new display node.
+ */
 typedef UIView *(^ASDisplayNodeViewBlock)();
+/**
+ * CALayer creation block. Used to create the backing layer of a new display node.
+ */
 typedef CALayer *(^ASDisplayNodeLayerBlock)();
 
 /**
@@ -50,6 +56,8 @@ typedef CALayer *(^ASDisplayNodeLayerBlock)();
 /**
  * @abstract Alternative initializer with a block to create the backing view.
  *
+ * @param viewBlock The block that will be used to create the backing view.
+ *
  * @return An ASDisplayNode instance that loads its view with the given block that is guaranteed to run on the main
  * queue. The view will render synchronously and -layout and touch handling methods on the node will not be called.
  */
@@ -57,6 +65,8 @@ typedef CALayer *(^ASDisplayNodeLayerBlock)();
 
 /**
  * @abstract Alternative initializer with a block to create the backing layer.
+ *
+ * @param viewBlock The block that will be used to create the backing layer.
  *
  * @return An ASDisplayNode instance that loads its layer with the given block that is guaranteed to run on the main
  * queue. The layer will render synchronously and -layout and touch handling methods on the node will not be called.
@@ -331,7 +341,7 @@ typedef CALayer *(^ASDisplayNodeLayerBlock)();
  * This method is used to notify the node that it should purge any content that is both expensive to fetch and to
  * retain in memory.
  *
- * @see clearFetchedData and fetchData
+ * @see ASDisplayNode(Subclassing):clearFetchedData and fetchData
  */
 - (void)recursivelyClearFetchedData;
 
@@ -340,7 +350,7 @@ typedef CALayer *(^ASDisplayNodeLayerBlock)();
  *
  * @discussion Fetches content from remote sources for the current node and all subnodes.
  *
- * @see fetchData and clearFetchedData
+ * @see ASDisplayNode(Subclassing):fetchData and clearFetchedData
  */
 - (void)recursivelyFetchData;
 
@@ -431,6 +441,16 @@ typedef CALayer *(^ASDisplayNodeLayerBlock)();
  * @return The converted rectangle.
  */
 - (CGRect)convertRect:(CGRect)rect fromNode:(ASDisplayNode *)node;
+
+/** @name UIResponder methods */
+
+// By default these fall through to the underlying view, but can be overridden.
+- (BOOL)canBecomeFirstResponder;                                            // default==NO
+- (BOOL)becomeFirstResponder;                                               // default==NO (no-op)
+- (BOOL)canResignFirstResponder;                                            // default==YES
+- (BOOL)resignFirstResponder;                                               // default==NO (no-op)
+- (BOOL)isFirstResponder;
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender;
 
 @end
 
@@ -533,6 +553,9 @@ typedef CALayer *(^ASDisplayNodeLayerBlock)();
 @property (atomic, assign)           BOOL accessibilityViewIsModal;
 @property (atomic, assign)           BOOL shouldGroupAccessibilityChildren;
 
+// Accessibility identification support
+@property (nonatomic, copy)          NSString *accessibilityIdentifier;
+
 @end
 
 /*
@@ -542,18 +565,22 @@ typedef CALayer *(^ASDisplayNodeLayerBlock)();
 @interface ASDisplayNode (ASDisplayNodeAsyncTransactionContainer) <ASDisplayNodeAsyncTransactionContainer>
 @end
 
-
+/** UIVIew(AsyncDisplayKit) defines convenience method for adding sub-ASDisplayNode to an UIView. */
 @interface UIView (AsyncDisplayKit)
 /**
  * Convenience method, equivalent to [view addSubview:node.view] or [view.layer addSublayer:node.layer] if layer-backed.
+ *
+ * @param node The node to be added.
  */
 - (void)addSubnode:(ASDisplayNode *)node;
 @end
 
-
+/** CALayer(AsyncDisplayKit) defines convenience method for adding sub-ASDisplayNode to a CALayer. */
 @interface CALayer (AsyncDisplayKit)
 /**
  * Convenience method, equivalent to [layer addSublayer:node.layer].
+ *
+ * @param node The node to be added.
  */
 - (void)addSubnode:(ASDisplayNode *)node;
 @end

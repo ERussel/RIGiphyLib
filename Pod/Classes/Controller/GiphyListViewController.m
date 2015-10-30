@@ -806,7 +806,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                                                                                                  [weakSelf.searchResults addObjectsFromArray:gifObjectsArray];
                                                                                                  
                                                                                                  // update collection view
-                                                                                                 [weakSelf.searchCollectionView insertItemsAtIndexPaths:insertIndexPaths completion:nil];
+                                                                                                 [weakSelf.searchCollectionView insertItemsAtIndexPaths:insertIndexPaths];
                                                                                                  
                                                                                                  // complete batch request
                                                                                                  [weakSelf.searchBatchContext completeBatchFetching:[gifObjectsArray count] == kGiphySearchPageSize];
@@ -993,7 +993,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                 [weakSelf.categoryCollectionView setContentOffset:CGPointMake(0.0f, -weakSelf.categoryCollectionView.contentInset.top)];
                 
                 [weakSelf clearInvisibleNodesForNodeClass:[GiphyCategoryCollectionViewNode class]];
-                [weakSelf.categoryCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0] completion:nil];
+                [weakSelf.categoryCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
                 
                 // if categories not found switch to error state
                 if (weakSelf.listType == kGiphyListTypeCategories) {
@@ -1053,7 +1053,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                                                                                          // update search collection view
                                                                                          [weakSelf.searchCollectionView setContentOffset:CGPointMake(0.0f, -weakSelf.searchCollectionView.contentInset.top)];
                                                                                          [weakSelf clearInvisibleNodesForNodeClass:[GiphySearchCollectionViewNode class]];
-                                                                                         [weakSelf.searchCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0] completion:nil];
+                                                                                         [weakSelf.searchCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
                                                                                          
                                                                                          // if GIFs not found than switch to error state
                                                                                          if (weakSelf.listType == kGiphyListTypeSearchResults) {
@@ -1336,7 +1336,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                 
                 // clear search collection view
                 [self clearInvisibleNodesForNodeClass:[GiphySearchCollectionViewNode class]];
-                [_searchCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0] completion:nil];
+                [_searchCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
             }
         }];
         
