@@ -13,6 +13,8 @@
 #pragma mark - Initialize
 
 - (instancetype)initWithGifId:(NSString*)gifId
+                thumbnailSize:(CGSize)thumbnailSize
+                 originalSize:(CGSize)originalSize
             thumbnailStillURL:(NSURL*)thumbnailStillURL
              originalStillURL:(NSURL*)originalStillURL
               thumbnailGifURL:(NSURL*)thumbnailGifURL
@@ -20,6 +22,8 @@
     self = [super init];
     if (self) {
         _gifId = gifId;
+        _thumbnailSize = thumbnailSize;
+        _originalSize = originalSize;
         _thumbnailStillURL = thumbnailStillURL;
         _originalStillURL = originalStillURL;
         _thumbnailGifURL = thumbnailGifURL;

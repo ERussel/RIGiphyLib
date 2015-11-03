@@ -19,6 +19,16 @@
 @property(nonatomic, copy)NSString *gifId;
 
 /**
+ *  Thumbnail GIF's disply size.
+ */
+@property(nonatomic, readwrite)CGSize thumbnailSize;
+
+/**
+ *  Original GIF's display size.
+ */
+@property(nonatomic, readwrite)CGSize originalSize;
+
+/**
  *  URL to download placeholder thumbnail image.
  */
 @property(nonatomic, copy)NSURL *thumbnailStillURL;
@@ -41,6 +51,8 @@
 /**
  *  Creates gif object with default information.
  *  @param gifId                Uniqueue gif identifier.
+ *  @param thumbnailSize        Thumbnail GIF's disply size.
+ *  @param originalSize         Original GIF's display size.
  *  @param thumbnailStillURL    URL to download placeholder thumbnail image.
  *  @param originalStillURL     URL to download placeholder original image.
  *  @param thumbnailGifURL      URL to download thumbnail gif.
@@ -48,6 +60,8 @@
  *  @return Initialized GIF object.
  */
 - (instancetype)initWithGifId:(NSString*)gifId
+                              thumbnailSize:(CGSize)thumbnailSize
+                              originalSize:(CGSize)originalSize
               thumbnailStillURL:(NSURL*)thumbnailStillURL
              originalStillURL:(NSURL*)originalStillURL
                 thumbnailGifURL:(NSURL*)thumbnailGifURL
