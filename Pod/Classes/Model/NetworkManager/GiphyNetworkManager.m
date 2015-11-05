@@ -43,6 +43,11 @@ NSString * const kYandexAPIURL = @"https://translate.yandex.net/api/v1.5/tr.json
 NSString * const kYandexTranslatorAPIKey = @"trnsl.1.1.20150728T154240Z.76c8421d8a33d635.c1bb4bc674c3b9b6c42e3b1a2a1408fa323b68b2";
 
 /**
+ *  Giphy api base url string.
+ */
+NSString * const kGiphyAPIBaseURL = @"https://api.giphy.com/v1/gifs";
+
+/**
  *  Giphy search by description url string
  */
 NSString * const kGiphyAPISearchURL = @"https://api.giphy.com/v1/gifs/search";
@@ -239,6 +244,83 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
                                        failBlock:giphyFailBlock
                                         userInfo:@{kGiphyRequestUserInfoAttemptCompletionBlockKey : attemptCompletionBlock}];
+    
+    return giphyRequest;
+}
+
+- (id)getGifById:(NSString*)gifId
+    successBlock:(void (^)(GiphyGIFObject *gifObject))successBlock
+    failureBlock:(void (^)(NSError *error))failureBlock{
+    NSAssert(gifId.length > 0, @"Gif id can't be nil");
+    
+    // create fetch request
+    NSError *error = nil;
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
+                                                                                 URLString:[kGiphyAPIBaseURL stringByAppendingPathComponent:gifId]
+                                                                                parameters:@{@"api_key": kGiphyAPIPublicBetaKey}
+                                                                                     error:&error];
+    
+    if (error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (failureBlock) {
+                failureBlock(error);
+            }
+        });
+        
+        return nil;
+    }
+    
+    request.timeoutInterval = kNetworkManagerDefaultTimeoutInterval;
+    
+    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, id result){
+        if ([self hasRequest:giphyRequest]) {
+            [self completeRequest:giphyRequest];
+            
+            if(successBlock) {
+                // parse giphy objects to internal gif objects
+                GiphyGIFObject *gifObject = nil;
+                id giphyData = result[@"data"];
+                
+                if (giphyData) {
+                    if([giphyData isKindOfClass:[NSDictionary class]]) {
+                        gifObject = [GiphyGIFObject gifObjectFromGiphyDictionary:giphyData];
+                    }else if([giphyData isKindOfClass:[NSArray class]] && [giphyData count] > 0){
+                        NSDictionary *giphyGif = [giphyData firstObject];
+                        gifObject = [GiphyGIFObject gifObjectFromGiphyDictionary:giphyGif];
+                    }
+                }
+                
+                successBlock(gifObject);
+            }
+        }
+    };
+    
+    GiphyRequestFailBlock giphyFailBlock = ^(GiphyRequest *giphyRequest, NSError *error){
+        if ([self hasRequest:giphyRequest]) {
+            [self completeRequest:giphyRequest];
+            
+            if (failureBlock) {
+                failureBlock(error);
+            }
+        }
+    };
+    
+    // setup attempt block to be notified about failed fetch attempts
+    GiphyRequestAttemptCompletionBlock attemptCompletionBlock = ^(GiphyRequest *giphyRequest, NSInteger madeAttempts){
+        NSLog(@"Made attempts %@ to fetch gif by id %@", @(madeAttempts), gifId);
+    };
+    
+    // wrap repeatable gif get by id request and execute
+    GiphyRequest *giphyRequest = [GiphyRequest requestWithRequest:request];
+    giphyRequest.operationType = kGiphyRequestTypeDefault;
+    
+    // save to proccess response only for active request
+    [self addRequest:giphyRequest];
+    
+    [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
+                                       failBlock:giphyFailBlock
+                                        userInfo:@{kGiphyRequestUserInfoAttemptCompletionBlockKey : attemptCompletionBlock,
+                                                   kGiphyRequestUserInfoSerializerKey : [AFJSONResponseSerializer serializer]}];
     
     return giphyRequest;
 }

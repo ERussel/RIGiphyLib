@@ -118,6 +118,17 @@ typedef enum{
                            failureBlock:(void (^)(NSError *error))failureBlock;
 
 /**
+ *  Fetch gif object by id.
+ *  @param gifId        NSString unique gif id to fetch object by.
+ *  @param successBlock Block to call on successfull gif fetch.
+ *  @param failureBlock Block to call on failed gif fetch.
+ *  @return Object to cancel request if needed.
+ */
+- (id)getGifById:(NSString*)gifId
+    successBlock:(void (^)(GiphyGIFObject *gifObject))successBlock
+    failureBlock:(void (^)(NSError *error))failureBlock;
+
+/**
  *  Fetches gifs by searching with phrase (search text) using giphy.com API.
  *  @param searchText   Pharase (search text) to fetch gifs for. Must not be empty.
  *  @param searchType   Type of the gifs search logic.
