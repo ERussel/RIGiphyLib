@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3226CDA00ACAA911FD458D23'
+               BlueprintIdentifier = '24043FB839EFA9C81E8C4A9A'
                BlueprintName = 'RIGiphyLib'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libRIGiphyLib.a'>

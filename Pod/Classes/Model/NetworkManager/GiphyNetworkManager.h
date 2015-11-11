@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
 #import <AFNetworking/AFNetworking.h>
 #import "GiphyImageCacheProtocol.h"
 #import "GiphyNetworkActivityProtocol.h"
@@ -109,7 +108,7 @@ typedef enum{
                           failureBlock:(void (^)(NSError *error))failureBlock;
 
 /**
- *  Fetch build-in gif categories from Parse server.
+ *  Fetch build-in gif categories from server.
  *  @param successBlock Block to call when request completes successfully. Categories list will be passed as block's parameter.
  *  @param failureBlock Block to call when request fails. Error will be passed as block's parameter.
  *  @return Object to cancel request if needed.

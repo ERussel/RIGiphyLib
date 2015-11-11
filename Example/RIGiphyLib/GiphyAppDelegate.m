@@ -7,7 +7,6 @@
 //
 
 #import "GiphyAppDelegate.h"
-#import <Parse/Parse.h>
 
 @implementation GiphyAppDelegate
 

@@ -7,6 +7,7 @@
 //
 
 #import "GiphyNetworkManager.h"
+#import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "FLAnimatedImageSerializer.h"
 #import "GiphyGIFObject+Parser.h"
 #import "GiphyCategoryObject+Parse.h"
@@ -127,7 +128,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     self = [super init];
     if (self){
         _requests = [[NSMutableArray alloc] init];
-        _networkActivityManager = (id<GiphyNetworkActivityProtocol>)[PFNetworkActivityIndicatorManager sharedManager];
+        _networkActivityManager = (id<GiphyNetworkActivityProtocol>)[AFNetworkActivityIndicatorManager sharedManager];
     }
     
     return self;

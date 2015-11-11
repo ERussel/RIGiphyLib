@@ -59,15 +59,6 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
                     successBlock:(GiphyRequestSuccessBlock)successBlock
                        failBlock:(GiphyRequestFailBlock)failBlock;
 
-/**
- *  Creates operation based on Parse query and starts.
- *  @param foundationRequest    Parse query to create and run operation.
- *  @param successBlock         Block to call when operation completes successfully.
- *  @param failBlock            Block to call if operation fails and no remained attempts to repeat.
- */
-- (void)executeParseQuery:(PFQuery*)parseQuery
-             successBlock:(GiphyRequestSuccessBlock)successBlock
-                failBlock:(GiphyRequestFailBlock)failBlock;
 
 /**
  *  Changes request state to completed and clears operation related data.
@@ -116,12 +107,6 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
 + (instancetype)requestWithRequest:(NSURLRequest*)request{
     GiphyRequest *giphyRequest = [[self alloc] init];
     giphyRequest.requestObject = request;
-    return giphyRequest;
-}
-
-+ (instancetype)requestWithParseQuery:(PFQuery *)query{
-    GiphyRequest *giphyRequest = [[self alloc] init];
-    giphyRequest.requestObject = query;
     return giphyRequest;
 }
 
@@ -221,15 +206,9 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
     _madeAttempts++;
     
     // start operation based on type
-    if ([_requestObject isKindOfClass:[NSURLRequest class]]) {
-        [self executeFoundationRequest:_requestObject
-                          successBlock:self.successBlock
-                             failBlock:self.failBlock];
-    }else if ([_requestObject isKindOfClass:[PFQuery class]]){
-        [self executeParseQuery:_requestObject
-                   successBlock:self.successBlock
-                      failBlock:self.failBlock];
-    }
+    [self executeFoundationRequest:_requestObject
+                      successBlock:self.successBlock
+                         failBlock:self.failBlock];
 }
 
 - (void)executeFoundationRequest:(NSURLRequest*)foundationRequest
@@ -298,52 +277,6 @@ NSString * const kGiphyRequestUserInfoDownloadProgressBlock = @"GiphyRequestUser
     
     // start operation
     [[[self class] af_sharedOperationQueue] addOperation:_activeOperation];
-}
-
-- (void)executeParseQuery:(PFQuery*)parseQuery
-                    successBlock:(GiphyRequestSuccessBlock)successBlock
-                       failBlock:(GiphyRequestFailBlock)failBlock{
-    // save operation
-    _activeOperation = parseQuery;
-    __weak __typeof(self) weakSelf = self;
-
-    [parseQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if (!error || [error code] != NSURLErrorCancelled) {
-            if (!error) {
-                // complete operation
-                [weakSelf completeExecution];
-                
-                // return result via success block
-                if (successBlock) {
-                    successBlock(weakSelf,objects);
-                }
-            }else{
-                if (weakSelf.madeAttempts < weakSelf.maxAttempts) {
-                    // notify about attempt completion
-                    GiphyRequestAttemptCompletionBlock attemptCompletionBlock = [weakSelf.userInfo objectForKey:kGiphyRequestUserInfoAttemptCompletionBlockKey];
-                    if (attemptCompletionBlock) {
-                        attemptCompletionBlock(weakSelf,weakSelf.madeAttempts);
-                    }
-                    
-                    // repeat failed operation if there is remained attempts
-                    [weakSelf start];
-                }else{
-                    //complete operation
-                    [weakSelf completeExecution];
-                    
-                    // return error via fail block
-                    if (failBlock) {
-                        failBlock(weakSelf,error);
-                    }
-                }
-            }
-        }else {
-            if(weakSelf.executing){
-                // complete request if was cancelled by the system
-                [weakSelf cancel];
-            }
-        }
-    }];
 }
 
 - (void)completeExecution{

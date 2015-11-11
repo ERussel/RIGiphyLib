@@ -28,9 +28,6 @@
     "MBProgressHUD": [
       "~> 0.9.1"
     ],
-    "Parse": [
-
-    ],
     "AsyncDisplayKit": [
 
     ]

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
-#import <Parse/Parse.h>
 
 @class GiphyRequest;
 
@@ -63,13 +62,6 @@ typedef void (^GiphyRequestAttemptCompletionBlock)(GiphyRequest *request, NSInte
  *  @return Initialized repeating request.
  */
 + (instancetype)requestWithRequest:(NSURLRequest*)request;
-
-/**
- *  Creates repeating request with Parse request.
- *  @param query  Parse request to initialize with.
- *  @return Initialized repeating request.
- */
-+ (instancetype)requestWithParseQuery:(PFQuery *)query;
 
 /**
  *  Number of attempts restriction bound.
