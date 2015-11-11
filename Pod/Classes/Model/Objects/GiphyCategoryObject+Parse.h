@@ -20,4 +20,9 @@
  */
 + (instancetype)categoryFromPFObject:(PFObject*)pfCategory;
 
+/**
+ *  @return Category created from Parse category dictionary.
+ */
++ (instancetype)categoryFromDictionary:(NSDictionary*)pfCategory;
+
 @end

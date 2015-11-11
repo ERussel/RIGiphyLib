@@ -7,7 +7,6 @@
 //
 
 #import "GiphyRequest.h"
-#import <AFNetworking/AFNetworking.h>
 
 NSString * const kGiphyRequestUserInfoSerializerKey = @"GiphyRequestUserInfoSerializerKey";
 NSString * const kGiphyRequestUserInfoAttemptCompletionBlockKey = @"GiphyRequestUserInfoAttemptCompletionBlockKey";

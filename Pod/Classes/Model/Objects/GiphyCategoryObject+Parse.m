@@ -17,4 +17,11 @@
                                                  andGifURL:[NSURL URLWithString:pfCategory[@"smallGIFURLString"]]];
 }
 
++ (instancetype)categoryFromDictionary:(NSDictionary*)pfCategory{
+    return [[GiphyCategoryObject alloc] initWithCategoryId:pfCategory[@"objectId"]
+                                                    titles:pfCategory[@"titles"]
+                                                  stillURL:[NSURL URLWithString:pfCategory[@"stillURLString"]]
+                                                 andGifURL:[NSURL URLWithString:pfCategory[@"smallGIFURLString"]]];
+}
+
 @end

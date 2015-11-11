@@ -33,6 +33,21 @@ NSString * const kGiphyNetworkManagerRecievedObjectKey = @"GiphyNetworkManagerRe
 NSString * const kGiphyNetworkManagerRecievedObjectURLKey = @"GiphyNetworkManagerRecievedObjectURLKey";
 
 /**
+ *  Application's id registered on server.
+ */
+NSString * const kServerAppId = @"aTxS0APLlsPL63vsrB5OEJjKq1snWqmJ4MWaUGeG";
+
+/**
+ *  Application's key to access server's data.
+ */
+NSString * const kServerAPIKey = @"8l7t5cfT5rQBgN3qPSoNU7t5qlMXojcUwcU1hBdD";
+
+/**
+ *  URL to fetch categories from server.
+ */
+NSString * const kServerCategoriesURL = @"https://api.parse.com/1/classes/Category";
+
+/**
  *  Yandex Translate API base url string.
  */
 NSString * const kYandexAPIURL = @"https://translate.yandex.net/api/v1.5/tr.json/translate";
@@ -199,17 +214,22 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 -(id)getCategoriesWithSuccessBlock:(void (^)(NSArray *gifCategoriesObjects))successBlock
                       failureBlock:(void (^)(NSError *error))failureBlock
 {
-    // create query to load categories
-    PFQuery* categoryQuery = [PFQuery queryWithClassName:@"Category"];
-
-    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, NSArray* result){
+    // create request to load categories from server
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kServerCategoriesURL]];
+    [request setValue:kServerAppId forHTTPHeaderField:@"X-Parse-Application-Id"];
+    [request setValue:kServerAPIKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+    
+    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, NSDictionary* result){
         if ([self hasRequest:giphyRequest]) {
             [self completeRequest:giphyRequest];
             
+            // extract categories
+            NSArray *parseCategories = [result objectForKey:@"results"];
+            
             // transform Parse categories to internal objects
             NSMutableArray *categories = [NSMutableArray array];
-            for (PFObject* pfcategory in result) {
-                GiphyCategoryObject *category = [GiphyCategoryObject categoryFromPFObject:pfcategory];
+            for (NSDictionary* pfcategory in parseCategories) {
+                GiphyCategoryObject *category = [GiphyCategoryObject categoryFromDictionary:pfcategory];
                 [categories addObject:category];
             }
             
@@ -235,7 +255,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     };
     
     // wrap repeatable request to load categories and execute
-    GiphyRequest *giphyRequest = [GiphyRequest requestWithParseQuery:categoryQuery];
+    GiphyRequest *giphyRequest = [GiphyRequest requestWithRequest:request];
     giphyRequest.operationType = kGiphyRequestTypeDefault;
     
     // save to local store to proccess result only for active requests
@@ -243,7 +263,8 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     
     [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
                                        failBlock:giphyFailBlock
-                                        userInfo:@{kGiphyRequestUserInfoAttemptCompletionBlockKey : attemptCompletionBlock}];
+                                        userInfo:@{kGiphyRequestUserInfoAttemptCompletionBlockKey : attemptCompletionBlock,
+                                                   kGiphyRequestUserInfoSerializerKey : [AFJSONResponseSerializer serializer]}];
     
     return giphyRequest;
 }
