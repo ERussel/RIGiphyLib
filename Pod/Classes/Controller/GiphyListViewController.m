@@ -598,6 +598,7 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     // add default styled label to display in error state
     UILabel *errorLabel = [[UILabel alloc] init];
     errorLabel.backgroundColor = [UIColor clearColor];
+    errorLabel.textColor = [UIColor colorWithWhite:180.0f/255.0f alpha:1.0f];
     errorLabel.numberOfLines = 0;
     [contentView addSubview:errorLabel];
     _errorLabel = errorLabel;
