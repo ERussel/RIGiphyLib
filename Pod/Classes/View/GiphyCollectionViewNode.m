@@ -105,33 +105,6 @@
 
 #pragma mark - Subclass
 
-- (void)didLoad{
-    [super didLoad];
-    
-    [self fetchData];
-}
-
-- (void)fetchData{
-    [super fetchData];
-    
-    if (!self.gifCancellationToken && _gifURL) {
-        __weak __typeof(self) weakSelf = self;
-        self.gifCancellationToken = [[GiphyNetworkManager sharedManager] getGIFByURL:_gifURL
-                                                                         cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                                                        successBlock:^(FLAnimatedImage *animatedImage){
-            if (weakSelf.gifCancellationToken) {
-                weakSelf.gifCancellationToken = nil;
-                
-                [(FLAnimatedImageView*)[weakSelf.gifDisplayNode view] setAnimatedImage:animatedImage];
-                weakSelf.contentEmpty = NO;
-                [weakSelf updateLoadingState];
-            }
-        } progressBlock:nil failureBlock:^(NSError *error){
-            weakSelf.gifCancellationToken = nil;
-        }];
-    }
-}
-
 - (void)clearFetchedData{
     [super clearFetchedData];
     
@@ -158,6 +131,27 @@
     _gifDisplayNode.frame = CGRectMake(0.0f, 0.0f, self.calculatedSize.width, self.calculatedSize.height);
 }
 
+#pragma mark - Gif
+
+- (void)startGifLoadingIfNeeded{
+    if (!self.gifCancellationToken && _gifURL) {
+        __weak __typeof(self) weakSelf = self;
+        self.gifCancellationToken = [[GiphyNetworkManager sharedManager] getGIFByURL:_gifURL
+                                                                         cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                                                        successBlock:^(FLAnimatedImage *animatedImage){
+                                                                            if (weakSelf.gifCancellationToken) {
+                                                                                weakSelf.gifCancellationToken = nil;
+                                                                                
+                                                                                [(FLAnimatedImageView*)[weakSelf.gifDisplayNode view] setAnimatedImage:animatedImage];
+                                                                                weakSelf.contentEmpty = NO;
+                                                                                [weakSelf updateLoadingState];
+                                                                            }
+                                                                        } progressBlock:nil failureBlock:^(NSError *error){
+                                                                            weakSelf.gifCancellationToken = nil;
+                                                                        }];
+    }
+}
+
 #pragma mark - Network Image Node Delegate
 
 - (void)imageNode:(ASNetworkImageNode *)imageNode didLoadImage:(UIImage *)image{
@@ -178,6 +172,8 @@
         self.contentEmpty = NO;
         [self updateLoadingState];
     }
+    
+    [self startGifLoadingIfNeeded];
 }
 
 #pragma mark - Notification

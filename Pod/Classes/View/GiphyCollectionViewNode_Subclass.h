@@ -33,4 +33,11 @@
 
 @property(nonatomic)id gifCancellationToken;
 
+#pragma mark - Gif
+
+/**
+ *  Starts gif loading if correponding url provided and operation is not already in progress.
+ */
+- (void)startGifLoadingIfNeeded;
+
 @end
