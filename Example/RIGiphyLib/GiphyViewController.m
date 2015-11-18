@@ -8,6 +8,7 @@
 
 #import "GiphyViewController.h"
 #import <RIGiphyLib/GiphyNavigationController.h>
+#import "TMCache+GiphyCacheProtocol.h"
 
 @interface GiphyViewController ()<GiphyNavigationControllerDelegate>
 
@@ -36,16 +37,20 @@
 - (void)giphyNavigationController:(GiphyNavigationController *)giphyNavigationController didSelectGIFObject:(GiphyGIFObject *)gifObject{
     NSLog(@"Did select GIF %@",gifObject.originalGifURL);
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [[[TMCache sharedCache] memoryCache] removeAllObjects];
 }
 
 - (void)giphyNavigationControllerDidCancel:(GiphyNavigationController *)giphyNavigationController{
     NSLog(@"Did cancel GIF picking");
+    
+    [[[TMCache sharedCache] memoryCache] removeAllObjects];
 }
 
 #pragma mark - Action
 
 - (IBAction)actionOpenGIF:(id)sender{
-    GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithCache:nil
+    GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithCache:[TMCache sharedCache]
                                                                                       dataManager:nil
                                                                            networkActivityManager:nil];
     giphyController.delegate = self;

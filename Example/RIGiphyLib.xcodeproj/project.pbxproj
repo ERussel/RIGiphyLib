@@ -21,6 +21,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		84BE19471BDD575000E28C82 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BE19461BDD575000E28C82 /* Launch Screen.storyboard */; };
+		84D137BE1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D137BD1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		BBFE7B083E80804C1EAD528B /* libPods-RIGiphyLib_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AE04AF9E80AA7CB5C78BB7 /* libPods-RIGiphyLib_Tests.a */; };
 		FBDC4AB0AC9DE797C1C8C4E5 /* libPods-RIGiphyLib_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 426AFFD8BE48DF9302E87AB7 /* libPods-RIGiphyLib_Example.a */; };
@@ -62,6 +63,8 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		84BE19461BDD575000E28C82 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		84D137BC1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMCache+GiphyCacheProtocol.h"; sourceTree = "<group>"; };
+		84D137BD1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TMCache+GiphyCacheProtocol.m"; sourceTree = "<group>"; };
 		84FEC6071BDD3C270007FEB1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84FEC6081BDD3C280007FEB1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				84BE19461BDD575000E28C82 /* Launch Screen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				84D137BC1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.h */,
+				84D137BD1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.m */,
 			);
 			name = "Example for RIGiphyLib";
 			path = RIGiphyLib;
@@ -402,6 +407,7 @@
 			files = (
 				6003F59E195388D20070C39A /* GiphyAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* GiphyViewController.m in Sources */,
+				84D137BE1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

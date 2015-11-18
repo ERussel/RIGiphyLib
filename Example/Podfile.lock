@@ -30,11 +30,13 @@ PODS:
     - AsyncDisplayKit
     - FLAnimatedImage (~> 1.0)
     - MBProgressHUD (~> 0.9.1)
+  - TMCache (2.1.0)
 
 DEPENDENCIES:
   - AsyncDisplayKit (from `https://github.com/ERussel/AsyncDisplayKit.git`, commit
     `d8d26b48c1693afd4caaca5e20274c4d6a1ba632`, branch `feed_implementation`)
   - RIGiphyLib (from `../`)
+  - TMCache
 
 EXTERNAL SOURCES:
   AsyncDisplayKit:
@@ -56,5 +58,6 @@ SPEC CHECKSUMS:
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   RIGiphyLib: 08f19125f261e7c7977a8a08b1b3af663aaa943c
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
 
 COCOAPODS: 0.39.0
