@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <AFNetworking/AFNetworking.h>
-#import "GiphyImageCacheProtocol.h"
+#import "GiphyObjectCacheProtocol.h"
 #import "GiphyNetworkActivityProtocol.h"
 #import "FLAnimatedImage.h"
 #import "GiphyRequest.h"
@@ -18,14 +18,14 @@
 #import "GiphyTranslationResult.h"
 
 /**
- *  Notification name to post when manager completes still loading.
+ *  Notification name to post when manager completes still downloading operation.
  */
-extern NSString * const GiphyNetworkManagerDidRecieveStillNotification;
+extern NSString * const GiphyNetworkManagerDidDownloadStillNotification;
 
 /**
- *  Notification name to post when manager completes GIF loading.
+ *  Notification name to post when manager completes GIF downloading operation.
  */
-extern NSString * const GiphyNetworkManagerDidRecieveGIFNotification;
+extern NSString * const GiphyNetworkManagerDidDownloadGIFNotification;
 
 /**
  *  Key corresponding to loaded object (GIF or still) to extract from notification's user info.
@@ -74,6 +74,21 @@ typedef enum{
 }GiphyRequestType;
 
 /**
+ *  Defines cache settings for request.
+ */
+typedef enum {
+    /**
+     *  Perform request only if there is no corresponding response in cache
+     */
+    kGiphyRequestCachePolicyReturnCachedElseLoad,
+    
+    /**
+     *  Perform request ignoring correponding cache request.
+     */
+    kGiphyRequestCachePolicyReloadIgnoringCache
+}GiphyRequestCachePolicy;
+
+/**
  *  Subclass of NSObject designed to provide servers interaction logic.
  */
 @interface GiphyNetworkManager : NSObject
@@ -87,8 +102,14 @@ typedef enum{
 
 #pragma mark - Giphy Network Manager
 
-@property(nonatomic)id<GiphyImageCacheProtocol> imageCache;
+/**
+ *  Cache to store response objects.
+ */
+@property(nonatomic)id<GiphyObjectCacheProtocol> objectCache;
 
+/**
+ *  Manager to control shared network acvity indicator's activity.
+ */
 @property(nonatomic)id<GiphyNetworkActivityProtocol> networkActivityManager;
 
 /**
@@ -152,7 +173,7 @@ typedef enum{
  *  @return Object to cancel request if needed.
  */
 - (id)getStillByURL:(NSURL *)url
-        cachePolicy:(NSURLRequestCachePolicy)cachePolicy
+        cachePolicy:(GiphyRequestCachePolicy)cachePolicy
        successBlock:(void (^)(UIImage *stillImage))successBlock
       progressBlock:(void (^)(CGFloat progress))progressBlock
        failureBlock:(void (^)(NSError *error))failureBlock;
@@ -167,7 +188,7 @@ typedef enum{
  *  @return Object to cancel request if needed.
  */
 - (id)getGIFByURL:(NSURL *)url
-      cachePolicy:(NSURLRequestCachePolicy)cachePolicy
+      cachePolicy:(GiphyRequestCachePolicy)cachePolicy
           successBlock:(void (^)(FLAnimatedImage *animatedImage))successBlock
          progressBlock:(void (^)(CGFloat progress))progressBlock
                failureBlock:(void (^)(NSError *error))failureBlock;

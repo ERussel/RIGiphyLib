@@ -34,7 +34,6 @@
 #pragma mark - Initialize
 
 - (instancetype)initWithStillURL:(NSURL*)stillURL
-                      imageCache:(id<ASImageCacheProtocol>)imageCache
                           gifURL:(NSURL*)gifURL
                    preferredSize:(CGSize)preferredSize{
     self = [super init];
@@ -44,7 +43,7 @@
         _preferredSize = preferredSize;
         
         [self configure];
-        [self configurePlaceholderImageNodeWithImageCache:imageCache];
+        [self configurePlaceholderImageNode];
         [self configureGifNode];
     }
     return self;
@@ -54,7 +53,7 @@
     self = [super init];
     if (self) {
         [self configure];
-        [self configurePlaceholderImageNodeWithImageCache:nil];
+        [self configurePlaceholderImageNode];
         [self configureGifNode];
     }
     return self;
@@ -70,12 +69,12 @@
     // listen image downloading notification to fade on completion
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationStillDidDownload:)
-                                                 name:GiphyNetworkManagerDidRecieveStillNotification
+                                                 name:GiphyNetworkManagerDidDownloadStillNotification
                                                object:nil];
 }
 
-- (void)configurePlaceholderImageNodeWithImageCache:(id<ASImageCacheProtocol>)imageCache{
-    ASNetworkImageNode *placeholderImageNode = [[ASNetworkImageNode alloc] initWithCache:imageCache
+- (void)configurePlaceholderImageNode{
+    ASNetworkImageNode *placeholderImageNode = [[ASNetworkImageNode alloc] initWithCache:nil
                                                                               downloader:[GiphyNetworkManager sharedManager]];
     placeholderImageNode.delegate = self;
     [placeholderImageNode setURL:_stillURL resetToDefault:YES];
@@ -137,7 +136,7 @@
     if (!self.gifCancellationToken && _gifURL) {
         __weak __typeof(self) weakSelf = self;
         self.gifCancellationToken = [[GiphyNetworkManager sharedManager] getGIFByURL:_gifURL
-                                                                         cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                                                         cachePolicy:kGiphyRequestCachePolicyReturnCachedElseLoad
                                                                         successBlock:^(FLAnimatedImage *animatedImage){
                                                                             if (weakSelf.gifCancellationToken) {
                                                                                 weakSelf.gifCancellationToken = nil;

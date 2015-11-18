@@ -12,16 +12,17 @@
 #import "GiphyGIFObject+Parser.h"
 #import "GiphyCategoryObject+Parse.h"
 #import "GiphyTranslationResult+Yandex.h"
+#import "FLAnimatedImage+NSCoding.h"
 
 /**
- *  Notification name to post when manager completes still loading.
+ *  Notification name to post when manager completes still downloading operation.
  */
-NSString * const GiphyNetworkManagerDidRecieveStillNotification = @"GiphyNetworkManagerDidRecieveStillNotification";
+NSString * const GiphyNetworkManagerDidDownloadStillNotification = @"GiphyNetworkManagerDidDownloadStillNotification";
 
 /**
- *  Notification name to post when manager completes GIF loading.
+ *  Notification name to post when manager completes GIF downloading operation.
  */
-NSString * const GiphyNetworkManagerDidRecieveGIFNotification = @"GiphyNetworkManagerDidRecieveGIFNotification";
+NSString * const GiphyNetworkManagerDidDownloadGIFNotification = @"GiphyNetworkManagerDidDownloadGIFNotification";
 
 /**
  *  Key corresponding to loaded object (GIF or still) to extract from notification's user info.
@@ -443,7 +444,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 }
 
 - (id)getStillByURL:(NSURL *)url
-        cachePolicy:(NSURLRequestCachePolicy)cachePolicy
+        cachePolicy:(GiphyRequestCachePolicy)cachePolicy
        successBlock:(void (^)(UIImage *stillImage))successBlock
       progressBlock:(void (^)(CGFloat progress))progressBlock
        failureBlock:(void (^)(NSError *error))failureBlock{
@@ -451,16 +452,22 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     NSAssert(url, @"URL to load still image must not be nil");
     
     // create request to fetch image from url if not exits in cache
-    NSURLRequest *request = [NSURLRequest requestWithURL:url
-                                             cachePolicy:cachePolicy
-                                         timeoutInterval:kNetworkManagerDefaultTimeoutInterval];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, id result){
+    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, UIImage* result){
+        if (result && self.objectCache) {
+            // save downloaded image to cache
+            [self.objectCache addObjectToCache:result
+                                        forKey:[url absoluteString]
+                                 callbackQueue:nil
+                                    completion:nil];
+        }
+        
         if ([self hasRequest:giphyRequest]) {
             [self completeRequest:giphyRequest];
             
             if (result) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNetworkManagerDidRecieveStillNotification
+                [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNetworkManagerDidDownloadStillNotification
                                                                     object:self
                                                                   userInfo:@{kGiphyNetworkManagerRecievedObjectKey : result,
                                                                                            kGiphyNetworkManagerRecievedObjectURLKey : url}];
@@ -502,17 +509,43 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     // save to proccess response only for active request
     [self addRequest:giphyRequest];
     
-    [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
-                                       failBlock:giphyFailBlock
-                                        userInfo:@{kGiphyRequestUserInfoDownloadProgressBlock : giphyProgressBlock,
-                                                   kGiphyRequestUserInfoAttemptCompletionBlockKey : attemptCompletionBlock,
-                                                   kGiphyRequestUserInfoSerializerKey : [AFImageResponseSerializer serializer]}];
+    NSDictionary *userInfo = @{kGiphyRequestUserInfoDownloadProgressBlock : giphyProgressBlock,
+                               kGiphyRequestUserInfoAttemptCompletionBlockKey : attemptCompletionBlock,
+                               kGiphyRequestUserInfoSerializerKey : [AFImageResponseSerializer serializer]};
+    
+    if (cachePolicy == kGiphyRequestCachePolicyReturnCachedElseLoad && _objectCache) {
+        [_objectCache fetchCachedObjectForKey:[url absoluteString]
+                                callbackQueue:nil
+                                   completion:^(UIImage *cachedImage){
+                                       if (![giphyRequest cancelled]) {
+                                           if (cachedImage) {
+                                               // complete request
+                                               [self completeRequest:giphyRequest];
+                                               
+                                               // return cached object
+                                               if (successBlock) {
+                                                   successBlock(cachedImage);
+                                               }
+                                           }else{
+                                               // still is not found in cache so download
+                                               [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
+                                                                                  failBlock:giphyFailBlock
+                                                                                   userInfo:userInfo];
+                                           }
+                                       }
+                                   }];
+    }else{
+        // download fresh still copy
+        [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
+                                           failBlock:giphyFailBlock
+                                            userInfo:userInfo];
+    }
     
     return giphyRequest;
 }
 
 - (id)getGIFByURL:(NSURL *)url
-      cachePolicy:(NSURLRequestCachePolicy)cachePolicy
+      cachePolicy:(GiphyRequestCachePolicy)cachePolicy
      successBlock:(void (^)(FLAnimatedImage *animatedImage))successBlock
     progressBlock:(void (^)(CGFloat progress))progressBlock
      failureBlock:(void (^)(NSError *error))failureBlock{
@@ -520,16 +553,22 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     NSAssert(url, @"URL to load gif must not be nil");
     
     // create gif fetch request to download or extract from the cache
-    NSURLRequest *request = [NSURLRequest requestWithURL:url
-                                             cachePolicy:cachePolicy
-                                         timeoutInterval:kNetworkManagerDefaultTimeoutInterval];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, id result){
+    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, FLAnimatedImage* result){
+        // add gif data to cache if provided
+        if (result && self.objectCache) {
+            [self.objectCache addObjectToCache:result
+                                        forKey:[url absoluteString]
+                                 callbackQueue:nil
+                                    completion:nil];
+        }
+        
         if ([self hasRequest:giphyRequest]) {
             [self completeRequest:giphyRequest];
             
             if (result) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNetworkManagerDidRecieveGIFNotification
+                [[NSNotificationCenter defaultCenter] postNotificationName:GiphyNetworkManagerDidDownloadGIFNotification
                                                                     object:self
                                                                   userInfo:@{kGiphyNetworkManagerRecievedObjectKey : result,
                                                                                            kGiphyNetworkManagerRecievedObjectURLKey : url}];
@@ -561,22 +600,48 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     
     // setup attempt block to be notified about failed fetch attempts
     GiphyRequestAttemptCompletionBlock attemptCompletionBlock = ^(GiphyRequest *giphyRequest, NSInteger madeAttempts){
-        NSLog(@"Made attempts %@ to download still image at url %@", @(madeAttempts), url);
+        NSLog(@"Made attempts %@ to download gif at url %@", @(madeAttempts), url);
     };
     
     // create repeatable gif fetch request and execute
-    GiphyRequest *giphyRequest = [GiphyRequest requestWithRequest:request];
+    __block GiphyRequest *giphyRequest = [GiphyRequest requestWithRequest:request];
     giphyRequest.operationType = kGiphyRequestTypeGIF;
     
     // wrap repeatable request to load image and execute
     [self addRequest:giphyRequest];
     
-    // pass special gif serializer to create internal animated image from response
-    [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
-                                       failBlock:giphyFailBlock
-                                        userInfo:@{kGiphyRequestUserInfoDownloadProgressBlock : giphyProgressBlock,
-                                                   kGiphyRequestUserInfoAttemptCompletionBlockKey : attemptCompletionBlock,
-                                                   kGiphyRequestUserInfoSerializerKey : [FLAnimatedImageSerializer serializer]}];
+    NSDictionary *userInfo = @{kGiphyRequestUserInfoDownloadProgressBlock : giphyProgressBlock,
+                               kGiphyRequestUserInfoAttemptCompletionBlockKey : attemptCompletionBlock,
+                               kGiphyRequestUserInfoSerializerKey : [FLAnimatedImageSerializer serializer]};
+    
+    if (cachePolicy == kGiphyRequestCachePolicyReturnCachedElseLoad && _objectCache) {
+        [_objectCache fetchCachedObjectForKey:[url absoluteString]
+                                callbackQueue:nil
+                                   completion:^(FLAnimatedImage *cachedGIF){
+                                       // perform
+                                       if (![giphyRequest cancelled]) {
+                                           if (cachedGIF) {
+                                               // complete request
+                                               [self completeRequest:giphyRequest];
+                                               
+                                               // return cached object
+                                               if (successBlock) {
+                                                   successBlock(cachedGIF);
+                                               }
+                                           }else{
+                                               // pass special gif serializer to create internal animated image from response
+                                               [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
+                                                                                  failBlock:giphyFailBlock
+                                                                                   userInfo:userInfo];
+                                           }
+                                       }
+                                   }];
+    }else{
+        // pass special gif serializer to create internal animated image from response
+        [giphyRequest executeRequestWithSuccessBlock:giphySuccessBlock
+                                           failBlock:giphyFailBlock
+                                            userInfo:userInfo];
+    }
     
     return giphyRequest;
 }

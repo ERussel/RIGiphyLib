@@ -53,20 +53,19 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
 
 #pragma mark - Initialize
 
-- (instancetype)initWithImageCache:(id<GiphyImageCacheProtocol>)imageCache
-                       dataManager:(id<GiphyDataStoreProtocol>)dataManager
-            networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager{
+- (instancetype)initWithCache:(id<GiphyObjectCacheProtocol>)objectCache
+                  dataManager:(id<GiphyDataStoreProtocol>)dataManager
+       networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager{
     
-    if (imageCache) {
-        [[GiphyNetworkManager sharedManager] setImageCache:imageCache];
+    if (objectCache) {
+        [[GiphyNetworkManager sharedManager] setObjectCache:objectCache];
     }
     
     if (networkActivityManager) {
         [[GiphyNetworkManager sharedManager] setNetworkActivityManager:networkActivityManager];
     }
     
-    GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:dataManager ? dataManager : [GiphyBasicDataManager sharedManager]
-                                                                                                 imageCache:imageCache];
+    GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:dataManager ? dataManager : [GiphyBasicDataManager sharedManager]];
     self = [super initWithRootViewController:giphyListViewController];
     if (self) {
         [self defaultInit];
@@ -77,8 +76,7 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
 - (instancetype)initWithNavigationBarClass:(Class)navigationBarClass toolbarClass:(Class)toolbarClass{
     self = [super initWithNavigationBarClass:navigationBarClass toolbarClass:toolbarClass];
     if (self) {
-        GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:[GiphyBasicDataManager sharedManager]
-                                                                                                     imageCache:nil];
+        GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:[GiphyBasicDataManager sharedManager]];
         [self setViewControllers:@[giphyListViewController]];
         
         [self defaultInit];
@@ -87,8 +85,7 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
 }
 
 - (void)awakeFromNib{
-    GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:[GiphyBasicDataManager sharedManager]
-                                                                                                 imageCache:nil];
+    GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:[GiphyBasicDataManager sharedManager]];
     [self setViewControllers:@[giphyListViewController]];
     
     [self defaultInit];

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "GiphyDataStoreProtocol.h"
-#import "GiphyImageCacheProtocol.h"
 
 /**
  *  Subclass of UIViewController designed to provide GIF service interface, including
@@ -20,10 +19,9 @@
 /**
  *  Creates GIF list view controller.
  *  @param dataManager  Data manager to save related data such as search requests.
- *  @param imageCache   Custom image cache to store still images. If nil passed than default NSURLCache would be used.
  *  @return Initialized GIF list view controller.
  */
-- (instancetype)initWithDataManager:(id<GiphyDataStoreProtocol>)dataManager imageCache:(id<GiphyImageCacheProtocol>)imageCache;
+- (instancetype)initWithDataManager:(id<GiphyDataStoreProtocol>)dataManager;
 
 /**
  *  Flags states whether user can cancel GIF selection.

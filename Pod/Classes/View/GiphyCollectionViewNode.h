@@ -8,12 +8,9 @@
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
-@class GiphyGIFObject;
-
 @interface GiphyCollectionViewNode : ASCellNode
 
 - (instancetype)initWithStillURL:(NSURL*)stillURL
-                      imageCache:(id<ASImageCacheProtocol>)imageCache
                           gifURL:(NSURL*)gifURL
                    preferredSize:(CGSize)preferredSize;
 

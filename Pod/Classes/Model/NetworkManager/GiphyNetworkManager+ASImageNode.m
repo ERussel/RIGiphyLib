@@ -17,18 +17,9 @@
      downloadProgressBlock:(void (^)(CGFloat progress))downloadProgressBlock
                 completion:(void (^)(CGImageRef image, NSError *error))completion{
     
-    NSURLRequestCachePolicy cachePolicy = self.imageCache ? NSURLRequestReloadIgnoringCacheData : NSURLRequestReturnCacheDataElseLoad;
-    
-    __weak __typeof(self) weakSelf = self;
     return [self getStillByURL:URL
-                   cachePolicy:cachePolicy
+                   cachePolicy:kGiphyRequestCachePolicyReturnCachedElseLoad
                   successBlock:^(UIImage *stillImage){
-                      if (stillImage && weakSelf.imageCache) {
-                          [weakSelf.imageCache addImageToCache:stillImage
-                                                                              forURL:URL
-                                                                       callbackQueue:nil
-                                                                          completion:nil];
-                      }
                       if (completion) {
                           if (callbackQueue) {
                               dispatch_async(callbackQueue, ^{

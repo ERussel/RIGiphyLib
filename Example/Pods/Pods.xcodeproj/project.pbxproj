@@ -119,6 +119,8 @@
 		81C21EEFB0C6E6C64D4AAF2BD1B57F95 /* GiphyNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 24FC88DA7BADAB1B369918F9F5FD2838 /* GiphyNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82E46B2E4429E0690A4182BA907B20BB /* ASCellNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D07E3FB76ACE8BEA167FFC823C362EAB /* ASCellNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82FC12F67E83874B93592218E9FB4CA0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E6B020F9BC81C46E6E75D0F0022B8B /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		84D137BA1BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 84D137B81BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h */; };
+		84D137BB1BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D137B91BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m */; };
 		854BC4449D8CAD0F2799B021D1914C3B /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4486671F9CEAFB90F8659DE2FC6F6 /* UIRefreshControl+AFNetworking.m */; };
 		876C2EF5FE318346CDCB4BFE25A9D5B2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545AF0432A4EDA97E4321C679D31A44 /* AFHTTPRequestOperation.m */; };
 		8806107225D1C873672D1F26259C7A6C /* ASHighlightOverlayLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 979741F161AC18DA437B3E10ED1AF262 /* ASHighlightOverlayLayer.mm */; };
@@ -200,7 +202,7 @@
 		D4D1C50CE6BE25907CC5D9FBC08DF133 /* ASBatchContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06D6D2D61D3E1FAC7A717C71DF6C6CDF /* ASBatchContext.mm */; };
 		D5AEEFAEA52C8343D0E31FA3C36D8894 /* GiphyCategoryCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = CB398C06EB3A95162FD954DB242B7083 /* GiphyCategoryCollectionViewNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8174422440220E579FC510C39953D5A /* GiphyCategoryObject.h in Headers */ = {isa = PBXBuildFile; fileRef = DD3DFA524317D04DE844F249C79498DF /* GiphyCategoryObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DA1A1B5AC1D144261ECBF9D1B9EFAE77 /* GiphyImageCacheProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyImageCacheProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA1A1B5AC1D144261ECBF9D1B9EFAE77 /* GiphyObjectCacheProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyObjectCacheProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA7E70264A411F78DDF9351D44E3854A /* ASDealloc2MainObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFC641341D77A4EB1386DFF6E3541FD /* ASDealloc2MainObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAD5603DF72CBDF3B5197043F32BA0C8 /* ASMutableAttributedStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69830C687603CE592966DD3352A599 /* ASMutableAttributedStringBuilder.m */; };
 		DB2E92A71137AD2E6993E8B0CE682C89 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F6E0A5896A21EFBA016EEEED9C6BB1 /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -447,7 +449,7 @@
 		662C2617602D14B700A6D873210AFE5A /* ASRangeHandlerRender.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASRangeHandlerRender.mm; path = AsyncDisplayKit/Details/ASRangeHandlerRender.mm; sourceTree = "<group>"; };
 		66410BACF160B17A6557958CBA2A53AC /* GiphyTranslationResult+Yandex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyTranslationResult+Yandex.m"; sourceTree = "<group>"; };
 		67056108BCE7F05847B7D5D6049A6F8D /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyImageCacheProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyImageCacheProtocol.h; sourceTree = "<group>"; };
+		68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyObjectCacheProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyObjectCacheProtocol.h; sourceTree = "<group>"; };
 		69A70B617A63418CC62DB61A05BBD201 /* ASControlNode+Subclasses.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ASControlNode+Subclasses.h"; path = "AsyncDisplayKit/ASControlNode+Subclasses.h"; sourceTree = "<group>"; };
 		69CA27A80932AE037A8AE1A1256259BE /* _ASDisplayView.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = _ASDisplayView.mm; path = AsyncDisplayKit/Details/_ASDisplayView.mm; sourceTree = "<group>"; };
 		6A1F8ECCB79DD51C1B0A3CC2AA39F354 /* ASTextNodeCoreTextAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTextNodeCoreTextAdditions.h; path = AsyncDisplayKit/Details/ASTextNodeCoreTextAdditions.h; sourceTree = "<group>"; };
@@ -479,6 +481,8 @@
 		82AB6340D7E3DA202775C8C1FCC25CC9 /* ASRangeHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASRangeHandler.h; path = AsyncDisplayKit/Details/ASRangeHandler.h; sourceTree = "<group>"; };
 		82F907B6898C7AB9FE8FCA094DF567BA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		83DAAA496316E93A69A653B2B34137EF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		84D137B81BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImage+NSCoding.h"; sourceTree = "<group>"; };
+		84D137B91BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImage+NSCoding.m"; sourceTree = "<group>"; };
 		853C10715AFD680D236DE83DCDE0189A /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		8A1B1D69245F7E4B0A8BD2FE9A207AC4 /* ASImageNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASImageNode.h; path = AsyncDisplayKit/ASImageNode.h; sourceTree = "<group>"; };
 		8A8437E2DF138F3E16F6A498EFB6D13A /* GiphyCategoryObject+Parse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyCategoryObject+Parse.m"; sourceTree = "<group>"; };
@@ -889,6 +893,8 @@
 				78403C3F2C07C9D9EE0865E99F349912 /* GiphyTranslationResult.m */,
 				61444B6EB6104C88BFE84EA1BE4722C1 /* GiphyTranslationResult+Yandex.h */,
 				66410BACF160B17A6557958CBA2A53AC /* GiphyTranslationResult+Yandex.m */,
+				84D137B81BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h */,
+				84D137B91BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -916,7 +922,7 @@
 				E966EB0EC97D8D0F06D10F808D76AC24 /* GiphyBundle.h */,
 				B06E511320543CBCCE8DE0D56CD19312 /* GiphyBundle.m */,
 				57A0D158755E8272BCFC34F92A0BF2D5 /* GiphyDataStoreProtocol.h */,
-				68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyImageCacheProtocol.h */,
+				68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyObjectCacheProtocol.h */,
 				7AB80B848297B96BF03FD8AC166F655B /* GiphyNetworkActivityProtocol.h */,
 				F682D472FC9A2B57468632E05E79216A /* NetworkManager */,
 				8D10F2E7C4C3FFEAF17FCB5774130625 /* Objects */,
@@ -1351,13 +1357,14 @@
 				1A042AC91321567B74E2647BEBF61B72 /* GiphyDataStoreProtocol.h in Headers */,
 				612A89DC18257D87F4E34F9D3F14E248 /* GiphyGIFObject+Parser.h in Headers */,
 				3567824A77044D12ED1B05555879C0A2 /* GiphyGIFObject.h in Headers */,
-				DA1A1B5AC1D144261ECBF9D1B9EFAE77 /* GiphyImageCacheProtocol.h in Headers */,
+				DA1A1B5AC1D144261ECBF9D1B9EFAE77 /* GiphyObjectCacheProtocol.h in Headers */,
 				9162E961FC53E7DECDF13DC63A11D90B /* GiphyLabelNode.h in Headers */,
 				DBF39AB9CC56F2793272E801F36D32A5 /* GiphyListViewController.h in Headers */,
 				81C21EEFB0C6E6C64D4AAF2BD1B57F95 /* GiphyNavigationController.h in Headers */,
 				95A06ED9EC84F7F00FABCDB80631A7F3 /* GiphyNetworkActivityProtocol.h in Headers */,
 				51E2BB2A8BB57A084CF08248CE07FD02 /* GiphyNetworkManager+ASImageNode.h in Headers */,
 				EE1BF48BAD55E90DEADEC6A687437AA7 /* GiphyNetworkManager.h in Headers */,
+				84D137BA1BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h in Headers */,
 				B82A4D8DD7D78685B86DFE163124B6DE /* GiphyOptionsView.h in Headers */,
 				B47B920CEB4E9964C6B873F21A458C6D /* GiphyPresentationAnimation.h in Headers */,
 				C4074E35367810538ED87AE5A8078A92 /* GiphyPreviewViewController.h in Headers */,
@@ -1622,6 +1629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14ABDF7A048A892333BBAB370678CF68 /* FLAnimatedImageSerializer.m in Sources */,
+				84D137BB1BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m in Sources */,
 				77C255882F077F6FC6E7FBC9153B1742 /* GiphyBasicDataManager.m in Sources */,
 				25405A2B13FBA9123942AF5D31A94BDE /* GiphyBundle.m in Sources */,
 				C45F271AACF990FA8FDC38A675E65693 /* GiphyCategoryCollectionViewNode.m in Sources */,

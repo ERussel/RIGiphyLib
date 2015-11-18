@@ -234,11 +234,6 @@ UISearchBarDelegate, UIViewControllerTransitioningDelegate>
 @property(nonatomic)id<GiphyDataStoreProtocol> dataManager;
 
 /**
- *  Custom cache object to store loaded stills.
- */
-@property(nonatomic)id<GiphyImageCacheProtocol> imageCache;
-
-/**
  *  Keyboards current y origin value which used to proper layout search history view and list insets.
  */
 @property(nonatomic, readwrite)CGFloat currentKeyboardY;
@@ -464,12 +459,10 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 #pragma mark - Initialize
 
-- (instancetype)initWithDataManager:(id<GiphyDataStoreProtocol>)dataManager
-                         imageCache:(id<GiphyImageCacheProtocol>)imageCache{
+- (instancetype)initWithDataManager:(id<GiphyDataStoreProtocol>)dataManager{
     self = [super init];
     if (self) {
         _dataManager = dataManager;
-        _imageCache = imageCache;
         
         // default initialize
         _previewBlurColor = [UIColor colorWithRed:120.0f/255.0f green:120.0f/255.0f blue:120.0f/255.0f alpha:1.0f];
@@ -757,7 +750,6 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         
         CGFloat defaultItemSize = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? kGiphyListItemSizeDefault : kGiphyListItemSizeIPad;
         cellNode = [[GiphyCategoryCollectionViewNode alloc] initWithStillURL:categoryObject.stillURL
-                                                                  imageCache:_imageCache
                                                                       gifURL:!_ignoresGIFPreloadForCell ? categoryObject.gifURL : nil
                                                                preferredSize:CGSizeMake(_itemSize, _itemSize) title:[[NSAttributedString alloc] initWithString:[(categoryName ? categoryName : @"") uppercaseString] attributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:14.0f*_itemSize/defaultItemSize], NSForegroundColorAttributeName : [UIColor whiteColor]}]];
         [(GiphyCategoryCollectionViewNode*)cellNode setPlaceholderColor:_cellPlaceholderColor];
@@ -765,7 +757,6 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         // setup search cell
         GiphyGIFObject *gifObject = [_searchResults objectAtIndex:indexPath.row];
         cellNode = [[GiphySearchCollectionViewNode alloc] initWithStillURL:_usesOriginalStillAsPlaceholder ? gifObject.originalStillURL : gifObject.thumbnailStillURL
-                                                          imageCache:_imageCache
                                                               gifURL:!_ignoresGIFPreloadForCell ? gifObject.thumbnailGifURL : nil
                                                        preferredSize:CGSizeMake(_itemSize, _itemSize)];
         [(GiphySearchCollectionViewNode*)cellNode setPlaceholderColor:_cellPlaceholderColor];

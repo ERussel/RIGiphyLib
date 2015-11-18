@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GiphyImageCacheProtocol.h"
+#import "GiphyObjectCacheProtocol.h"
 #import "GiphyDataStoreProtocol.h"
 #import "GiphyNetworkActivityProtocol.h"
 #import "GiphyGIFObject.h"
@@ -59,7 +59,7 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
  *
  *  <b> Sample using </b>
  *
- *  \code GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithImageCache:<replace with custom cache or nil>
+ *  \code GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithCache:<replace with custom cache or nil>
  *                                                                                              dataManager:<replace with custom store or nil>
  *                                                                                  networkActivityManager:<replace with custom manager or nil>];
  * giphyController.delegate = self;
@@ -68,10 +68,7 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
  *
  * <b>Cache</b>
  *
- *  GIFs caching implemented using default NSURLCache. You can control it by creating shared cache object.
- *  For more information see <a>https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURLCache_Class</a>
- *
- *  By default images are caching using NSURLCache. You should setup cache object in initialization method to provide custom image cache.
+ *  To enable gif and stills caching, pass object conforming to <a>GiphyImageCacheProtocol</a> protocol to initialization method.
  *  \sa GiphyImageCacheProtocol
  */
 
@@ -79,7 +76,7 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
 
 /**
  *  Creates giphy controller.
- *  @param imageCache   Object which conforms GiphyImageCacheProtocol to cache GIFs' stills.
+ *  @param objectCache  Object which conforms GiphyObjectCacheProtocol to cache GIF and stills.
  *                      By default no cache will be used.
  *  @param dataManager  Object which conforms GiphyDataStoreProtocol to save giphy related data
  *                      (for example, user's search requests to display history). Basic datamanger will be used
@@ -87,7 +84,7 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
  *  @param networkActivityManager   Object which conforms GiphyNetworkActivityProtocol to manage shared network indicator
  *                                  visibility. By default PFNetworkActivityIndicatorManager will be used.
  */
-- (instancetype)initWithImageCache:(id<GiphyImageCacheProtocol>)imageCache
+- (instancetype)initWithCache:(id<GiphyObjectCacheProtocol>)objectCache
                          dataManager:(id<GiphyDataStoreProtocol>)dataManager
                     networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager;
 

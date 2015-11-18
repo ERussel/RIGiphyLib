@@ -45,9 +45,9 @@
 #pragma mark - Action
 
 - (IBAction)actionOpenGIF:(id)sender{
-    GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithImageCache:nil
-                                                                                           dataManager:nil
-                                                                                networkActivityManager:nil];
+    GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithCache:nil
+                                                                                      dataManager:nil
+                                                                           networkActivityManager:nil];
     giphyController.delegate = self;
     giphyController.ignoresGIFPreloadForCell = [_gifPreloadSwitch isOn];
     giphyController.usesOriginalStillAsPlaceholder = [_placeholderSwitch isOn];
