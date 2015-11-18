@@ -190,7 +190,7 @@
         // start downloading new GIF data
         __weak __typeof(self) weakSelf = self;
         self.gifLoadingCancellationToken = [[GiphyNetworkManager sharedManager] getGIFByURL:_gifObject.originalGifURL
-                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                             cachePolicy:kGiphyRequestCachePolicyReturnCachedElseLoad
                                             successBlock:^(FLAnimatedImage *animatedImage){
                                                 if (weakSelf.gifLoadingCancellationToken) {
                                                     weakSelf.gifLoadingCancellationToken = nil;

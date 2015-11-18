@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02AB17B7D378A5FDE6FC1F8F422AAFEF /* GiphyTranslationResult+Yandex.m in Sources */ = {isa = PBXBuildFile; fileRef = 66410BACF160B17A6557958CBA2A53AC /* GiphyTranslationResult+Yandex.m */; };
 		02EEAB1EA304B710288C191DF237734D /* ASDisplayNode+AsyncDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 48BF9F5D35F95AEBEA7844AFC0386A2D /* ASDisplayNode+AsyncDisplay.mm */; };
 		02FB9CA33A305F1DD23AC12DD0941323 /* ASControlNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 816FAA1DF24C5D4BB0D3BB9FC1FED69A /* ASControlNode.m */; };
 		0300C14C326E60E93DDBE78B6A44C294 /* ASEqualityHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 38365739192B93709E2D71DB0BC82AF1 /* ASEqualityHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -15,213 +14,209 @@
 		062258F0A1BD8AB11E3E3B1815357988 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1FF7023384A65675EC1875DBD55E18 /* QuartzCore.framework */; };
 		08D039E5866F2231C9235FE06ACDAFB7 /* ASImageNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = FB4C7B607CA1410C51B3314BBA98EFFE /* ASImageNode.mm */; };
 		0929FB6BA8F7C4FD8DFA43DC562A6F28 /* ASDisplayNode+DebugTiming.mm in Sources */ = {isa = PBXBuildFile; fileRef = 351CFF2EDA086168F7A6140150D0E4BF /* ASDisplayNode+DebugTiming.mm */; };
-		0AA0DAD4718807B0F8FB45BF28448700 /* GiphyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312808673462A2548D150A8ABABA0CB /* GiphyRequest.m */; };
+		0A92CEA7CACEC748BD69C84D092C1E6C /* GiphyBasicDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 93C6FBA762100891DB3CA523912321A3 /* GiphyBasicDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0EDE850E9A76213915C14C40E5EB94C2 /* ASControlNode+Subclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A70B617A63418CC62DB61A05BBD201 /* ASControlNode+Subclasses.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F8217A7033D4B1169408CA2DEBFA592 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10039AF7219ECAA546923C929BEB1FF /* Foundation.framework */; };
 		0FF246FC6DEE9E3C1E2000C4EBF17638 /* ASTextNode.h in Headers */ = {isa = PBXBuildFile; fileRef = AE05FB2A5CF5892292E4111FFEA78BFF /* ASTextNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1215D9ED5F63D4F9F492E153C820C3B0 /* UIView+Giphy.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D06E831512BDBAD8B6177E150C5AC87 /* UIView+Giphy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		121F6F99AFC2C34E4DF54644C8BDCB8F /* ASImageProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 113DA21E2780AABEFEFFEA29673CCB2D /* ASImageProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1304871944A81A6B4E0B22F1775E7756 /* GiphyTranslationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 7327232F5ECF788091D0832CCBABEBB8 /* GiphyTranslationResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1313A1AC652CC8FD292D3F6B3C531832 /* GiphySearchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A603CECA106EF1FE2EA6CF92D50C3537 /* GiphySearchTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		140021B99999BEC1AAE3412F8B8D174D /* _ASDisplayLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = EFDEF5E94DF82C8CA3EA0F074DE8516C /* _ASDisplayLayer.mm */; };
-		14ABDF7A048A892333BBAB370678CF68 /* FLAnimatedImageSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BBCA32B41599AF5728D242F69CD62F /* FLAnimatedImageSerializer.m */; };
-		1855ED80C1C10AF1FE55997BB995B4B6 /* GiphyTranslationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 78403C3F2C07C9D9EE0865E99F349912 /* GiphyTranslationResult.m */; };
-		1A042AC91321567B74E2647BEBF61B72 /* GiphyDataStoreProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 57A0D158755E8272BCFC34F92A0BF2D5 /* GiphyDataStoreProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1820E0DF3E4525C55766586ECA514BB5 /* GiphySearchCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC238BC31E5B1438606135BE62B722E /* GiphySearchCollectionViewNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19A1C264FCAFA860FF157CF4AD9D9872 /* GiphyCategoryObject.h in Headers */ = {isa = PBXBuildFile; fileRef = EEAF33974032014ACD389F329A04590A /* GiphyCategoryObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A426BA778D64AA45C1DE9771806515B /* UIImage+GiphyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3021D0242FA99212DB9C339FF14C8E7 /* UIImage+GiphyFilter.m */; };
 		1A43D28AA73F22BBC18B9E1D31D3BC72 /* ASFlowLayoutController.h in Headers */ = {isa = PBXBuildFile; fileRef = F90574AB655604F2FD5A8811084F1843 /* ASFlowLayoutController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CBDB47B210A0C2448C14A610BC6D4D6 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A81DB8DF98590B0652F0DDE150E1F11 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E310D0CE3BE27EF253B6D822B0AEE5E /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = B7ECB97E90E1485B3164D8AF62ED778E /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1E81683ED952FCD0571AF61D4DC81EA3 /* GiphyOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 494F670D0D5A6FFAB6EC2D8469DB43D8 /* GiphyOptionsView.m */; };
 		201AB3644B9A3DC38EF62346A2A6FF02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10039AF7219ECAA546923C929BEB1FF /* Foundation.framework */; };
+		20E15C514585C5D1B24C21510FFC2D5F /* GiphyLabelNode.h in Headers */ = {isa = PBXBuildFile; fileRef = C4EE3E12BF62F36776BCF9B31F8EC64B /* GiphyLabelNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		211D4EA06F5920376A069ACB55DF6006 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 82F907B6898C7AB9FE8FCA094DF567BA /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21768EA1ED307C9F516BA121E40175BC /* ASThread.h in Headers */ = {isa = PBXBuildFile; fileRef = D02417A0EEE6ACC775710BD6C3FBA5D7 /* ASThread.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23ACD7EA1F127109E234CE2C6436920A /* GiphyBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = E0E32FECDBE430553E2C8C35D4ABFBE5 /* GiphyBundle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24CA3DF5003CC3A7D098A0916E569DAD /* _ASAsyncTransactionGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E62E71F95388C3BB54EE1BFC65BCE82 /* _ASAsyncTransactionGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		25405A2B13FBA9123942AF5D31A94BDE /* GiphyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = B06E511320543CBCCE8DE0D56CD19312 /* GiphyBundle.m */; };
 		2817AC13EE4EB0DD51B3965B866752E2 /* ASCollectionViewProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 253DD3D5F50C585D8E09D8A51F473DDA /* ASCollectionViewProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		28755FB29CA16ABC9F1348F443800D84 /* ASScrollNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D595AF7157EF982EA948BFF1C9A85D6E /* ASScrollNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28C7C155F246DF56AD3E0403601209C5 /* GiphyTranslationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D7D2B1C5AE2BCDB1AE3EEBF47E9A38 /* GiphyTranslationResult.m */; };
 		2989492A1A182744E36FD61DF1746D94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10039AF7219ECAA546923C929BEB1FF /* Foundation.framework */; };
-		2B7C2C4F52A57C1161A2B31502EDB4D2 /* GiphyPresentationAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA762F4B86361D745C55C2120170745D /* GiphyPresentationAnimation.m */; };
 		2B8269A87473D9F1259E9BD98E7588D3 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3755E7918D60FB78DFCEFBC43B222B34 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C503210B6D8E6F3258AA2433B8ECAEB /* ASImageNode+CGExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 742C4DDB3C845A139CE640EDA439F717 /* ASImageNode+CGExtras.m */; };
 		2CF66E8669A348C421E93F2F67C6A61E /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0F339900AE82348104011A5DC78B8E /* AFHTTPSessionManager.m */; };
 		2DBEC7BF142147EC2EB66E9428444670 /* FLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CBFDD3FC3B48E821CB165749379F3A3 /* FLAnimatedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2EE25489A2093F7066210921BF4C62BF /* GiphyOptionsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9DDA741A883A1118E84885558A60AB /* GiphyOptionsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F2C963B76814CC04AB157F5657A4056 /* ASBasicImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = BC9BA02D224E97E8902309782A2CC97C /* ASBasicImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F694ACD032736E3755E549EEA14ACDD /* ASAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = EAAF0BA1D1B0E6E8300E1BC92210B4DD /* ASAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3033C63AC334D346E9461D0942D8FB69 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C821B80430D2868D7F70FACC28C78458 /* AFURLRequestSerialization.m */; };
-		304F8966CB0034C9A683AAEB8784C163 /* UIView+Giphy.m in Sources */ = {isa = PBXBuildFile; fileRef = 148ABF291B109CB30AB00DC6BDCB63E7 /* UIView+Giphy.m */; };
 		307D89FDCC167442778472D6C6DE2231 /* ASBatchFetching.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD9AF61E96F3D7997E0DBCD56A34554 /* ASBatchFetching.m */; };
 		30BB5B5E46DDB147CE4C6E713E18BDF8 /* ASBasicImageDownloaderInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C2040410044FCBD941387644B50662 /* ASBasicImageDownloaderInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3100480F69D45AF2927DA9A24F159D33 /* GiphyBasicDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 431057267DF3975D87A465ABBBFFBC1C /* GiphyBasicDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31508E640790FCAD37AC39EF9CFE05B0 /* ASLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 069EF524A60D6F19788427BE2472B5AF /* ASLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32C881A9B36EF4BE9A7AF1160EBFE1FA /* ASRangeHandlerRender.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B3595DDC5CADB008C868D7DC6F6FE2 /* ASRangeHandlerRender.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		32D47557CAC91BB32C0DDE9F8A28023E /* UIView+Giphy.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D06E831512BDBAD8B6177E150C5AC87 /* UIView+Giphy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		32DCCBD7CCDE3F47FA1A90394A7DC541 /* GiphySearchCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE61436F8B1F61065DC364062C2694 /* GiphySearchCollectionViewNode.m */; };
 		33416F5E86267699FCB13D40287D066C /* NSMutableAttributedString+TextKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC64592634462CEF1E52361BA6D7ADF /* NSMutableAttributedString+TextKitAdditions.m */; };
 		348F0BFC68E34A2EF1BC1CB39A0E98EF /* _ASAsyncTransactionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3F60E42A6FFA63FCCC95AE39F441DC /* _ASAsyncTransactionGroup.m */; };
 		34AE6EE9360CA0D32BAAC84B94E0D29A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFCF4FDDC6C409FF4989ADE14BF57BF8 /* MobileCoreServices.framework */; };
 		351F7E3C068C042F8B148803D36BE5EA /* ASTextNodeShadower.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C511FB869046206B9A3A8289DC186FD /* ASTextNodeShadower.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3567824A77044D12ED1B05555879C0A2 /* GiphyGIFObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F696888740B49E8539DF07949A73C21 /* GiphyGIFObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		370117A05CED33BC856F3C4DC7B58F4A /* GiphyRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 214D95CBA4CCB343D06C197340C894A9 /* GiphyRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3805683DD56B38451AC8C00561D0AEFF /* ASTableView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 61B2FE1763A3F6DCCC734732B9CFE7A6 /* ASTableView.mm */; };
 		392911F3F26C750CC46C8249C3EF4E9F /* ASDisplayNode+UIViewBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = D8395A7E9050270D82CB8B0DD54EC711 /* ASDisplayNode+UIViewBridge.mm */; };
+		3936A89A4C7672DCD253EDD842D8F55D /* GiphyCategoryObject+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FECEB536552506A09B69751DCA2DF7 /* GiphyCategoryObject+Parse.m */; };
 		399AC825EE10F70364CE7B0AA89F466D /* UIAlertView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D0B14F4257132F5A236493912B1863 /* UIAlertView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A5B54373A45916EC8DE74D060DE5503 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = CC0138393AACE3F6A6B1F5661FC94DA3 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D258E9A843C52C991E5E9455CB8DB51 /* FLAnimatedImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCDA00C15AA3691D2A3A93FEC765309 /* FLAnimatedImage-dummy.m */; };
 		3E874E320180BC79F42A1017277ACBE1 /* ASRangeController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC3B24CBBAC6E5448ADE1A0D60820E81 /* ASRangeController.mm */; };
 		4422ABE5B172DE8792DC4F430336B148 /* ASEditableTextNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFC4F884CB0F373A2FBD4568440A9B47 /* ASEditableTextNode.mm */; };
 		45B734E14C4F8F0B0C063C6BB99646F1 /* _ASAsyncTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A9B5C6FDF4B9CD9CA68F810CEFF452 /* _ASAsyncTransaction.m */; };
+		471636303D2440D1DF75125D8DDB0E96 /* GiphyPresentationAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DA762F4B86361D745C55C2120170745D /* GiphyPresentationAnimation.m */; };
 		472A6BFCC6207D98F787649BDF44A1BE /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD587CF148ED8F986F7EF0565C2AD20 /* AFHTTPRequestOperationManager.m */; };
 		47E7C53A4BA13E7E97C50D91FA58612E /* ASImageNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A1B1D69245F7E4B0A8BD2FE9A207AC4 /* ASImageNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4910213EC91508BE02531A9B4185EFCF /* GiphySearchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A603CECA106EF1FE2EA6CF92D50C3537 /* GiphySearchTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		495F717651B12E6496C72D16BCC28C29 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DC719F4D4BDFCFC961A12488DCDA8B7 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4BBC8B7B23AAC2276072A76D935222DB /* UISearchBar+Language.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F81B181E68C243A9AA5B072155BD1D7 /* UISearchBar+Language.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E03C39EC2844C9ED2478ED2ACBE932F /* ASAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EE5962753DF806825201E05229FAF0D /* ASAssert.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4E67A5CE851E7E95339EDB275809BE47 /* GiphyBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = E966EB0EC97D8D0F06D10F808D76AC24 /* GiphyBundle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F824E21F84C70ABE07C9F082014B8FE /* NSMutableAttributedString+TextKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD909EBD1EF1ACA20188E643A38B384 /* NSMutableAttributedString+TextKitAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		51E2BB2A8BB57A084CF08248CE07FD02 /* GiphyNetworkManager+ASImageNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F989B55836B6C5DE9C4B1505E61D0C70 /* GiphyNetworkManager+ASImageNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		524FA2F38DE34344E5E8E731946C3746 /* ASEditableTextNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 3848F5A68F5BF24EDDC7B2BF3E063D6E /* ASEditableTextNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		54C03D5726B5BC421D3F3CF43655A600 /* UIImage+GiphyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 91394E850D3D215E775C831E4870BD3D /* UIImage+GiphyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5630C5E955564CC89C608CC761816111 /* UISearchBar+Language.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F81B181E68C243A9AA5B072155BD1D7 /* UISearchBar+Language.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		574567144669D94D0D54B6FC065D6494 /* GiphyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0265AD3A05B93EFBA63FCA53D59AE292 /* GiphyListViewController.m */; };
+		52B957490558AD63F12169C28B101CD0 /* FLAnimatedImageSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 895986A5DF06EF8853543C43DE686834 /* FLAnimatedImageSerializer.m */; };
 		57D3BD36287C9C858B305E89153FA41C /* ASTableViewProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6E4DD98951C7E7C8F8780DED400099 /* ASTableViewProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58C4F6339E476DBA0B761103723D7588 /* ASDisplayNodeExtraIvars.h in Headers */ = {isa = PBXBuildFile; fileRef = 73C0DF30B93A82F3C77241416EB45AC9 /* ASDisplayNodeExtraIvars.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A7D57488BBCE3AD0199115AB7E23E7C /* ASMutableAttributedStringBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = EB35FBE9DF521274FAA0A2DEE9003CD1 /* ASMutableAttributedStringBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5CF0E043147B69E77976A2CCADFF18CA /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CA786329FE451FD2052A7BE43FB22B83 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D9B35196F05AF75C90B10E2AE572242 /* ASTextNodeTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DA712A6AA085B390DA8021CA8B43C23C /* ASTextNodeTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DD8C60CD84E6CBE582FF507DE2AC3BF /* ASSentinel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF11CCD119E27281798AB7280F14D80 /* ASSentinel.m */; };
+		5DF18821B595C7BFD90FA25B7168FCBE /* GiphyNetworkManager+ASImageNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F9735C17C92A14770209D3FF97A951DC /* GiphyNetworkManager+ASImageNode.m */; };
 		5EB4F27B76513AE918BA5AE0868E87C8 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = FCB525D8116AA70FA41B9DEC2EB42258 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EE79E70E323F5DE572D3AAD5C3ACF88 /* GiphyGIFObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D22C401C6D2FA0BCA8DB84A88199A04B /* GiphyGIFObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		61097AF453847871322ACBBD547590E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10039AF7219ECAA546923C929BEB1FF /* Foundation.framework */; };
-		612A89DC18257D87F4E34F9D3F14E248 /* GiphyGIFObject+Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 02024C7D9A9E1E0A376CDCF3AA5245A3 /* GiphyGIFObject+Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6134C1BAC829A25DE91DCA17673826C9 /* ASRangeController.h in Headers */ = {isa = PBXBuildFile; fileRef = 233B2B3BFFB47FE608B67FB4D35F1EE2 /* ASRangeController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		61D005699CC0180A05DA128062E3E80A /* _ASPendingState.h in Headers */ = {isa = PBXBuildFile; fileRef = 4307435D50E51243177D5670A0EF4E7B /* _ASPendingState.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		626844998C1F3C24A5572F30A1E4A6F2 /* ASRangeHandlerPreload.mm in Sources */ = {isa = PBXBuildFile; fileRef = 19D7564E988D0D88F162FA817588E2CE /* ASRangeHandlerPreload.mm */; };
-		62A8C31C031A485B0C502A289E1AE1FE /* GiphyCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B7216D583BF2C8FAE0ED95C844DD0DA /* GiphyCollectionViewNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6378AF2DB5644A0921C7A689FDB7E3F8 /* GiphyGIFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A886720F7484E42D4FD68B0F745CBBF5 /* GiphyGIFObject.m */; };
+		645F3CCB6708EF49AE3D7D5EFF66C593 /* RIGiphyLib-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E2BD083A0E9B92A228D0B0FA6C3121 /* RIGiphyLib-dummy.m */; };
 		65C7A0A2788B891EA1C0F68F490402CC /* ASDisplayNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2D507AE96F9F9D4A06B98CA735EE760 /* ASDisplayNode.mm */; };
 		68117C009EF4C9C0F19DDFD754D6B8AA /* ASFlowLayoutController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9486B5E3825B1818AFFBB7C50BFDCF37 /* ASFlowLayoutController.mm */; };
 		692E5517A4A0510820297337E5CEC780 /* _ASDisplayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 14CFD4F126801849A6C015C9A2B8702B /* _ASDisplayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6A0CBBE9D08BDA9FED7345F35A885C78 /* GiphyNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CA73A1C87610AAFBBA9B15DC43EEEF /* GiphyNetworkManager.m */; };
+		695761F7CD87F52467F59A56DA6C7E1B /* GiphyTranslationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 52F32E0AFB5753653636461FDCDBCE6B /* GiphyTranslationResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A7D7E7B91904A4F10FAE8313D4FEB3E /* _ASCoreAnimationExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F15D67B3A78CB34F035D03491F4A81 /* _ASCoreAnimationExtras.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6B130EC38DD27F8CFC873F1C4CA00DFC /* GiphyCategoryCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = CB398C06EB3A95162FD954DB242B7083 /* GiphyCategoryCollectionViewNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BF04358627465365FC09EDFEDF91691 /* ASDisplayNode+DebugTiming.h in Headers */ = {isa = PBXBuildFile; fileRef = BC007FC41FEDF8BFB8264AFB6CC8A4B8 /* ASDisplayNode+DebugTiming.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6CC4B79C1FEE1E7B3F2860ADA479D381 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF77837BF16B8A17EAD9DFC7D0B4A264 /* AFURLSessionManager.m */; };
 		6DA2B87EA34732C92FC04CE3AF5BF3FB /* _ASDisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 69CA27A80932AE037A8AE1A1256259BE /* _ASDisplayView.mm */; };
 		6DF6EB8F7E7738D44FD3BEC9321646C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10039AF7219ECAA546923C929BEB1FF /* Foundation.framework */; };
 		70D801E0B95C23BCC270E4EC8659D463 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DAAA496316E93A69A653B2B34137EF /* CoreGraphics.framework */; };
-		7123BFF36A89144FBA989716297298A6 /* GiphyCategoryObject+Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8437E2DF138F3E16F6A498EFB6D13A /* GiphyCategoryObject+Parse.m */; };
+		714C532E42B3E833291D4D7F7611FE46 /* GiphyObjectCacheProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 04945877DE6A447F13ACEDDC2CA25E90 /* GiphyObjectCacheProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		725814CC907F86299DEC88F9F63004E0 /* ASImageNode+CGExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 6242FDC639BB78CC217CBFEDE4256EFC /* ASImageNode+CGExtras.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7318C2A469678139AEF8094AD0D65301 /* GiphyCategoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 087CD62C09E15864C95AF60D937EC86A /* GiphyCategoryObject.m */; };
+		7466CEE8657C1A01F6F070522BEA4E4D /* GiphyNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 532E088826D278ECC4AC3BC2143EC25B /* GiphyNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		751294D60683F1B34A7E0281773AB1AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10039AF7219ECAA546923C929BEB1FF /* Foundation.framework */; };
 		7671979F10FD5798722A815236A57D5A /* _ASAsyncTransactionContainer+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B8640ECE59CA65B23166BC14ECBE318D /* _ASAsyncTransactionContainer+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7762BBBB6FAB2EC39DA2A90B5D5830A3 /* ASNetworkImageNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = FBC7D250F4514FA81C69E7910F70B2DD /* ASNetworkImageNode.mm */; };
 		77B79559C1C71F9C7A804C07F087451D /* ASTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 652986B7BC37757AC883848A58D3364D /* ASTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77B81C29E8D2752AD75A4CF1D9C1C8B2 /* Pods-RIGiphyLib_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDCA5930EDB078DDBC09531CE5B97 /* Pods-RIGiphyLib_Example-dummy.m */; };
-		77C255882F077F6FC6E7FBC9153B1742 /* GiphyBasicDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 29300F428468C12EED22EFF2B1FDB311 /* GiphyBasicDataManager.m */; };
 		78449FCC01114171AA3CCB45C6666206 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 13A8E1C05CBFCFEF2F57A3324F7D3651 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78B7B0704356FCD7C2ED2C2570DECCE0 /* ASTextNodeRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD0BE7B62892EB6CB89A3681335BF15A /* ASTextNodeRenderer.mm */; };
 		791DE307278DF52D1676A7C8E64CDC90 /* ASTextNodeTextKitHelpers.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3CE325CF8E274EA61430338E560C2CF /* ASTextNodeTextKitHelpers.mm */; };
+		7B0C88147856D8D7E3BC29C47122DB38 /* GiphyNetworkManager+ASImageNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F22955C5CB9AD83E805D44B8F765C00E /* GiphyNetworkManager+ASImageNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DCE9708E9A19F23B7DBFBDDA81497C2 /* Pods-RIGiphyLib_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CD95D968D3D1E7041930030B0D6AB8 /* Pods-RIGiphyLib_Tests-dummy.m */; };
 		7E5CC029E8E2FC6F46BFD518E4455D67 /* _ASDisplayLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7514E492488C696EE2F527E543B69BB2 /* _ASDisplayLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F7AA008DFD3E220F5E7B1658A282DEF /* GiphyPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418BC1AE3B7A2A20ADB28385F8F5581 /* GiphyPreviewViewController.m */; };
 		803D4E9EB17BFE87B9F97EC9E98A4491 /* ASBaseDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E6F0848ED6BCF718BCB87F8FE226C80C /* ASBaseDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		81C21EEFB0C6E6C64D4AAF2BD1B57F95 /* GiphyNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 24FC88DA7BADAB1B369918F9F5FD2838 /* GiphyNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		808701CF37D0B33C5201A89CD945C829 /* UIImage+GiphyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 91394E850D3D215E775C831E4870BD3D /* UIImage+GiphyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8236FE84E21497A6EFFE4DD7E9E5D1B2 /* GiphyRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B7A74D0DEDEC419B856C1E1BF306D66 /* GiphyRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82E46B2E4429E0690A4182BA907B20BB /* ASCellNode.h in Headers */ = {isa = PBXBuildFile; fileRef = D07E3FB76ACE8BEA167FFC823C362EAB /* ASCellNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82FC12F67E83874B93592218E9FB4CA0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E6B020F9BC81C46E6E75D0F0022B8B /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		84D137BA1BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 84D137B81BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h */; };
-		84D137BB1BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D137B91BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m */; };
 		854BC4449D8CAD0F2799B021D1914C3B /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB4486671F9CEAFB90F8659DE2FC6F6 /* UIRefreshControl+AFNetworking.m */; };
 		876C2EF5FE318346CDCB4BFE25A9D5B2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1545AF0432A4EDA97E4321C679D31A44 /* AFHTTPRequestOperation.m */; };
+		87FC31D7B7AA9674DB59471713986A0F /* GiphyCategoryObject+Parse.h in Headers */ = {isa = PBXBuildFile; fileRef = 050D55931C6CBFD7F2356430F997C0B1 /* GiphyCategoryObject+Parse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8806107225D1C873672D1F26259C7A6C /* ASHighlightOverlayLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 979741F161AC18DA437B3E10ED1AF262 /* ASHighlightOverlayLayer.mm */; };
 		8940561ECDCB274D1FF01AFB8D842AC2 /* ASTextNodeRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = C00502C7AE6A7909DF60410B1B645036 /* ASTextNodeRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		903A0E1F82A29D285902CBB5A0828BE9 /* UIImage+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B53A2D289C77DA7B74F0CE75780BF5B5 /* UIImage+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		906ECD1E13DBC34933DECCB657545AE0 /* ASMultiplexImageNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BEC4804ACF29D6F8F29EB1A20EB9730 /* ASMultiplexImageNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90A6CE65E0387EA7105926D2FE559DDD /* ASTextNodeTextKitHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 71CA4300F847D88F1B759A7336F0E50C /* ASTextNodeTextKitHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9162E961FC53E7DECDF13DC63A11D90B /* GiphyLabelNode.h in Headers */ = {isa = PBXBuildFile; fileRef = C4EE3E12BF62F36776BCF9B31F8EC64B /* GiphyLabelNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		910030F1AEA155A8082E618125B97765 /* GiphyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0265AD3A05B93EFBA63FCA53D59AE292 /* GiphyListViewController.m */; };
 		919A52B7FBA625A601AA76030C674612 /* AsyncDisplayKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E511BE7BC5EA48B2CBCA0BDCF9961ECE /* AsyncDisplayKit-dummy.m */; };
-		94A975308EB1E0D97BD30641D2CEC245 /* FLAnimatedImageSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 083CE7D09DE1FB4376BA5E3965C9B298 /* FLAnimatedImageSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94B00B6EA13683A7A2323724826BBDBD /* GiphyGIFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDC2421D5814422729679ADAD64908D /* GiphyGIFObject.m */; };
 		94BA73D4B94DBBDDEEFB780CF6F16300 /* ASMultidimensionalArrayUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = D18BEE354C87185228EE1B140CC135E4 /* ASMultidimensionalArrayUtils.mm */; };
-		95A06ED9EC84F7F00FABCDB80631A7F3 /* GiphyNetworkActivityProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AB80B848297B96BF03FD8AC166F655B /* GiphyNetworkActivityProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95C6831551A42A4DCC64BE2EE4E19DF8 /* ASBatchContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E965AF67C828843DB596E3E2008E1C /* ASBatchContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99E82D6DC032555656E37AF2367B20D3 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C3D4CE4D0E9AC70A259B76635EC41E /* UIButton+AFNetworking.m */; };
 		9A04E971065AF4281E43947994A53D07 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F73B3A6B9ACD4E0641F30F098B04DE30 /* UIWebView+AFNetworking.m */; };
+		9B14A0A2CEA93F4C886A0A842297C417 /* GiphyOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 494F670D0D5A6FFAB6EC2D8469DB43D8 /* GiphyOptionsView.m */; };
 		9B47A1441B897F71505D8BE670B0940B /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E9431D9D09042BC623DC227F361CAD /* UIAlertView+AFNetworking.m */; };
-		9B4D10C7BD4915C0AA6AEC5760DE6B76 /* UIImage+GiphyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3021D0242FA99212DB9C339FF14C8E7 /* UIImage+GiphyFilter.m */; };
-		9CF5E62CFE2E900501476BCDB3DE2055 /* GiphySearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D42E09EC62B215CD0FDBFB2E3AE76 /* GiphySearchTableViewCell.m */; };
-		9D9219F40F692B0778D7D5636B47934C /* GiphyCategoryObject+Parse.h in Headers */ = {isa = PBXBuildFile; fileRef = 96CC25293D331946FB5FC757062957A0 /* GiphyCategoryObject+Parse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9DB9C47C611B6C8376C5D9154BBD60FD /* _ASAsyncTransactionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 140A0801261E6F962B6ED860331FBFC0 /* _ASAsyncTransactionContainer.m */; };
+		A1BD85DEA38BFB1E69120F2C3ABCC5F0 /* GiphyPresentationAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EEA6629B7CBAB91C890FAC1FA4ACA6F /* GiphyPresentationAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A1E0DF1F6EF73EA6B4B97463C794F919 /* ASTextNodeWordKerner.h in Headers */ = {isa = PBXBuildFile; fileRef = F15155AD5FDFC862316F2925FB7FB5BF /* ASTextNodeWordKerner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A1F39F7382848ACC4101D79B90C1F974 /* GiphyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B76397B3FAFBCC7EC5B7AE9DE00627A /* GiphyBundle.m */; };
 		A28588D1CCB5253CF80509F30A1AF1A5 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 853C10715AFD680D236DE83DCDE0189A /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A29EAD04F914BC3ED6C368D92A0C48F8 /* ASBatchFetching.h in Headers */ = {isa = PBXBuildFile; fileRef = B4EE2D281CF3B6C7C6502230F24E788E /* ASBatchFetching.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A369339426A1980104E1507DF59C4E5B /* ASCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 605DE73339B0946897D0B4D8EC94C7B7 /* ASCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3F4BE0BD8B4E038941967D1ED280619 /* GiphyLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB6E7D456C621E525C4F089CC765F7 /* GiphyLabelNode.m */; };
-		A4E7EC4B44555573521BD8023BC9405A /* GiphyGIFObject+Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE3A3C9E6D0FE7F056E97A7B3B614C /* GiphyGIFObject+Parser.m */; };
+		A489FCFE9E160447B8F1AE4C8D3E0E73 /* GiphyListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DEA21669BADB23129901855737593C9 /* GiphyListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A4EE8D1BEE38B87066BAA1B09A047356 /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D68E02245BE3275FB6CFD09E1C8B0DF /* UIWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A83E87AF86473F54603EE8E429D41010 /* GiphySearchCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE61436F8B1F61065DC364062C2694 /* GiphySearchCollectionViewNode.m */; };
 		A91B3305FAF285DADDFAA7532F69C5E9 /* _ASPendingState.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C78892140FA7ADD443F9B7862395789 /* _ASPendingState.m */; };
 		AA67CD8233B8834E954E532C41A2D789 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6ED9E6FD1F403B8DF88BD81AAF3C42 /* AssetsLibrary.framework */; };
-		AADDD9CE041079E1BA30F9D59D0E4C04 /* GiphyPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418BC1AE3B7A2A20ADB28385F8F5581 /* GiphyPreviewViewController.m */; };
 		AB5E80218B841C79963B69C7FB5B6378 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 329432658497AF09B6E78C654BB0DB18 /* FLAnimatedImage.m */; };
-		AC45935C25771ECD1128C9FA11D724DA /* GiphyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF757935CB703A4209C6A0CB4EA0CA46 /* GiphyNavigationController.m */; };
 		AE56A75BA8590FBCC6143A601ECEFE3F /* _ASAsyncTransactionContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B23BAF7BF31494B3E52B8A111CCA027 /* _ASAsyncTransactionContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE5944BA43EF9AFBC9AB5A6041D03818 /* ASRangeHandlerPreload.h in Headers */ = {isa = PBXBuildFile; fileRef = C9C3B585F6102FC32A5C0385AC46EB99 /* ASRangeHandlerPreload.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE607E682415FAA160B33C7C13A8475B /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1980E9AF18D9935D593367590B3455A8 /* UIActivityIndicatorView+AFNetworking.m */; };
 		AF0B326D26BB56FF1044F4D5AC308E6C /* ASHighlightOverlayLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = AD735A43DBE6BF9EF19E97228DE57004 /* ASHighlightOverlayLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF2FE9B828DD6F3D3646E687F555EF20 /* ASScrollDirection.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A7EBE4DD24B249CEC88884650991A14 /* ASScrollDirection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF31A19383A16F1691C9C1F21EA18661 /* GiphyCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B7216D583BF2C8FAE0ED95C844DD0DA /* GiphyCollectionViewNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF6BF6C4447703456B7E322AAB12A035 /* ASRangeHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 82AB6340D7E3DA202775C8C1FCC25CC9 /* ASRangeHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AFEC4169628E3D81E3296B6DA67BB261 /* ASDisplayNodeInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 61AEB2F0821AD2BD9607844198F35CEF /* ASDisplayNodeInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B019C71C8C95BA4A51F566E7792BD234 /* GiphyNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF96ED5616EAF397B22CCCC797994E /* GiphyNetworkManager.m */; };
 		B12AD2EE044D6F7424F75F1506B516B2 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD902CC266F3DCC929FAFDB5DC6B732 /* AFSecurityPolicy.m */; };
+		B13D6FFEDF08B25756E3EDE2009D793C /* GiphyGIFObject+Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3767D07BA1ED3677373CEAC9B88B59 /* GiphyGIFObject+Parser.m */; };
+		B18C2CF8916B8A56496DE9C907CC8980 /* UISearchBar+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 258425D767FEE2DC09ED47362D9039DE /* UISearchBar+Language.m */; };
 		B2B5DEC33B644F946C59F656AAAA8146 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F9DC71B6D015CF379302A2876AEB6C /* AFNetworkActivityIndicatorManager.m */; };
 		B2F9AA458531B81E9FFB5D8715909622 /* _AS-objc-internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF5F54DC4D45DA285B7F14F3721E622 /* _AS-objc-internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2FA1FA4783C48489E7F44726837D689 /* GiphySearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 505D42E09EC62B215CD0FDBFB2E3AE76 /* GiphySearchTableViewCell.m */; };
 		B3960A441D2F77ABC7F437E5604E9C18 /* ASDisplayNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F99A07DF0C6755790AEFA7BC3F02BFF7 /* ASDisplayNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B47B920CEB4E9964C6B873F21A458C6D /* GiphyPresentationAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EEA6629B7CBAB91C890FAC1FA4ACA6F /* GiphyPresentationAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B625736D08642F15DD99DF156A66EC10 /* ASScrollNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C8AD6FD35A52B53AF7AEB836D88189 /* ASScrollNode.m */; };
 		B80E331C17A4603B75A58B99904E8586 /* AsyncDisplayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A60177BC2EC2678C1C72328B6230ABDA /* AsyncDisplayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B82A4D8DD7D78685B86DFE163124B6DE /* GiphyOptionsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9DDA741A883A1118E84885558A60AB /* GiphyOptionsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B9DAA002CF3E0E8EBE9B6E9A7778CFD4 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F11C5D9D1D2C0BC01DF0A3C1C9D761 /* AFNetworking-dummy.m */; };
 		BA025A85A850C1E24A6C92F4C29E5531 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB01D16625DD629C7CEA9F993BD344EE /* SystemConfiguration.framework */; };
 		BBE27707A9D4F231529BB04D704676AA /* ASMultidimensionalArrayUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 14A5BBCDB76B278475F1D0C80398BF39 /* ASMultidimensionalArrayUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC190388F925B1891F9D2B3F783E2670 /* ASTextNodeShadower.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E572240CA118AC0858281BF2615114 /* ASTextNodeShadower.m */; };
-		BC350F14890803FDF397D70CF8D7E583 /* GiphySearchRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 193B87B22E2FE560D33E314E4281DA0A /* GiphySearchRequestObject.m */; };
 		BC7993B7436D4D7FADE6DD554DA52769 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F550A843544651F592CD853549D9F3 /* AFNetworkReachabilityManager.m */; };
 		BD3879A84F0B06D28EC3B6AE8E7C5DA8 /* UIView+ASConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 626AA1477A68728D21998FFC41FAF1A0 /* UIView+ASConvenience.m */; };
 		BDBB4CC9030319F9BA7057F6C9E77259 /* ASDisplayNode+Subclasses.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F87921342A2D4942AEB0A8DE9D8D637 /* ASDisplayNode+Subclasses.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE057EDAACB70CC1CFCA836AA1F0CECD /* _ASCoreAnimationExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 803410FCD9FF8CB7ABCC8DD0875DFD5B /* _ASCoreAnimationExtras.mm */; };
-		BE26485F72FA9C03D50A9479A4FEE8AA /* GiphySearchCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC238BC31E5B1438606135BE62B722E /* GiphySearchCollectionViewNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BEBFE4C6A2FF2FBF0C5257A459BBBA4C /* ASCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDE04F260BB06D33C63CD87C471896 /* ASCellNode.m */; };
 		C01ACE83FC7CB31E3D48A1AC661D13F0 /* ASDisplayNodeExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = C685E66D885A1B3CD370517F4460A940 /* ASDisplayNodeExtras.mm */; };
-		C0CC0DE7473A9F42FB3056DC29635043 /* GiphyTranslationResult+Yandex.h in Headers */ = {isa = PBXBuildFile; fileRef = 61444B6EB6104C88BFE84EA1BE4722C1 /* GiphyTranslationResult+Yandex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C121420DB7083F989F22399DE86BEDA3 /* UIView+ASConvenience.h in Headers */ = {isa = PBXBuildFile; fileRef = E53CB9A0301167218E0E63708D6E4621 /* UIView+ASConvenience.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C1CEBBBD058267D7787423547DD5D376 /* GiphyCollectionViewNode_Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CFB2B55FF0BC40C4A9DD9CF91BE919 /* GiphyCollectionViewNode_Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C23443D005523E2BD6FA4B044E5C9C0A /* GiphyNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 24FC88DA7BADAB1B369918F9F5FD2838 /* GiphyNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2596CDB92D59D7FC5505505B68FD55C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DAAA496316E93A69A653B2B34137EF /* CoreGraphics.framework */; };
-		C4074E35367810538ED87AE5A8078A92 /* GiphyPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F244DFD96142E13A755FAD1F226D8047 /* GiphyPreviewViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C45F271AACF990FA8FDC38A675E65693 /* GiphyCategoryCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F634431201490C9FD4EBD93A71F7DE6 /* GiphyCategoryCollectionViewNode.m */; };
 		C58268D5A4D2A786576E0EAA5B50FB93 /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = C3842707C2CE86FBD90CC7901E2D622B /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5986F9D9A1B033A4A2BB873A8EE4DA6 /* GiphyPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F244DFD96142E13A755FAD1F226D8047 /* GiphyPreviewViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7ACDDE36465ACAF629FEC233B1BF172 /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3589316F21FD4DE9C4182640E783AC /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAA0F8074B35A2F73890310EC4521A0D /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0A8BCA28E1614DF4C75D48DC109B04 /* AFURLResponseSerialization.m */; };
 		CB647C2DAFBBA9C2E90F6203C46F74CD /* ASBasicImageDownloader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9E94A88547BC1D5AF0D093A26A908B8C /* ASBasicImageDownloader.mm */; };
-		CBB1F8C38019AEA153E65C92697BCE2F /* RIGiphyLib-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E2BD083A0E9B92A228D0B0FA6C3121 /* RIGiphyLib-dummy.m */; };
 		CE49290F673BC43F7622E60DD7A79B05 /* ASCollectionView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73384241E7A52566642A4880AD0EB248 /* ASCollectionView.mm */; };
 		CED30EF37080E83E82016685D7ABF6B4 /* ASNetworkImageNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D152E7B377DAC1D9FEC7ADE02F15899 /* ASNetworkImageNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF51F6A86A0A86FDCAE3439E66B8414C /* GiphyTranslationResult+Yandex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F981CE6BC06A65E31AD6C6B931DE1 /* GiphyTranslationResult+Yandex.m */; };
 		D070B784EFCA099C141EEAB69FBCC870 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8A090079B18171E0B7B39049492A3D /* UIImageView+AFNetworking.m */; };
+		D0FB5440B8440E34342CB821BC9C78A0 /* GiphyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0122D7ECD995202C12D9E68BDC2019DD /* GiphyRequest.m */; };
 		D10203B33196D3B2047E20DFF3EC5C02 /* ASDealloc2MainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D08A6FEF2ED1F09C5383E1DA3A545F8 /* ASDealloc2MainObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D1C1565181FCF5341A1750E0330FDE7D /* GiphyBasicDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9A41DC4DB0130BE992A8025F244BFA /* GiphyBasicDataManager.m */; };
 		D2AC9BFF1F40EE6635F576A8F6AD15FE /* _ASScopeTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D07F6B6706B66565E9AD69ED3BB6854 /* _ASScopeTimer.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D338AF0628941058001472D9FF9F7DE6 /* GiphyCategoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E358BB517EDB32154C0D7963CC2EA11 /* GiphyCategoryObject.m */; };
+		D407C52AB3E78E7424990A7DEAAF1CE4 /* GiphyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF757935CB703A4209C6A0CB4EA0CA46 /* GiphyNavigationController.m */; };
 		D4276066917C9C48661D6A6D3F7CF5D1 /* ASMultiplexImageNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9275F78C530000F42B534B5726C9614 /* ASMultiplexImageNode.mm */; };
 		D4A65C2E29ACB340587FD41196176F8A /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = DF365B56E624BA512E0B57B3C156BE75 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4D1C50CE6BE25907CC5D9FBC08DF133 /* ASBatchContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 06D6D2D61D3E1FAC7A717C71DF6C6CDF /* ASBatchContext.mm */; };
-		D5AEEFAEA52C8343D0E31FA3C36D8894 /* GiphyCategoryCollectionViewNode.h in Headers */ = {isa = PBXBuildFile; fileRef = CB398C06EB3A95162FD954DB242B7083 /* GiphyCategoryCollectionViewNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D8174422440220E579FC510C39953D5A /* GiphyCategoryObject.h in Headers */ = {isa = PBXBuildFile; fileRef = DD3DFA524317D04DE844F249C79498DF /* GiphyCategoryObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DA1A1B5AC1D144261ECBF9D1B9EFAE77 /* GiphyObjectCacheProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyObjectCacheProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DA7E70264A411F78DDF9351D44E3854A /* ASDealloc2MainObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFC641341D77A4EB1386DFF6E3541FD /* ASDealloc2MainObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAD5603DF72CBDF3B5197043F32BA0C8 /* ASMutableAttributedStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69830C687603CE592966DD3352A599 /* ASMutableAttributedStringBuilder.m */; };
 		DB2E92A71137AD2E6993E8B0CE682C89 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 57F6E0A5896A21EFBA016EEEED9C6BB1 /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB42C604EF2F39D542F805AC6A05E090 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFCF4FDDC6C409FF4989ADE14BF57BF8 /* MobileCoreServices.framework */; };
-		DBF39AB9CC56F2793272E801F36D32A5 /* GiphyListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DEA21669BADB23129901855737593C9 /* GiphyListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC9DAD22374F4050BB84A39404F62916 /* GiphyCollectionViewNode_Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CFB2B55FF0BC40C4A9DD9CF91BE919 /* GiphyCollectionViewNode_Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD2A293780414629F5656787E5423712 /* ASSentinel.h in Headers */ = {isa = PBXBuildFile; fileRef = 76599CB9D410B891B05F87AF3E80F964 /* ASSentinel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DE8E0DADB7B6C723D23F3C8F9BD3C030 /* ASLayoutRangeType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C23DCCAF58293AD142FF4DAD8CA10AF /* ASLayoutRangeType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DEAD0BA7712423F9DBAAEE07BF8AC383 /* GiphySearchRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4CE5EB93542C9C7AEA501C9235E41 /* GiphySearchRequestObject.m */; };
 		DECD5915774351B8473476B041DD87D7 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B9E65514FF70EB87EAA74A6165E33C7F /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF342C692B1A4F34DC354ACCE2CEF7B2 /* UIView+Giphy.m in Sources */ = {isa = PBXBuildFile; fileRef = 148ABF291B109CB30AB00DC6BDCB63E7 /* UIView+Giphy.m */; };
+		E001939CBA5DE899D585E03BC2485317 /* GiphyCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB74596F30B06C0A9E572D645E3F68C /* GiphyCollectionViewNode.m */; };
+		E080F6B9E59631797C7DD31BE4B13651 /* GiphyCategoryCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F634431201490C9FD4EBD93A71F7DE6 /* GiphyCategoryCollectionViewNode.m */; };
+		E39094AFD302DBB2D19BEC1207E8138B /* GiphyLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AB6E7D456C621E525C4F089CC765F7 /* GiphyLabelNode.m */; };
+		E5367C161440B732867814B559B79B9B /* GiphyGIFObject+Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = C51722B6977F2E531E170955162BAB0C /* GiphyGIFObject+Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6DD6ABB4FC13B60FA54C950FB6B262B /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53D8CB0DF6BC616F8045E534AB7FC5 /* AFURLConnectionOperation.m */; };
 		E7CF311C38CDCBF416F397E4B737BC71 /* ASDataController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C93C9AB4273C4F7E6C55CB72B4E856CE /* ASDataController.mm */; };
-		E8CD9F97B28852BFE1C4A0D4722BB195 /* GiphySearchRequestObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A815EA77BB6EEFF45061CB597DECE9 /* GiphySearchRequestObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E947C5D507130CE524761829C1E3F50C /* ASTextNodeWordKerner.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2E4D23E8985EC9F8AAACD6CFF1EE89 /* ASTextNodeWordKerner.m */; };
+		EA85331B2305F1228C6B37FDE93A0D0C /* GiphyNetworkActivityProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EC7C440A55742B29BFAA5FED9DC059F /* GiphyNetworkActivityProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAB1B5A5CEAB02C185DC139E22A6C29A /* ASTextNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5C5B6169BC7E83A5091A4B8EBA0AE /* ASTextNode.mm */; };
-		EE1BF48BAD55E90DEADEC6A687437AA7 /* GiphyNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BBED59BBBEEA927FAA57822C5FFF25B /* GiphyNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF824CBE4F5D5CEFC38B65A8ED5C576B /* ASDataController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B647E7D8FA88895BE2C56C6A3896E6F /* ASDataController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F00D0822E5EB05BAB0F7C14EC10B846D /* GiphyCollectionViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB74596F30B06C0A9E572D645E3F68C /* GiphyCollectionViewNode.m */; };
 		F08E19D8B440D85D564273B1A501B1FC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DAAA496316E93A69A653B2B34137EF /* CoreGraphics.framework */; };
-		F28AA9934BFEA1BB5A8929327965A8D4 /* GiphyNetworkManager+ASImageNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 366FAD593019B5D7CC846210FAC5BB66 /* GiphyNetworkManager+ASImageNode.m */; };
 		F2AF56F00E313B9CD0F4ADA3C5D73BDF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC72D15989F1F696196669AE45B14F0 /* Security.framework */; };
 		F4A1512E8C4D8C8194CBB276BF72A552 /* AFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DFC4667E0231297FFE5CFDE4C008282 /* AFHTTPRequestOperationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4B03681047157E5C357E584147F5A46 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 50DE481A62764A8511D512BEA6969CF6 /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -229,14 +224,19 @@
 		F4EF1304A7DAA42E7DDDD03A5D70DA3A /* ASControlNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 35526B0522DF076CCBDCE7A741E4EFE8 /* ASControlNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5872852E80C246A0B2FC6DBCD6A1633 /* FLAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 374E2A995DB624D0918B1F4887971C5E /* FLAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5C01AC5B350E12C063267A3FE002E5C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F70CE3E271AC7614B3B02BC6637D15 /* ImageIO.framework */; };
+		F62EFDB0EC59609C3B2A3B2CD03BBBFF /* GiphyDataStoreProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 48149B78BD3088626FE01B64E544A4B9 /* GiphyDataStoreProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7B175D701D772A96A269F44EA41E233 /* FLAnimatedImageSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = C63E5447328941FF263CA28E46F39720 /* FLAnimatedImageSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7EF06BD341C8C93A3FE235C20F43C1D /* ASLayoutController.h in Headers */ = {isa = PBXBuildFile; fileRef = E4A7C8F0DD253FDD0846698A069E466F /* ASLayoutController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F82338CC3F882FAA29C161219E124753 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB217541FF115C254B5366494E8B7979 /* FLAnimatedImageView.m */; };
+		FA5E53FA5953736690FD2E6247D5B9CB /* FLAnimatedImage+NSCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE7DC7A6EB645DF0F62F0DD0E8C63FE /* FLAnimatedImage+NSCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA98BB4F977A8E458BCBF9D9D05018F5 /* GiphyTranslationResult+Yandex.h in Headers */ = {isa = PBXBuildFile; fileRef = E40A7EAF281469F23EE0F453F97D185B /* GiphyTranslationResult+Yandex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAFEFA7BC502932C523326E0A14490AC /* FLAnimatedImage+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DDF78BEE588BE2FB8C1DA550A370B9 /* FLAnimatedImage+NSCoding.m */; };
+		FBDCDCC2D76ADAB7C929AD74BFF95547 /* GiphySearchRequestObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E8139A56C2C83F32CB5145605A80EF25 /* GiphySearchRequestObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC01CA127D883559DFA7B086BA1FA430 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10039AF7219ECAA546923C929BEB1FF /* Foundation.framework */; };
 		FC214077677D4F02E03C6C85F774E028 /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749E88D53734BC90C578D0646B71E50 /* MBProgressHUD-dummy.m */; };
 		FD6F966F458CEE40B07A2367BA3BC8EC /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D0E5C1D729655206BA5255E23436C /* UIProgressView+AFNetworking.m */; };
 		FD7DFCB8F56B071C9670B0D8E5B656D9 /* ASTextNodeCoreTextAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A1F8ECCB79DD51C1B0A3CC2AA39F354 /* ASTextNodeCoreTextAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE4B1910F6E8CC9AEBFE6E7BA00E976F /* ASDisplayNodeExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EE4C8F4D755C18F233327229FBE6665 /* ASDisplayNodeExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF631F24078556BA10B6867BB57A181C /* UISearchBar+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 258425D767FEE2DC09ED47362D9039DE /* UISearchBar+Language.m */; };
 		FF925A3890F321A6F9CDDDF4481ADBB8 /* ASRangeHandlerRender.mm in Sources */ = {isa = PBXBuildFile; fileRef = 662C2617602D14B700A6D873210AFE5A /* ASRangeHandlerRender.mm */; };
 		FFD81A54176382B8ECE8F1F357E34AFC /* ASTextNodeCoreTextAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AD44F7D1179694B05A5248B626A912E1 /* ASTextNodeCoreTextAdditions.m */; };
 /* End PBXBuildFile section */
@@ -343,14 +343,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02024C7D9A9E1E0A376CDCF3AA5245A3 /* GiphyGIFObject+Parser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GiphyGIFObject+Parser.h"; sourceTree = "<group>"; };
+		0122D7ECD995202C12D9E68BDC2019DD /* GiphyRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyRequest.m; sourceTree = "<group>"; };
 		0265AD3A05B93EFBA63FCA53D59AE292 /* GiphyListViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyListViewController.m; sourceTree = "<group>"; };
 		0307141D7617C7E226BCB0EE6050CAFE /* AsyncDisplayKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AsyncDisplayKit-prefix.pch"; sourceTree = "<group>"; };
 		04431760DB13DD377398EC155E53C5AF /* Pods-RIGiphyLib_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RIGiphyLib_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		04945877DE6A447F13ACEDDC2CA25E90 /* GiphyObjectCacheProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyObjectCacheProtocol.h; sourceTree = "<group>"; };
 		04B3595DDC5CADB008C868D7DC6F6FE2 /* ASRangeHandlerRender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASRangeHandlerRender.h; path = AsyncDisplayKit/Details/ASRangeHandlerRender.h; sourceTree = "<group>"; };
+		050D55931C6CBFD7F2356430F997C0B1 /* GiphyCategoryObject+Parse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GiphyCategoryObject+Parse.h"; sourceTree = "<group>"; };
 		069EF524A60D6F19788427BE2472B5AF /* ASLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASLog.h; path = Base/ASLog.h; sourceTree = "<group>"; };
 		06D6D2D61D3E1FAC7A717C71DF6C6CDF /* ASBatchContext.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASBatchContext.mm; path = AsyncDisplayKit/Details/ASBatchContext.mm; sourceTree = "<group>"; };
-		083CE7D09DE1FB4376BA5E3965C9B298 /* FLAnimatedImageSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageSerializer.h; sourceTree = "<group>"; };
+		087CD62C09E15864C95AF60D937EC86A /* GiphyCategoryObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyCategoryObject.m; sourceTree = "<group>"; };
 		08E2BD083A0E9B92A228D0B0FA6C3121 /* RIGiphyLib-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RIGiphyLib-dummy.m"; sourceTree = "<group>"; };
 		0B7216D583BF2C8FAE0ED95C844DD0DA /* GiphyCollectionViewNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyCollectionViewNode.h; sourceTree = "<group>"; };
 		0CBD8D38DA3938370537266BAF2F908E /* libFLAnimatedImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFLAnimatedImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -365,17 +367,16 @@
 		14A5BBCDB76B278475F1D0C80398BF39 /* ASMultidimensionalArrayUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASMultidimensionalArrayUtils.h; path = AsyncDisplayKit/Details/ASMultidimensionalArrayUtils.h; sourceTree = "<group>"; };
 		14CFD4F126801849A6C015C9A2B8702B /* _ASDisplayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _ASDisplayView.h; path = AsyncDisplayKit/Details/_ASDisplayView.h; sourceTree = "<group>"; };
 		1545AF0432A4EDA97E4321C679D31A44 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		193B87B22E2FE560D33E314E4281DA0A /* GiphySearchRequestObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphySearchRequestObject.m; sourceTree = "<group>"; };
 		1980E9AF18D9935D593367590B3455A8 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		19D7564E988D0D88F162FA817588E2CE /* ASRangeHandlerPreload.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASRangeHandlerPreload.mm; path = AsyncDisplayKit/Details/ASRangeHandlerPreload.mm; sourceTree = "<group>"; };
 		19F70CE3E271AC7614B3B02BC6637D15 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		1B71CF6BC2A641565D8C16C64A9031E3 /* libPods-RIGiphyLib_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RIGiphyLib_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD889FFF8CF82752F4624E4F19FA0D6 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
+		1C1F981CE6BC06A65E31AD6C6B931DE1 /* GiphyTranslationResult+Yandex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyTranslationResult+Yandex.m"; sourceTree = "<group>"; };
 		1C511FB869046206B9A3A8289DC186FD /* ASTextNodeShadower.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTextNodeShadower.h; path = AsyncDisplayKit/Details/ASTextNodeShadower.h; sourceTree = "<group>"; };
 		1D8A090079B18171E0B7B39049492A3D /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		1DCE2FB873BA8903DA8A990DAC0977ED /* Pods-RIGiphyLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RIGiphyLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1E358BB517EDB32154C0D7963CC2EA11 /* GiphyCategoryObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyCategoryObject.m; sourceTree = "<group>"; };
-		214D95CBA4CCB343D06C197340C894A9 /* GiphyRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyRequest.h; sourceTree = "<group>"; };
+		1DCF96ED5616EAF397B22CCCC797994E /* GiphyNetworkManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyNetworkManager.m; sourceTree = "<group>"; };
 		233B2B3BFFB47FE608B67FB4D35F1EE2 /* ASRangeController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASRangeController.h; path = AsyncDisplayKit/Details/ASRangeController.h; sourceTree = "<group>"; };
 		23AB6E7D456C621E525C4F089CC765F7 /* GiphyLabelNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyLabelNode.m; sourceTree = "<group>"; };
 		24FC88DA7BADAB1B369918F9F5FD2838 /* GiphyNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyNavigationController.h; sourceTree = "<group>"; };
@@ -383,10 +384,8 @@
 		258425D767FEE2DC09ED47362D9039DE /* UISearchBar+Language.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+Language.m"; sourceTree = "<group>"; };
 		25BB35718DAFABCF09E3A989456748BB /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		282C52F38EF000713263F1A152B66D28 /* _ASAsyncTransaction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _ASAsyncTransaction.h; path = AsyncDisplayKit/Details/Transactions/_ASAsyncTransaction.h; sourceTree = "<group>"; };
-		29300F428468C12EED22EFF2B1FDB311 /* GiphyBasicDataManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyBasicDataManager.m; sourceTree = "<group>"; };
 		2B23BAF7BF31494B3E52B8A111CCA027 /* _ASAsyncTransactionContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _ASAsyncTransactionContainer.h; path = AsyncDisplayKit/Details/Transactions/_ASAsyncTransactionContainer.h; sourceTree = "<group>"; };
 		2B647E7D8FA88895BE2C56C6A3896E6F /* ASDataController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASDataController.h; path = AsyncDisplayKit/Details/ASDataController.h; sourceTree = "<group>"; };
-		2BBED59BBBEEA927FAA57822C5FFF25B /* GiphyNetworkManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyNetworkManager.h; sourceTree = "<group>"; };
 		2C78892140FA7ADD443F9B7862395789 /* _ASPendingState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _ASPendingState.m; path = AsyncDisplayKit/Private/_ASPendingState.m; sourceTree = "<group>"; };
 		2D07F6B6706B66565E9AD69ED3BB6854 /* _ASScopeTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _ASScopeTimer.h; path = AsyncDisplayKit/Private/_ASScopeTimer.h; sourceTree = "<group>"; };
 		2D3589316F21FD4DE9C4182640E783AC /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -397,22 +396,20 @@
 		32C8AD6FD35A52B53AF7AEB836D88189 /* ASScrollNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ASScrollNode.m; path = AsyncDisplayKit/ASScrollNode.m; sourceTree = "<group>"; };
 		351CFF2EDA086168F7A6140150D0E4BF /* ASDisplayNode+DebugTiming.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = "ASDisplayNode+DebugTiming.mm"; path = "AsyncDisplayKit/Private/ASDisplayNode+DebugTiming.mm"; sourceTree = "<group>"; };
 		35526B0522DF076CCBDCE7A741E4EFE8 /* ASControlNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASControlNode.h; path = AsyncDisplayKit/ASControlNode.h; sourceTree = "<group>"; };
-		366FAD593019B5D7CC846210FAC5BB66 /* GiphyNetworkManager+ASImageNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyNetworkManager+ASImageNode.m"; sourceTree = "<group>"; };
 		374E2A995DB624D0918B1F4887971C5E /* FLAnimatedImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImageView.h; path = FLAnimatedImageDemo/FLAnimatedImage/FLAnimatedImageView.h; sourceTree = "<group>"; };
 		3755E7918D60FB78DFCEFBC43B222B34 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		38365739192B93709E2D71DB0BC82AF1 /* ASEqualityHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASEqualityHelpers.h; path = Base/ASEqualityHelpers.h; sourceTree = "<group>"; };
 		3848F5A68F5BF24EDDC7B2BF3E063D6E /* ASEditableTextNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASEditableTextNode.h; path = AsyncDisplayKit/ASEditableTextNode.h; sourceTree = "<group>"; };
 		3A7EBE4DD24B249CEC88884650991A14 /* ASScrollDirection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASScrollDirection.h; path = AsyncDisplayKit/Details/ASScrollDirection.h; sourceTree = "<group>"; };
+		3B76397B3FAFBCC7EC5B7AE9DE00627A /* GiphyBundle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyBundle.m; sourceTree = "<group>"; };
 		3D08A6FEF2ED1F09C5383E1DA3A545F8 /* ASDealloc2MainObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ASDealloc2MainObject.m; path = AsyncDisplayKit/Details/ASDealloc2MainObject.m; sourceTree = "<group>"; };
 		3D6E4DD98951C7E7C8F8780DED400099 /* ASTableViewProtocols.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTableViewProtocols.h; path = AsyncDisplayKit/ASTableViewProtocols.h; sourceTree = "<group>"; };
 		3E62E71F95388C3BB54EE1BFC65BCE82 /* _ASAsyncTransactionGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _ASAsyncTransactionGroup.h; path = AsyncDisplayKit/Details/Transactions/_ASAsyncTransactionGroup.h; sourceTree = "<group>"; };
 		3EC64592634462CEF1E52361BA6D7ADF /* NSMutableAttributedString+TextKitAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+TextKitAdditions.m"; path = "AsyncDisplayKit/Details/NSMutableAttributedString+TextKitAdditions.m"; sourceTree = "<group>"; };
 		3F6ED9E6FD1F403B8DF88BD81AAF3C42 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
 		3FD902CC266F3DCC929FAFDB5DC6B732 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
-		41BBCA32B41599AF5728D242F69CD62F /* FLAnimatedImageSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageSerializer.m; sourceTree = "<group>"; };
 		4307435D50E51243177D5670A0EF4E7B /* _ASPendingState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _ASPendingState.h; path = AsyncDisplayKit/Private/_ASPendingState.h; sourceTree = "<group>"; };
-		431057267DF3975D87A465ABBBFFBC1C /* GiphyBasicDataManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyBasicDataManager.h; sourceTree = "<group>"; };
-		4312808673462A2548D150A8ABABA0CB /* GiphyRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyRequest.m; sourceTree = "<group>"; };
+		48149B78BD3088626FE01B64E544A4B9 /* GiphyDataStoreProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyDataStoreProtocol.h; sourceTree = "<group>"; };
 		48BF9F5D35F95AEBEA7844AFC0386A2D /* ASDisplayNode+AsyncDisplay.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = "ASDisplayNode+AsyncDisplay.mm"; path = "AsyncDisplayKit/Private/ASDisplayNode+AsyncDisplay.mm"; sourceTree = "<group>"; };
 		494F670D0D5A6FFAB6EC2D8469DB43D8 /* GiphyOptionsView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyOptionsView.m; sourceTree = "<group>"; };
 		4D06E831512BDBAD8B6177E150C5AC87 /* UIView+Giphy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+Giphy.h"; sourceTree = "<group>"; };
@@ -423,23 +420,25 @@
 		4FD587CF148ED8F986F7EF0565C2AD20 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationManager.m; path = AFNetworking/AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
 		505D42E09EC62B215CD0FDBFB2E3AE76 /* GiphySearchTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphySearchTableViewCell.m; sourceTree = "<group>"; };
 		50DE481A62764A8511D512BEA6969CF6 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		52F32E0AFB5753653636461FDCDBCE6B /* GiphyTranslationResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyTranslationResult.h; sourceTree = "<group>"; };
+		532E088826D278ECC4AC3BC2143EC25B /* GiphyNetworkManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyNetworkManager.h; sourceTree = "<group>"; };
 		53E6B020F9BC81C46E6E75D0F0022B8B /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		55DDF78BEE588BE2FB8C1DA550A370B9 /* FLAnimatedImage+NSCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImage+NSCoding.m"; sourceTree = "<group>"; };
 		5749E88D53734BC90C578D0646B71E50 /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
-		57A0D158755E8272BCFC34F92A0BF2D5 /* GiphyDataStoreProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyDataStoreProtocol.h; sourceTree = "<group>"; };
 		57F15D67B3A78CB34F035D03491F4A81 /* _ASCoreAnimationExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _ASCoreAnimationExtras.h; path = AsyncDisplayKit/Private/_ASCoreAnimationExtras.h; sourceTree = "<group>"; };
 		57F6E0A5896A21EFBA016EEEED9C6BB1 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		58CA73A1C87610AAFBBA9B15DC43EEEF /* GiphyNetworkManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyNetworkManager.m; sourceTree = "<group>"; };
 		5A81DB8DF98590B0652F0DDE150E1F11 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		5BB4486671F9CEAFB90F8659DE2FC6F6 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		5BEC4804ACF29D6F8F29EB1A20EB9730 /* ASMultiplexImageNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASMultiplexImageNode.h; path = AsyncDisplayKit/ASMultiplexImageNode.h; sourceTree = "<group>"; };
 		5CBFDD3FC3B48E821CB165749379F3A3 /* FLAnimatedImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImage.h; path = FLAnimatedImageDemo/FLAnimatedImage/FLAnimatedImage.h; sourceTree = "<group>"; };
 		5D152E7B377DAC1D9FEC7ADE02F15899 /* ASNetworkImageNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASNetworkImageNode.h; path = AsyncDisplayKit/ASNetworkImageNode.h; sourceTree = "<group>"; };
 		5DC719F4D4BDFCFC961A12488DCDA8B7 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		5DE7DC7A6EB645DF0F62F0DD0E8C63FE /* FLAnimatedImage+NSCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImage+NSCoding.h"; sourceTree = "<group>"; };
 		5E6011247D84D582B6E13B51C77231CE /* AsyncDisplayKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AsyncDisplayKit.xcconfig; sourceTree = "<group>"; };
+		5EC7C440A55742B29BFAA5FED9DC059F /* GiphyNetworkActivityProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyNetworkActivityProtocol.h; sourceTree = "<group>"; };
 		5FB6B914DF1738C6361C312632DE0AA3 /* libAsyncDisplayKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAsyncDisplayKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FBDE04F260BB06D33C63CD87C471896 /* ASCellNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ASCellNode.m; path = AsyncDisplayKit/ASCellNode.m; sourceTree = "<group>"; };
 		605DE73339B0946897D0B4D8EC94C7B7 /* ASCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASCollectionView.h; path = AsyncDisplayKit/ASCollectionView.h; sourceTree = "<group>"; };
-		61444B6EB6104C88BFE84EA1BE4722C1 /* GiphyTranslationResult+Yandex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GiphyTranslationResult+Yandex.h"; sourceTree = "<group>"; };
 		61AEB2F0821AD2BD9607844198F35CEF /* ASDisplayNodeInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASDisplayNodeInternal.h; path = AsyncDisplayKit/Private/ASDisplayNodeInternal.h; sourceTree = "<group>"; };
 		61B2FE1763A3F6DCCC734732B9CFE7A6 /* ASTableView.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASTableView.mm; path = AsyncDisplayKit/ASTableView.mm; sourceTree = "<group>"; };
 		6242FDC639BB78CC217CBFEDE4256EFC /* ASImageNode+CGExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ASImageNode+CGExtras.h"; path = "AsyncDisplayKit/Private/ASImageNode+CGExtras.h"; sourceTree = "<group>"; };
@@ -447,9 +446,7 @@
 		652986B7BC37757AC883848A58D3364D /* ASTableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTableView.h; path = AsyncDisplayKit/ASTableView.h; sourceTree = "<group>"; };
 		6618D5D646368F3DC8C308CC34E61042 /* Pods-RIGiphyLib_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RIGiphyLib_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		662C2617602D14B700A6D873210AFE5A /* ASRangeHandlerRender.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASRangeHandlerRender.mm; path = AsyncDisplayKit/Details/ASRangeHandlerRender.mm; sourceTree = "<group>"; };
-		66410BACF160B17A6557958CBA2A53AC /* GiphyTranslationResult+Yandex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyTranslationResult+Yandex.m"; sourceTree = "<group>"; };
 		67056108BCE7F05847B7D5D6049A6F8D /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyObjectCacheProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyObjectCacheProtocol.h; sourceTree = "<group>"; };
 		69A70B617A63418CC62DB61A05BBD201 /* ASControlNode+Subclasses.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ASControlNode+Subclasses.h"; path = "AsyncDisplayKit/ASControlNode+Subclasses.h"; sourceTree = "<group>"; };
 		69CA27A80932AE037A8AE1A1256259BE /* _ASDisplayView.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = _ASDisplayView.mm; path = AsyncDisplayKit/Details/_ASDisplayView.mm; sourceTree = "<group>"; };
 		6A1F8ECCB79DD51C1B0A3CC2AA39F354 /* ASTextNodeCoreTextAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTextNodeCoreTextAdditions.h; path = AsyncDisplayKit/Details/ASTextNodeCoreTextAdditions.h; sourceTree = "<group>"; };
@@ -459,54 +456,53 @@
 		70E9431D9D09042BC623DC227F361CAD /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+AFNetworking.m"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
 		714C6CD93B7D5100DFB7B40BE1EBCD14 /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CA4300F847D88F1B759A7336F0E50C /* ASTextNodeTextKitHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTextNodeTextKitHelpers.h; path = AsyncDisplayKit/Details/ASTextNodeTextKitHelpers.h; sourceTree = "<group>"; };
-		7327232F5ECF788091D0832CCBABEBB8 /* GiphyTranslationResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyTranslationResult.h; sourceTree = "<group>"; };
 		73384241E7A52566642A4880AD0EB248 /* ASCollectionView.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASCollectionView.mm; path = AsyncDisplayKit/ASCollectionView.mm; sourceTree = "<group>"; };
 		73C0DF30B93A82F3C77241416EB45AC9 /* ASDisplayNodeExtraIvars.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASDisplayNodeExtraIvars.h; path = Base/ASDisplayNodeExtraIvars.h; sourceTree = "<group>"; };
 		742C4DDB3C845A139CE640EDA439F717 /* ASImageNode+CGExtras.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ASImageNode+CGExtras.m"; path = "AsyncDisplayKit/Private/ASImageNode+CGExtras.m"; sourceTree = "<group>"; };
 		7514E492488C696EE2F527E543B69BB2 /* _ASDisplayLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _ASDisplayLayer.h; path = AsyncDisplayKit/Details/_ASDisplayLayer.h; sourceTree = "<group>"; };
 		75C3D4CE4D0E9AC70A259B76635EC41E /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		76599CB9D410B891B05F87AF3E80F964 /* ASSentinel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASSentinel.h; path = AsyncDisplayKit/Private/ASSentinel.h; sourceTree = "<group>"; };
-		78403C3F2C07C9D9EE0865E99F349912 /* GiphyTranslationResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyTranslationResult.m; sourceTree = "<group>"; };
 		78C2040410044FCBD941387644B50662 /* ASBasicImageDownloaderInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASBasicImageDownloaderInternal.h; path = AsyncDisplayKit/Private/ASBasicImageDownloaderInternal.h; sourceTree = "<group>"; };
 		79CD95D968D3D1E7041930030B0D6AB8 /* Pods-RIGiphyLib_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RIGiphyLib_Tests-dummy.m"; sourceTree = "<group>"; };
 		79D0B14F4257132F5A236493912B1863 /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+AFNetworking.h"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
-		7AB80B848297B96BF03FD8AC166F655B /* GiphyNetworkActivityProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyNetworkActivityProtocol.h; sourceTree = "<group>"; };
 		7AC238BC31E5B1438606135BE62B722E /* GiphySearchCollectionViewNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphySearchCollectionViewNode.h; sourceTree = "<group>"; };
 		7AD66202B620FFF7D0E312E963BE613E /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
 		7CF11CCD119E27281798AB7280F14D80 /* ASSentinel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ASSentinel.m; path = AsyncDisplayKit/Private/ASSentinel.m; sourceTree = "<group>"; };
 		7DD5C5B6169BC7E83A5091A4B8EBA0AE /* ASTextNode.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASTextNode.mm; path = AsyncDisplayKit/ASTextNode.mm; sourceTree = "<group>"; };
+		7F3767D07BA1ED3677373CEAC9B88B59 /* GiphyGIFObject+Parser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyGIFObject+Parser.m"; sourceTree = "<group>"; };
 		803410FCD9FF8CB7ABCC8DD0875DFD5B /* _ASCoreAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = _ASCoreAnimationExtras.mm; path = AsyncDisplayKit/Private/_ASCoreAnimationExtras.mm; sourceTree = "<group>"; };
 		80F9DC71B6D015CF379302A2876AEB6C /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
 		816FAA1DF24C5D4BB0D3BB9FC1FED69A /* ASControlNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ASControlNode.m; path = AsyncDisplayKit/ASControlNode.m; sourceTree = "<group>"; };
 		82AB6340D7E3DA202775C8C1FCC25CC9 /* ASRangeHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASRangeHandler.h; path = AsyncDisplayKit/Details/ASRangeHandler.h; sourceTree = "<group>"; };
 		82F907B6898C7AB9FE8FCA094DF567BA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		83DAAA496316E93A69A653B2B34137EF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		84D137B81BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImage+NSCoding.h"; sourceTree = "<group>"; };
-		84D137B91BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImage+NSCoding.m"; sourceTree = "<group>"; };
 		853C10715AFD680D236DE83DCDE0189A /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		895986A5DF06EF8853543C43DE686834 /* FLAnimatedImageSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageSerializer.m; sourceTree = "<group>"; };
 		8A1B1D69245F7E4B0A8BD2FE9A207AC4 /* ASImageNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASImageNode.h; path = AsyncDisplayKit/ASImageNode.h; sourceTree = "<group>"; };
-		8A8437E2DF138F3E16F6A498EFB6D13A /* GiphyCategoryObject+Parse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyCategoryObject+Parse.m"; sourceTree = "<group>"; };
 		8C23DCCAF58293AD142FF4DAD8CA10AF /* ASLayoutRangeType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASLayoutRangeType.h; path = AsyncDisplayKit/Details/ASLayoutRangeType.h; sourceTree = "<group>"; };
 		8CFC641341D77A4EB1386DFF6E3541FD /* ASDealloc2MainObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASDealloc2MainObject.h; path = AsyncDisplayKit/Details/ASDealloc2MainObject.h; sourceTree = "<group>"; };
 		8E54531318321F0AD54915FD14F93D10 /* Pods-RIGiphyLib_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RIGiphyLib_Example-frameworks.sh"; sourceTree = "<group>"; };
 		8EE4C8F4D755C18F233327229FBE6665 /* ASDisplayNodeExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASDisplayNodeExtras.h; path = AsyncDisplayKit/ASDisplayNodeExtras.h; sourceTree = "<group>"; };
-		8F696888740B49E8539DF07949A73C21 /* GiphyGIFObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyGIFObject.h; sourceTree = "<group>"; };
 		907D0E5C1D729655206BA5255E23436C /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
-		90A815EA77BB6EEFF45061CB597DECE9 /* GiphySearchRequestObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphySearchRequestObject.h; sourceTree = "<group>"; };
 		91394E850D3D215E775C831E4870BD3D /* UIImage+GiphyFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+GiphyFilter.h"; sourceTree = "<group>"; };
 		937FB196C7C588055F01F696602CFF3B /* FLAnimatedImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FLAnimatedImage.xcconfig; sourceTree = "<group>"; };
+		93C6FBA762100891DB3CA523912321A3 /* GiphyBasicDataManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyBasicDataManager.h; sourceTree = "<group>"; };
 		9486B5E3825B1818AFFBB7C50BFDCF37 /* ASFlowLayoutController.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASFlowLayoutController.mm; path = AsyncDisplayKit/Details/ASFlowLayoutController.mm; sourceTree = "<group>"; };
-		96CC25293D331946FB5FC757062957A0 /* GiphyCategoryObject+Parse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GiphyCategoryObject+Parse.h"; sourceTree = "<group>"; };
 		979741F161AC18DA437B3E10ED1AF262 /* ASHighlightOverlayLayer.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASHighlightOverlayLayer.mm; path = AsyncDisplayKit/Details/ASHighlightOverlayLayer.mm; sourceTree = "<group>"; };
 		98F19194361DA6AC40467011866206A1 /* Pods-RIGiphyLib_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RIGiphyLib_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9B7A74D0DEDEC419B856C1E1BF306D66 /* GiphyRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyRequest.h; sourceTree = "<group>"; };
 		9E94A88547BC1D5AF0D093A26A908B8C /* ASBasicImageDownloader.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASBasicImageDownloader.mm; path = AsyncDisplayKit/Details/ASBasicImageDownloader.mm; sourceTree = "<group>"; };
 		9EF5F54DC4D45DA285B7F14F3721E622 /* _AS-objc-internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "_AS-objc-internal.h"; path = "AsyncDisplayKit/Private/_AS-objc-internal.h"; sourceTree = "<group>"; };
 		A2D507AE96F9F9D4A06B98CA735EE760 /* ASDisplayNode.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASDisplayNode.mm; path = AsyncDisplayKit/ASDisplayNode.mm; sourceTree = "<group>"; };
+		A3D7D2B1C5AE2BCDB1AE3EEBF47E9A38 /* GiphyTranslationResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyTranslationResult.m; sourceTree = "<group>"; };
+		A3FECEB536552506A09B69751DCA2DF7 /* GiphyCategoryObject+Parse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyCategoryObject+Parse.m"; sourceTree = "<group>"; };
 		A418BC1AE3B7A2A20ADB28385F8F5581 /* GiphyPreviewViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyPreviewViewController.m; sourceTree = "<group>"; };
 		A60177BC2EC2678C1C72328B6230ABDA /* AsyncDisplayKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AsyncDisplayKit.h; path = AsyncDisplayKit/AsyncDisplayKit.h; sourceTree = "<group>"; };
 		A603CECA106EF1FE2EA6CF92D50C3537 /* GiphySearchTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphySearchTableViewCell.h; sourceTree = "<group>"; };
 		A6F11C5D9D1D2C0BC01DF0A3C1C9D761 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		A886720F7484E42D4FD68B0F745CBBF5 /* GiphyGIFObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyGIFObject.m; sourceTree = "<group>"; };
 		A8F25307E7807F714436DCF30F0CD36F /* RIGiphyLib-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RIGiphyLib-prefix.pch"; sourceTree = "<group>"; };
+		A9E4CE5EB93542C9C7AEA501C9235E41 /* GiphySearchRequestObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphySearchRequestObject.m; sourceTree = "<group>"; };
 		AD44F7D1179694B05A5248B626A912E1 /* ASTextNodeCoreTextAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ASTextNodeCoreTextAdditions.m; path = AsyncDisplayKit/Details/ASTextNodeCoreTextAdditions.m; sourceTree = "<group>"; };
 		AD735A43DBE6BF9EF19E97228DE57004 /* ASHighlightOverlayLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASHighlightOverlayLayer.h; path = AsyncDisplayKit/Details/ASHighlightOverlayLayer.h; sourceTree = "<group>"; };
 		ADF27C50D8A4BC1E812CD8A5ABB7EA43 /* Pods-RIGiphyLib_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RIGiphyLib_Example-resources.sh"; sourceTree = "<group>"; };
@@ -514,7 +510,6 @@
 		AE2E4D23E8985EC9F8AAACD6CFF1EE89 /* ASTextNodeWordKerner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ASTextNodeWordKerner.m; path = AsyncDisplayKit/Details/ASTextNodeWordKerner.m; sourceTree = "<group>"; };
 		AEF9676C6B3C9064F4B08D7109FFF8D2 /* libPods-RIGiphyLib_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RIGiphyLib_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF08333EE8D2ADB9D6532E4DCCBE8E37 /* RIGiphyLib.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RIGiphyLib.xcconfig; sourceTree = "<group>"; };
-		B06E511320543CBCCE8DE0D56CD19312 /* GiphyBundle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyBundle.m; sourceTree = "<group>"; };
 		B2E965AF67C828843DB596E3E2008E1C /* ASBatchContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASBatchContext.h; path = AsyncDisplayKit/Details/ASBatchContext.h; sourceTree = "<group>"; };
 		B4EE2D281CF3B6C7C6502230F24E788E /* ASBatchFetching.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASBatchFetching.h; path = AsyncDisplayKit/Details/ASBatchFetching.h; sourceTree = "<group>"; };
 		B53A2D289C77DA7B74F0CE75780BF5B5 /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
@@ -528,11 +523,12 @@
 		BC007FC41FEDF8BFB8264AFB6CC8A4B8 /* ASDisplayNode+DebugTiming.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ASDisplayNode+DebugTiming.h"; path = "AsyncDisplayKit/Private/ASDisplayNode+DebugTiming.h"; sourceTree = "<group>"; };
 		BC9BA02D224E97E8902309782A2CC97C /* ASBasicImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASBasicImageDownloader.h; path = AsyncDisplayKit/Details/ASBasicImageDownloader.h; sourceTree = "<group>"; };
 		BDA467BD81409A7DF15422CBC262825F /* Pods-RIGiphyLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RIGiphyLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		BDDC2421D5814422729679ADAD64908D /* GiphyGIFObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyGIFObject.m; sourceTree = "<group>"; };
 		BF77837BF16B8A17EAD9DFC7D0B4A264 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		C00502C7AE6A7909DF60410B1B645036 /* ASTextNodeRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTextNodeRenderer.h; path = AsyncDisplayKit/Details/ASTextNodeRenderer.h; sourceTree = "<group>"; };
 		C3842707C2CE86FBD90CC7901E2D622B /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		C4EE3E12BF62F36776BCF9B31F8EC64B /* GiphyLabelNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyLabelNode.h; sourceTree = "<group>"; };
+		C51722B6977F2E531E170955162BAB0C /* GiphyGIFObject+Parser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GiphyGIFObject+Parser.h"; sourceTree = "<group>"; };
+		C63E5447328941FF263CA28E46F39720 /* FLAnimatedImageSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageSerializer.h; sourceTree = "<group>"; };
 		C685E66D885A1B3CD370517F4460A940 /* ASDisplayNodeExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASDisplayNodeExtras.mm; path = AsyncDisplayKit/ASDisplayNodeExtras.mm; sourceTree = "<group>"; };
 		C821B80430D2868D7F70FACC28C78458 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		C8907FD3AC2B1A905A555671B6E928C3 /* Pods-RIGiphyLib_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RIGiphyLib_Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -549,6 +545,7 @@
 		D02417A0EEE6ACC775710BD6C3FBA5D7 /* ASThread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASThread.h; path = AsyncDisplayKit/Details/ASThread.h; sourceTree = "<group>"; };
 		D07E3FB76ACE8BEA167FFC823C362EAB /* ASCellNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASCellNode.h; path = AsyncDisplayKit/ASCellNode.h; sourceTree = "<group>"; };
 		D18BEE354C87185228EE1B140CC135E4 /* ASMultidimensionalArrayUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASMultidimensionalArrayUtils.mm; path = AsyncDisplayKit/Details/ASMultidimensionalArrayUtils.mm; sourceTree = "<group>"; };
+		D22C401C6D2FA0BCA8DB84A88199A04B /* GiphyGIFObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyGIFObject.h; sourceTree = "<group>"; };
 		D3021D0242FA99212DB9C339FF14C8E7 /* UIImage+GiphyFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GiphyFilter.m"; sourceTree = "<group>"; };
 		D4E4680999B6603BA48480024F7FB0DC /* Pods-RIGiphyLib_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RIGiphyLib_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D4EB996FDDFF0D41576E16B21B7A6AB9 /* Pods-RIGiphyLib_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RIGiphyLib_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -560,41 +557,44 @@
 		DA712A6AA085B390DA8021CA8B43C23C /* ASTextNodeTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTextNodeTypes.h; path = AsyncDisplayKit/Details/ASTextNodeTypes.h; sourceTree = "<group>"; };
 		DA762F4B86361D745C55C2120170745D /* GiphyPresentationAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyPresentationAnimation.m; sourceTree = "<group>"; };
 		DB217541FF115C254B5366494E8B7979 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FLAnimatedImageView.m; path = FLAnimatedImageDemo/FLAnimatedImage/FLAnimatedImageView.m; sourceTree = "<group>"; };
-		DD3DFA524317D04DE844F249C79498DF /* GiphyCategoryObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyCategoryObject.h; sourceTree = "<group>"; };
 		DDD9AF61E96F3D7997E0DBCD56A34554 /* ASBatchFetching.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ASBatchFetching.m; path = AsyncDisplayKit/Details/ASBatchFetching.m; sourceTree = "<group>"; };
 		DF365B56E624BA512E0B57B3C156BE75 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		DFCF4FDDC6C409FF4989ADE14BF57BF8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		E0E32FECDBE430553E2C8C35D4ABFBE5 /* GiphyBundle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyBundle.h; sourceTree = "<group>"; };
 		E30C2E9E3320F945DB6166F8D85BBEB1 /* Pods-RIGiphyLib_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RIGiphyLib_Tests-resources.sh"; sourceTree = "<group>"; };
+		E40A7EAF281469F23EE0F453F97D185B /* GiphyTranslationResult+Yandex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GiphyTranslationResult+Yandex.h"; sourceTree = "<group>"; };
 		E4464A6C6F81C343BF1B989C7299CB75 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		E4A7C8F0DD253FDD0846698A069E466F /* ASLayoutController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASLayoutController.h; path = AsyncDisplayKit/Details/ASLayoutController.h; sourceTree = "<group>"; };
 		E511BE7BC5EA48B2CBCA0BDCF9961ECE /* AsyncDisplayKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AsyncDisplayKit-dummy.m"; sourceTree = "<group>"; };
 		E53CB9A0301167218E0E63708D6E4621 /* UIView+ASConvenience.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+ASConvenience.h"; path = "AsyncDisplayKit/Details/UIView+ASConvenience.h"; sourceTree = "<group>"; };
 		E6F0848ED6BCF718BCB87F8FE226C80C /* ASBaseDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASBaseDefines.h; path = Base/ASBaseDefines.h; sourceTree = "<group>"; };
 		E7CFB2B55FF0BC40C4A9DD9CF91BE919 /* GiphyCollectionViewNode_Subclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyCollectionViewNode_Subclass.h; sourceTree = "<group>"; };
+		E8139A56C2C83F32CB5145605A80EF25 /* GiphySearchRequestObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphySearchRequestObject.h; sourceTree = "<group>"; };
 		E88CDCA5930EDB078DDBC09531CE5B97 /* Pods-RIGiphyLib_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RIGiphyLib_Example-dummy.m"; sourceTree = "<group>"; };
 		E9275F78C530000F42B534B5726C9614 /* ASMultiplexImageNode.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASMultiplexImageNode.mm; path = AsyncDisplayKit/ASMultiplexImageNode.mm; sourceTree = "<group>"; };
-		E966EB0EC97D8D0F06D10F808D76AC24 /* GiphyBundle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyBundle.h; sourceTree = "<group>"; };
 		EAAF0BA1D1B0E6E8300E1BC92210B4DD /* ASAvailability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASAvailability.h; path = Base/ASAvailability.h; sourceTree = "<group>"; };
 		EB35FBE9DF521274FAA0A2DEE9003CD1 /* ASMutableAttributedStringBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASMutableAttributedStringBuilder.h; path = AsyncDisplayKit/Details/ASMutableAttributedStringBuilder.h; sourceTree = "<group>"; };
 		EBD909EBD1EF1ACA20188E643A38B384 /* NSMutableAttributedString+TextKitAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableAttributedString+TextKitAdditions.h"; path = "AsyncDisplayKit/Details/NSMutableAttributedString+TextKitAdditions.h"; sourceTree = "<group>"; };
+		EEAF33974032014ACD389F329A04590A /* GiphyCategoryObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyCategoryObject.h; sourceTree = "<group>"; };
 		EF3F60E42A6FFA63FCCC95AE39F441DC /* _ASAsyncTransactionGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _ASAsyncTransactionGroup.m; path = AsyncDisplayKit/Details/Transactions/_ASAsyncTransactionGroup.m; sourceTree = "<group>"; };
 		EFCDA00C15AA3691D2A3A93FEC765309 /* FLAnimatedImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImage-dummy.m"; sourceTree = "<group>"; };
 		EFDEF5E94DF82C8CA3EA0F074DE8516C /* _ASDisplayLayer.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = _ASDisplayLayer.mm; path = AsyncDisplayKit/Details/_ASDisplayLayer.mm; sourceTree = "<group>"; };
 		F10039AF7219ECAA546923C929BEB1FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F15155AD5FDFC862316F2925FB7FB5BF /* ASTextNodeWordKerner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASTextNodeWordKerner.h; path = AsyncDisplayKit/Details/ASTextNodeWordKerner.h; sourceTree = "<group>"; };
+		F22955C5CB9AD83E805D44B8F765C00E /* GiphyNetworkManager+ASImageNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GiphyNetworkManager+ASImageNode.h"; sourceTree = "<group>"; };
 		F244DFD96142E13A755FAD1F226D8047 /* GiphyPreviewViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GiphyPreviewViewController.h; sourceTree = "<group>"; };
 		F3CE325CF8E274EA61430338E560C2CF /* ASTextNodeTextKitHelpers.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASTextNodeTextKitHelpers.mm; path = AsyncDisplayKit/Details/ASTextNodeTextKitHelpers.mm; sourceTree = "<group>"; };
 		F6A9B5C6FDF4B9CD9CA68F810CEFF452 /* _ASAsyncTransaction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = _ASAsyncTransaction.m; path = AsyncDisplayKit/Details/Transactions/_ASAsyncTransaction.m; sourceTree = "<group>"; };
 		F73B3A6B9ACD4E0641F30F098B04DE30 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		F90574AB655604F2FD5A8811084F1843 /* ASFlowLayoutController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASFlowLayoutController.h; path = AsyncDisplayKit/Details/ASFlowLayoutController.h; sourceTree = "<group>"; };
 		F9346FAA40BDB5FD06A5A4A7E382877D /* libRIGiphyLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRIGiphyLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F989B55836B6C5DE9C4B1505E61D0C70 /* GiphyNetworkManager+ASImageNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GiphyNetworkManager+ASImageNode.h"; sourceTree = "<group>"; };
+		F9735C17C92A14770209D3FF97A951DC /* GiphyNetworkManager+ASImageNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyNetworkManager+ASImageNode.m"; sourceTree = "<group>"; };
 		F99A07DF0C6755790AEFA7BC3F02BFF7 /* ASDisplayNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ASDisplayNode.h; path = AsyncDisplayKit/ASDisplayNode.h; sourceTree = "<group>"; };
-		F9EE3A3C9E6D0FE7F056E97A7B3B614C /* GiphyGIFObject+Parser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GiphyGIFObject+Parser.m"; sourceTree = "<group>"; };
 		FB4C7B607CA1410C51B3314BBA98EFFE /* ASImageNode.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASImageNode.mm; path = AsyncDisplayKit/ASImageNode.mm; sourceTree = "<group>"; };
 		FBC7D250F4514FA81C69E7910F70B2DD /* ASNetworkImageNode.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASNetworkImageNode.mm; path = AsyncDisplayKit/ASNetworkImageNode.mm; sourceTree = "<group>"; };
 		FCB525D8116AA70FA41B9DEC2EB42258 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FE1FF7023384A65675EC1875DBD55E18 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		FE9A41DC4DB0130BE992A8025F244BFA /* GiphyBasicDataManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GiphyBasicDataManager.m; sourceTree = "<group>"; };
 		FF921E09898169560D5115182BD0F0F0 /* GiphyResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; path = GiphyResources.bundle; sourceTree = "<group>"; };
 		FFC4F884CB0F373A2FBD4568440A9B47 /* ASEditableTextNode.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = ASEditableTextNode.mm; path = AsyncDisplayKit/ASEditableTextNode.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -678,6 +678,19 @@
 				BF77837BF16B8A17EAD9DFC7D0B4A264 /* AFURLSessionManager.m */,
 			);
 			name = NSURLSession;
+			sourceTree = "<group>";
+		};
+		0A7332C560E870B57A2DE875BEED0FE0 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				532E088826D278ECC4AC3BC2143EC25B /* GiphyNetworkManager.h */,
+				1DCF96ED5616EAF397B22CCCC797994E /* GiphyNetworkManager.m */,
+				F22955C5CB9AD83E805D44B8F765C00E /* GiphyNetworkManager+ASImageNode.h */,
+				F9735C17C92A14770209D3FF97A951DC /* GiphyNetworkManager+ASImageNode.m */,
+				9B7A74D0DEDEC419B856C1E1BF306D66 /* GiphyRequest.h */,
+				0122D7ECD995202C12D9E68BDC2019DD /* GiphyRequest.m */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		0B37638715E59CD439E6FE38D807FB9D /* Resources */ = {
@@ -874,31 +887,6 @@
 			path = UIImage;
 			sourceTree = "<group>";
 		};
-		8D10F2E7C4C3FFEAF17FCB5774130625 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				083CE7D09DE1FB4376BA5E3965C9B298 /* FLAnimatedImageSerializer.h */,
-				41BBCA32B41599AF5728D242F69CD62F /* FLAnimatedImageSerializer.m */,
-				DD3DFA524317D04DE844F249C79498DF /* GiphyCategoryObject.h */,
-				1E358BB517EDB32154C0D7963CC2EA11 /* GiphyCategoryObject.m */,
-				96CC25293D331946FB5FC757062957A0 /* GiphyCategoryObject+Parse.h */,
-				8A8437E2DF138F3E16F6A498EFB6D13A /* GiphyCategoryObject+Parse.m */,
-				8F696888740B49E8539DF07949A73C21 /* GiphyGIFObject.h */,
-				BDDC2421D5814422729679ADAD64908D /* GiphyGIFObject.m */,
-				02024C7D9A9E1E0A376CDCF3AA5245A3 /* GiphyGIFObject+Parser.h */,
-				F9EE3A3C9E6D0FE7F056E97A7B3B614C /* GiphyGIFObject+Parser.m */,
-				90A815EA77BB6EEFF45061CB597DECE9 /* GiphySearchRequestObject.h */,
-				193B87B22E2FE560D33E314E4281DA0A /* GiphySearchRequestObject.m */,
-				7327232F5ECF788091D0832CCBABEBB8 /* GiphyTranslationResult.h */,
-				78403C3F2C07C9D9EE0865E99F349912 /* GiphyTranslationResult.m */,
-				61444B6EB6104C88BFE84EA1BE4722C1 /* GiphyTranslationResult+Yandex.h */,
-				66410BACF160B17A6557958CBA2A53AC /* GiphyTranslationResult+Yandex.m */,
-				84D137B81BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h */,
-				84D137B91BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m */,
-			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
 		944AD928AC5CF42EB1EC406EE14948C8 /* Pods-RIGiphyLib_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -912,22 +900,6 @@
 			);
 			name = "Pods-RIGiphyLib_Example";
 			path = "Target Support Files/Pods-RIGiphyLib_Example";
-			sourceTree = "<group>";
-		};
-		948B205DFFC288DFE5C66A89439D0FFF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				431057267DF3975D87A465ABBBFFBC1C /* GiphyBasicDataManager.h */,
-				29300F428468C12EED22EFF2B1FDB311 /* GiphyBasicDataManager.m */,
-				E966EB0EC97D8D0F06D10F808D76AC24 /* GiphyBundle.h */,
-				B06E511320543CBCCE8DE0D56CD19312 /* GiphyBundle.m */,
-				57A0D158755E8272BCFC34F92A0BF2D5 /* GiphyDataStoreProtocol.h */,
-				68E2DA544E62FE94D854A43F30C2BEA2 /* GiphyObjectCacheProtocol.h */,
-				7AB80B848297B96BF03FD8AC166F655B /* GiphyNetworkActivityProtocol.h */,
-				F682D472FC9A2B57468632E05E79216A /* NetworkManager */,
-				8D10F2E7C4C3FFEAF17FCB5774130625 /* Objects */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9EBDE9604B0E3D67263A2395A24CA703 /* AFNetworking */ = {
@@ -1091,7 +1063,7 @@
 			children = (
 				380499598106A2816C5A6A71A33E34C6 /* Controller */,
 				F01A3A665B48BB8C1C0A972622CCE560 /* Helper */,
-				948B205DFFC288DFE5C66A89439D0FFF /* Model */,
+				E05275040F25412EBCBBE670709C8DB7 /* Model */,
 				67204C5D509333A64E5B966737D26411 /* View */,
 			);
 			path = Classes;
@@ -1155,6 +1127,47 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		DBC278BB4B90F2391CD33DDFD50F63E0 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				5DE7DC7A6EB645DF0F62F0DD0E8C63FE /* FLAnimatedImage+NSCoding.h */,
+				55DDF78BEE588BE2FB8C1DA550A370B9 /* FLAnimatedImage+NSCoding.m */,
+				C63E5447328941FF263CA28E46F39720 /* FLAnimatedImageSerializer.h */,
+				895986A5DF06EF8853543C43DE686834 /* FLAnimatedImageSerializer.m */,
+				EEAF33974032014ACD389F329A04590A /* GiphyCategoryObject.h */,
+				087CD62C09E15864C95AF60D937EC86A /* GiphyCategoryObject.m */,
+				050D55931C6CBFD7F2356430F997C0B1 /* GiphyCategoryObject+Parse.h */,
+				A3FECEB536552506A09B69751DCA2DF7 /* GiphyCategoryObject+Parse.m */,
+				D22C401C6D2FA0BCA8DB84A88199A04B /* GiphyGIFObject.h */,
+				A886720F7484E42D4FD68B0F745CBBF5 /* GiphyGIFObject.m */,
+				C51722B6977F2E531E170955162BAB0C /* GiphyGIFObject+Parser.h */,
+				7F3767D07BA1ED3677373CEAC9B88B59 /* GiphyGIFObject+Parser.m */,
+				E8139A56C2C83F32CB5145605A80EF25 /* GiphySearchRequestObject.h */,
+				A9E4CE5EB93542C9C7AEA501C9235E41 /* GiphySearchRequestObject.m */,
+				52F32E0AFB5753653636461FDCDBCE6B /* GiphyTranslationResult.h */,
+				A3D7D2B1C5AE2BCDB1AE3EEBF47E9A38 /* GiphyTranslationResult.m */,
+				E40A7EAF281469F23EE0F453F97D185B /* GiphyTranslationResult+Yandex.h */,
+				1C1F981CE6BC06A65E31AD6C6B931DE1 /* GiphyTranslationResult+Yandex.m */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		E05275040F25412EBCBBE670709C8DB7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93C6FBA762100891DB3CA523912321A3 /* GiphyBasicDataManager.h */,
+				FE9A41DC4DB0130BE992A8025F244BFA /* GiphyBasicDataManager.m */,
+				E0E32FECDBE430553E2C8C35D4ABFBE5 /* GiphyBundle.h */,
+				3B76397B3FAFBCC7EC5B7AE9DE00627A /* GiphyBundle.m */,
+				48149B78BD3088626FE01B64E544A4B9 /* GiphyDataStoreProtocol.h */,
+				5EC7C440A55742B29BFAA5FED9DC059F /* GiphyNetworkActivityProtocol.h */,
+				04945877DE6A447F13ACEDDC2CA25E90 /* GiphyObjectCacheProtocol.h */,
+				0A7332C560E870B57A2DE875BEED0FE0 /* NetworkManager */,
+				DBC278BB4B90F2391CD33DDFD50F63E0 /* Objects */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E5E8C55116FB0FD168A8954CD5317BF0 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
@@ -1204,19 +1217,6 @@
 				F73B3A6B9ACD4E0641F30F098B04DE30 /* UIWebView+AFNetworking.m */,
 			);
 			name = UIKit;
-			sourceTree = "<group>";
-		};
-		F682D472FC9A2B57468632E05E79216A /* NetworkManager */ = {
-			isa = PBXGroup;
-			children = (
-				2BBED59BBBEEA927FAA57822C5FFF25B /* GiphyNetworkManager.h */,
-				58CA73A1C87610AAFBBA9B15DC43EEEF /* GiphyNetworkManager.m */,
-				F989B55836B6C5DE9C4B1505E61D0C70 /* GiphyNetworkManager+ASImageNode.h */,
-				366FAD593019B5D7CC846210FAC5BB66 /* GiphyNetworkManager+ASImageNode.m */,
-				214D95CBA4CCB343D06C197340C894A9 /* GiphyRequest.h */,
-				4312808673462A2548D150A8ABABA0CB /* GiphyRequest.m */,
-			);
-			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		F98ED5660CFC6967505276245A30359A /* Support Files */ = {
@@ -1315,6 +1315,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4A9782B14FD8E3090C9D76EDD4DB936 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5E53FA5953736690FD2E6247D5B9CB /* FLAnimatedImage+NSCoding.h in Headers */,
+				F7B175D701D772A96A269F44EA41E233 /* FLAnimatedImageSerializer.h in Headers */,
+				0A92CEA7CACEC748BD69C84D092C1E6C /* GiphyBasicDataManager.h in Headers */,
+				23ACD7EA1F127109E234CE2C6436920A /* GiphyBundle.h in Headers */,
+				6B130EC38DD27F8CFC873F1C4CA00DFC /* GiphyCategoryCollectionViewNode.h in Headers */,
+				87FC31D7B7AA9674DB59471713986A0F /* GiphyCategoryObject+Parse.h in Headers */,
+				19A1C264FCAFA860FF157CF4AD9D9872 /* GiphyCategoryObject.h in Headers */,
+				AF31A19383A16F1691C9C1F21EA18661 /* GiphyCollectionViewNode.h in Headers */,
+				C1CEBBBD058267D7787423547DD5D376 /* GiphyCollectionViewNode_Subclass.h in Headers */,
+				F62EFDB0EC59609C3B2A3B2CD03BBBFF /* GiphyDataStoreProtocol.h in Headers */,
+				E5367C161440B732867814B559B79B9B /* GiphyGIFObject+Parser.h in Headers */,
+				5EE79E70E323F5DE572D3AAD5C3ACF88 /* GiphyGIFObject.h in Headers */,
+				20E15C514585C5D1B24C21510FFC2D5F /* GiphyLabelNode.h in Headers */,
+				A489FCFE9E160447B8F1AE4C8D3E0E73 /* GiphyListViewController.h in Headers */,
+				C23443D005523E2BD6FA4B044E5C9C0A /* GiphyNavigationController.h in Headers */,
+				EA85331B2305F1228C6B37FDE93A0D0C /* GiphyNetworkActivityProtocol.h in Headers */,
+				7B0C88147856D8D7E3BC29C47122DB38 /* GiphyNetworkManager+ASImageNode.h in Headers */,
+				7466CEE8657C1A01F6F070522BEA4E4D /* GiphyNetworkManager.h in Headers */,
+				714C532E42B3E833291D4D7F7611FE46 /* GiphyObjectCacheProtocol.h in Headers */,
+				2EE25489A2093F7066210921BF4C62BF /* GiphyOptionsView.h in Headers */,
+				A1BD85DEA38BFB1E69120F2C3ABCC5F0 /* GiphyPresentationAnimation.h in Headers */,
+				C5986F9D9A1B033A4A2BB873A8EE4DA6 /* GiphyPreviewViewController.h in Headers */,
+				8236FE84E21497A6EFFE4DD7E9E5D1B2 /* GiphyRequest.h in Headers */,
+				1820E0DF3E4525C55766586ECA514BB5 /* GiphySearchCollectionViewNode.h in Headers */,
+				FBDCDCC2D76ADAB7C929AD74BFF95547 /* GiphySearchRequestObject.h in Headers */,
+				4910213EC91508BE02531A9B4185EFCF /* GiphySearchTableViewCell.h in Headers */,
+				FA98BB4F977A8E458BCBF9D9D05018F5 /* GiphyTranslationResult+Yandex.h in Headers */,
+				695761F7CD87F52467F59A56DA6C7E1B /* GiphyTranslationResult.h in Headers */,
+				808701CF37D0B33C5201A89CD945C829 /* UIImage+GiphyFilter.h in Headers */,
+				4BBC8B7B23AAC2276072A76D935222DB /* UISearchBar+Language.h in Headers */,
+				1215D9ED5F63D4F9F492E153C820C3B0 /* UIView+Giphy.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9C26A9D9761804867532D147CEA1D5A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1339,44 +1377,6 @@
 				C7ACDDE36465ACAF629FEC233B1BF172 /* UIProgressView+AFNetworking.h in Headers */,
 				C58268D5A4D2A786576E0EAA5B50FB93 /* UIRefreshControl+AFNetworking.h in Headers */,
 				A4EE8D1BEE38B87066BAA1B09A047356 /* UIWebView+AFNetworking.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EDF38F55FF434A2A1992C47B08D4AD86 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				94A975308EB1E0D97BD30641D2CEC245 /* FLAnimatedImageSerializer.h in Headers */,
-				3100480F69D45AF2927DA9A24F159D33 /* GiphyBasicDataManager.h in Headers */,
-				4E67A5CE851E7E95339EDB275809BE47 /* GiphyBundle.h in Headers */,
-				D5AEEFAEA52C8343D0E31FA3C36D8894 /* GiphyCategoryCollectionViewNode.h in Headers */,
-				9D9219F40F692B0778D7D5636B47934C /* GiphyCategoryObject+Parse.h in Headers */,
-				D8174422440220E579FC510C39953D5A /* GiphyCategoryObject.h in Headers */,
-				62A8C31C031A485B0C502A289E1AE1FE /* GiphyCollectionViewNode.h in Headers */,
-				DC9DAD22374F4050BB84A39404F62916 /* GiphyCollectionViewNode_Subclass.h in Headers */,
-				1A042AC91321567B74E2647BEBF61B72 /* GiphyDataStoreProtocol.h in Headers */,
-				612A89DC18257D87F4E34F9D3F14E248 /* GiphyGIFObject+Parser.h in Headers */,
-				3567824A77044D12ED1B05555879C0A2 /* GiphyGIFObject.h in Headers */,
-				DA1A1B5AC1D144261ECBF9D1B9EFAE77 /* GiphyObjectCacheProtocol.h in Headers */,
-				9162E961FC53E7DECDF13DC63A11D90B /* GiphyLabelNode.h in Headers */,
-				DBF39AB9CC56F2793272E801F36D32A5 /* GiphyListViewController.h in Headers */,
-				81C21EEFB0C6E6C64D4AAF2BD1B57F95 /* GiphyNavigationController.h in Headers */,
-				95A06ED9EC84F7F00FABCDB80631A7F3 /* GiphyNetworkActivityProtocol.h in Headers */,
-				51E2BB2A8BB57A084CF08248CE07FD02 /* GiphyNetworkManager+ASImageNode.h in Headers */,
-				EE1BF48BAD55E90DEADEC6A687437AA7 /* GiphyNetworkManager.h in Headers */,
-				84D137BA1BFCD30C00C283CC /* FLAnimatedImage+NSCoding.h in Headers */,
-				B82A4D8DD7D78685B86DFE163124B6DE /* GiphyOptionsView.h in Headers */,
-				B47B920CEB4E9964C6B873F21A458C6D /* GiphyPresentationAnimation.h in Headers */,
-				C4074E35367810538ED87AE5A8078A92 /* GiphyPreviewViewController.h in Headers */,
-				370117A05CED33BC856F3C4DC7B58F4A /* GiphyRequest.h in Headers */,
-				BE26485F72FA9C03D50A9479A4FEE8AA /* GiphySearchCollectionViewNode.h in Headers */,
-				E8CD9F97B28852BFE1C4A0D4722BB195 /* GiphySearchRequestObject.h in Headers */,
-				1313A1AC652CC8FD292D3F6B3C531832 /* GiphySearchTableViewCell.h in Headers */,
-				C0CC0DE7473A9F42FB3056DC29635043 /* GiphyTranslationResult+Yandex.h in Headers */,
-				1304871944A81A6B4E0B22F1775E7756 /* GiphyTranslationResult.h in Headers */,
-				54C03D5726B5BC421D3F3CF43655A600 /* UIImage+GiphyFilter.h in Headers */,
-				5630C5E955564CC89C608CC761816111 /* UISearchBar+Language.h in Headers */,
-				32D47557CAC91BB32C0DDE9F8A28023E /* UIView+Giphy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1476,9 +1476,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B160DD0182B2A17CEB0FF8D0337678B /* Build configuration list for PBXNativeTarget "RIGiphyLib" */;
 			buildPhases = (
-				143CCDE0B503B8EEF2276781F50E2FDC /* Sources */,
+				A7D0B884C30B7AAB3A08879AC2EAF9C5 /* Sources */,
 				A96911BFE82F8E7BC605BA8DFD4A0424 /* Frameworks */,
-				EDF38F55FF434A2A1992C47B08D4AD86 /* Headers */,
+				C4A9782B14FD8E3090C9D76EDD4DB936 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -1624,41 +1624,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		143CCDE0B503B8EEF2276781F50E2FDC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14ABDF7A048A892333BBAB370678CF68 /* FLAnimatedImageSerializer.m in Sources */,
-				84D137BB1BFCD30C00C283CC /* FLAnimatedImage+NSCoding.m in Sources */,
-				77C255882F077F6FC6E7FBC9153B1742 /* GiphyBasicDataManager.m in Sources */,
-				25405A2B13FBA9123942AF5D31A94BDE /* GiphyBundle.m in Sources */,
-				C45F271AACF990FA8FDC38A675E65693 /* GiphyCategoryCollectionViewNode.m in Sources */,
-				7123BFF36A89144FBA989716297298A6 /* GiphyCategoryObject+Parse.m in Sources */,
-				D338AF0628941058001472D9FF9F7DE6 /* GiphyCategoryObject.m in Sources */,
-				F00D0822E5EB05BAB0F7C14EC10B846D /* GiphyCollectionViewNode.m in Sources */,
-				A4E7EC4B44555573521BD8023BC9405A /* GiphyGIFObject+Parser.m in Sources */,
-				94B00B6EA13683A7A2323724826BBDBD /* GiphyGIFObject.m in Sources */,
-				A3F4BE0BD8B4E038941967D1ED280619 /* GiphyLabelNode.m in Sources */,
-				574567144669D94D0D54B6FC065D6494 /* GiphyListViewController.m in Sources */,
-				AC45935C25771ECD1128C9FA11D724DA /* GiphyNavigationController.m in Sources */,
-				F28AA9934BFEA1BB5A8929327965A8D4 /* GiphyNetworkManager+ASImageNode.m in Sources */,
-				6A0CBBE9D08BDA9FED7345F35A885C78 /* GiphyNetworkManager.m in Sources */,
-				1E81683ED952FCD0571AF61D4DC81EA3 /* GiphyOptionsView.m in Sources */,
-				2B7C2C4F52A57C1161A2B31502EDB4D2 /* GiphyPresentationAnimation.m in Sources */,
-				AADDD9CE041079E1BA30F9D59D0E4C04 /* GiphyPreviewViewController.m in Sources */,
-				0AA0DAD4718807B0F8FB45BF28448700 /* GiphyRequest.m in Sources */,
-				32DCCBD7CCDE3F47FA1A90394A7DC541 /* GiphySearchCollectionViewNode.m in Sources */,
-				BC350F14890803FDF397D70CF8D7E583 /* GiphySearchRequestObject.m in Sources */,
-				9CF5E62CFE2E900501476BCDB3DE2055 /* GiphySearchTableViewCell.m in Sources */,
-				02AB17B7D378A5FDE6FC1F8F422AAFEF /* GiphyTranslationResult+Yandex.m in Sources */,
-				1855ED80C1C10AF1FE55997BB995B4B6 /* GiphyTranslationResult.m in Sources */,
-				CBB1F8C38019AEA153E65C92697BCE2F /* RIGiphyLib-dummy.m in Sources */,
-				9B4D10C7BD4915C0AA6AEC5760DE6B76 /* UIImage+GiphyFilter.m in Sources */,
-				FF631F24078556BA10B6867BB57A181C /* UISearchBar+Language.m in Sources */,
-				304F8966CB0034C9A683AAEB8784C163 /* UIView+Giphy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2AB49C9DB71D29CBCD20D4F81B7DD139 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1689,6 +1654,41 @@
 				FD6F966F458CEE40B07A2367BA3BC8EC /* UIProgressView+AFNetworking.m in Sources */,
 				854BC4449D8CAD0F2799B021D1914C3B /* UIRefreshControl+AFNetworking.m in Sources */,
 				9A04E971065AF4281E43947994A53D07 /* UIWebView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7D0B884C30B7AAB3A08879AC2EAF9C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFEFA7BC502932C523326E0A14490AC /* FLAnimatedImage+NSCoding.m in Sources */,
+				52B957490558AD63F12169C28B101CD0 /* FLAnimatedImageSerializer.m in Sources */,
+				D1C1565181FCF5341A1750E0330FDE7D /* GiphyBasicDataManager.m in Sources */,
+				A1F39F7382848ACC4101D79B90C1F974 /* GiphyBundle.m in Sources */,
+				E080F6B9E59631797C7DD31BE4B13651 /* GiphyCategoryCollectionViewNode.m in Sources */,
+				3936A89A4C7672DCD253EDD842D8F55D /* GiphyCategoryObject+Parse.m in Sources */,
+				7318C2A469678139AEF8094AD0D65301 /* GiphyCategoryObject.m in Sources */,
+				E001939CBA5DE899D585E03BC2485317 /* GiphyCollectionViewNode.m in Sources */,
+				B13D6FFEDF08B25756E3EDE2009D793C /* GiphyGIFObject+Parser.m in Sources */,
+				6378AF2DB5644A0921C7A689FDB7E3F8 /* GiphyGIFObject.m in Sources */,
+				E39094AFD302DBB2D19BEC1207E8138B /* GiphyLabelNode.m in Sources */,
+				910030F1AEA155A8082E618125B97765 /* GiphyListViewController.m in Sources */,
+				D407C52AB3E78E7424990A7DEAAF1CE4 /* GiphyNavigationController.m in Sources */,
+				5DF18821B595C7BFD90FA25B7168FCBE /* GiphyNetworkManager+ASImageNode.m in Sources */,
+				B019C71C8C95BA4A51F566E7792BD234 /* GiphyNetworkManager.m in Sources */,
+				9B14A0A2CEA93F4C886A0A842297C417 /* GiphyOptionsView.m in Sources */,
+				471636303D2440D1DF75125D8DDB0E96 /* GiphyPresentationAnimation.m in Sources */,
+				7F7AA008DFD3E220F5E7B1658A282DEF /* GiphyPreviewViewController.m in Sources */,
+				D0FB5440B8440E34342CB821BC9C78A0 /* GiphyRequest.m in Sources */,
+				A83E87AF86473F54603EE8E429D41010 /* GiphySearchCollectionViewNode.m in Sources */,
+				DEAD0BA7712423F9DBAAEE07BF8AC383 /* GiphySearchRequestObject.m in Sources */,
+				B2FA1FA4783C48489E7F44726837D689 /* GiphySearchTableViewCell.m in Sources */,
+				CF51F6A86A0A86FDCAE3439E66B8414C /* GiphyTranslationResult+Yandex.m in Sources */,
+				28C7C155F246DF56AD3E0403601209C5 /* GiphyTranslationResult.m in Sources */,
+				645F3CCB6708EF49AE3D7D5EFF66C593 /* RIGiphyLib-dummy.m in Sources */,
+				1A426BA778D64AA45C1DE9771806515B /* UIImage+GiphyFilter.m in Sources */,
+				B18C2CF8916B8A56496DE9C907CC8980 /* UISearchBar+Language.m in Sources */,
+				DF342C692B1A4F34DC354ACCE2CEF7B2 /* UIView+Giphy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
