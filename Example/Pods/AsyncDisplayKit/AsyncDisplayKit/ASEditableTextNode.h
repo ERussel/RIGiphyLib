@@ -11,13 +11,22 @@
 
 @protocol ASEditableTextNodeDelegate;
 
-//! @abstract ASEditableTextNode implements a node that supports text editing.
+/**
+ @abstract Implements a node that supports text editing.
+ @discussion Does not support layer backing.
+ */
 @interface ASEditableTextNode : ASDisplayNode
 
-//! @abstract The text node's delegate, which must conform to the <ASEditableTextNodeDelegate> protocol.
+// @abstract The text node's delegate, which must conform to the <ASEditableTextNodeDelegate> protocol.
 @property (nonatomic, readwrite, weak) id <ASEditableTextNodeDelegate> delegate;
 
 #pragma mark - Configuration
+
+/**
+  @abstract Access to underlying UITextView for more configuration options.
+  @warning This property should only be used on the main thread and should not be accessed before the editable text node's view is created.
+ */
+@property (nonatomic, readonly, strong) UITextView *textView;
 
 //! @abstract The attributes to apply to new text being entered by the user.
 @property (nonatomic, readwrite, strong) NSDictionary *typingAttributes;
@@ -50,6 +59,16 @@
 //! @abstract The text input mode used by the receiver's keyboard, if it is visible. This value is undefined if the receiver is not the first responder.
 @property (nonatomic, readonly) UITextInputMode *textInputMode;
 
+/*
+ @abstract The textContainerInset of both the placeholder and typed textView. This value defaults to UIEdgeInsetsZero.
+ */
+@property (nonatomic, readwrite) UIEdgeInsets textContainerInset;
+
+/*
+ @abstract The returnKeyType of the keyboard. This value defaults to UIReturnKeyDefault.
+ */
+@property (nonatomic, readwrite) UIReturnKeyType returnKeyType;
+
 /**
   @abstract Indicates whether the receiver's text view is the first responder, and thus has the keyboard visible and is prepared for editing by the user.
   @result YES if the receiver's text view is the first-responder; NO otherwise.
@@ -57,10 +76,10 @@
 - (BOOL)isFirstResponder;
 
 //! @abstract Makes the receiver's text view the first responder.
-- (void)becomeFirstResponder;
+- (BOOL)becomeFirstResponder;
 
 //! @abstract Resigns the receiver's text view from first-responder status, if it has it.
-- (void)resignFirstResponder;
+- (BOOL)resignFirstResponder;
 
 #pragma mark - Geometry
 /**
@@ -74,6 +93,11 @@
 @end
 
 #pragma mark -
+/**
+ * The methods declared by the ASEditableTextNodeDelegate protocol allow the adopting delegate to 
+ * respond to notifications such as began and finished editing, selection changed and text updated;
+ * and manage whether a specified text should be replaced.
+ */
 @protocol ASEditableTextNodeDelegate <NSObject>
 
 @optional

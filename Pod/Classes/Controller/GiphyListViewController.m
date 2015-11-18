@@ -373,13 +373,6 @@ UISearchBarDelegate, UIViewControllerTransitioningDelegate>
  */
 - (void)updateDatastoreWithSearchRequestObject:(GiphySearchRequestObject*)searchRequestObject;
 
-/**
- *  Method is called to fix leak related to deallocation of invisible nodes when data gets reload.
- *  @param nodeClass Collection node class to remove invisible node objects for.
- *  \sa <a>https://github.com/facebook/AsyncDisplayKit/issues/791</a>
- */
-- (void)clearInvisibleNodesForNodeClass:(Class)nodeClass;
-
 @end
 
 @implementation GiphyListViewController
@@ -442,9 +435,6 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 #pragma mark - Memory
 
 - (void)dealloc{
-    // clear invisible nodes
-    [self clearInvisibleNodesForNodeClass:[GiphyCollectionViewNode class]];
-    
     // cancel any active requests
     [self cancelCategoriesRequest];
     [self cancelGifSearchRequest];
@@ -984,7 +974,6 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                 // update categories collection view
                 [weakSelf.categoryCollectionView setContentOffset:CGPointMake(0.0f, -weakSelf.categoryCollectionView.contentInset.top)];
                 
-                [weakSelf clearInvisibleNodesForNodeClass:[GiphyCategoryCollectionViewNode class]];
                 [weakSelf.categoryCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
                 
                 // if categories not found switch to error state
@@ -1044,7 +1033,6 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                                                                                          
                                                                                          // update search collection view
                                                                                          [weakSelf.searchCollectionView setContentOffset:CGPointMake(0.0f, -weakSelf.searchCollectionView.contentInset.top)];
-                                                                                         [weakSelf clearInvisibleNodesForNodeClass:[GiphySearchCollectionViewNode class]];
                                                                                          [weakSelf.searchCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
                                                                                          
                                                                                          // if GIFs not found than switch to error state
@@ -1327,7 +1315,6 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
                 self.searchRequestObject = nil;
                 
                 // clear search collection view
-                [self clearInvisibleNodesForNodeClass:[GiphySearchCollectionViewNode class]];
                 [_searchCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
             }
         }];
@@ -1426,24 +1413,6 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
     if (searchRequestObject) {
         [_dataManager removeObject:searchRequestObject forCollection:kGiphyDataManagerSearchRequestCollectionName];
         [_dataManager addObject:searchRequestObject forCollection:kGiphyDataManagerSearchRequestCollectionName];
-    }
-}
-
-- (void)clearInvisibleNodesForNodeClass:(Class)nodeClass{
-    UIWindow *window = [[ASRangeHandlerRender class] performSelector:NSSelectorFromString(@"workingWindow")];
-    for (UIView *view in [window subviews]) {
-        if ([view isKindOfClass:[_ASDisplayView class]]) {
-            ASDisplayNode *node = [view performSelector:@selector(asyncdisplaykit_node)];
-            if ([node isKindOfClass:nodeClass]) {
-                if (node.isNodeLoaded) {
-                    if (node.layerBacked) {
-                        [node.layer removeFromSuperlayer];
-                    } else {
-                        [node.view removeFromSuperview];
-                    }
-                }
-            }
-        }
     }
 }
 

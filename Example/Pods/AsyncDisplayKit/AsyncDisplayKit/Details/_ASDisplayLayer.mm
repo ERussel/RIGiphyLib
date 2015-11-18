@@ -36,11 +36,6 @@
     _displaySentinel = [[ASSentinel alloc] init];
 
     self.opaque = YES;
-
-#if DEBUG
-    // This is too expensive to do in production on all layers.
-    self.name = [NSString stringWithFormat:@"%@ (%p)", NSStringFromClass([self class]), self];
-#endif
   }
   return self;
 }
@@ -93,10 +88,13 @@
   [super layoutSublayers];
 
   ASDisplayNode *node = self.asyncdisplaykit_node;
-  // If our associated node is layer-backed, we cannot rely on the view's -layoutSubviews calling the node's -layout implementation, so do it ourselves.
-  if (node.isLayerBacked) {
-    ASDisplayNodeAssertMainThread();
+  if (ASDisplayNodeThreadIsMain()) {
     [node __layout];
+  } else {
+    ASDisplayNodeFailAssert(@"not reached assertion");
+    dispatch_async(dispatch_get_main_queue(), ^ {
+      [node __layout];
+    });
   }
 }
 
@@ -126,7 +124,7 @@
   static dispatch_queue_t displayQueue = NULL;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    displayQueue = dispatch_queue_create("com.facebook.AsyncDisplayKit.ASDisplayLayer.displayQueue", DISPATCH_QUEUE_CONCURRENT);
+    displayQueue = dispatch_queue_create("org.AsyncDisplayKit.ASDisplayLayer.displayQueue", DISPATCH_QUEUE_CONCURRENT);
     // we use the highpri queue to prioritize UI rendering over other async operations
     dispatch_set_target_queue(displayQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0));
   });

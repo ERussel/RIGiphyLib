@@ -7,6 +7,19 @@
  */
 
 #import "ASScrollNode.h"
+#import "_ASDisplayLayer.h"
+
+@interface ASScrollView : UIScrollView
+@end
+
+@implementation ASScrollView
+
++ (Class)layerClass
+{
+  return [_ASDisplayLayer class];
+}
+
+@end
 
 @implementation ASScrollNode
 @dynamic view;
@@ -14,8 +27,8 @@
 - (instancetype)init
 {
   return [super initWithViewBlock:^UIView *{
-    return [[UIScrollView alloc] init];
-  }];
+    return [[ASScrollView alloc] init];
+  } didLoadBlock:nil];
 }
 
 @end
