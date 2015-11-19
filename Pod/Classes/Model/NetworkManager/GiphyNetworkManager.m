@@ -130,6 +130,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     if (self){
         _requests = [[NSMutableArray alloc] init];
         _networkActivityManager = (id<GiphyNetworkActivityProtocol>)[AFNetworkActivityIndicatorManager sharedManager];
+        [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     }
     
     return self;
