@@ -662,7 +662,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 
 - (void)cancelAllRequests{
     NSArray *requestsToCancel = _requests;
-    
+
     @synchronized(requestsToCancel) {
         if ([_requests count] > 0) {
             _requests = [[NSMutableArray alloc] init];
