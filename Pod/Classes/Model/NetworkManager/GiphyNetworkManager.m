@@ -649,23 +649,28 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 #pragma mark - Cancellation
 
 - (void)cancelRequestForCancellationIdentifier:(id)cancellationIdentifier{
-    if (cancellationIdentifier && [_requests containsObject:cancellationIdentifier]) {
-        [_requests removeObject:cancellationIdentifier];
-        [(GiphyRequest*)cancellationIdentifier cancel];
-        
-        [_networkActivityManager decrementActivityCount];
+    @synchronized(_requests) {
+        if (cancellationIdentifier && [_requests containsObject:cancellationIdentifier]) {
+            [_requests removeObject:cancellationIdentifier];
+            [(GiphyRequest*)cancellationIdentifier cancel];
+            
+            [_networkActivityManager decrementActivityCount];
+        }
     }
 }
 
 - (void)cancelAllRequests{
-    if ([_requests count] > 0) {
-        NSArray *requestsToCancel = _requests;
-        _requests = [[NSMutableArray alloc] init];
-        
-        for (GiphyRequest *request in requestsToCancel) {
-            [request cancel];
+    NSArray *requestsToCancel = _requests;
+    
+    @synchronized(requestsToCancel) {
+        if ([_requests count] > 0) {
+            _requests = [[NSMutableArray alloc] init];
             
-            [_networkActivityManager decrementActivityCount];
+            for (GiphyRequest *request in requestsToCancel) {
+                [request cancel];
+                
+                [_networkActivityManager decrementActivityCount];
+            }
         }
     }
 }
@@ -673,17 +678,21 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 #pragma mark - Pause/Resume
 
 - (void)pauseRequestsForType:(GiphyRequestType)requestType{
-    for (GiphyRequest *request in _requests) {
-        if (request.operationType == requestType) {
-            [request setPaused:YES];
+    @synchronized(_requests) {
+        for (GiphyRequest *request in _requests) {
+            if (request.operationType == requestType) {
+                [request setPaused:YES];
+            }
         }
     }
 }
 
 - (void)resumeRequestsForType:(GiphyRequestType)requestType{
-    for (GiphyRequest *request in _requests) {
-        if (request.operationType == requestType) {
-            [request setPaused:NO];
+    @synchronized(_requests) {
+        for (GiphyRequest *request in _requests) {
+            if (request.operationType == requestType) {
+                [request setPaused:NO];
+            }
         }
     }
 }
@@ -692,8 +701,10 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 
 - (void)addRequest:(id)request{
     if (![self hasRequest:request] && request) {
-        // add request to shared list if is not already contained in
-        [_requests addObject:request];
+        @synchronized(_requests) {
+            // add request to shared list if is not already contained in
+            [_requests addObject:request];
+        }
         
         // register network activity for it
         [_networkActivityManager incrementActivityCount];
@@ -702,8 +713,10 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 
 - (void)completeRequest:(id)request{
     if ([self hasRequest:request]) {
-        // remove request from shared list if contained in
-        [_requests removeObject:request];
+        @synchronized(_requests) {
+            // remove request from shared list if contained in
+            [_requests removeObject:request];
+        }
         
         // drop network activity for request
         [_networkActivityManager decrementActivityCount];
@@ -715,7 +728,9 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
         return NO;
     }
     
-    return [_requests containsObject:request];
+    @synchronized(_requests) {
+        return [_requests containsObject:request];
+    }
 }
 
 
