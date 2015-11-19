@@ -77,9 +77,7 @@
   _textKitComponents = [ASTextKitComponents componentsWithAttributedSeedString:nil textContainerSize:CGSizeZero];
   _textKitComponents.layoutManager.delegate = self;
   _wordKerner = [[ASTextNodeWordKerner alloc] init];
-  _returnKeyType = UIReturnKeyDefault;
-  _textContainerInset = UIEdgeInsetsZero;
-  
+
   // Create the placeholder scaffolding.
   _placeholderTextKitComponents = [ASTextKitComponents componentsWithAttributedSeedString:nil textContainerSize:CGSizeZero];
   _placeholderTextKitComponents.layoutManager.delegate = self;
@@ -87,13 +85,13 @@
   return self;
 }
 
-- (instancetype)initWithLayerBlock:(ASDisplayNodeLayerBlock)viewBlock didLoadBlock:(ASDisplayNodeDidLoadBlock)didLoadBlock
+- (instancetype)initWithLayerBlock:(ASDisplayNodeLayerBlock)viewBlock
 {
   ASDisplayNodeAssertNotSupported();
   return nil;
 }
 
-- (instancetype)initWithViewBlock:(ASDisplayNodeViewBlock)viewBlock didLoadBlock:(ASDisplayNodeDidLoadBlock)didLoadBlock
+- (instancetype)initWithViewBlock:(ASDisplayNodeViewBlock)viewBlock
 {
   ASDisplayNodeAssertNotSupported();
   return nil;
@@ -123,7 +121,7 @@
       textView.backgroundColor = nil;
       textView.opaque = NO;
     }
-    textView.textContainerInset = self.textContainerInset;
+    textView.textContainerInset = UIEdgeInsetsZero;
     textView.clipsToBounds = NO; // We don't want selection handles cut off.
   };
 
@@ -135,29 +133,26 @@
   [self.view addSubview:_placeholderTextKitComponents.textView];
 
   // Create and configure our text view.
-  _textKitComponents.textView = self.textView;
+  _textKitComponents.textView = [[_ASDisabledPanUITextView alloc] initWithFrame:CGRectZero textContainer:_textKitComponents.textContainer];
   //_textKitComponents.textView = NO; // Unfortunately there's a bug here with iOS 7 DP5 that causes the text-view to only be one line high when scrollEnabled is NO. rdar://14729288
   _textKitComponents.textView.delegate = self;
   _textKitComponents.textView.editable = YES;
   _textKitComponents.textView.typingAttributes = _typingAttributes;
-  _textKitComponents.textView.returnKeyType = _returnKeyType;
   _textKitComponents.textView.accessibilityHint = _placeholderTextKitComponents.textStorage.string;
   configureTextView(_textKitComponents.textView);
   [self.view addSubview:_textKitComponents.textView];
-  [self _updateDisplayingPlaceholder];
 }
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize
 {
   ASTextKitComponents *displayedComponents = [self isDisplayingPlaceholder] ? _placeholderTextKitComponents : _textKitComponents;
   CGSize textSize = [displayedComponents sizeForConstrainedWidth:constrainedSize.width];
-  textSize = ceilSizeValue(textSize);
   return CGSizeMake(constrainedSize.width, fminf(textSize.height, constrainedSize.height));
 }
 
 - (void)layout
 {
-  ASDisplayNodeAssertMainThread();
+  [super layout];
 
   [self _layoutTextView];
 }
@@ -176,15 +171,6 @@
   _placeholderTextKitComponents.textView.backgroundColor = backgroundColor;
 }
 
-- (void)setTextContainerInset:(UIEdgeInsets)textContainerInset
-{
-  ASDN::MutexLocker l(_textKitLock);
-
-  _textContainerInset = textContainerInset;
-  _textKitComponents.textView.textContainerInset = textContainerInset;
-  _placeholderTextKitComponents.textView.textContainerInset = textContainerInset;
-}
-
 - (void)setOpaque:(BOOL)opaque
 {
   [super setOpaque:opaque];
@@ -199,23 +185,8 @@
   _placeholderTextKitComponents.textView.opaque = opaque;
 }
 
-- (void)setLayerBacked:(BOOL)layerBacked
-{
-  ASDisplayNodeAssert(!layerBacked, @"Cannot set layerBacked to YES on ASEditableTextNode – instances must be view-backed in order to ensure touch events can be passed to the internal UITextView during editing.");
-  [super setLayerBacked:layerBacked];
-}
-
 #pragma mark - Configuration
 @synthesize delegate = _delegate;
-
-- (UITextView *)textView
-{
-  ASDisplayNodeAssertMainThread();
-  if (!_textKitComponents.textView) {
-    _textKitComponents.textView = [[_ASDisabledPanUITextView alloc] initWithFrame:CGRectZero textContainer:_textKitComponents.textContainer];
-  }
-  return _textKitComponents.textView;
-}
 
 #pragma mark -
 @dynamic typingAttributes;
@@ -227,7 +198,7 @@
 
 - (void)setTypingAttributes:(NSDictionary *)typingAttributes
 {
-  if (ASObjectIsEqual(typingAttributes, _typingAttributes))
+  if (_typingAttributes == typingAttributes)
     return;
 
   _typingAttributes = [typingAttributes copy];
@@ -319,7 +290,7 @@
     [_textKitComponents.textStorage setAttributedString:attributedStringToDisplay];
 
   // Calculated size depends on the seeded text.
-  [self invalidateCalculatedLayout];
+  [self invalidateCalculatedSize];
 
   // Update if placeholder is shown.
   [self _updateDisplayingPlaceholder];
@@ -375,39 +346,22 @@
   return [_textKitComponents.textView textInputMode];
 }
 
-- (void)setReturnKeyType:(UIReturnKeyType)returnKeyType
-{
-  ASDN::MutexLocker l(_textKitLock);
-  _returnKeyType = returnKeyType;
-  [_textKitComponents.textView setReturnKeyType:_returnKeyType];
-}
-
 - (BOOL)isFirstResponder
 {
   ASDN::MutexLocker l(_textKitLock);
   return [_textKitComponents.textView isFirstResponder];
 }
 
-- (BOOL)canBecomeFirstResponder {
-    ASDN::MutexLocker l(_textKitLock);
-    return [_textKitComponents.textView canBecomeFirstResponder];
-}
-
-- (BOOL)becomeFirstResponder
+- (void)becomeFirstResponder
 {
   ASDN::MutexLocker l(_textKitLock);
-  return [_textKitComponents.textView becomeFirstResponder];
+  [_textKitComponents.textView becomeFirstResponder];
 }
 
-- (BOOL)canResignFirstResponder {
-    ASDN::MutexLocker l(_textKitLock);
-    return [_textKitComponents.textView canResignFirstResponder];
-}
-
-- (BOOL)resignFirstResponder
+- (void)resignFirstResponder
 {
   ASDN::MutexLocker l(_textKitLock);
-  return [_textKitComponents.textView resignFirstResponder];
+  [_textKitComponents.textView resignFirstResponder];
 }
 
 #pragma mark - UITextView Delegate
@@ -435,7 +389,7 @@
   [self _updateDisplayingPlaceholder];
 
   // Invalidate, as our calculated size depends on the textview's seeded text.
-  [self invalidateCalculatedLayout];
+  [self invalidateCalculatedSize];
 
   // Delegateify.
   [self _delegateDidUpdateText];

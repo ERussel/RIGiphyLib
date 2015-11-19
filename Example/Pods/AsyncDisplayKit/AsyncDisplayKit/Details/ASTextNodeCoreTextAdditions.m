@@ -11,8 +11,6 @@
 #import <CoreText/CTFont.h>
 #import <CoreText/CTStringAttributes.h>
 
-#import "ASAssert.h"
-
 #pragma mark - Public
 BOOL ASAttributeWithNameIsUnsupportedCoreTextAttribute(NSString *attributeName)
 {
@@ -67,13 +65,8 @@ NSDictionary *NSAttributedStringAttributesForCoreTextAttributes(NSDictionary *co
       CTFontRef coreTextFont = (__bridge CTFontRef)coreTextValue;
       NSString *fontName = (__bridge_transfer NSString *)CTFontCopyPostScriptName(coreTextFont);
       CGFloat fontSize = CTFontGetSize(coreTextFont);
-      UIFont *font = [UIFont fontWithName:fontName size:fontSize];
-      ASDisplayNodeCAssertNotNil(font, @"unable to load font %@ with size %f", fontName, fontSize);
-      if (font == nil) {
-        // Gracefully fail if we were unable to load the font.
-        font = [UIFont systemFontOfSize:fontSize];
-      }
-      cleanAttributes[NSFontAttributeName] = font;
+
+      cleanAttributes[NSFontAttributeName] = [UIFont fontWithName:fontName size:fontSize];
     }
     // kCTKernAttributeName -> NSKernAttributeName
     else if ([coreTextKey isEqualToString:(NSString *)kCTKernAttributeName]) {
@@ -149,7 +142,7 @@ NSAttributedString *ASCleanseAttributedStringOfCoreTextAttributes(NSAttributedSt
 
     return cleanAttributedString;
   } else {
-    return [dirtyAttributedString copy];
+    return dirtyAttributedString;
   }
 }
 

@@ -17,7 +17,7 @@
 @class ASCellNode;
 @protocol ASCollectionViewDataSource;
 @protocol ASCollectionViewDelegate;
-@protocol ASCollectionViewLayoutInspecting;
+
 
 /**
  * Node-based collection view.
@@ -27,17 +27,15 @@
  */
 @interface ASCollectionView : UICollectionView
 
-- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout;
-
 @property (nonatomic, weak) id<ASCollectionViewDataSource> asyncDataSource;
 @property (nonatomic, weak) id<ASCollectionViewDelegate> asyncDelegate;       // must not be nil
 
 /**
- * Tuning parameters for a range type.
+ * Tuning parameters for a range.
  *
- * @param rangeType The range type to get the tuning parameters for.
+ * @param range The range to get the tuning parameters for.
  *
- * @returns A tuning parameter value for the given range type.
+ * @returns A tuning parameter value for the given range.
  *
  * Defaults to the render range having one sceenful both leading and trailing and the preload range having two
  * screenfuls in both directions.
@@ -45,25 +43,17 @@
 - (ASRangeTuningParameters)tuningParametersForRangeType:(ASLayoutRangeType)rangeType;
 
 /**
- * Set the tuning parameters for a range type.
+ * Set the tuning parameters for a range.
  *
- * @param tuningParameters The tuning parameters to store for a range type.
- * @param rangeType The range type to set the tuning parameters for.
+ * @param tuningParameters The tuning parameters to store for a range.
+ * @param range The range to set the tuning parameters for.
  */
 - (void)setTuningParameters:(ASRangeTuningParameters)tuningParameters forRangeType:(ASLayoutRangeType)rangeType;
 
 /**
  * Initializer.
  *
- * @param frame The frame rectangle for the collection view, measured in points. The origin of the frame is relative to the superview 
- * in which you plan to add it. This frame is passed to the superclass during initialization.
- * 
- * @param layout The layout object to use for organizing items. The collection view stores a strong reference to the specified object. 
- * Must not be nil.
- *
- * @param asyncDataFetchingEnabled Enable the data fetching in async mode.
- *
- * @discussion If asyncDataFetching is enabled, the `ASCollectionView` will fetch data through `collectionView:numberOfRowsInSection:` and
+ * @discussion If asyncDataFetching is enabled, the `AScollectionView` will fetch data through `collectionView:numberOfRowsInSection:` and
  * `collectionView:nodeForRowAtIndexPath:` in async mode from background thread. Otherwise, the methods will be invoked synchronically
  * from calling thread.
  * Enabling asyncDataFetching could avoid blocking main thread for `ASCellNode` allocation, which is frequently reported issue for
@@ -79,41 +69,6 @@
  * Defaults to one screenful.
  */
 @property (nonatomic, assign) CGFloat leadingScreensForBatching;
-
-/**
- * Optional introspection object for the collection view's layout.
- *
- * @discussion Since supplementary and decoration views are controlled by the collection view's layout, this object
- * is used as a bridge to provide information to the internal data controller about the existence of these views and
- * their associated index paths. For collection views using `UICollectionViewFlowLayout`, a default inspector
- * implementation `ASCollectionViewFlowLayoutInspector` is created and set on this property by default. Custom
- * collection view layout subclasses will need to provide their own implementation of an inspector object for their
- * supplementary views to be compatible with `ASCollectionView`'s supplementary node support.
- */
-@property (nonatomic, weak) id<ASCollectionViewLayoutInspecting> layoutInspector;
-
-/**
- *  Perform a batch of updates asynchronously, optionally disabling all animations in the batch. This method must be called from the main thread. 
- *  The asyncDataSource must be updated to reflect the changes before the update block completes.
- *
- *  @param animated   NO to disable animations for this batch
- *  @param updates    The block that performs the relevant insert, delete, reload, or move operations.
- *  @param completion A completion handler block to execute when all of the operations are finished. This block takes a single 
- *                    Boolean parameter that contains the value YES if all of the related animations completed successfully or 
- *                    NO if they were interrupted. This parameter may be nil. If supplied, the block is run on the main thread.
- */
-- (void)performBatchAnimated:(BOOL)animated updates:(void (^)())updates completion:(void (^)(BOOL))completion;
-
-/**
- *  Perform a batch of updates asynchronously.  This method must be called from the main thread.
- *  The asyncDataSource must be updated to reflect the changes before update block completes.
- *
- *  @param updates    The block that performs the relevant insert, delete, reload, or move operations.
- *  @param completion A completion handler block to execute when all of the operations are finished. This block takes a single
- *                    Boolean parameter that contains the value YES if all of the related animations completed successfully or
- *                    NO if they were interrupted. This parameter may be nil. If supplied, the block is run on the main thread.
- */
-- (void)performBatchUpdates:(void (^)())updates completion:(void (^)(BOOL))completion;
 
 /**
  * Reload everything from scratch, destroying the working range and all cached nodes.
@@ -132,107 +87,28 @@
 - (void)reloadData;
 
 /**
- * Reload everything from scratch entirely on the main thread, destroying the working range and all cached nodes.
+ * Section updating.
  *
- * @warning This method is substantially more expensive than UICollectionView's version and will block the main thread
- * while all the cells load.
- */
-- (void)reloadDataImmediately;
-
-/**
- * Registers the given kind of supplementary node for use in creating node-backed supplementary views.
- *
- * @param kind The kind of supplementary node that will be requested through the data source.
- *
- * @discussion Use this method to register support for the use of supplementary nodes in place of the default
- * `registerClass:forSupplementaryViewOfKind:withReuseIdentifier:` and `registerNib:forSupplementaryViewOfKind:withReuseIdentifier:`
- * methods. This method will register an internal backing view that will host the contents of the supplementary nodes
- * returned from the data source.
- */
-- (void)registerSupplementaryNodeOfKind:(NSString *)elementKind;
-
-/**
- * Inserts one or more sections.
- *
- * @param sections An index set that specifies the sections to insert.
- *
- * @discussion This method must be called from the main thread. The asyncDataSource must be updated to reflect the changes
- * before this method is called.
+ * All operations are asynchronous and thread safe. You can call it from background thread (it is recommendated) and the UI collection
+ * view will be updated asynchronously. The asyncDataSource must be updated to reflect the changes before these methods are called.
  */
 - (void)insertSections:(NSIndexSet *)sections;
-
-/**
- * Deletes one or more sections.
- *
- * @param sections An index set that specifies the sections to delete.
- *
- * @discussion This method must be called from the main thread. The asyncDataSource must be updated to reflect the changes
- * before this method is called.
- */
 - (void)deleteSections:(NSIndexSet *)sections;
-
-/**
- * Reloads the specified sections.
- *
- * @param sections An index set that specifies the sections to reload.
- *
- * @discussion This method must be called from the main thread. The asyncDataSource must be updated to reflect the changes
- * before this method is called.
- */
 - (void)reloadSections:(NSIndexSet *)sections;
-
-/**
- * Moves a section to a new location.
- *
- * @param section The index of the section to move.
- *
- * @param newSection The index that is the destination of the move for the section.
- *
- * @discussion This method must be called from the main thread. The asyncDataSource must be updated to reflect the changes
- * before this method is called.
- */
+- (void)reloadSections:(NSIndexSet *)sections completion:(void (^)())completion;
 - (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection;
 
 /**
- * Inserts items at the locations identified by an array of index paths.
+ * Items updating.
  *
- * @param indexPaths An array of NSIndexPath objects, each representing an item index and section index that together identify an item.
- *
- * @discussion This method must be called from the main thread. The asyncDataSource must be updated to reflect the changes
- * before this method is called.
+ * All operations are asynchronous and thread safe. You can call it from background thread (it is recommendated) and the UI collection
+ * view will be updated asynchronously. The asyncDataSource must be updated to reflect the changes before these methods are called.
  */
 - (void)insertItemsAtIndexPaths:(NSArray *)indexPaths;
-
-/**
- * Deletes the items specified by an array of index paths.
- *
- * @param indexPaths An array of NSIndexPath objects identifying the items to delete.
- *
- * @discussion This method must be called from the main thread. The asyncDataSource must be updated to reflect the changes
- * before this method is called.
- */
+- (void)insertItemsAtIndexPaths:(NSArray *)indexPaths completion:(void (^)())completion;
 - (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths;
-
-/**
- * Reloads the specified items.
- *
- * @param indexPaths An array of NSIndexPath objects identifying the items to reload.
- *
- * @discussion This method must be called from the main thread. The asyncDataSource must be updated to reflect the changes
- * before this method is called.
- */
+- (void)deleteItemsAtIndexPaths:(NSArray *)indexPaths completion:(void (^)())completion;
 - (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths;
-
-/**
- * Moves the item at a specified location to a destination location.
- *
- * @param indexPath The index path identifying the item to move.
- *
- * @param newIndexPath The index path that is the destination of the move for the item.
- *
- * @discussion This method must be called from the main thread. The asyncDataSource must be updated to reflect the changes
- * before this method is called.
- */
 - (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
 
 /**
@@ -243,15 +119,6 @@
  * @returns a node for display at this indexpath.
  */
 - (ASCellNode *)nodeForItemAtIndexPath:(NSIndexPath *)indexPath;
-
-/**
- * Similar to -indexPathForCell:.
- *
- * @param cellNode a cellNode part of the table view
- *
- * @returns an indexPath for this cellNode
- */
-- (NSIndexPath *)indexPathForNode:(ASCellNode *)cellNode;
 
 /**
  * Similar to -visibleCells.
@@ -267,20 +134,6 @@
  */
 - (CGSize)calculatedSizeForNodeAtIndexPath:(NSIndexPath *)indexPath;
 
-/**
- * Determines collection view's current scroll direction. Supports 2-axis collection views.
- *
- * @returns a bitmask of ASScrollDirection values.
- */
-- (ASScrollDirection)scrollDirection;
-
-/**
- * Determines collection view's scrollable directions.
- *
- * @returns a bitmask of ASScrollDirection values.
- */
-- (ASScrollDirection)scrollableDirections;
-
 @end
 
 
@@ -292,7 +145,7 @@
 /**
  * Similar to -collectionView:cellForItemAtIndexPath:.
  *
- * @param collectionView The sender.
+ * @param collection The sender.
  *
  * @param indexPath The index path of the requested node.
  *
@@ -303,26 +156,6 @@
 - (ASCellNode *)collectionView:(ASCollectionView *)collectionView nodeForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @optional
-
-/**
- * Asks the collection view to provide a supplementary node to display in the collection view.
- *
- * @param collectionView An object representing the collection view requesting this information.
- * @param kind           The kind of supplementary node to provide.
- * @param indexPath      The index path that specifies the location of the new supplementary node.
- */
-- (ASCellNode *)collectionView:(ASCollectionView *)collectionView nodeForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;
-
-/**
- * Provides the constrained size range for measuring the node at the index path.
- *
- * @param collectionView The sender.
- *
- * @param indexPath The index path of the node.
- *
- * @returns A constrained size range for layout the node at this index path.
- */
-- (ASSizeRange)collectionView:(ASCollectionView *)collectionView constrainedSizeForNodeAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  * Indicator to lock the data source for data fetching in async mode.
@@ -382,38 +215,6 @@
  * should occur.
  */
 - (BOOL)shouldBatchFetchForCollectionView:(ASCollectionView *)collectionView;
-
-@end
-
-/**
- * Defines methods that let you coordinate with a `UICollectionViewFlowLayout` in combination with an `ASCollectionView`.
- */
-@protocol ASCollectionViewDelegateFlowLayout <ASCollectionViewDelegate>
-
-@optional
-
-/**
- * Passthrough support to UICollectionViewDelegateFlowLayout sectionInset behavior.
- *
- * @param collectionView The sender.
- * @param collectionViewLayout The layout object requesting the information.
- * @param section The index number of the section whose insets are needed.
- *
- * @discussion The same rules apply as the UICollectionView implementation, but this can also be used without a UICollectionViewFlowLayout.
- * https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDelegateFlowLayout_protocol/index.html#//apple_ref/occ/intfm/UICollectionViewDelegateFlowLayout/collectionView:layout:insetForSectionAtIndex:
- *
- */
-- (UIEdgeInsets)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
-
-/**
- * Asks the delegate for the size of the header in the specified section.
- */
-- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section;
-
-/**
- * Asks the delegate for the size of the footer in the specified section.
- */
-- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section;
 
 @end
 

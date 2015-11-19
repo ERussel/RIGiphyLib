@@ -83,42 +83,25 @@ static void __ASDisplayLayerDecrementConcurrentDisplayCount(BOOL displayIsAsync,
   if (self.isHidden || self.alpha <= 0.0) {
     return;
   }
-    
-  BOOL rasterizingFromAscendent = [self __rasterizedContainerNode] != nil;
-
-  // if super node is rasterizing descendents, subnodes will not have had layout calls becase they don't have layers
-  if (rasterizingFromAscendent) {
-    [self __layout];
-  }
 
   // Capture these outside the display block so they are retained.
   UIColor *backgroundColor = self.backgroundColor;
   CGRect bounds = self.bounds;
-  CGFloat cornerRadius = self.cornerRadius;
-  BOOL clipsToBounds = self.clipsToBounds;
+  CGPoint position = self.position;
+  CGPoint anchorPoint = self.anchorPoint;
 
-  CGRect frame;
-  
-  // If this is the root container node, use a frame with a zero origin to draw into. If not, calculate the correct frame using the node's position, transform and anchorPoint.
-  if (self.shouldRasterizeDescendants) {
-    frame = CGRectMake(0.0f, 0.0f, bounds.size.width, bounds.size.height);
-  } else {
-    CGPoint position = self.position;
-    CGPoint anchorPoint = self.anchorPoint;
-    
-    // Pretty hacky since full 3D transforms aren't actually supported, but attempt to compute the transformed frame of this node so that we can composite it into approximately the right spot.
-    CGAffineTransform transform = CATransform3DGetAffineTransform(self.transform);
-    CGSize scaledBoundsSize = CGSizeApplyAffineTransform(bounds.size, transform);
-    CGPoint origin = CGPointMake(position.x - scaledBoundsSize.width * anchorPoint.x,
-                                 position.y - scaledBoundsSize.height * anchorPoint.y);
-    frame = CGRectMake(origin.x, origin.y, bounds.size.width, bounds.size.height);
-  }
+  // Pretty hacky since full 3D transforms aren't actually supported, but attempt to compute the transformed frame of this node so that we can composite it into approximately the right spot.
+  CGAffineTransform transform = CATransform3DGetAffineTransform(self.transform);
+  CGSize scaledBoundsSize = CGSizeApplyAffineTransform(bounds.size, transform);
+  CGPoint origin = CGPointMake(position.x - scaledBoundsSize.width * anchorPoint.x,
+                               position.y - scaledBoundsSize.height * anchorPoint.y);
+  CGRect frame = CGRectMake(origin.x, origin.y, bounds.size.width, bounds.size.height);
 
   // Get the display block for this node.
   asyncdisplaykit_async_transaction_operation_block_t displayBlock = [self _displayBlockWithAsynchronous:NO isCancelledBlock:isCancelledBlock rasterizing:YES];
 
-  // We'll display something if there is a display block, clipping, translation and/or a background color.
-  BOOL shouldDisplay = displayBlock || backgroundColor || CGPointEqualToPoint(CGPointZero, frame.origin) == NO || clipsToBounds;
+  // We'll display something if there is a display block and/or a background color.
+  BOOL shouldDisplay = displayBlock || backgroundColor;
 
   // If we should display, then push a transform, draw the background color, and draw the contents.
   // The transform is popped in a block added after the recursion into subnodes.
@@ -129,15 +112,6 @@ static void __ASDisplayLayerDecrementConcurrentDisplayCount(BOOL displayIsAsync,
       CGContextSaveGState(context);
 
       CGContextTranslateCTM(context, frame.origin.x, frame.origin.y);
-
-      //support cornerRadius
-      if (rasterizingFromAscendent && clipsToBounds) {
-        if (cornerRadius) {
-          [[UIBezierPath bezierPathWithRoundedRect:bounds cornerRadius:cornerRadius] addClip];
-        } else {
-          [[UIBezierPath bezierPathWithRect:bounds] addClip];
-        }
-      }
 
       // Fill background if any.
       CGColorRef backgroundCGColor = backgroundColor.CGColor;
@@ -191,7 +165,7 @@ static void __ASDisplayLayerDecrementConcurrentDisplayCount(BOOL displayIsAsync,
     [self _recursivelyRasterizeSelfAndSublayersWithIsCancelledBlock:isCancelledBlock displayBlocks:displayBlocks];
 
     CGFloat contentsScaleForDisplay = self.contentsScaleForDisplay;
-    BOOL opaque = self.opaque && CGColorGetAlpha(self.backgroundColor.CGColor) == 1.0f;
+    BOOL opaque = self.opaque;
 
     ASDisplayNodeAssert(self.contentsScaleForDisplay != 0.0, @"Invalid contents scale");
 
@@ -203,6 +177,7 @@ static void __ASDisplayLayerDecrementConcurrentDisplayCount(BOOL displayIsAsync,
       }
 
       ASDN_DELAY_FOR_DISPLAY();
+
       UIGraphicsBeginImageContextWithOptions(bounds.size, opaque, contentsScaleForDisplay);
 
       for (dispatch_block_t block in displayBlocks) {
@@ -314,14 +289,16 @@ static void __ASDisplayLayerDecrementConcurrentDisplayCount(BOOL displayIsAsync,
     return BOOL(displaySentinelValue != displaySentinel.value);
   };
 
+  // If we're participating in an ancestor's asyncTransaction, find it here
+  ASDisplayNodeAssert(_layer, @"Expect _layer to be not nil");
+  CALayer *containerLayer = _layer.asyncdisplaykit_parentTransactionContainer ?: _layer;
+  _ASAsyncTransaction *transaction = containerLayer.asyncdisplaykit_asyncTransaction;
+
   // Set up displayBlock to call either display or draw on the delegate and return a UIImage contents
   asyncdisplaykit_async_transaction_operation_block_t displayBlock = [self _displayBlockWithAsynchronous:asynchronously isCancelledBlock:isCancelledBlock rasterizing:NO];
-  
   if (!displayBlock) {
     return;
   }
-  
-  ASDisplayNodeAssert(_layer, @"Expect _layer to be not nil");
 
   // This block is called back on the main thread after rendering at the completion of the current async transaction, or immediately if !asynchronously
   asyncdisplaykit_async_transaction_operation_completion_block_t completionBlock = ^(id<NSObject> value, BOOL canceled){
@@ -339,27 +316,16 @@ static void __ASDisplayLayerDecrementConcurrentDisplayCount(BOOL displayIsAsync,
     }
   };
 
-  // Call willDisplay immediately in either case
-  [self willDisplayAsyncLayer:self.asyncLayer];
+  if (displayBlock != NULL) {
+    // Call willDisplay immediately in either case
+    [self willDisplayAsyncLayer:self.asyncLayer];
 
-  if (asynchronously) {
-    // Async rendering operations are contained by a transaction, which allows them to proceed and concurrently
-    // while synchronizing the final application of the results to the layer's contents property (completionBlock).
-    
-    // First, look to see if we are expected to join a parent's transaction container.
-    CALayer *containerLayer = _layer.asyncdisplaykit_parentTransactionContainer ?: _layer;
-    
-    // In the case that a transaction does not yet exist (such as for an individual node outside of a container),
-    // this call will allocate the transaction and add it to _ASAsyncTransactionGroup.
-    // It will automatically commit the transaction at the end of the runloop.
-    _ASAsyncTransaction *transaction = containerLayer.asyncdisplaykit_asyncTransaction;
-    
-    // Adding this displayBlock operation to the transaction will start it IMMEDIATELY.
-    // The only function of the transaction commit is to gate the calling of the completionBlock.
-    [transaction addOperationWithBlock:displayBlock queue:[_ASDisplayLayer displayQueue] completion:completionBlock];
-  } else {
-    UIImage *contents = (UIImage *)displayBlock();
-    completionBlock(contents, NO);
+    if (asynchronously) {
+      [transaction addOperationWithBlock:displayBlock queue:[_ASDisplayLayer displayQueue] completion:completionBlock];
+    } else {
+      UIImage *contents = (UIImage *)displayBlock();
+      completionBlock(contents, NO);
+    }
   }
 }
 

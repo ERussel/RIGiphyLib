@@ -26,7 +26,6 @@ typedef NS_ENUM(NSUInteger, ASAsyncTransactionState) {
   ASAsyncTransactionStateOpen = 0,
   ASAsyncTransactionStateCommitted,
   ASAsyncTransactionStateCanceled,
-  ASAsyncTransactionStateComplete
 };
 
 /**
@@ -54,13 +53,6 @@ typedef NS_ENUM(NSUInteger, ASAsyncTransactionState) {
  */
 - (id)initWithCallbackQueue:(dispatch_queue_t)callbackQueue
             completionBlock:(asyncdisplaykit_async_transaction_completion_block_t)completionBlock;
-
-/**
- @summary Block the main thread until the transaction is complete, including callbacks.
- 
- @desc This must be called on the main thread.
- */
-- (void)waitUntilComplete;
 
 /**
  The dispatch queue that the completion blocks will be called on.

@@ -60,47 +60,12 @@
 #define _messageToLayer(layerSelector) __loaded ? [_layer layerSelector] : [self.pendingViewState layerSelector]
 
 /**
- * This category implements certain frequently-used properties and methods of UIView and CALayer so that ASDisplayNode clients can just call the view/layer methods on the node,
+ * This category implements certainly frequently-used properties and methods of UIView and CALayer so that ASDisplayNode clients can just call the view/layer methods on the node,
  * with minimal loss in performance.  Unlike UIView and CALayer methods, these can be called from a non-main thread until the view or layer is created.
  * This allows text sizing in -calculateSizeThatFits: (essentially a simplified layout) to happen off the main thread
  * without any CALayer or UIView actually existing while still being able to set and read properties from ASDisplayNode instances.
  */
 @implementation ASDisplayNode (UIViewBridge)
-
-- (BOOL)canBecomeFirstResponder
-{
-  return NO;
-}
-
-- (BOOL)canResignFirstResponder
-{
-  return YES;
-}
-
-- (BOOL)isFirstResponder
-{
-  ASDisplayNodeAssertMainThread();
-  return _view != nil && [_view isFirstResponder];
-}
-
-// Note: this implicitly loads the view if it hasn't been loaded yet.
-- (BOOL)becomeFirstResponder
-{
-  ASDisplayNodeAssertMainThread();
-  return !self.layerBacked && [self canBecomeFirstResponder] && [self.view becomeFirstResponder];
-}
-
-- (BOOL)resignFirstResponder
-{
-  ASDisplayNodeAssertMainThread();
-  return !self.layerBacked && [self canResignFirstResponder] && [_view resignFirstResponder];
-}
-
-- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
-{
-  ASDisplayNodeAssertMainThread();
-  return !self.layerBacked && [self.view canPerformAction:action withSender:sender];
-}
 
 - (CGFloat)alpha
 {
@@ -120,7 +85,7 @@
   return _getFromLayer(cornerRadius);
 }
 
-- (void)setCornerRadius:(CGFloat)newCornerRadius
+-(void)setCornerRadius:(CGFloat)newCornerRadius
 {
   _bridge_prologue;
   _setToLayer(cornerRadius, newCornerRadius);
@@ -157,7 +122,7 @@
   // Frame is only defined when transform is identity.
 #if DEBUG
   // Checking if the transform is identity is expensive, so disable when unnecessary. We have assertions on in Release, so DEBUG is the only way I know of.
-  ASDisplayNodeAssert(CATransform3DIsIdentity(self.transform), @"-[ASDisplayNode frame] - self.transform must be identity in order to use the frame property.  (From Apple's UIView documentation: If the transform property is not the identity transform, the value of this property is undefined and therefore should be ignored.)");
+  ASDisplayNodeAssert(CATransform3DIsIdentity(self.transform), @"Must be an identity transform");
 #endif
 
   CGPoint position = self.position;
@@ -175,10 +140,20 @@
   // Frame is only defined when transform is identity because we explicitly diverge from CALayer behavior and define frame without transform
 #if DEBUG
   // Checking if the transform is identity is expensive, so disable when unnecessary. We have assertions on in Release, so DEBUG is the only way I know of.
-  ASDisplayNodeAssert(CATransform3DIsIdentity(self.transform), @"-[ASDisplayNode setFrame:] - self.transform must be identity in order to set the frame property.  (From Apple's UIView documentation: If the transform property is not the identity transform, the value of this property is undefined and therefore should be ignored.)");
+  ASDisplayNodeAssert(CATransform3DIsIdentity(self.transform), @"Must be an identity transform");
 #endif
 
-  [self __setSafeFrame:rect];
+  if (_layer && ASDisplayNodeThreadIsMain()) {
+    CGPoint anchorPoint = _layer.anchorPoint;
+    _layer.bounds = CGRectMake(0, 0, rect.size.width, rect.size.height);
+    _layer.position = CGPointMake(rect.origin.x + rect.size.width * anchorPoint.x,
+                                 rect.origin.y + rect.size.height * anchorPoint.y);
+  } else {
+    CGPoint anchorPoint = self.anchorPoint;
+    self.bounds = CGRectMake(0, 0, rect.size.width, rect.size.height);
+    self.position = CGPointMake(rect.origin.x + rect.size.width * anchorPoint.x,
+                                rect.origin.y + rect.size.height * anchorPoint.y);
+  }
 }
 
 - (void)setNeedsDisplay
@@ -194,7 +169,6 @@
 - (void)setNeedsLayout
 {
   _bridge_prologue;
-  [self __setNeedsLayout];
   _messageToViewOrLayer(setNeedsLayout);
 }
 
@@ -531,6 +505,18 @@
   _setToLayer(edgeAntialiasingMask, edgeAntialiasingMask);
 }
 
+- (NSString *)name
+{
+  _bridge_prologue;
+  return _getFromLayer(asyncdisplaykit_name);
+}
+
+- (void)setName:(NSString *)name
+{
+  _bridge_prologue;
+  _setToLayer(asyncdisplaykit_name, name);
+}
+
 - (BOOL)isAccessibilityElement
 {
   _bridge_prologue;
@@ -649,18 +635,6 @@
 {
   _bridge_prologue;
   _setToViewOnly(shouldGroupAccessibilityChildren, shouldGroupAccessibilityChildren);
-}
-
-- (NSString *)accessibilityIdentifier
-{
-  _bridge_prologue;
-  return _getFromViewOnly(accessibilityIdentifier);
-}
-
-- (void)setAccessibilityIdentifier:(NSString *)accessibilityIdentifier
-{
-  _bridge_prologue;
-  _setToViewOnly(accessibilityIdentifier, accessibilityIdentifier);
 }
 
 @end

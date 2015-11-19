@@ -11,13 +11,13 @@
 #import "ASBasicImageDownloader.h"
 #import "ASDisplayNode+Subclasses.h"
 #import "ASThread.h"
-#import "ASEqualityHelpers.h"
+
 
 @interface ASNetworkImageNode ()
 {
   ASDN::RecursiveMutex _lock;
-  __weak id<ASImageCacheProtocol> _cache;
-  __weak id<ASImageDownloaderProtocol> _downloader;
+  id<ASImageCacheProtocol> _cache;
+  id<ASImageDownloaderProtocol> _downloader;
 
   // Only access any of these with _lock.
   __weak id<ASNetworkImageNodeDelegate> _delegate;
@@ -44,14 +44,13 @@
   _cache = cache;
   _downloader = downloader;
   _shouldCacheImage = YES;
-  self.shouldBypassEnsureDisplay = YES;
 
   return self;
 }
 
 - (instancetype)init
 {
-  return [self initWithCache:nil downloader:[ASBasicImageDownloader sharedImageDownloader]];
+  return [self initWithCache:nil downloader:[[ASBasicImageDownloader alloc] init]];
 }
 
 - (void)dealloc
@@ -70,7 +69,7 @@
 {
   ASDN::MutexLocker l(_lock);
 
-  if (ASObjectIsEqual(URL, _URL)) {
+  if (URL == _URL || [URL isEqual:_URL]) {
     return;
   }
 
@@ -96,7 +95,7 @@
 {
   ASDN::MutexLocker l(_lock);
 
-  if (ASObjectIsEqual(defaultImage, _defaultImage)) {
+  if (defaultImage == _defaultImage || [defaultImage isEqual:_defaultImage]) {
     return;
   }
   _defaultImage = defaultImage;

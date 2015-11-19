@@ -14,6 +14,4 @@
  */
 @interface ASBasicImageDownloader : NSObject <ASImageDownloaderProtocol>
 
-+ (instancetype)sharedImageDownloader;
-
 @end

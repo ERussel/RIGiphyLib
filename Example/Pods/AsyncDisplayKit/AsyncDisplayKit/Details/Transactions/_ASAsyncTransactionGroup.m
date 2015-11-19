@@ -95,11 +95,6 @@ static void _transactionGroupRunLoopObserverCallback(CFRunLoopObserverRef observ
   }
 }
 
-+ (void)commit
-{
-  [[_ASAsyncTransactionGroup mainTransactionGroup] commit];
-}
-
 @end
 
 static void _transactionGroupRunLoopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info)
