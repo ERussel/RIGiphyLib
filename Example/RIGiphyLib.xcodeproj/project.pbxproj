@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29CC3D0D6EA60E53B5EDB1C3 /* libPods-RIGiphyLib_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 626F46E6DA8A98445AB993FD /* libPods-RIGiphyLib_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -23,8 +24,7 @@
 		84BE19471BDD575000E28C82 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BE19461BDD575000E28C82 /* Launch Screen.storyboard */; };
 		84D137BE1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D137BD1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		BBFE7B083E80804C1EAD528B /* libPods-RIGiphyLib_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AE04AF9E80AA7CB5C78BB7 /* libPods-RIGiphyLib_Tests.a */; };
-		FBDC4AB0AC9DE797C1C8C4E5 /* libPods-RIGiphyLib_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 426AFFD8BE48DF9302E87AB7 /* libPods-RIGiphyLib_Example.a */; };
+		DDD0ED2395042897F3DD5DC0 /* libPods-RIGiphyLib_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3990EA3E6F62520624600E7F /* libPods-RIGiphyLib_Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,9 +40,8 @@
 /* Begin PBXFileReference section */
 		0DF4EB540444D46BABB4E146 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		140D3CC07941F0D26BA0D899 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		14AE04AF9E80AA7CB5C78BB7 /* libPods-RIGiphyLib_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RIGiphyLib_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		426AFFD8BE48DF9302E87AB7 /* libPods-RIGiphyLib_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RIGiphyLib_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C57F712A6A2B91F846D157E /* Pods-RIGiphyLib_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		3990EA3E6F62520624600E7F /* libPods-RIGiphyLib_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RIGiphyLib_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C3621BAD5A0F92C8AA515DE /* Pods-RIGiphyLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* RIGiphyLib_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RIGiphyLib_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,16 +61,17 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		626F46E6DA8A98445AB993FD /* libPods-RIGiphyLib_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RIGiphyLib_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6357A26B7C839915A24A02A6 /* Pods-RIGiphyLib_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		7CA632519774DC006E7A854A /* Pods-RIGiphyLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		84BE19461BDD575000E28C82 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		84D137BC1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMCache+GiphyCacheProtocol.h"; sourceTree = "<group>"; };
 		84D137BD1BFCDC9400C283CC /* TMCache+GiphyCacheProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TMCache+GiphyCacheProtocol.m"; sourceTree = "<group>"; };
 		84FEC6071BDD3C270007FEB1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84FEC6081BDD3C280007FEB1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		A9E09E24EF7037D915CBE717 /* Pods-RIGiphyLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		AB1D0B105CE9F3B1D6672F79 /* Pods-RIGiphyLib_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B167D85E29B2798865D948C8 /* Pods-RIGiphyLib_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D5727CDF215694282C2D8FBF /* RIGiphyLib.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RIGiphyLib.podspec; path = ../RIGiphyLib.podspec; sourceTree = "<group>"; };
-		D8ACA665941212B9E6E65308 /* Pods-RIGiphyLib_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIGiphyLib_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				FBDC4AB0AC9DE797C1C8C4E5 /* libPods-RIGiphyLib_Example.a in Frameworks */,
+				29CC3D0D6EA60E53B5EDB1C3 /* libPods-RIGiphyLib_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,13 +93,24 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				BBFE7B083E80804C1EAD528B /* libPods-RIGiphyLib_Tests.a in Frameworks */,
+				DDD0ED2395042897F3DD5DC0 /* libPods-RIGiphyLib_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48F29C1551A8838526ED20FC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6357A26B7C839915A24A02A6 /* Pods-RIGiphyLib_Example.debug.xcconfig */,
+				B167D85E29B2798865D948C8 /* Pods-RIGiphyLib_Example.release.xcconfig */,
+				3C3621BAD5A0F92C8AA515DE /* Pods-RIGiphyLib_Tests.debug.xcconfig */,
+				7CA632519774DC006E7A854A /* Pods-RIGiphyLib_Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +119,7 @@
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				EEFC497972BB992E86946226 /* Pods */,
+				48F29C1551A8838526ED20FC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,8 +139,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				426AFFD8BE48DF9302E87AB7 /* libPods-RIGiphyLib_Example.a */,
-				14AE04AF9E80AA7CB5C78BB7 /* libPods-RIGiphyLib_Tests.a */,
+				626F46E6DA8A98445AB993FD /* libPods-RIGiphyLib_Example.a */,
+				3990EA3E6F62520624600E7F /* libPods-RIGiphyLib_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -192,17 +203,6 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		EEFC497972BB992E86946226 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5C57F712A6A2B91F846D157E /* Pods-RIGiphyLib_Example.debug.xcconfig */,
-				D8ACA665941212B9E6E65308 /* Pods-RIGiphyLib_Example.release.xcconfig */,
-				AB1D0B105CE9F3B1D6672F79 /* Pods-RIGiphyLib_Tests.debug.xcconfig */,
-				A9E09E24EF7037D915CBE717 /* Pods-RIGiphyLib_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,12 +210,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "RIGiphyLib_Example" */;
 			buildPhases = (
-				0B45C81AF92ED45535B91967 /* Check Pods Manifest.lock */,
+				1989533111F40909D8D58834 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				14CD5DBD6CCD05D9AD84324C /* Embed Pods Frameworks */,
-				166A81A5CF47C83F7B23CAC6 /* Copy Pods Resources */,
+				B6AC82390ACF1ED7CD929D6B /* [CP] Embed Pods Frameworks */,
+				52A93750F4672902C2B2CE22 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,12 +230,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "RIGiphyLib_Tests" */;
 			buildPhases = (
-				2E780EB356FC042D93DA830C /* Check Pods Manifest.lock */,
+				3BAE9FBC3C0EF04E14B950CD /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				6BB4F187F26CF5838F0AF919 /* Embed Pods Frameworks */,
-				54BFE1A60B8EB2C917F790C4 /* Copy Pods Resources */,
+				197E301311E508BB5068FEA1 /* [CP] Embed Pods Frameworks */,
+				244EE835B29339B0070A9750 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,74 +308,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0B45C81AF92ED45535B91967 /* Check Pods Manifest.lock */ = {
+		197E301311E508BB5068FEA1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		14CD5DBD6CCD05D9AD84324C /* Embed Pods Frameworks */ = {
+		1989533111F40909D8D58834 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		166A81A5CF47C83F7B23CAC6 /* Copy Pods Resources */ = {
+		244EE835B29339B0070A9750 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2E780EB356FC042D93DA830C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		54BFE1A60B8EB2C917F790C4 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,19 +353,49 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6BB4F187F26CF5838F0AF919 /* Embed Pods Frameworks */ = {
+		3BAE9FBC3C0EF04E14B950CD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RIGiphyLib_Tests/Pods-RIGiphyLib_Tests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		52A93750F4672902C2B2CE22 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6AC82390ACF1ED7CD929D6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RIGiphyLib_Example/Pods-RIGiphyLib_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -527,7 +527,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C57F712A6A2B91F846D157E /* Pods-RIGiphyLib_Example.debug.xcconfig */;
+			baseConfigurationReference = 6357A26B7C839915A24A02A6 /* Pods-RIGiphyLib_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -549,7 +549,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8ACA665941212B9E6E65308 /* Pods-RIGiphyLib_Example.release.xcconfig */;
+			baseConfigurationReference = B167D85E29B2798865D948C8 /* Pods-RIGiphyLib_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -571,7 +571,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB1D0B105CE9F3B1D6672F79 /* Pods-RIGiphyLib_Tests.debug.xcconfig */;
+			baseConfigurationReference = 3C3621BAD5A0F92C8AA515DE /* Pods-RIGiphyLib_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -595,7 +595,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9E09E24EF7037D915CBE717 /* Pods-RIGiphyLib_Tests.release.xcconfig */;
+			baseConfigurationReference = 7CA632519774DC006E7A854A /* Pods-RIGiphyLib_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

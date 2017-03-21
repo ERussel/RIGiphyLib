@@ -157,14 +157,14 @@
 
 - (void)_cancelImageDownload
 {
+  _cacheUUID = nil;
+    
   if (!_imageDownload) {
     return;
   }
 
   [_downloader cancelImageDownloadForIdentifier:_imageDownload];
   _imageDownload = nil;
-
-  _cacheUUID = nil;
 }
 
 - (void)_downloadImageWithCompletion:(void (^)(CGImageRef))finished

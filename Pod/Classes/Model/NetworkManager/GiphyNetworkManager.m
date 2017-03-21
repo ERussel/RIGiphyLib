@@ -35,21 +35,6 @@ NSString * const kGiphyNetworkManagerRecievedObjectKey = @"GiphyNetworkManagerRe
 NSString * const kGiphyNetworkManagerRecievedObjectURLKey = @"GiphyNetworkManagerRecievedObjectURLKey";
 
 /**
- *  Application's id registered on server.
- */
-NSString * const kServerAppId = @"aTxS0APLlsPL63vsrB5OEJjKq1snWqmJ4MWaUGeG";
-
-/**
- *  Application's key to access server's data.
- */
-NSString * const kServerAPIKey = @"8l7t5cfT5rQBgN3qPSoNU7t5qlMXojcUwcU1hBdD";
-
-/**
- *  URL to fetch categories from server.
- */
-NSString * const kServerCategoriesURL = @"https://api.parse.com/1/classes/Category";
-
-/**
  *  Yandex Translate API base url string.
  */
 NSString * const kYandexAPIURL = @"https://translate.yandex.net/api/v1.5/tr.json/translate";
@@ -91,6 +76,11 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
  */
 @property(nonatomic)NSMutableArray *requests;
 
+/**
+ *  Configuration objec to connect to the Parse server
+ */
+@property(nonatomic)GiphyNetworkManagerConfiguration *parseConfiguration;
+
 #pragma mark - Requests
 
 /**
@@ -112,15 +102,32 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 
 @implementation GiphyNetworkManager
 
+static GiphyNetworkManager *networkManager = nil;
 
 #pragma mark - Initialize
 
-+ (id)sharedManager {
-    static GiphyNetworkManager *networkManager = nil;
++ (BOOL)isInitialized {
+    return networkManager != nil;
+}
+
++ (instancetype)initializeWithConfiguration:(GiphyNetworkManagerConfiguration*)config {
+    NSAssert(networkManager == nil, @"Network manager already initialized. Use 'sharedManager' method to extract object.");
+    NSAssert(config.parseServer.length > 0, @"Server url string is not provided");
+    NSAssert(config.categoryPath.length > 0, @"Categories path is not provided");
+    NSAssert(config.parseApplicationId.length > 0, @"Application id is not provided");
+    NSAssert(config.parseClientKey.length > 0, @"Client key is not provided");
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         networkManager = [[self alloc] init];
+        networkManager.parseConfiguration = [config copy];
     });
+    
+    return networkManager;
+}
+
++ (instancetype)sharedManager {
+    NSAssert(networkManager != nil, @"Network manager isn't initialized. Use 'initializeWithServer:applicationId:clientKey:' method to extract the object.");
     return networkManager;
 }
 
@@ -218,9 +225,9 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
                       failureBlock:(void (^)(NSError *error))failureBlock
 {
     // create request to load categories from server
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kServerCategoriesURL]];
-    [request setValue:kServerAppId forHTTPHeaderField:@"X-Parse-Application-Id"];
-    [request setValue:kServerAPIKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[_parseConfiguration.parseServer stringByAppendingPathComponent:_parseConfiguration.categoryPath]]];
+    [request setValue:_parseConfiguration.parseApplicationId forHTTPHeaderField:@"X-Parse-Application-Id"];
+    [request setValue:_parseConfiguration.parseClientKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
     
     GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, NSDictionary* result){
         if ([self hasRequest:giphyRequest]) {

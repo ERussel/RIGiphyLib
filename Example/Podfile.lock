@@ -33,23 +33,21 @@ PODS:
   - TMCache (2.1.0)
 
 DEPENDENCIES:
-  - AsyncDisplayKit (from `https://github.com/ERussel/AsyncDisplayKit.git`, commit
-    `d8d26b48c1693afd4caaca5e20274c4d6a1ba632`, branch `feed_implementation`)
+  - AsyncDisplayKit (from `https://github.com/ERussel/AsyncDisplayKit.git`, commit `ef7cb55efd61609774028ff20e0905337163c718`, branch `feed_implementation`)
   - RIGiphyLib (from `../`)
   - TMCache
 
 EXTERNAL SOURCES:
   AsyncDisplayKit:
     :branch: feed_implementation
-    :commit: d8d26b48c1693afd4caaca5e20274c4d6a1ba632
+    :commit: ef7cb55efd61609774028ff20e0905337163c718
     :git: https://github.com/ERussel/AsyncDisplayKit.git
   RIGiphyLib:
     :path: ../
 
 CHECKOUT OPTIONS:
   AsyncDisplayKit:
-    :branch: feed_implementation
-    :commit: d8d26b48c1693afd4caaca5e20274c4d6a1ba632
+    :commit: ef7cb55efd61609774028ff20e0905337163c718
     :git: https://github.com/ERussel/AsyncDisplayKit.git
 
 SPEC CHECKSUMS:
@@ -60,4 +58,6 @@ SPEC CHECKSUMS:
   RIGiphyLib: 08f19125f261e7c7977a8a08b1b3af663aaa943c
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 4589d18d4f15ecc8dcd09d9d28a8d44c2fbfc882
+
+COCOAPODS: 1.1.1

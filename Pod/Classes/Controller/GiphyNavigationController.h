@@ -11,6 +11,7 @@
 #import "GiphyDataStoreProtocol.h"
 #import "GiphyNetworkActivityProtocol.h"
 #import "GiphyGIFObject.h"
+#import "GiphyNetworkManagerConfiguration.h"
 
 /**
  *  Notification name which would post when user closes giphy controller.
@@ -76,6 +77,7 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
 
 /**
  *  Creates giphy controller.
+ *  @param config       Configuration to setup connection to the Parse server.
  *  @param objectCache  Object which conforms GiphyObjectCacheProtocol to cache GIF and stills.
  *                      By default no cache will be used.
  *  @param dataManager  Object which conforms GiphyDataStoreProtocol to save giphy related data
@@ -84,9 +86,10 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
  *  @param networkActivityManager   Object which conforms GiphyNetworkActivityProtocol to manage shared network indicator
  *                                  visibility. By default PFNetworkActivityIndicatorManager will be used.
  */
-- (instancetype)initWithCache:(id<GiphyObjectCacheProtocol>)objectCache
-                         dataManager:(id<GiphyDataStoreProtocol>)dataManager
-                    networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager;
+- (instancetype)initWithNetworkConfiguration:(GiphyNetworkManagerConfiguration*)config
+                                       cache:(id<GiphyObjectCacheProtocol>)objectCache
+                                 dataManager:(id<GiphyDataStoreProtocol>)dataManager
+                      networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager;
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController __attribute__ ((unavailable));
 

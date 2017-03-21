@@ -50,9 +50,16 @@
 #pragma mark - Action
 
 - (IBAction)actionOpenGIF:(id)sender{
-    GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithCache:[TMCache sharedCache]
-                                                                                      dataManager:nil
-                                                                           networkActivityManager:nil];
+    GiphyNetworkManagerConfiguration *config = [[GiphyNetworkManagerConfiguration alloc] init];
+    config.parseApplicationId = @"vx7UlnLE2NzZCO95UjwdDaRKunB72grihAZeUw1W";
+    config.parseClientKey = @"O7JmKpUa62V2w8WP41josZb4k56k3281rT8jWBZX";
+    config.parseServer = @"https://swist.herokuapp.com/parse";
+    config.categoryPath = @"classes/GIFCategory";
+    
+    GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithNetworkConfiguration:config
+                                                                                                           cache:[TMCache sharedCache]
+                                                                                                     dataManager:nil
+                                                                                          networkActivityManager:nil];
     giphyController.delegate = self;
     giphyController.ignoresGIFPreloadForCell = [_gifPreloadSwitch isOn];
     giphyController.usesOriginalStillAsPlaceholder = [_placeholderSwitch isOn];

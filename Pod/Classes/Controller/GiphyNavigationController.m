@@ -53,9 +53,13 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
 
 #pragma mark - Initialize
 
-- (instancetype)initWithCache:(id<GiphyObjectCacheProtocol>)objectCache
-                  dataManager:(id<GiphyDataStoreProtocol>)dataManager
-       networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager{
+- (instancetype)initWithNetworkConfiguration:(GiphyNetworkManagerConfiguration*)config
+                                       cache:(id<GiphyObjectCacheProtocol>)objectCache
+                                 dataManager:(id<GiphyDataStoreProtocol>)dataManager
+                      networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager{
+    if (![GiphyNetworkManager isInitialized]) {
+        [GiphyNetworkManager initializeWithConfiguration:config];
+    }
     
     if (objectCache) {
         [[GiphyNetworkManager sharedManager] setObjectCache:objectCache];

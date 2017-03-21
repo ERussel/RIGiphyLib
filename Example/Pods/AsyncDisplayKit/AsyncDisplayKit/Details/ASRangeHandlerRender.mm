@@ -39,7 +39,9 @@
   [node recursivelySetDisplaySuspended:NO];
 
   // add the node to an off-screen window to force display and preserve its contents
-  [[self.class workingWindow] addSubnode:node];
+  if(![node isNodeLoaded] || ![node.view superview]){
+    [[self.class workingWindow] addSubnode:node];
+  }
 }
 
 - (void)node:(ASDisplayNode *)node exitedRangeOfType:(ASLayoutRangeType)rangeType
