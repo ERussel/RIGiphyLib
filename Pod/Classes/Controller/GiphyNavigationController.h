@@ -77,7 +77,6 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
 
 /**
  *  Creates giphy controller.
- *  @param config       Configuration to setup connection to the Parse server.
  *  @param objectCache  Object which conforms GiphyObjectCacheProtocol to cache GIF and stills.
  *                      By default no cache will be used.
  *  @param dataManager  Object which conforms GiphyDataStoreProtocol to save giphy related data
@@ -86,8 +85,7 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
  *  @param networkActivityManager   Object which conforms GiphyNetworkActivityProtocol to manage shared network indicator
  *                                  visibility. By default PFNetworkActivityIndicatorManager will be used.
  */
-- (instancetype)initWithNetworkConfiguration:(GiphyNetworkManagerConfiguration*)config
-                                       cache:(id<GiphyObjectCacheProtocol>)objectCache
+- (instancetype)initWithCache:(id<GiphyObjectCacheProtocol>)objectCache
                                  dataManager:(id<GiphyDataStoreProtocol>)dataManager
                       networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager;
 

@@ -8,6 +8,7 @@
 
 #import "GiphyViewController.h"
 #import <RIGiphyLib/GiphyNavigationController.h>
+#import <RIGiphyLib/GiphyNetworkManager.h>
 #import "TMCache+GiphyCacheProtocol.h"
 
 @interface GiphyViewController ()<GiphyNavigationControllerDelegate>
@@ -50,14 +51,17 @@
 #pragma mark - Action
 
 - (IBAction)actionOpenGIF:(id)sender{
-    GiphyNetworkManagerConfiguration *config = [[GiphyNetworkManagerConfiguration alloc] init];
-    config.parseApplicationId = @"vx7UlnLE2NzZCO95UjwdDaRKunB72grihAZeUw1W";
-    config.parseClientKey = @"O7JmKpUa62V2w8WP41josZb4k56k3281rT8jWBZX";
-    config.parseServer = @"https://swist.herokuapp.com/parse";
-    config.categoryPath = @"classes/GIFCategory";
+    if (![GiphyNetworkManager isInitialized]) {
+        GiphyNetworkManagerConfiguration *config = [[GiphyNetworkManagerConfiguration alloc] init];
+        config.parseApplicationId = @"vx7UlnLE2NzZCO95UjwdDaRKunB72grihAZeUw1W";
+        config.parseClientKey = @"O7JmKpUa62V2w8WP41josZb4k56k3281rT8jWBZX";
+        config.parseServer = @"https://swist.herokuapp.com/parse";
+        config.categoryPath = @"classes/GIFCategory";
+        
+        [GiphyNetworkManager initializeWithConfiguration:config];
+    }
     
-    GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithNetworkConfiguration:config
-                                                                                                           cache:[TMCache sharedCache]
+    GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithCache:[TMCache sharedCache]
                                                                                                      dataManager:nil
                                                                                           networkActivityManager:nil];
     giphyController.delegate = self;
