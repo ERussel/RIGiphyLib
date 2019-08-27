@@ -8,6 +8,7 @@
 
 #import "GiphyViewController.h"
 #import <RIGiphyLib/GiphyNavigationController.h>
+#import <RIGiphyLib/GiphyNetworkManager.h>
 #import "TMCache+GiphyCacheProtocol.h"
 
 @interface GiphyViewController ()<GiphyNavigationControllerDelegate>
@@ -50,9 +51,16 @@
 #pragma mark - Action
 
 - (IBAction)actionOpenGIF:(id)sender{
+    if (![GiphyNetworkManager isInitialized]) {
+        GiphyNetworkManagerConfiguration *config = [[GiphyNetworkManagerConfiguration alloc] init];
+        config.categoryUrl = [NSURL URLWithString:@"https://s3.eu-central-1.amazonaws.com/com.odario.swift-feed/gif.json"];
+        
+        [GiphyNetworkManager initializeWithConfiguration:config];
+    }
+    
     GiphyNavigationController *giphyController = [[GiphyNavigationController alloc] initWithCache:[TMCache sharedCache]
-                                                                                      dataManager:nil
-                                                                           networkActivityManager:nil];
+                                                                                                     dataManager:nil
+                                                                                          networkActivityManager:nil];
     giphyController.delegate = self;
     giphyController.ignoresGIFPreloadForCell = [_gifPreloadSwitch isOn];
     giphyController.usesOriginalStillAsPlaceholder = [_placeholderSwitch isOn];

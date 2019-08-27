@@ -1,11 +1,14 @@
 platform :ios, "7.0"
 source 'https://github.com/CocoaPods/Specs.git'
 
-target 'RIGiphyLib_Example', :exclusive => true do
+target 'RIGiphyLib_Example' do
   pod "RIGiphyLib", :path => "../"
+  pod 'AsyncDisplayKit', :git => 'https://github.com/ERussel/AsyncDisplayKit.git', :branch => 'feed_implementation', :commit => 'ef7cb55efd61609774028ff20e0905337163c718'
   pod 'TMCache'
 end
 
-target 'RIGiphyLib_Tests', :exclusive => true do
-  pod "RIGiphyLib", :path => "../"  
+target 'RIGiphyLib_Tests' do
+  pod "RIGiphyLib", :path => "../"
+  pod 'AsyncDisplayKit', :git => 'https://github.com/ERussel/AsyncDisplayKit.git', :branch => 'feed_implementation', :commit => 'ef7cb55efd61609774028ff20e0905337163c718'
+  
 end

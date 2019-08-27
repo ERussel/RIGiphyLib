@@ -1,1 +1,0 @@
-../../../../../Pod/Classes/Model/Objects/GiphyGIFObject.h

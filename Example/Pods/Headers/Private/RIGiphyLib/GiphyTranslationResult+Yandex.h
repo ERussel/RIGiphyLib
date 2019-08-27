@@ -1,1 +1,0 @@
-../../../../../Pod/Classes/Model/Objects/GiphyTranslationResult+Yandex.h

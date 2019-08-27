@@ -35,21 +35,6 @@ NSString * const kGiphyNetworkManagerRecievedObjectKey = @"GiphyNetworkManagerRe
 NSString * const kGiphyNetworkManagerRecievedObjectURLKey = @"GiphyNetworkManagerRecievedObjectURLKey";
 
 /**
- *  Application's id registered on server.
- */
-NSString * const kServerAppId = @"aTxS0APLlsPL63vsrB5OEJjKq1snWqmJ4MWaUGeG";
-
-/**
- *  Application's key to access server's data.
- */
-NSString * const kServerAPIKey = @"8l7t5cfT5rQBgN3qPSoNU7t5qlMXojcUwcU1hBdD";
-
-/**
- *  URL to fetch categories from server.
- */
-NSString * const kServerCategoriesURL = @"https://api.parse.com/1/classes/Category";
-
-/**
  *  Yandex Translate API base url string.
  */
 NSString * const kYandexAPIURL = @"https://translate.yandex.net/api/v1.5/tr.json/translate";
@@ -91,6 +76,11 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
  */
 @property(nonatomic)NSMutableArray *requests;
 
+/**
+ *  Configuration objec to connect to the Parse server
+ */
+@property(nonatomic)GiphyNetworkManagerConfiguration *configuration;
+
 #pragma mark - Requests
 
 /**
@@ -112,15 +102,29 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 
 @implementation GiphyNetworkManager
 
+static GiphyNetworkManager *networkManager = nil;
 
 #pragma mark - Initialize
 
-+ (id)sharedManager {
-    static GiphyNetworkManager *networkManager = nil;
++ (BOOL)isInitialized {
+    return networkManager != nil;
+}
+
++ (instancetype)initializeWithConfiguration:(GiphyNetworkManagerConfiguration*)config {
+    NSAssert(networkManager == nil, @"Network manager already initialized. Use 'sharedManager' method to extract object.");
+    NSAssert(config.categoryUrl != nil, @"Category url is not provided");
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         networkManager = [[self alloc] init];
+        networkManager.configuration = [config copy];
     });
+    
+    return networkManager;
+}
+
++ (instancetype)sharedManager {
+    NSAssert(networkManager != nil, @"Network manager isn't initialized. Use 'initializeWithServer:applicationId:clientKey:' method to extract the object.");
     return networkManager;
 }
 
@@ -130,6 +134,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
     if (self){
         _requests = [[NSMutableArray alloc] init];
         _networkActivityManager = (id<GiphyNetworkActivityProtocol>)[AFNetworkActivityIndicatorManager sharedManager];
+        [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     }
     
     return self;
@@ -217,21 +222,16 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
                       failureBlock:(void (^)(NSError *error))failureBlock
 {
     // create request to load categories from server
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kServerCategoriesURL]];
-    [request setValue:kServerAppId forHTTPHeaderField:@"X-Parse-Application-Id"];
-    [request setValue:kServerAPIKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_configuration.categoryUrl];
     
-    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, NSDictionary* result){
+    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, NSArray* remoteCategories){
         if ([self hasRequest:giphyRequest]) {
             [self completeRequest:giphyRequest];
             
-            // extract categories
-            NSArray *parseCategories = [result objectForKey:@"results"];
-            
             // transform Parse categories to internal objects
             NSMutableArray *categories = [NSMutableArray array];
-            for (NSDictionary* pfcategory in parseCategories) {
-                GiphyCategoryObject *category = [GiphyCategoryObject categoryFromDictionary:pfcategory];
+            for (NSDictionary* remoteCategory in remoteCategories) {
+                GiphyCategoryObject *category = [GiphyCategoryObject categoryFromDictionary:remoteCategory];
                 [categories addObject:category];
             }
             
@@ -649,23 +649,28 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 #pragma mark - Cancellation
 
 - (void)cancelRequestForCancellationIdentifier:(id)cancellationIdentifier{
-    if (cancellationIdentifier && [_requests containsObject:cancellationIdentifier]) {
-        [_requests removeObject:cancellationIdentifier];
-        [(GiphyRequest*)cancellationIdentifier cancel];
-        
-        [_networkActivityManager decrementActivityCount];
+    @synchronized(_requests) {
+        if (cancellationIdentifier && [_requests containsObject:cancellationIdentifier]) {
+            [_requests removeObject:cancellationIdentifier];
+            [(GiphyRequest*)cancellationIdentifier cancel];
+            
+            [_networkActivityManager decrementActivityCount];
+        }
     }
 }
 
 - (void)cancelAllRequests{
-    if ([_requests count] > 0) {
-        NSArray *requestsToCancel = _requests;
-        _requests = [[NSMutableArray alloc] init];
-        
-        for (GiphyRequest *request in requestsToCancel) {
-            [request cancel];
+    NSArray *requestsToCancel = _requests;
+
+    @synchronized(requestsToCancel) {
+        if ([_requests count] > 0) {
+            _requests = [[NSMutableArray alloc] init];
             
-            [_networkActivityManager decrementActivityCount];
+            for (GiphyRequest *request in requestsToCancel) {
+                [request cancel];
+                
+                [_networkActivityManager decrementActivityCount];
+            }
         }
     }
 }
@@ -673,17 +678,21 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 #pragma mark - Pause/Resume
 
 - (void)pauseRequestsForType:(GiphyRequestType)requestType{
-    for (GiphyRequest *request in _requests) {
-        if (request.operationType == requestType) {
-            [request setPaused:YES];
+    @synchronized(_requests) {
+        for (GiphyRequest *request in _requests) {
+            if (request.operationType == requestType) {
+                [request setPaused:YES];
+            }
         }
     }
 }
 
 - (void)resumeRequestsForType:(GiphyRequestType)requestType{
-    for (GiphyRequest *request in _requests) {
-        if (request.operationType == requestType) {
-            [request setPaused:NO];
+    @synchronized(_requests) {
+        for (GiphyRequest *request in _requests) {
+            if (request.operationType == requestType) {
+                [request setPaused:NO];
+            }
         }
     }
 }
@@ -692,8 +701,10 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 
 - (void)addRequest:(id)request{
     if (![self hasRequest:request] && request) {
-        // add request to shared list if is not already contained in
-        [_requests addObject:request];
+        @synchronized(_requests) {
+            // add request to shared list if is not already contained in
+            [_requests addObject:request];
+        }
         
         // register network activity for it
         [_networkActivityManager incrementActivityCount];
@@ -702,8 +713,10 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 
 - (void)completeRequest:(id)request{
     if ([self hasRequest:request]) {
-        // remove request from shared list if contained in
-        [_requests removeObject:request];
+        @synchronized(_requests) {
+            // remove request from shared list if contained in
+            [_requests removeObject:request];
+        }
         
         // drop network activity for request
         [_networkActivityManager decrementActivityCount];
@@ -715,7 +728,9 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
         return NO;
     }
     
-    return [_requests containsObject:request];
+    @synchronized(_requests) {
+        return [_requests containsObject:request];
+    }
 }
 
 

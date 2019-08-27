@@ -56,7 +56,6 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
 - (instancetype)initWithCache:(id<GiphyObjectCacheProtocol>)objectCache
                   dataManager:(id<GiphyDataStoreProtocol>)dataManager
        networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager{
-    
     if (objectCache) {
         [[GiphyNetworkManager sharedManager] setObjectCache:objectCache];
     }
@@ -85,6 +84,8 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
 }
 
 - (void)awakeFromNib{
+    [super awakeFromNib];
+
     GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:[GiphyBasicDataManager sharedManager]];
     [self setViewControllers:@[giphyListViewController]];
     

@@ -11,6 +11,7 @@
 #import "GiphyDataStoreProtocol.h"
 #import "GiphyNetworkActivityProtocol.h"
 #import "GiphyGIFObject.h"
+#import "GiphyNetworkManagerConfiguration.h"
 
 /**
  *  Notification name which would post when user closes giphy controller.
@@ -85,8 +86,8 @@ extern NSString * const kGiphyNotificationGIFObjectKey;
  *                                  visibility. By default PFNetworkActivityIndicatorManager will be used.
  */
 - (instancetype)initWithCache:(id<GiphyObjectCacheProtocol>)objectCache
-                         dataManager:(id<GiphyDataStoreProtocol>)dataManager
-                    networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager;
+                                 dataManager:(id<GiphyDataStoreProtocol>)dataManager
+                      networkActivityManager:(id<GiphyNetworkActivityProtocol>)networkActivityManager;
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController __attribute__ ((unavailable));
 
