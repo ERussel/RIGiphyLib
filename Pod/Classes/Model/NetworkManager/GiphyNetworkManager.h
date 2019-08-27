@@ -16,6 +16,7 @@
 #import "GiphyGIFObject.h"
 #import "GiphyCategoryObject.h"
 #import "GiphyTranslationResult.h"
+#import "GiphyNetworkManagerConfiguration.h"
 
 /**
  *  Notification name to post when manager completes still downloading operation.
@@ -94,6 +95,18 @@ typedef enum {
 @interface GiphyNetworkManager : NSObject
 
 #pragma mark - Initialize
+
+/**
+ *  Checks whether network manager initialized
+ */
++ (BOOL)isInitialized;
+
+/**
+ *  Initializes singletone with Parse server configurations
+ *  @param config   Configuration object to setup connection to Parse server
+ *  @return GiphyNetworkManager singletone.
+ */
++ (instancetype)initializeWithConfiguration:(GiphyNetworkManagerConfiguration*)config;
 
 /**
  *  @return Shared network manager.

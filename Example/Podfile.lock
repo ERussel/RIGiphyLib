@@ -20,12 +20,12 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AsyncDisplayKit (1.9.1):
-    - AsyncDisplayKit/ASDealloc2MainObject (= 1.9.1)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.9.1)
+  - AsyncDisplayKit (1.1.1):
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.1.1)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.1.1)
   - FLAnimatedImage (1.0.8)
   - MBProgressHUD (0.9.1)
-  - RIGiphyLib (1.0):
+  - RIGiphyLib (1.0.1):
     - AFNetworking (~> 2.3)
     - AsyncDisplayKit
     - FLAnimatedImage (~> 1.0)
@@ -33,19 +33,38 @@ PODS:
   - TMCache (2.1.0)
 
 DEPENDENCIES:
+  - AsyncDisplayKit (from `https://github.com/ERussel/AsyncDisplayKit.git`, commit `ef7cb55efd61609774028ff20e0905337163c718`, branch `feed_implementation`)
   - RIGiphyLib (from `../`)
   - TMCache
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - FLAnimatedImage
+    - MBProgressHUD
+    - TMCache
+
 EXTERNAL SOURCES:
+  AsyncDisplayKit:
+    :branch: feed_implementation
+    :commit: ef7cb55efd61609774028ff20e0905337163c718
+    :git: https://github.com/ERussel/AsyncDisplayKit.git
   RIGiphyLib:
-    :path: ../
+    :path: "../"
+
+CHECKOUT OPTIONS:
+  AsyncDisplayKit:
+    :commit: ef7cb55efd61609774028ff20e0905337163c718
+    :git: https://github.com/ERussel/AsyncDisplayKit.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  AsyncDisplayKit: 7bf2b3fa444284f80fd0c1e36655e324549f79d2
+  AsyncDisplayKit: de270404aae9f070e1450e38840003691f9b5259
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  RIGiphyLib: 08f19125f261e7c7977a8a08b1b3af663aaa943c
+  RIGiphyLib: d01ad2e97e42c2764a91c752aa52b56693942dd2
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 4589d18d4f15ecc8dcd09d9d28a8d44c2fbfc882
+
+COCOAPODS: 1.7.5

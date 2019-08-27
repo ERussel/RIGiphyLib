@@ -57,7 +57,7 @@
     _attributedString = [attributedString copy];
     
     // Tell the display node superclasses that the cached sizes are incorrect now
-    [self setNeedsLayout];
+    [self invalidateCalculatedSize];
     
     // redisplay
     [self setNeedsDisplay];
