@@ -305,7 +305,7 @@ UISearchBarDelegate, UIViewControllerTransitioningDelegate>
 
 /**
  *  Hides/unhides search cancellation button near the search bar.
- *  @param showCancelButton Flag states whether button should be displayed or not.
+ *  @param showsCancelButton Flag states whether button should be displayed or not.
  *  @param animated Flag states whether transition should be animated.
  */
 - (void)showsCancelButton:(BOOL)showsCancelButton animated:(BOOL)animated;
@@ -358,7 +358,7 @@ UISearchBarDelegate, UIViewControllerTransitioningDelegate>
 /**
  *  Applies calculated measurement information to given collection view.
  *  @param collectionView   Collection view to update with measurement information.
- *  @param interfaceOrient  Interface orientation collection view displayed in.
+ *  @param interfaceOrientation  Interface orientation collection view displayed in.
  */
 - (void)applyMeasurementInformationToCollectionView:(ASCollectionView*)collectionView atInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
@@ -369,7 +369,7 @@ UISearchBarDelegate, UIViewControllerTransitioningDelegate>
 
 /**
  *  Saves search request to data store. If data store already contains it than it would move to first position in history list.
- *  @param searchRequest Search request to save to data store.
+ *  @param searchRequestObject Search request to save to data store.
  */
 - (void)updateDatastoreWithSearchRequestObject:(GiphySearchRequestObject*)searchRequestObject;
 
@@ -1321,14 +1321,14 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
         [_contentView.layer addAnimation:transitionAnimation forKey:@"completeSearchTransition"];
         
         [CATransaction setCompletionBlock:^{
-            if (_listType != kGiphyListTypeSearchResults) {
+            if (self.listType != kGiphyListTypeSearchResults) {
                 // clear search results store when search collection view already hidden
                 [self.searchResults removeAllObjects];
                 self.searchRequestObject = nil;
                 
                 // clear search collection view
                 [self clearInvisibleNodesForNodeClass:[GiphySearchCollectionViewNode class]];
-                [_searchCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+                [self.searchCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
             }
         }];
         
@@ -1412,6 +1412,11 @@ const CGFloat kGiphyErrorTitlePadding = 15.0f;
 
 - (void)updateContentInsetsForCollectionView:(ASCollectionView*)collectionView{
     // calculate content inset by including bars' heights
+
+    if (@available(iOS 11.0, *)) {
+        [collectionView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
+
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(CGRectGetMaxY(self.navigationController.navigationBar.frame),
                                                   0.0f,
                                                   CGRectGetHeight(self.navigationController.toolbar.frame),

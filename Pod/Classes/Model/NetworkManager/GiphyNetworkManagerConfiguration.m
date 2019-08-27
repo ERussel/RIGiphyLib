@@ -14,10 +14,7 @@
 
 - (instancetype)copyWithZone:(NSZone *)zone {
     GiphyNetworkManagerConfiguration *copyConfig = [[[self class] alloc] init];
-    copyConfig.parseServer = self.parseServer;
-    copyConfig.parseApplicationId = self.parseApplicationId;
-    copyConfig.parseClientKey = self.parseClientKey;
-    copyConfig.categoryPath = self.categoryPath;
+    copyConfig.categoryUrl = self.categoryUrl;
     return copyConfig;
 }
 

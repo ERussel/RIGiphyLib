@@ -53,10 +53,7 @@
 - (IBAction)actionOpenGIF:(id)sender{
     if (![GiphyNetworkManager isInitialized]) {
         GiphyNetworkManagerConfiguration *config = [[GiphyNetworkManagerConfiguration alloc] init];
-        config.parseApplicationId = @"vx7UlnLE2NzZCO95UjwdDaRKunB72grihAZeUw1W";
-        config.parseClientKey = @"O7JmKpUa62V2w8WP41josZb4k56k3281rT8jWBZX";
-        config.parseServer = @"https://swist.herokuapp.com/parse";
-        config.categoryPath = @"classes/GIFCategory";
+        config.categoryUrl = [NSURL URLWithString:@"https://s3.eu-central-1.amazonaws.com/com.odario.swift-feed/gif.json"];
         
         [GiphyNetworkManager initializeWithConfiguration:config];
     }

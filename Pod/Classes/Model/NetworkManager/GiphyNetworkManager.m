@@ -79,7 +79,7 @@ const CGFloat kNetworkManagerDefaultTimeoutInterval = 8.0f;
 /**
  *  Configuration objec to connect to the Parse server
  */
-@property(nonatomic)GiphyNetworkManagerConfiguration *parseConfiguration;
+@property(nonatomic)GiphyNetworkManagerConfiguration *configuration;
 
 #pragma mark - Requests
 
@@ -112,15 +112,12 @@ static GiphyNetworkManager *networkManager = nil;
 
 + (instancetype)initializeWithConfiguration:(GiphyNetworkManagerConfiguration*)config {
     NSAssert(networkManager == nil, @"Network manager already initialized. Use 'sharedManager' method to extract object.");
-    NSAssert(config.parseServer.length > 0, @"Server url string is not provided");
-    NSAssert(config.categoryPath.length > 0, @"Categories path is not provided");
-    NSAssert(config.parseApplicationId.length > 0, @"Application id is not provided");
-    NSAssert(config.parseClientKey.length > 0, @"Client key is not provided");
+    NSAssert(config.categoryUrl != nil, @"Category url is not provided");
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         networkManager = [[self alloc] init];
-        networkManager.parseConfiguration = [config copy];
+        networkManager.configuration = [config copy];
     });
     
     return networkManager;
@@ -225,21 +222,16 @@ static GiphyNetworkManager *networkManager = nil;
                       failureBlock:(void (^)(NSError *error))failureBlock
 {
     // create request to load categories from server
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[_parseConfiguration.parseServer stringByAppendingPathComponent:_parseConfiguration.categoryPath]]];
-    [request setValue:_parseConfiguration.parseApplicationId forHTTPHeaderField:@"X-Parse-Application-Id"];
-    [request setValue:_parseConfiguration.parseClientKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_configuration.categoryUrl];
     
-    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, NSDictionary* result){
+    GiphyRequestSuccessBlock giphySuccessBlock = ^(GiphyRequest *giphyRequest, NSArray* remoteCategories){
         if ([self hasRequest:giphyRequest]) {
             [self completeRequest:giphyRequest];
             
-            // extract categories
-            NSArray *parseCategories = [result objectForKey:@"results"];
-            
             // transform Parse categories to internal objects
             NSMutableArray *categories = [NSMutableArray array];
-            for (NSDictionary* pfcategory in parseCategories) {
-                GiphyCategoryObject *category = [GiphyCategoryObject categoryFromDictionary:pfcategory];
+            for (NSDictionary* remoteCategory in remoteCategories) {
+                GiphyCategoryObject *category = [GiphyCategoryObject categoryFromDictionary:remoteCategory];
                 [categories addObject:category];
             }
             

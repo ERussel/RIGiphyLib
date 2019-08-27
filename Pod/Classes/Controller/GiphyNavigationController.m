@@ -84,6 +84,8 @@ NSString * const kGiphyNotificationGIFObjectKey = @"GiphyNotificationGIFObjectKe
 }
 
 - (void)awakeFromNib{
+    [super awakeFromNib];
+
     GiphyListViewController *giphyListViewController = [[GiphyListViewController alloc] initWithDataManager:[GiphyBasicDataManager sharedManager]];
     [self setViewControllers:@[giphyListViewController]];
     
